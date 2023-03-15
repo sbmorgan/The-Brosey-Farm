@@ -1,0 +1,5 @@
+crop,sow_type,sow_date,sow_no_seed_per,sow_no_germ_per,sow_to_germ_days,sow_type_cell,sow_no_cell,sow_heatmat,sow_light_hrs,sow_light_type,sow_to_transp_days,transp_date_1,transp_med_1,transp_no_int_1,transp_no_end_1,transp_date_2,transp_med_2,transp_no_int_2,transp_no_end_2,path_code_1,path_date_1,path_code_2,path_date_2
+lettuce,indoor seed,3/12/2023,5,,,32,20,no,16,45w led,,,,,,,,,,,,,
+kale,indoor seed,3/12/2023,5,,,32,4,no,16,45w led,,,,,,,,,,,,,
+basil,indoor seed,3/12/2023,5,,,32,4,no,16,45w led,,,,,,,,,,,,,
+sage,indoor seed,3/12/2023,5,,,32,4,no,16,45w led,,,,,,,,,,,,,
