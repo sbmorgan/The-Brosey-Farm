@@ -13,6 +13,7 @@ str(bf_2023)
 vis_miss(bf_2023)
 
 #modify data
+##Make crop & sow_type factors, not character strings
 
 #build analysis indicators
 bf_2023 <- bf_2023 %>% mutate(sow_no_seed_tot= sow_no_cell* sow_no_seed_per)
