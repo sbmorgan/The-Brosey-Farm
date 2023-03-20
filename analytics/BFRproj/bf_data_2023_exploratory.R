@@ -4,6 +4,7 @@ library(dplyr)
 library(ggplot2)
 library(stringr)
 library(visdat)
+library(lubridate)
 
 #import 2023 bf crop data
 bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
