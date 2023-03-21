@@ -25,3 +25,5 @@ bf_2023 %>% count(crop, sow_date)
 bf_2023 %>% count(crop, sow_date, wt= sow_no_seed_tot)
 
 ggplot(bf_2023, aes(x= crop, y= sow_no_seed_tot, fill=sow_date)) + geom_col()
+
+ggplot(bf_2023, aes(x= crop, y= sow_to_germ_days, fill=sow_date)) + geom_col()
