@@ -18,12 +18,14 @@ vis_miss(bf_2023)
 
 #build analysis indicators
 bf_2023 <- bf_2023 %>% mutate(sow_no_seed_tot= sow_no_cell* sow_no_seed_per)
-bf_2023 <- bf_2023 %>% mutate(sow_no_germ_pct= sow_no_germ_per/sow_no_seed_per)
+bf_2023 <- bf_2023 %>% mutate(sow_no_germ_pct= (sow_no_germ_per/sow_no_seed_per)*100)
 
 #exploratory analysis
 bf_2023 %>% count(crop, sow_date)
 
 bf_2023 %>% count(crop, sow_date, wt= sow_no_seed_tot)
+
+bf_2023 %>% group_by(crop, sow_date) %>% summarize(sow_no_germ_pct, sow_no_seed_tot)
 
 ggplot(bf_2023, aes(x= crop, y= sow_no_seed_tot, fill=sow_date)) + geom_col()
 
