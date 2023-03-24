@@ -31,4 +31,4 @@ ggplot(bf_2023, aes(x=reorder(crop, sow_no_seed_tot), y=sow_no_seed_tot, fill=so
 
 ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Days to germination")
 
-ggplot(bf_2023, aes(factor(crop), sow_no_germ_pct, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Germination %")
+ggplot(bf_2023, aes(x=reorder(crop, sow_no_germ_pct), y=sow_no_germ_pct, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Germination %")
