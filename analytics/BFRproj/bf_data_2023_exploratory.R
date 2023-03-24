@@ -27,8 +27,8 @@ bf_2023 %>% count(crop, sow_date, wt= sow_no_seed_tot)
 
 bf_2023 %>% group_by(crop, sow_date) %>% summarize(sow_no_germ_pct, sow_no_seed_tot)
 
-ggplot(bf_2023, aes(x= crop, y= sow_no_seed_tot, fill=sow_date)) + geom_col()
+ggplot(bf_2023, aes(x=reorder(crop, sow_no_seed_tot), y=sow_no_seed_tot, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Number of seeds sown/cell")
 
-ggplot(bf_2023, aes(factor(crop), sow_to_germ_days, fill=sow_date)) + geom_col(color="blue")
+ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Days to germination")
 
-ggplot(bf_2023, aes(factor(crop), sow_no_germ_pct, fill=sow_date)) + geom_col(color="blue")
+ggplot(bf_2023, aes(factor(crop), sow_no_germ_pct, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Germination %")
