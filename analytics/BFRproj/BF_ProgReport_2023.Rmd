@@ -1,0 +1,94 @@
+---
+title: "Grow Season 2023 Progress Report"
+author: "Brosey Farm Analytics Team"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+    number_sections: true
+    theme: lumen
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+pacman::p_load(tidyverse,
+               readr,
+               visdat,
+               stringr,
+               janitor,
+               DT,
+               skimr,
+               wesanderson)
+```
+
+# Data management
+
+Read in data file with 2023 crop data and create variables for analysis.
+
+```{r read-data, echo=FALSE, warning = FALSE, include = FALSE}
+
+#import 2023 bf crop data
+bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
+str(bf_2023)
+
+#modify data
+##Make crop & sow_type factors, not character strings
+
+#build analysis indicators
+bf_2023 <- bf_2023 %>% 
+  mutate(sow_no_seed_tot= sow_no_cell* sow_no_seed_per, 
+         sow_no_germ_pct= (sow_no_germ_per/sow_no_seed_per)*100,
+         sow_date = as.Date(sow_date, format = "%m/%d/%Y"))
+
+#exploratory analysis
+skim(bf_2023)
+
+bf_2023 %>% count(crop, sow_date)
+
+bf_2023 %>% count(crop, sow_date, wt= sow_no_seed_tot)
+
+
+bf_crop_summary = bf_2023 %>% 
+  group_by(crop, sow_date) %>% 
+  summarize(sow_no_germ_pct, sow_no_seed_tot)
+
+```
+
+# Initial Plots {.tabset .tabset-pills}
+
+```{r}
+
+```
+
+## Number of seeds sown by crop
+
+```{r plot1, echo=FALSE, warning=FALSE, include = TRUE}
+
+
+ggplot(bf_crop_summary, aes(x=sow_date, y=sow_no_seed_tot, fill = crop)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  theme_classic() +
+  labs(
+    title = "Number of seeds sown by crop, 2023",
+    x = "Sow Date", y = "Number of seeds sown") +
+    scale_fill_brewer(palette="Spectral")
+    #scale_fill_manual(values = wes_palette("Darjeeling2", n = 7))
+```
+
+## Days to germination
+
+```{r plot2, echo=FALSE, warning=FALSE, include = TRUE}
+
+
+ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Days to germination")
+
+ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=sow_date)) + geom_point(shape= 15, size=5, color="blue") + labs(x = "Crop", y = "Days to germination")
+
+ggplot(bf_2023, aes(x=reorder(crop, sow_no_germ_pct), y=sow_no_germ_pct, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Germination %")
+
+```
+
+Copyright Brosey Farm, LLC (2023)
