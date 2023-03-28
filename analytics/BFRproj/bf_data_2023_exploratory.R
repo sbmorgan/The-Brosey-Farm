@@ -32,7 +32,7 @@ bf_2023 %>% count(crop, sow_date)
 
 bf_2023 %>% count(crop, sow_date, wt= sow_no_seed_tot)
 
-bf_2023 %>% group_by(crop, sow_date) %>% summarize(sow_no_germ_pct, sow_no_seed_tot)
+bf_crop_summary = bf_2023 %>% group_by(crop, sow_date) %>% summarize(sow_no_germ_pct, sow_no_seed_tot)
 
 ggplot(bf_2023, aes(x=reorder(crop, sow_no_seed_tot), y=sow_no_seed_tot, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Number of seeds sown") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
 
@@ -41,15 +41,19 @@ ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=
 
 ggplot(bf_2023, aes(x=reorder(crop, sow_no_germ_pct), y=sow_no_germ_pct, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Germination %") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
 
+ggplot(bf_crop_summary, aes(x=sow_date, y=sow_no_seed_tot, fill = crop)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  theme_classic() +
+  labs(
+    title = "Number of seeds sown by crop, 2023",
+    x = "Sow Date", y = "Number of seeds sown") +
+  scale_fill_brewer(palette="Spectral")
+
 ##esquisse:::esquisser()
 
 ggplot(bf_2023) +
   aes(x = crop, y = sow_no_seed_tot, fill = sow_date) +
   geom_col() +
-  scale_fill_manual(
-    values = c(`3/12/2023` = "#B06DF8",
-               `3/26/2023` = "#297D1E")
-  ) +
   labs(
     x = "Crop sown",
     y = "Total seeds sown",
@@ -60,12 +64,3 @@ ggplot(bf_2023) +
   ) +
   theme_gray() +
   facet_wrap(vars(sow_date), scales = "free_x")
-
-
-ggplot(bf_crop_summary, aes(x=sow_date, y=sow_no_seed_tot, fill = crop)) +
-  geom_bar(stat = "identity", position = "dodge") + 
-  theme_classic() +
-  labs(
-    title = "Number of seeds sown by crop, 2023",
-    x = "Sow Date", y = "Number of seeds sown") +
-  scale_fill_brewer(palette="Spectral")
