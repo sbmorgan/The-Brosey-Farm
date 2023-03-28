@@ -3,6 +3,7 @@ library(tidyverse)
 library(readr)
 library(stringr)
 library(visdat)
+library(ggtext)
 
 #import 2023 bf crop data
 bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
@@ -25,9 +26,9 @@ bf_2023 %>% count(crop, sow_date, wt= sow_no_seed_tot)
 
 bf_2023 %>% group_by(crop, sow_date) %>% summarize(sow_no_germ_pct, sow_no_seed_tot)
 
-ggplot(bf_2023, aes(x=reorder(crop, sow_no_seed_tot), y=sow_no_seed_tot, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Number of seeds sown")
+ggplot(bf_2023, aes(x=reorder(crop, sow_no_seed_tot), y=sow_no_seed_tot, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Number of seeds sown") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
 
-ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Days to germination")
-ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=sow_date)) + geom_point(shape= 15, size=5, color="blue") + labs(x = "Crop", y = "Days to germination")
+ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Days to germination") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
+ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=sow_date)) + geom_point(shape= 15, size=5, color="blue") + labs(x = "Crop", y = "Days to germination") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
 
-ggplot(bf_2023, aes(x=reorder(crop, sow_no_germ_pct), y=sow_no_germ_pct, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Germination %")
+ggplot(bf_2023, aes(x=reorder(crop, sow_no_germ_pct), y=sow_no_germ_pct, fill=sow_date)) + geom_col(color="blue") + labs(x = "Crop", y = "Germination %") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
