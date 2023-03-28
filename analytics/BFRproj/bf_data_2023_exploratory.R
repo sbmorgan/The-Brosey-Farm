@@ -3,7 +3,10 @@ library(tidyverse)
 library(readr)
 library(stringr)
 library(visdat)
+library(skimr)
+library(DT)
 library(esquisse)
+library(datamods)
 
 #import 2023 bf crop data
 bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
@@ -16,10 +19,15 @@ vis_miss(bf_2023)
 ##Make crop & sow_type factors, not character strings
 
 #build analysis indicators
-bf_2023 <- bf_2023 %>% mutate(sow_no_seed_tot= sow_no_cell* sow_no_seed_per)
-bf_2023 <- bf_2023 %>% mutate(sow_no_germ_pct= (sow_no_germ_per/sow_no_seed_per)*100)
+bf_2023 <- bf_2023 %>% 
+  mutate(sow_no_seed_tot= sow_no_cell* sow_no_seed_per, 
+         sow_no_germ_pct= (sow_no_germ_per/sow_no_seed_per)*100,
+         sow_date = as.Date(sow_date, format = "%m/%d/%Y"))
+class(bf_2023$sow_date)
 
 #exploratory analysis
+skim(bf_2023)
+
 bf_2023 %>% count(crop, sow_date)
 
 bf_2023 %>% count(crop, sow_date, wt= sow_no_seed_tot)
@@ -52,3 +60,12 @@ ggplot(bf_2023) +
   ) +
   theme_gray() +
   facet_wrap(vars(sow_date), scales = "free_x")
+
+
+ggplot(bf_crop_summary, aes(x=sow_date, y=sow_no_seed_tot, fill = crop)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  theme_classic() +
+  labs(
+    title = "Number of seeds sown by crop, 2023",
+    x = "Sow Date", y = "Number of seeds sown") +
+  scale_fill_brewer(palette="Spectral")
