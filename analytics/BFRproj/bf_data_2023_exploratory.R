@@ -7,6 +7,7 @@ library(skimr)
 library(DT)
 library(esquisse)
 library(datamods)
+library(lubridate)
 
 #import 2023 bf crop data
 bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
