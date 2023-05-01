@@ -34,7 +34,7 @@
   bf_2023 %>% count(crop, sow_date, wt= sow_no_seed_tot)
 
   #sowing
-  ggplot(bf_2023, aes(x=reorder(crop, sow_no_seed_tot), y=sow_no_seed_tot, fill=factor(sow_date))) + geom_col(color="blue") + labs(x = "Crop", y = "Number of seeds sown") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
+  ggplot(bf_2023, aes(x=reorder(crop, sow_no_seed_tot), y=sow_no_seed_tot, fill=factor(sow_date))) + geom_col(color="blue") + labs(x = "Crop", y = "Number of seeds sown") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x") + labs(fill = "Sow Date")
   ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=factor(sow_date))) + geom_col(color="blue") + labs(x = "Crop", y = "Days to germination") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x") + labs(fill = "Sow Date")
   ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=factor(sow_date))) + geom_col(color="blue") + labs(x = "Crop", y = "Days to germination") + theme(axis.text.x=element_text(angle=60), strip.background=element_blank(), strip.text.y= element_blank()) + facet_wrap(vars(sow_date), scales = "free_x") + labs(fill = "Sow Date")
   ggplot(bf_2023, aes(x=reorder(crop, sow_to_germ_days), y=sow_to_germ_days, fill=factor(sow_date))) + geom_point(shape= 15, size=5, color="blue") + labs(x = "Crop", y = "Days to germination") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x") + scale_fill_discrete(name = "Sow Date")
