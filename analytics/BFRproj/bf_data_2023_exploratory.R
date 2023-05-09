@@ -1,16 +1,9 @@
 ##load required R packages##
-  library(tidyverse)
-  library(readr)
-  library(stringr)
-  library(visdat)
-  library(skimr)
-  library(DT)
-  library(esquisse)
-  library(datamods)
-  library(lubridate)
+  pacman::p_load(tidyverse, readr, stringr, visdat, skimr, DT, esquisse, datamods, lubridate, googlesheets4)
 
 ##import 2023 bf crop data##
-  bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
+  #bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
+  bf_2023 <- read_sheet("https://docs.google.com/spreadsheets/d/1lXsVEpM5iNZrNqlap8JHbxeIxeXF_C3s--FMrx_Inc8/edit#gid=707201855", sheet = "data_2023")
   str(bf_2023)
 
 ##validate data##
@@ -66,5 +59,5 @@
     theme(axis.text.x=element_text(angle=60))
 
   #transplanting
-  ggplot(bf_2023, aes(x=reorder(crop, sow_to_transp_days), y=sow_to_transp_days, fill=factor(sow_date))) + geom_col(color="blue") + labs(x = "Crop", y = "Sow to transplate- days") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
-  ggplot(bf_2023, aes(x=reorder(crop, transp_harden_days), y=transp_harden_days, fill=factor(sow_date))) + geom_col(color="blue") + labs(x = "Crop", y = "Transplant hardening off- days") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x")
+  ggplot(bf_2023, aes(x=reorder(crop, sow_to_transp_days), y=sow_to_transp_days, fill=factor(sow_date))) + geom_col(color="blue") + labs(x = "Crop", y = "Sow to transplate- days") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x") + scale_fill_discrete(name = "Sow Date")
+  ggplot(bf_2023, aes(x=reorder(crop, transp_harden_days), y=transp_harden_days, fill=factor(sow_date))) + geom_col(color="blue") + labs(x = "Crop", y = "Transplant hardening off- days") + theme(axis.text.x=element_text(angle=60)) + facet_wrap(vars(sow_date), scales = "free_x") + scale_fill_discrete(name = "Sow Date")
