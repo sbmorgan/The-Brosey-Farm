@@ -5,12 +5,15 @@
   #bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
   bf_2023 <- read_sheet("https://docs.google.com/spreadsheets/d/1lXsVEpM5iNZrNqlap8JHbxeIxeXF_C3s--FMrx_Inc8/edit#gid=707201855", sheet = "data_2023")
   str(bf_2023)
-
+  
+  #Revise column types
+  bf_2023$crop <- as.factor(bf_2023$crop)
+  bf_2023$sow_type <- as.factor(bf_2023$sow_type)
+  bf_2023$transp_date_1 <- as.character(bf_2023$transp_date_1)  
+  str(bf_2023)
+  
 ##validate data##
   vis_miss(bf_2023)
-
-##modify data##
-  #TODO Make crop & sow_type factors, not character strings
 
 ##build analysis indicators##
   bf_2023 <- bf_2023 %>% 
