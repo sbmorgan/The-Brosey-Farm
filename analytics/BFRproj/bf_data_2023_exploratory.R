@@ -1,5 +1,5 @@
 ##load required R packages##
-  pacman::p_load(tidyverse, readr, stringr, visdat, skimr, DT, esquisse, datamods, lubridate, googlesheets4)
+  pacman::p_load(tidyverse, readr, stringr, visdat, skimr, DT, esquisse, datamods, lubridate, fasttime, googlesheets4)
 
 ##import 2023 bf crop data##
   #bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
@@ -9,7 +9,12 @@
   #Revise column types
   bf_2023$crop <- as.factor(bf_2023$crop)
   bf_2023$sow_type <- as.factor(bf_2023$sow_type)
-  bf_2023$transp_date_1 <- as.character(bf_2023$transp_date_1)  
+  bf_2023$sow_date <- as.Date(bf_2023$sow_date)
+  #bf_2023$transp_date_1 <- as.character(bf_2023$transp_date_1)  
+  str(bf_2023)
+  #bf_2023$sow_fert_date_1 <- ymd(bf_2023$sow_fert_date_1)
+  bf_2023$sow_fert_date_1 <- fast_strptime(bf_2023$sow_fert_date_1, format = "%Y-%m-%d")
+  bf_2023$sow_fert_date_2 <- fast_strptime(bf_2023$sow_fert_date_2, format = "%Y-%m-%d")
   str(bf_2023)
   
 ##validate data##
