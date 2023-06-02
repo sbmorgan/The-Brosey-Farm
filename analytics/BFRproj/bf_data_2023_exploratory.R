@@ -22,7 +22,7 @@
 
 ##build analysis indicators##
   bf_2023 <- bf_2023 %>% 
-    mutate(sow_no_seed_tot= sow_no_cellrow* sow_no_seed_per, 
+    mutate(sow_no_seed_tot= sow_no_cellrowhill* sow_no_seed_per, 
            sow_no_germ_pct= (sow_no_germ_per/sow_no_seed_per)*100,
            sow_to_transp_days= difftime(transp_date_1, sow_date, units = "days"),
            transp_harden_days= difftime(transp_harden_date_end, transp_harden_date_srt, units = "days"))
