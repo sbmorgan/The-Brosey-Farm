@@ -1,33 +1,43 @@
 ---
-title: "The Brosey Farm 2023 Crop Report: `r params$crop'"
-author: "The Brosey Farm Analytics Team"
-date: "2023-06-26"
-output: html_document
+title: "The Brosey Farm 2023 Crop Report: `r params$crop`"
+author: "*The Brosey Farm Analytics Team*"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    css: BF_crop_report_styles.css
 params:
-    crop: kale
-    css: styles.css
+    crop: kale- lacinato
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'left')
 ```
 
-## R Markdown
+```{r filter_data `r params$crop`, include = FALSE}
+##load required R packages##
+  pacman::p_load(tidyverse, readr, stringr, visdat, skimr, DT, esquisse, datamods, lubridate, fasttime, googlesheets4)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+##import 2023 bf crop data##
+  #bf_2023 <- read_csv("Brosey Farming - data_2023.csv")
+  bf_2023 <- read_sheet("https://docs.google.com/spreadsheets/d/1lXsVEpM5iNZrNqlap8JHbxeIxeXF_C3s--FMrx_Inc8/edit#gid=707201855", sheet = "data_2023")
+  bf_2023_kale <- bf_2023 %>% filter(crop == params$crop)
+  #str(bf_2023_kale)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+# Descriptive statistics for crop: `r params$crop`
+```{r exploratory_analysis, echo=FALSE}
+  bf_2023_kale <- bf_2023_kale %>% 
+    mutate(sow_no_seed_tot= sow_no_cellrowhill* sow_no_seed_per, 
+           sow_no_germ_pct= (sow_no_germ_per/sow_no_seed_per)*100,
+           sow_to_transp_days= difftime(transp_date_1, sow_date, units = "days"),
+           transp_harden_days= difftime(transp_harden_date_end, transp_harden_date_srt, units = "days"))
+  bf_2023_kale %>% count(crop, sow_date, wt= sow_no_seed_tot)
 ```
+## Seed sown and germinations
+  
+## Transplanting dates and media
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+# Pest management for crop: `r params$crop` 
