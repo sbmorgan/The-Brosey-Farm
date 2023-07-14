@@ -1,0 +1,477 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+      name:  clean_01
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\01_tbf_data_2023_cleaning.l
+> og
+  log type:  text
+ opened on:  14 Jul 2023, 00:06:49
+
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 01_tbf_data_2023_cleaning.do                                                ***
+. *** Project: TBF Market Garden 2023                                                                       ***
+. *** Purpose: Clean TBF Market Garden 2023 data                                                ***    
+. ***                                                                                                                                  
+>                                              ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) LOAD RAW DATA                                                                       ***
+. ***    II) MANAGE VARIABLES                                                                   ***
+. ***    III) CLEAN DATA                                                                        ***
+. ***    IV) DESCRIPTIVE STATISTICS                                                             ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: July 12, 2023                                                                                                     ***
+. *** Last date modified: July 13, 2023                                                         ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***                                                                                           ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. clear all
+
+. version 18.0
+
+. set more off
+
+. set varabbrev off
+
+. pause off
+
+. 
+. 
+. *=========================================================================================
+. * 0) SET UP CODE
+. *=========================================================================================      
+. 
+. /* Set seed */
+.         set seed 7122023
+
+.         
+. /* Define globals */
+. 
+.         *Root
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj"
+
+.     adopath ++ "$root"
+  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj"
+  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [4]              "."
+  [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
+  [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
+  [7]  (OLDPLACE)  "c:\ado/"
+
+.     
+. 
+. *=========================================================================================
+. * I) LOAD RAW DATA 
+. *=========================================================================================
+. 
+.         /* Load raw data */
+.         import excel "$root\Brosey Farming.xlsx", sheet("data_2023") firstrow clear
+(75 vars, 27 obs)
+
+.         keep crop-notes
+
+.         ds 
+crop          sow_to_ger~s  sow_fer~se_1  sow_fert_t~4  transp_dat~2  fert_type_2   path_type_1   path_type_2   notes
+sow_type      sow_no_thi~r  sow_fer~te_2  sow_fer~se_4  transp_med_2  fert_date_2   path_date_1   path_date_2
+sow_date      sow_heatmat   sow_fert_t~2  transp_har~t  transp_n~t_2  fert_amnt_~2  path_~pe_1_1  path_~pe_2_1
+sow_med       sow_heatma~p  sow_fer~se_2  transp_har~d  transp_n~d_2  fert_unit_2   path_~te_1_1  path_~te_2_1
+sow_cell      sow_light_~s  sow_fer~te_3  transp_dat~1  fert_type_1   fert_type_3   path_~pe_1_2  path_~pe_2_2
+sow_no_cel~l  sow_light_~e  sow_fert_t~3  transp_med_1  fert_date_1   fert_date_3   path_~te_1_2  path_~te_2_2
+sow_no_see~r  sow_fer~te_1  sow_fer~se_3  transp_n~t_1  fert_amnt_~1  fert_amnt_~3  path_~pe_1_3  path_~pe_2_3
+sow_no_ger~r  sow_fert_t~1  sow_fer~te_4  transp_n~d_1  fert_unit_1   fert_unit_3   path_~te_1_3  path_~te_2_3
+
+.         describe
+
+Contains data
+ Observations:            27                  
+    Variables:            65                  
+---------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+---------------------------------------------------------------------------------------------------------------------------------------
+crop            str31   %31s                  crop
+sow_type        str12   %12s                  sow_type
+sow_date        str10   %10s                  sow_date
+sow_med         str18   %18s                  sow_med
+sow_cell        byte    %10.0g                sow_cell
+sow_no_cellro~l byte    %10.0g                sow_no_cellrowhill
+sow_no_seed_per byte    %10.0g                sow_no_seed_per
+sow_no_germ_per double  %10.0g                sow_no_germ_per
+sow_to_germ25~s byte    %10.0g                sow_to_germ25_days
+sow_no_thin_per double  %10.0g                sow_no_thin_per
+sow_heatmat     str3    %9s                   sow_heatmat
+sow_heatmat_t~p byte    %10.0g                sow_heatmat_temp
+sow_light_hrs   byte    %10.0g                sow_light_hrs
+sow_light_type  str7    %9s                   sow_light_type
+sow_fert_date_1 str10   %10s                  sow_fert_date_1
+sow_fert_type_1 str5    %9s                   sow_fert_type_1
+sow_fert_dose_1 str4    %9s                   sow_fert_dose_1
+sow_fert_date_2 str10   %10s                  sow_fert_date_2
+sow_fert_type_2 str5    %9s                   sow_fert_type_2
+sow_fert_dose_2 str4    %9s                   sow_fert_dose_2
+sow_fert_date_3 str10   %10s                  sow_fert_date_3
+sow_fert_type_3 str5    %9s                   sow_fert_type_3
+sow_fert_dose_3 str4    %9s                   sow_fert_dose_3
+sow_fert_date_4 str10   %10s                  sow_fert_date_4
+sow_fert_type_4 str5    %9s                   sow_fert_type_4
+sow_fert_dose_4 str4    %9s                   sow_fert_dose_4
+transp_harden~t str10   %10s                  transp_harden_date_srt
+transp_harden~d str10   %10s                  transp_harden_date_end
+transp_date_1   str10   %10s                  transp_date_1
+transp_med_1    str17   %17s                  transp_med_1
+transp_no_srt_1 byte    %10.0g                transp_no_srt_1
+transp_no_end_1 byte    %10.0g                transp_no_end_1
+transp_date_2   str10   %10s                  transp_date_2
+transp_med_2    str18   %18s                  transp_med_2
+transp_no_srt_2 byte    %10.0g                transp_no_srt_2
+transp_no_end_2 byte    %10.0g                transp_no_end_2
+fert_type_1     str11   %11s                  fert_type_1
+fert_date_1     str10   %10s                  fert_date_1
+fert_amnt_per_1 double  %10.0g                fert_amnt_per_1
+fert_unit_1     str3    %9s                   fert_unit_1
+fert_type_2     byte    %10.0g                fert_type_2
+fert_date_2     byte    %10.0g                fert_date_2
+fert_amnt_per_2 byte    %10.0g                fert_amnt_per_2
+fert_unit_2     byte    %10.0g                fert_unit_2
+fert_type_3     byte    %10.0g                fert_type_3
+fert_date_3     byte    %10.0g                fert_date_3
+fert_amnt_per_3 byte    %10.0g                fert_amnt_per_3
+fert_unit_3     byte    %10.0g                fert_unit_3
+path_type_1     str13   %13s                  path_type_1
+path_date_1     str10   %10s                  path_date_1
+path_ipm_ty~1_1 str6    %9s                   path_ipm_type_1_1
+path_ipm_da~1_1 str3    %9s                   path_ipm_date_1_1
+path_ipm_ty~1_2 byte    %10.0g                path_ipm_type_1_2
+path_ipm_da~1_2 byte    %10.0g                path_ipm_date_1_2
+path_ipm_ty~1_3 byte    %10.0g                path_ipm_type_1_3
+path_ipm_da~1_3 byte    %10.0g                path_ipm_date_1_3
+path_type_2     byte    %10.0g                path_type_2
+path_date_2     byte    %10.0g                path_date_2
+path_ipm_ty~2_1 byte    %10.0g                path_ipm_type_2_1
+path_ipm_da~2_1 byte    %10.0g                path_ipm_date_2_1
+path_ipm_ty~2_2 byte    %10.0g                path_ipm_type_2_2
+path_ipm_da~2_2 byte    %10.0g                path_ipm_date_2_2
+path_ipm_ty~2_3 byte    %10.0g                path_ipm_type_2_3
+path_ipm_da~2_3 byte    %10.0g                path_ipm_date_2_3
+notes           str122  %122s                 notes
+---------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+.         
+.         /* Save raw TBF Market Garden 2023 data */
+.         save "$root\tbf_market_garden_data_2023_raw.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub
+    repositories\The-Brosey-Farm\analytics\BFRproj\tbf_market_garden_data_2023_raw.dta saved
+
+.         
+.    
+. *=========================================================================================
+. * II) MANAGE VARIABLES
+. *=========================================================================================  
+. 
+.         /* Add variable labels */
+.         include "$root\02_tbf_data_2023_labels.do" // This program creates the variable labels.
+
+. /******************************************************************************
+> * Copyright (C) The Brosey Farm, LLC. 
+> * This code cannot be copied, distributed or used without the express written permission
+> * of The Brosey Farm 
+> *******************************************************************************/
+. 
+. capture log close labels_02
+
+. log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
+> ", replace name(labels_02)
+(file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log not
+    found)
+---------------------------------------------------------------------------------------------------------------------------------------
+      name:  labels_02
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
+  log type:  text
+ opened on:  14 Jul 2023, 00:06:49
+
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 02_tbf_data_2023_labels.do                                                  ***
+. *** Project: TBF Market Garden 2023                                                                       ***
+. *** Purpose: Create variable labels for TBF Market Garden 2023 data                           ***    
+. ***                                                                                                                                  
+>                                              ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) CREATE VARIABLE LABELS                                                              ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: July 13, 2023                                                                                                     ***
+. *** Last date modified: July 13, 2023                                                         ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. 
+. *=========================================================================================
+. * I) CREATE VARIABLE LABELS    
+. *=========================================================================================
+. 
+.         label variable crop "crop type"
+
+.         label variable sow_type "seed sowing type"
+
+.         label variable sow_date "seed sowing date"
+
+.         label variable sow_med "seed sowing medium"
+
+.         label variable sow_cell "seed sowing cell type"
+
+.         label variable sow_no_cellrowhill "number of cells/rows/hills sown"
+
+.         label variable sow_no_seed_per "number of seeds sown per cell/row/hill" 
+
+.         label variable sow_no_germ_per "number of seeds germinated per cell/row/hill" 
+
+.         label variable sow_to_germ25_days "number of days to germination (25%)" 
+
+.         label variable sow_no_thin_per "number of seedlings per cell/row/hill after thinning" 
+
+.         label variable sow_heatmat "heat mat used to germinate seedlings" 
+
+.         label variable sow_heatmat_temp "temperature (F) of heat mat used to germinate seedlings" 
+
+.         label variable sow_light_hrs "number of hours of lighting" 
+
+.         label variable sow_light_type "lighting type"
+
+.         
+.         forval x=1/4 {
+  2.                 label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings: round `x'"
+  3.                 label variable sow_fert_type_`x' "type of fertilizer applied to indoor seedlings: round `x'"
+  4.                 label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings: round `x'"
+  5.         }
+
+.         
+.         label variable transp_harden_date_srt "transplant harden off start date"
+
+.         label variable transp_harden_date_end "transplant harden off end date"
+
+.         
+.         forval x=1/2 {
+  2.                 label variable transp_date_`x' "transplant date: round `x'"
+  3.                 label variable transp_med_`x' "transplant medium: round `x'"
+  4.                 label variable transp_no_srt_`x' "starting number of transplants: round `x'"
+  5.                 label variable transp_no_end_`x' "ending number of transplants: round `x'"
+  6.         }
+
+.         
+.         forval x=1/3 {
+  2.                 label variable fert_type_`x' "type of fertilizer applied to crop: round `x'"
+  3.                 label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
+  4.                 label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round `x'"
+  5.                 label variable fert_unit_`x' "unit of fertilizer applied to crop: round `x'"
+  6.         }
+
+.         
+.         forval x=1/2 {
+  2.                 label variable path_type_`x' "pathogen type: pathogen `x'"
+  3.                 label variable path_date_`x' "pathogen date: pathogen `x'"
+  4.                 forval y=1/3 {
+  5.                         label variable path_ipm_type_`x'_`y' "ipm type, type `y': pathogen `x'"
+  6.                         label variable path_ipm_date_`x'_`y' "ipm date, type `y': pathogen `x'"
+  7.                 }
+  8.         }
+
+.         
+.         
+. log close labels_02
+      name:  labels_02
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
+  log type:  text
+ closed on:  14 Jul 2023, 00:06:49
+---------------------------------------------------------------------------------------------------------------------------------------
+
+. 
+.         
+.         /* Convert categorical strings into categorical numerics */
+.         local cat_str_list crop sow_type sow_med
+
+.         tab1 `cat_str_list', missing
+
+-> tabulation of crop  
+
+                      crop type |      Freq.     Percent        Cum.
+--------------------------------+-----------------------------------
+         arrugula- garden tangy |          2        7.41        7.41
+                   basil- sweet |          1        3.70       11.11
+            bean- fin de bagnol |          2        7.41       18.52
+                carrot- touchon |          2        7.41       25.93
+                       cilantro |          1        3.70       29.63
+                     dill- hera |          2        7.41       37.04
+         eggplant- black beauty |          1        3.70       40.74
+                 kale- lacinato |          1        3.70       44.44
+         lettuce- gourmet blend |          1        3.70       48.15
+                pepper- anaheim |          1        3.70       51.85
+        pepper- jalapeno- early |          1        3.70       55.56
+       pepper- sweet- ca wonder |          1        3.70       59.26
+              pumpkin- ct field |          2        7.41       66.67
+               sage- broad leaf |          1        3.70       70.37
+             sunflower- mammoth |          2        7.41       77.78
+  sweet corn- country gentleman |          2        7.41       85.19
+sweet corn- ornamental- glas gm |          2        7.41       92.59
+                  tomato- amish |          1        3.70       96.30
+                   tomato- roma |          1        3.70      100.00
+--------------------------------+-----------------------------------
+                          Total |         27      100.00
+
+-> tabulation of sow_type  
+
+ seed sowing |
+        type |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+ indoor seed |         10       37.04       37.04
+outdoor seed |         17       62.96      100.00
+-------------+-----------------------------------
+       Total |         27      100.00
+
+-> tabulation of sow_med  
+
+seed sowing medium |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+ raised bed- frame |          5       18.52       18.52
+raised bed- ground |         12       44.44       62.96
+          soilless |         10       37.04      100.00
+-------------------+-----------------------------------
+             Total |         27      100.00
+
+.         foreach var of varlist `cat_str_list' {
+  2.                 encode (`var'), generate(`var'_code)
+  3.                 tablist `var'_code `var', sort(variable) 
+  4.                 tablist `var'_code `var', sort(variable) nolabel ab(32)
+  5.                 local varlab : variable label `var'
+  6.                 label variable `var'_code "`varlab'- code"
+  7.                 order `var'_code, after(`var')
+  8.                 *pause
+.         }
+
+  +---------------------------------------------------------------------------------------------------------+
+  |                       crop_code                              crop   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------------------------------------------|
+  |             bean- fin de bagnol               bean- fin de bagnol        2     7.41         2      7.41 |
+  |                 carrot- touchon                   carrot- touchon        2     7.41         4     14.81 |
+  |   sweet corn- country gentleman     sweet corn- country gentleman        2     7.41         6     22.22 |
+  | sweet corn- ornamental- glas gm   sweet corn- ornamental- glas gm        2     7.41         8     29.63 |
+  |          arrugula- garden tangy            arrugula- garden tangy        2     7.41        10     37.04 |
+  |---------------------------------------------------------------------------------------------------------|
+  |                      dill- hera                        dill- hera        2     7.41        12     44.44 |
+  |              sunflower- mammoth                sunflower- mammoth        2     7.41        14     51.85 |
+  |               pumpkin- ct field                 pumpkin- ct field        2     7.41        16     59.26 |
+  |         pepper- jalapeno- early           pepper- jalapeno- early        1     3.70        17     62.96 |
+  |                  kale- lacinato                    kale- lacinato        1     3.70        18     66.67 |
+  |---------------------------------------------------------------------------------------------------------|
+  |        pepper- sweet- ca wonder          pepper- sweet- ca wonder        1     3.70        19     70.37 |
+  |                        cilantro                          cilantro        1     3.70        20     74.07 |
+  |                    tomato- roma                      tomato- roma        1     3.70        21     77.78 |
+  |                sage- broad leaf                  sage- broad leaf        1     3.70        22     81.48 |
+  |                    basil- sweet                      basil- sweet        1     3.70        23     85.19 |
+  |---------------------------------------------------------------------------------------------------------|
+  |          lettuce- gourmet blend            lettuce- gourmet blend        1     3.70        24     88.89 |
+  |                 pepper- anaheim                   pepper- anaheim        1     3.70        25     92.59 |
+  |                   tomato- amish                     tomato- amish        1     3.70        26     96.30 |
+  |          eggplant- black beauty            eggplant- black beauty        1     3.70        27    100.00 |
+  +---------------------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------+
+  | crop_code                              crop   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------|
+  |        16     sweet corn- country gentleman        2     7.41         2      7.41 |
+  |         6                        dill- hera        2     7.41         4     14.81 |
+  |         4                   carrot- touchon        2     7.41         6     22.22 |
+  |        13                 pumpkin- ct field        2     7.41         8     29.63 |
+  |         3               bean- fin de bagnol        2     7.41        10     37.04 |
+  |-----------------------------------------------------------------------------------|
+  |        17   sweet corn- ornamental- glas gm        2     7.41        12     44.44 |
+  |         1            arrugula- garden tangy        2     7.41        14     51.85 |
+  |        15                sunflower- mammoth        2     7.41        16     59.26 |
+  |        14                  sage- broad leaf        1     3.70        17     62.96 |
+  |        11           pepper- jalapeno- early        1     3.70        18     66.67 |
+  |-----------------------------------------------------------------------------------|
+  |        18                     tomato- amish        1     3.70        19     70.37 |
+  |         7            eggplant- black beauty        1     3.70        20     74.07 |
+  |        12          pepper- sweet- ca wonder        1     3.70        21     77.78 |
+  |         8                    kale- lacinato        1     3.70        22     81.48 |
+  |        19                      tomato- roma        1     3.70        23     85.19 |
+  |-----------------------------------------------------------------------------------|
+  |         2                      basil- sweet        1     3.70        24     88.89 |
+  |         5                          cilantro        1     3.70        25     92.59 |
+  |         9            lettuce- gourmet blend        1     3.70        26     96.30 |
+  |        10                   pepper- anaheim        1     3.70        27    100.00 |
+  +-----------------------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------+
+  | sow_type_c~e       sow_type   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------|
+  | outdoor seed   outdoor seed       17    62.96        17     62.96 |
+  |  indoor seed    indoor seed       10    37.04        27    100.00 |
+  +-------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------+
+  | sow_type_code       sow_type   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  |             2   outdoor seed       17    62.96        17     62.96 |
+  |             1    indoor seed       10    37.04        27    100.00 |
+  +--------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------------+
+  |       sow_med_code              sow_med   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  | raised bed- ground   raised bed- ground       12    44.44        12     44.44 |
+  |           soilless             soilless       10    37.04        22     81.48 |
+  |  raised bed- frame    raised bed- frame        5    18.52        27    100.00 |
+  +-------------------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------+
+  | sow_med_code              sow_med   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------|
+  |            2   raised bed- ground       12    44.44        12     44.44 |
+  |            3             soilless       10    37.04        22     81.48 |
+  |            1    raised bed- frame        5    18.52        27    100.00 |
+  +-------------------------------------------------------------------------+
+
+.         
+.     
+. *=========================================================================================
+. * III) CLEAN DATA
+. *=========================================================================================     
+. 
+.         /* Clean missing values */
+.         
+.         
+. 
+.         /* Save clean TBF Market Garden 2023 data */
+.         save "$root\tbf_market_garden_data_2023_clean.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub
+    repositories\The-Brosey-Farm\analytics\BFRproj\tbf_market_garden_data_2023_clean.dta saved
+
+.         
+.  
+. *=========================================================================================
+. * IV) DESCRIPTIVE STATISTICS
+. *=========================================================================================     
+. 
+. 
+. log close _all
+      name:  clean_01
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\01_tbf_data_2023_cleaning.l
+> og
+  log type:  text
+ closed on:  14 Jul 2023, 00:06:49
+---------------------------------------------------------------------------------------------------------------------------------------

@@ -4,13 +4,13 @@
 * of The Brosey Farm 
 *******************************************************************************/
 
-capture log close _all
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\05_tbf_data_2023_cleaning.log", replace name(full)
+capture log close clean_05
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\01_tbf_data_2023_cleaning.log", replace name(clean_01)
 
 
 *************************************************************************************************
 ***                                                                                           ***
-*** Program name: 05_tbf_data_2023_cleaning.do                                                ***
+*** Program name: 01_tbf_data_2023_cleaning.do                                                ***
 *** Project: TBF Market Garden 2023                                 				          ***
 *** Purpose: Clean TBF Market Garden 2023 data                                                ***    
 ***																	 				          ***
@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: July 12, 2023                                                         ***
+*** Last date modified: July 13, 2023                                                         ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -69,17 +69,22 @@ pause off
 * II) MANAGE VARIABLES
 *=========================================================================================  
 
+	/* Add variable labels */
+	include "$root\02_tbf_data_2023_labels.do" // This program creates the variable labels.
+	
 	/* Convert categorical strings into categorical numerics */
-	local cat_str_list crop
+	local cat_str_list crop sow_type sow_med
 	tab1 `cat_str_list', missing
 	foreach var of varlist `cat_str_list' {
 		encode (`var'), generate(`var'_code)
 		tablist `var'_code `var', sort(variable) 
 		tablist `var'_code `var', sort(variable) nolabel ab(32)
+		local varlab : variable label `var'
+		label variable `var'_code "`varlab'- code"
 		order `var'_code, after(`var')
 		*pause
 	}
-    
+	
     
 *=========================================================================================
 * III) CLEAN DATA
