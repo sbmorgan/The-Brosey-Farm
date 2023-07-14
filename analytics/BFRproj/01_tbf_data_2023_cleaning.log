@@ -3,7 +3,7 @@
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\01_tbf_data_2023_cleaning.l
 > og
   log type:  text
- opened on:  14 Jul 2023, 00:08:22
+ opened on:  14 Jul 2023, 00:21:09
 
 . 
 . 
@@ -86,84 +86,6 @@ sow_no_cel~l  sow_light_~e  sow_fert_t~3  transp_med_1  fert_date_1   fert_date_
 sow_no_see~r  sow_fer~te_1  sow_fer~se_3  transp_n~t_1  fert_amnt_~1  fert_amnt_~3  path_~pe_1_3  path_~pe_2_3
 sow_no_ger~r  sow_fert_t~1  sow_fer~te_4  transp_n~d_1  fert_unit_1   fert_unit_3   path_~te_1_3  path_~te_2_3
 
-.         describe
-
-Contains data
- Observations:            27                  
-    Variables:            65                  
----------------------------------------------------------------------------------------------------------------------------------------
-Variable      Storage   Display    Value
-    name         type    format    label      Variable label
----------------------------------------------------------------------------------------------------------------------------------------
-crop            str31   %31s                  crop
-sow_type        str12   %12s                  sow_type
-sow_date        str10   %10s                  sow_date
-sow_med         str18   %18s                  sow_med
-sow_cell        byte    %10.0g                sow_cell
-sow_no_cellro~l byte    %10.0g                sow_no_cellrowhill
-sow_no_seed_per byte    %10.0g                sow_no_seed_per
-sow_no_germ_per double  %10.0g                sow_no_germ_per
-sow_to_germ25~s byte    %10.0g                sow_to_germ25_days
-sow_no_thin_per double  %10.0g                sow_no_thin_per
-sow_heatmat     str3    %9s                   sow_heatmat
-sow_heatmat_t~p byte    %10.0g                sow_heatmat_temp
-sow_light_hrs   byte    %10.0g                sow_light_hrs
-sow_light_type  str7    %9s                   sow_light_type
-sow_fert_date_1 str10   %10s                  sow_fert_date_1
-sow_fert_type_1 str5    %9s                   sow_fert_type_1
-sow_fert_dose_1 str4    %9s                   sow_fert_dose_1
-sow_fert_date_2 str10   %10s                  sow_fert_date_2
-sow_fert_type_2 str5    %9s                   sow_fert_type_2
-sow_fert_dose_2 str4    %9s                   sow_fert_dose_2
-sow_fert_date_3 str10   %10s                  sow_fert_date_3
-sow_fert_type_3 str5    %9s                   sow_fert_type_3
-sow_fert_dose_3 str4    %9s                   sow_fert_dose_3
-sow_fert_date_4 str10   %10s                  sow_fert_date_4
-sow_fert_type_4 str5    %9s                   sow_fert_type_4
-sow_fert_dose_4 str4    %9s                   sow_fert_dose_4
-transp_harden~t str10   %10s                  transp_harden_date_srt
-transp_harden~d str10   %10s                  transp_harden_date_end
-transp_date_1   str10   %10s                  transp_date_1
-transp_med_1    str17   %17s                  transp_med_1
-transp_no_srt_1 byte    %10.0g                transp_no_srt_1
-transp_no_end_1 byte    %10.0g                transp_no_end_1
-transp_date_2   str10   %10s                  transp_date_2
-transp_med_2    str18   %18s                  transp_med_2
-transp_no_srt_2 byte    %10.0g                transp_no_srt_2
-transp_no_end_2 byte    %10.0g                transp_no_end_2
-fert_type_1     str11   %11s                  fert_type_1
-fert_date_1     str10   %10s                  fert_date_1
-fert_amnt_per_1 double  %10.0g                fert_amnt_per_1
-fert_unit_1     str3    %9s                   fert_unit_1
-fert_type_2     byte    %10.0g                fert_type_2
-fert_date_2     byte    %10.0g                fert_date_2
-fert_amnt_per_2 byte    %10.0g                fert_amnt_per_2
-fert_unit_2     byte    %10.0g                fert_unit_2
-fert_type_3     byte    %10.0g                fert_type_3
-fert_date_3     byte    %10.0g                fert_date_3
-fert_amnt_per_3 byte    %10.0g                fert_amnt_per_3
-fert_unit_3     byte    %10.0g                fert_unit_3
-path_type_1     str13   %13s                  path_type_1
-path_date_1     str10   %10s                  path_date_1
-path_ipm_ty~1_1 str6    %9s                   path_ipm_type_1_1
-path_ipm_da~1_1 str3    %9s                   path_ipm_date_1_1
-path_ipm_ty~1_2 byte    %10.0g                path_ipm_type_1_2
-path_ipm_da~1_2 byte    %10.0g                path_ipm_date_1_2
-path_ipm_ty~1_3 byte    %10.0g                path_ipm_type_1_3
-path_ipm_da~1_3 byte    %10.0g                path_ipm_date_1_3
-path_type_2     byte    %10.0g                path_type_2
-path_date_2     byte    %10.0g                path_date_2
-path_ipm_ty~2_1 byte    %10.0g                path_ipm_type_2_1
-path_ipm_da~2_1 byte    %10.0g                path_ipm_date_2_1
-path_ipm_ty~2_2 byte    %10.0g                path_ipm_type_2_2
-path_ipm_da~2_2 byte    %10.0g                path_ipm_date_2_2
-path_ipm_ty~2_3 byte    %10.0g                path_ipm_type_2_3
-path_ipm_da~2_3 byte    %10.0g                path_ipm_date_2_3
-notes           str122  %122s                 notes
----------------------------------------------------------------------------------------------------------------------------------------
-Sorted by: 
-     Note: Dataset has changed since last saved.
-
 .         
 .         /* Save raw TBF Market Garden 2023 data */
 .         save "$root\tbf_market_garden_data_2023_raw.dta", replace
@@ -176,6 +98,28 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub
 . * II) MANAGE VARIABLES
 . *=========================================================================================  
 . 
+.         /* Manage variable type */
+.         tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as 
+> byte numeric. Convert those to character strings.
+sow_type already string; no replace
+sow_light_type already string; no replace
+sow_fert_type_1 already string; no replace
+sow_fert_type_2 already string; no replace
+sow_fert_type_3 already string; no replace
+sow_fert_type_4 already string; no replace
+fert_type_1 already string; no replace
+fert_type_2 was byte now str1
+fert_type_3 was byte now str1
+path_type_1 already string; no replace
+path_ipm_type_1_1 already string; no replace
+path_ipm_type_1_2 was byte now str1
+path_ipm_type_1_3 was byte now str1
+path_type_2 was byte now str1
+path_ipm_type_2_1 was byte now str1
+path_ipm_type_2_2 was byte now str1
+path_ipm_type_2_3 was byte now str1
+
+.         
 .         /* Add variable labels */
 .         include "$root\02_tbf_data_2023_labels.do" // This program creates the variable labels.
 
@@ -193,7 +137,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  14 Jul 2023, 00:08:22
+ opened on:  14 Jul 2023, 00:21:09
 
 . 
 . 
@@ -294,13 +238,13 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  14 Jul 2023, 00:08:22
+ closed on:  14 Jul 2023, 00:21:09
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
 .         /* Convert categorical strings into categorical numerics */
-.         local cat_str_list crop sow_type sow_med
+.         local cat_str_list crop sow_med *type*
 
 .         tab1 `cat_str_list', missing
 
@@ -330,16 +274,6 @@ sweet corn- ornamental- glas gm |          2        7.41       92.59
 --------------------------------+-----------------------------------
                           Total |         27      100.00
 
--> tabulation of sow_type  
-
- seed sowing |
-        type |      Freq.     Percent        Cum.
--------------+-----------------------------------
- indoor seed |         10       37.04       37.04
-outdoor seed |         17       62.96      100.00
--------------+-----------------------------------
-       Total |         27      100.00
-
 -> tabulation of sow_med  
 
 seed sowing medium |      Freq.     Percent        Cum.
@@ -350,86 +284,270 @@ raised bed- ground |         12       44.44       62.96
 -------------------+-----------------------------------
              Total |         27      100.00
 
+-> tabulation of sow_type  
+
+ seed sowing |
+        type |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+ indoor seed |         10       37.04       37.04
+outdoor seed |         17       62.96      100.00
+-------------+-----------------------------------
+       Total |         27      100.00
+
+-> tabulation of sow_light_type  
+
+   lighting |
+       type |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         17       62.96       62.96
+    45w led |         10       37.04      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of sow_fert_type_1  
+
+    type of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         17       62.96       62.96
+      2-2-2 |         10       37.04      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of sow_fert_type_2  
+
+    type of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         17       62.96       62.96
+      2-2-2 |         10       37.04      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of sow_fert_type_3  
+
+    type of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         17       62.96       62.96
+      2-2-2 |         10       37.04      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of sow_fert_type_4  
+
+    type of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 4 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         19       70.37       70.37
+      2-2-2 |          8       29.63      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of fert_type_1  
+
+    type of |
+ fertilizer |
+ applied to |
+crop: round |
+          1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         19       70.37       70.37
+garden tone |          6       22.22       92.59
+tomato tone |          2        7.41      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of fert_type_2  
+
+    type of |
+ fertilizer |
+ applied to |
+crop: round |
+          2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         27      100.00      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of fert_type_3  
+
+    type of |
+ fertilizer |
+ applied to |
+crop: round |
+          3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         27      100.00      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of path_type_1  
+
+     pathogen |
+        type: |
+   pathogen 1 |      Freq.     Percent        Cum.
+--------------+-----------------------------------
+              |         25       92.59       92.59
+cabbage worms |          1        3.70       96.30
+ flea beetles |          1        3.70      100.00
+--------------+-----------------------------------
+        Total |         27      100.00
+
+-> tabulation of path_ipm_type_1_1  
+
+  ipm type, |
+    type 1: |
+ pathogen 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         25       92.59       92.59
+     manual |          2        7.41      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of path_ipm_type_1_2  
+
+  ipm type, |
+    type 2: |
+ pathogen 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         27      100.00      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of path_ipm_type_1_3  
+
+  ipm type, |
+    type 3: |
+ pathogen 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         27      100.00      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of path_type_2  
+
+   pathogen |
+      type: |
+ pathogen 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         27      100.00      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of path_ipm_type_2_1  
+
+  ipm type, |
+    type 1: |
+ pathogen 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         27      100.00      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of path_ipm_type_2_2  
+
+  ipm type, |
+    type 2: |
+ pathogen 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         27      100.00      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
+-> tabulation of path_ipm_type_2_3  
+
+  ipm type, |
+    type 3: |
+ pathogen 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         27      100.00      100.00
+------------+-----------------------------------
+      Total |         27      100.00
+
 .         foreach var of varlist `cat_str_list' {
-  2.                 encode (`var'), generate(`var'_code)
-  3.                 tablist `var'_code `var', sort(variable) 
-  4.                 tablist `var'_code `var', sort(variable) nolabel ab(32)
-  5.                 local varlab : variable label `var'
-  6.                 label variable `var'_code "`varlab'- code"
-  7.                 order `var'_code, after(`var')
-  8.                 *pause
+  2.                 if `var'=="." continue
+  3.                 encode (`var'), generate(`var'_code)
+  4.                 tablist `var' `var'_code, sort(variable) ab(32)
+  5.                 tablist `var' `var'_code, sort(variable) nolabel ab(32)
+  6.                 local varlab : variable label `var'
+  7.                 label variable `var'_code "`varlab'- code"
+  8.                 order `var'_code, after(`var')
+  9.                 *pause
 .         }
 
   +---------------------------------------------------------------------------------------------------------+
-  |                       crop_code                              crop   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |                            crop                         crop_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |---------------------------------------------------------------------------------------------------------|
-  |               pumpkin- ct field                 pumpkin- ct field        2     7.41         2      7.41 |
-  |          arrugula- garden tangy            arrugula- garden tangy        2     7.41         4     14.81 |
-  |              sunflower- mammoth                sunflower- mammoth        2     7.41         6     22.22 |
-  |                 carrot- touchon                   carrot- touchon        2     7.41         8     29.63 |
-  |   sweet corn- country gentleman     sweet corn- country gentleman        2     7.41        10     37.04 |
+  |             bean- fin de bagnol               bean- fin de bagnol        2     7.41         2      7.41 |
+  | sweet corn- ornamental- glas gm   sweet corn- ornamental- glas gm        2     7.41         4     14.81 |
+  |                      dill- hera                        dill- hera        2     7.41         6     22.22 |
+  |              sunflower- mammoth                sunflower- mammoth        2     7.41         8     29.63 |
+  |               pumpkin- ct field                 pumpkin- ct field        2     7.41        10     37.04 |
   |---------------------------------------------------------------------------------------------------------|
-  | sweet corn- ornamental- glas gm   sweet corn- ornamental- glas gm        2     7.41        12     44.44 |
-  |             bean- fin de bagnol               bean- fin de bagnol        2     7.41        14     51.85 |
-  |                      dill- hera                        dill- hera        2     7.41        16     59.26 |
-  |                  kale- lacinato                    kale- lacinato        1     3.70        17     62.96 |
-  |                sage- broad leaf                  sage- broad leaf        1     3.70        18     66.67 |
+  |                 carrot- touchon                   carrot- touchon        2     7.41        12     44.44 |
+  |   sweet corn- country gentleman     sweet corn- country gentleman        2     7.41        14     51.85 |
+  |          arrugula- garden tangy            arrugula- garden tangy        2     7.41        16     59.26 |
+  |                 pepper- anaheim                   pepper- anaheim        1     3.70        17     62.96 |
+  |          eggplant- black beauty            eggplant- black beauty        1     3.70        18     66.67 |
   |---------------------------------------------------------------------------------------------------------|
-  |        pepper- sweet- ca wonder          pepper- sweet- ca wonder        1     3.70        19     70.37 |
+  |                  kale- lacinato                    kale- lacinato        1     3.70        19     70.37 |
   |                    tomato- roma                      tomato- roma        1     3.70        20     74.07 |
-  |                    basil- sweet                      basil- sweet        1     3.70        21     77.78 |
-  |          eggplant- black beauty            eggplant- black beauty        1     3.70        22     81.48 |
+  |                   tomato- amish                     tomato- amish        1     3.70        21     77.78 |
+  |        pepper- sweet- ca wonder          pepper- sweet- ca wonder        1     3.70        22     81.48 |
   |          lettuce- gourmet blend            lettuce- gourmet blend        1     3.70        23     85.19 |
   |---------------------------------------------------------------------------------------------------------|
-  |                   tomato- amish                     tomato- amish        1     3.70        24     88.89 |
-  |         pepper- jalapeno- early           pepper- jalapeno- early        1     3.70        25     92.59 |
-  |                 pepper- anaheim                   pepper- anaheim        1     3.70        26     96.30 |
+  |                sage- broad leaf                  sage- broad leaf        1     3.70        24     88.89 |
+  |                    basil- sweet                      basil- sweet        1     3.70        25     92.59 |
+  |         pepper- jalapeno- early           pepper- jalapeno- early        1     3.70        26     96.30 |
   |                        cilantro                          cilantro        1     3.70        27    100.00 |
   +---------------------------------------------------------------------------------------------------------+
 
   +-----------------------------------------------------------------------------------+
-  | crop_code                              crop   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |                            crop   crop_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
-  |        16     sweet corn- country gentleman        2     7.41         2      7.41 |
-  |        13                 pumpkin- ct field        2     7.41         4     14.81 |
-  |        15                sunflower- mammoth        2     7.41         6     22.22 |
-  |         4                   carrot- touchon        2     7.41         8     29.63 |
-  |         1            arrugula- garden tangy        2     7.41        10     37.04 |
+  |                      dill- hera           6        2     7.41         2      7.41 |
+  |          arrugula- garden tangy           1        2     7.41         4     14.81 |
+  |               pumpkin- ct field          13        2     7.41         6     22.22 |
+  |             bean- fin de bagnol           3        2     7.41         8     29.63 |
+  |   sweet corn- country gentleman          16        2     7.41        10     37.04 |
   |-----------------------------------------------------------------------------------|
-  |         6                        dill- hera        2     7.41        12     44.44 |
-  |        17   sweet corn- ornamental- glas gm        2     7.41        14     51.85 |
-  |         3               bean- fin de bagnol        2     7.41        16     59.26 |
-  |         2                      basil- sweet        1     3.70        17     62.96 |
-  |         7            eggplant- black beauty        1     3.70        18     66.67 |
+  | sweet corn- ornamental- glas gm          17        2     7.41        12     44.44 |
+  |                 carrot- touchon           4        2     7.41        14     51.85 |
+  |              sunflower- mammoth          15        2     7.41        16     59.26 |
+  |                 pepper- anaheim          10        1     3.70        17     62.96 |
+  |                   tomato- amish          18        1     3.70        18     66.67 |
   |-----------------------------------------------------------------------------------|
-  |        10                   pepper- anaheim        1     3.70        19     70.37 |
-  |        14                  sage- broad leaf        1     3.70        20     74.07 |
-  |        19                      tomato- roma        1     3.70        21     77.78 |
-  |         9            lettuce- gourmet blend        1     3.70        22     81.48 |
-  |        18                     tomato- amish        1     3.70        23     85.19 |
+  |                    tomato- roma          19        1     3.70        19     70.37 |
+  |          lettuce- gourmet blend           9        1     3.70        20     74.07 |
+  |                    basil- sweet           2        1     3.70        21     77.78 |
+  |          eggplant- black beauty           7        1     3.70        22     81.48 |
+  |        pepper- sweet- ca wonder          12        1     3.70        23     85.19 |
   |-----------------------------------------------------------------------------------|
-  |         8                    kale- lacinato        1     3.70        24     88.89 |
-  |         5                          cilantro        1     3.70        25     92.59 |
-  |        11           pepper- jalapeno- early        1     3.70        26     96.30 |
-  |        12          pepper- sweet- ca wonder        1     3.70        27    100.00 |
+  |                        cilantro           5        1     3.70        24     88.89 |
+  |         pepper- jalapeno- early          11        1     3.70        25     92.59 |
+  |                sage- broad leaf          14        1     3.70        26     96.30 |
+  |                  kale- lacinato           8        1     3.70        27    100.00 |
   +-----------------------------------------------------------------------------------+
 
-  +-------------------------------------------------------------------+
-  | sow_type_c~e       sow_type   _Freq_   _Perc_   _CFreq_   _CPerc_ |
-  |-------------------------------------------------------------------|
-  | outdoor seed   outdoor seed       17    62.96        17     62.96 |
-  |  indoor seed    indoor seed       10    37.04        27    100.00 |
-  +-------------------------------------------------------------------+
-
-  +--------------------------------------------------------------------+
-  | sow_type_code       sow_type   _Freq_   _Perc_   _CFreq_   _CPerc_ |
-  |--------------------------------------------------------------------|
-  |             2   outdoor seed       17    62.96        17     62.96 |
-  |             1    indoor seed       10    37.04        27    100.00 |
-  +--------------------------------------------------------------------+
-
   +-------------------------------------------------------------------------------+
-  |       sow_med_code              sow_med   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |            sow_med         sow_med_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-------------------------------------------------------------------------------|
   | raised bed- ground   raised bed- ground       12    44.44        12     44.44 |
   |           soilless             soilless       10    37.04        22     81.48 |
@@ -437,12 +555,142 @@ raised bed- ground |         12       44.44       62.96
   +-------------------------------------------------------------------------------+
 
   +-------------------------------------------------------------------------+
-  | sow_med_code              sow_med   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |            sow_med   sow_med_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-------------------------------------------------------------------------|
-  |            2   raised bed- ground       12    44.44        12     44.44 |
-  |            3             soilless       10    37.04        22     81.48 |
-  |            1    raised bed- frame        5    18.52        27    100.00 |
+  | raised bed- ground              2       12    44.44        12     44.44 |
+  |           soilless              3       10    37.04        22     81.48 |
+  |  raised bed- frame              1        5    18.52        27    100.00 |
   +-------------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------+
+  |     sow_type   sow_type_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  | outdoor seed    outdoor seed       17    62.96        17     62.96 |
+  |  indoor seed     indoor seed       10    37.04        27    100.00 |
+  +--------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------+
+  |     sow_type   sow_type_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  | outdoor seed               2       17    62.96        17     62.96 |
+  |  indoor seed               1       10    37.04        27    100.00 |
+  +--------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------+
+  | sow_light_type   sow_light_type_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |                                    .       17    62.96        17     62.96 |
+  |        45w led               45w led       10    37.04        27    100.00 |
+  +----------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------+
+  | sow_light_type   sow_light_type_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |                                    .       17    62.96        17     62.96 |
+  |        45w led                     1       10    37.04        27    100.00 |
+  +----------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | sow_fert_type_1   sow_fert_type_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       17    62.96        17     62.96 |
+  |           2-2-2                  2-2-2       10    37.04        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | sow_fert_type_1   sow_fert_type_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       17    62.96        17     62.96 |
+  |           2-2-2                      1       10    37.04        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | sow_fert_type_2   sow_fert_type_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       17    62.96        17     62.96 |
+  |           2-2-2                  2-2-2       10    37.04        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | sow_fert_type_2   sow_fert_type_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       17    62.96        17     62.96 |
+  |           2-2-2                      1       10    37.04        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | sow_fert_type_3   sow_fert_type_3_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       17    62.96        17     62.96 |
+  |           2-2-2                  2-2-2       10    37.04        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | sow_fert_type_3   sow_fert_type_3_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       17    62.96        17     62.96 |
+  |           2-2-2                      1       10    37.04        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | sow_fert_type_4   sow_fert_type_4_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       19    70.37        19     70.37 |
+  |           2-2-2                  2-2-2        8    29.63        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | sow_fert_type_4   sow_fert_type_4_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       19    70.37        19     70.37 |
+  |           2-2-2                      1        8    29.63        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | fert_type_1   fert_type_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |                              .       19    70.37        19     70.37 |
+  | garden tone        garden tone        6    22.22        25     92.59 |
+  | tomato tone        tomato tone        2     7.41        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | fert_type_1   fert_type_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |                              .       19    70.37        19     70.37 |
+  | garden tone                  1        6    22.22        25     92.59 |
+  | tomato tone                  2        2     7.41        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------+
+  |   path_type_1   path_type_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------|
+  |                                .       25    92.59        25     92.59 |
+  |  flea beetles       flea beetles        1     3.70        26     96.30 |
+  | cabbage worms      cabbage worms        1     3.70        27    100.00 |
+  +------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------+
+  |   path_type_1   path_type_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------|
+  |                                .       25    92.59        25     92.59 |
+  |  flea beetles                  2        1     3.70        26     96.30 |
+  | cabbage worms                  1        1     3.70        27    100.00 |
+  +------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------------+
+  | path_ipm_type_1_1   path_ipm_type_1_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------------|
+  |                                          .       25    92.59        25     92.59 |
+  |            manual                   manual        2     7.41        27    100.00 |
+  +----------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------------+
+  | path_ipm_type_1_1   path_ipm_type_1_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------------|
+  |                                          .       25    92.59        25     92.59 |
+  |            manual                        1        2     7.41        27    100.00 |
+  +----------------------------------------------------------------------------------+
 
 .         
 .     
@@ -464,6 +712,107 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub
 . *=========================================================================================
 . * IV) DESCRIPTIVE STATISTICS
 . *=========================================================================================     
+.         
+.         describe
+
+Contains data from C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\tbf_market_garden_dat
+> a_2023_clean.dta
+ Observations:            27                  
+    Variables:            76                  14 Jul 2023 00:21
+---------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+---------------------------------------------------------------------------------------------------------------------------------------
+crop            str31   %31s                  crop type
+crop_code       long    %31.0g     crop_code
+                                              crop type- code
+sow_type        str12   %12s                  seed sowing type
+sow_type_code   long    %12.0g     sow_type_code
+                                              seed sowing type- code
+sow_date        str10   %10s                  seed sowing date
+sow_med         str18   %18s                  seed sowing medium
+sow_med_code    long    %18.0g     sow_med_code
+                                              seed sowing medium- code
+sow_cell        byte    %10.0g                seed sowing cell type
+sow_no_cellro~l byte    %10.0g                number of cells/rows/hills sown
+sow_no_seed_per byte    %10.0g                number of seeds sown per cell/row/hill
+sow_no_germ_per double  %10.0g                number of seeds germinated per cell/row/hill
+sow_to_germ25~s byte    %10.0g                number of days to germination (25%)
+sow_no_thin_per double  %10.0g                number of seedlings per cell/row/hill after thinning
+sow_heatmat     str3    %9s                   heat mat used to germinate seedlings
+sow_heatmat_t~p byte    %10.0g                temperature (F) of heat mat used to germinate seedlings
+sow_light_hrs   byte    %10.0g                number of hours of lighting
+sow_light_type  str7    %9s                   lighting type
+sow_light_ty~de long    %8.0g      sow_light_type_code
+                                              lighting type- code
+sow_fert_date_1 str10   %10s                  date of fertilizer applied to indoor seedlings: round 1
+sow_fert_type_1 str5    %9s                   type of fertilizer applied to indoor seedlings: round 1
+sow_fert~1_code long    %8.0g      sow_fert_type_1_code
+                                              type of fertilizer applied to indoor seedlings: round 1- code
+sow_fert_dose_1 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 1
+sow_fert_date_2 str10   %10s                  date of fertilizer applied to indoor seedlings: round 2
+sow_fert_type_2 str5    %9s                   type of fertilizer applied to indoor seedlings: round 2
+sow_fert~2_code long    %8.0g      sow_fert_type_2_code
+                                              type of fertilizer applied to indoor seedlings: round 2- code
+sow_fert_dose_2 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 2
+sow_fert_date_3 str10   %10s                  date of fertilizer applied to indoor seedlings: round 3
+sow_fert_type_3 str5    %9s                   type of fertilizer applied to indoor seedlings: round 3
+sow_fert~3_code long    %8.0g      sow_fert_type_3_code
+                                              type of fertilizer applied to indoor seedlings: round 3- code
+sow_fert_dose_3 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 3
+sow_fert_date_4 str10   %10s                  date of fertilizer applied to indoor seedlings: round 4
+sow_fert_type_4 str5    %9s                   type of fertilizer applied to indoor seedlings: round 4
+sow_fert~4_code long    %8.0g      sow_fert_type_4_code
+                                              type of fertilizer applied to indoor seedlings: round 4- code
+sow_fert_dose_4 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 4
+transp_harden~t str10   %10s                  transplant harden off start date
+transp_harden~d str10   %10s                  transplant harden off end date
+transp_date_1   str10   %10s                  transplant date: round 1
+transp_med_1    str17   %17s                  transplant medium: round 1
+transp_no_srt_1 byte    %10.0g                starting number of transplants: round 1
+transp_no_end_1 byte    %10.0g                ending number of transplants: round 1
+transp_date_2   str10   %10s                  transplant date: round 2
+transp_med_2    str18   %18s                  transplant medium: round 2
+transp_no_srt_2 byte    %10.0g                starting number of transplants: round 2
+transp_no_end_2 byte    %10.0g                ending number of transplants: round 2
+fert_type_1     str11   %11s                  type of fertilizer applied to crop: round 1
+fert_type_1_c~e long    %11.0g     fert_type_1_code
+                                              type of fertilizer applied to crop: round 1- code
+fert_date_1     str10   %10s                  date of fertilizer applied to crop: round 1
+fert_amnt_per_1 double  %10.0g                amount of fertilizer applied per plant: round 1
+fert_unit_1     str3    %9s                   unit of fertilizer applied to crop: round 1
+fert_type_2     str1    %9s                   type of fertilizer applied to crop: round 2
+fert_date_2     byte    %10.0g                date of fertilizer applied to crop: round 2
+fert_amnt_per_2 byte    %10.0g                amount of fertilizer applied per plant: round 2
+fert_unit_2     byte    %10.0g                unit of fertilizer applied to crop: round 2
+fert_type_3     str1    %9s                   type of fertilizer applied to crop: round 3
+fert_date_3     byte    %10.0g                date of fertilizer applied to crop: round 3
+fert_amnt_per_3 byte    %10.0g                amount of fertilizer applied per plant: round 3
+fert_unit_3     byte    %10.0g                unit of fertilizer applied to crop: round 3
+path_type_1     str13   %13s                  pathogen type: pathogen 1
+path_type_1_c~e long    %13.0g     path_type_1_code
+                                              pathogen type: pathogen 1- code
+path_date_1     str10   %10s                  pathogen date: pathogen 1
+path_ipm_ty~1_1 str6    %9s                   ipm type, type 1: pathogen 1
+path_ipm_type~e long    %8.0g      path_ipm_type_1_1_code
+                                              ipm type, type 1: pathogen 1- code
+path_ipm_da~1_1 str3    %9s                   ipm date, type 1: pathogen 1
+path_ipm_ty~1_2 str1    %9s                   ipm type, type 2: pathogen 1
+path_ipm_da~1_2 byte    %10.0g                ipm date, type 2: pathogen 1
+path_ipm_ty~1_3 str1    %9s                   ipm type, type 3: pathogen 1
+path_ipm_da~1_3 byte    %10.0g                ipm date, type 3: pathogen 1
+path_type_2     str1    %9s                   pathogen type: pathogen 2
+path_date_2     byte    %10.0g                pathogen date: pathogen 2
+path_ipm_ty~2_1 str1    %9s                   ipm type, type 1: pathogen 2
+path_ipm_da~2_1 byte    %10.0g                ipm date, type 1: pathogen 2
+path_ipm_ty~2_2 str1    %9s                   ipm type, type 2: pathogen 2
+path_ipm_da~2_2 byte    %10.0g                ipm date, type 2: pathogen 2
+path_ipm_ty~2_3 str1    %9s                   ipm type, type 3: pathogen 2
+path_ipm_da~2_3 byte    %10.0g                ipm date, type 3: pathogen 2
+notes           str122  %122s                 notes
+---------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
 . 
 . 
 . log close _all
@@ -471,5 +820,5 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\01_tbf_data_2023_cleaning.l
 > og
   log type:  text
- closed on:  14 Jul 2023, 00:08:22
+ closed on:  14 Jul 2023, 00:21:09
 ---------------------------------------------------------------------------------------------------------------------------------------
