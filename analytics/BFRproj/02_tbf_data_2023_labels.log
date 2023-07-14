@@ -2,29 +2,8 @@
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  14 Jul 2023, 00:21:09
+ opened on:  14 Jul 2023, 00:25:27
 
-. 
-. 
-. *************************************************************************************************
-. ***                                                                                           ***
-. *** Program name: 02_tbf_data_2023_labels.do                                                  ***
-. *** Project: TBF Market Garden 2023                                                                       ***
-. *** Purpose: Create variable labels for TBF Market Garden 2023 data                           ***    
-. ***                                                                                                                                  
->                                              ***
-. *** Contents:                                                                                             ***
-. ***    0) SET UP CODE                                                                                         ***
-. ***    I) CREATE VARIABLE LABELS                                                              ***
-. ***                                                                                           ***
-. *** Authors: Seth B. Morgan                                                                               ***
-. *** Start date: July 13, 2023                                                                                                     ***
-. *** Last date modified: July 13, 2023                                                         ***
-. ***                                                                                           ***
-. *** Notes:                                                                                    ***
-. ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
-. ***                                                                                           ***
-. *************************************************************************************************
 . 
 . 
 . *=========================================================================================
@@ -103,5 +82,5 @@
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  14 Jul 2023, 00:21:09
+ closed on:  14 Jul 2023, 00:25:27
 ---------------------------------------------------------------------------------------------------------------------------------------

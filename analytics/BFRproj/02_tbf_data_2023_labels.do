@@ -4,9 +4,6 @@
 * of The Brosey Farm 
 *******************************************************************************/
 
-capture log close labels_02
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log", replace name(labels_02)
-
 
 *************************************************************************************************
 ***                                                                                           ***
@@ -26,6 +23,10 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
 ***                                                                                           ***
 *************************************************************************************************
+
+
+capture log close labels_02
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log", replace name(labels_02)
 
 
 *=========================================================================================
