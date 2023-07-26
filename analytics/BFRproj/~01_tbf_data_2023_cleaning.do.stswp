@@ -102,7 +102,7 @@ pause off
 	/* Clean missing values */
 	
 		*-> Seedlings variables: *sow* transp*
-		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoor seeding.
+		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoor seeding
 			assert missing(`var') if inlist(sow_med_code, 1, 2)
 			capture confirm numeric variable `var'
 			if _rc==0 replace `var'= .s if inlist(sow_med_code, 1, 2)
