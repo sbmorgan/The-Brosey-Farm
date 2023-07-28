@@ -1,28 +1,35 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\01_tbf_data_2023_cleaning.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\B
+> FRproj\01_tbf_data_2023_cleaning.log
   log type:  text
- opened on:  26 Jul 2023, 16:32:02
+ opened on:  27 Jul 2023, 22:02:24
 
 . 
 . 
 . *************************************************************************************************
 . ***                                                                                           ***
 . *** Program name: 01_tbf_data_2023_cleaning.do                                                ***
-. *** Project: TBF Market Garden 2023                                                                       ***
-. *** Purpose: Clean TBF Market Garden 2023 data                                                ***    
-. ***                                                                                                                                                                        
+. *** Project: TBF Market Garden 2023                                                                
 >        ***
-. *** Contents:                                                                                             ***
-. ***    0) SET UP CODE                                                                                         ***
+. *** Purpose: Clean TBF Market Garden 2023 data                                                ***  
+>   
+. ***                                                                                                
+>                                                                                ***
+. *** Contents:                                                                                      
+>        ***
+. ***    0) SET UP CODE                                                                              
+>            ***
 . ***    I) LOAD RAW DATA                                                                       ***
 . ***    II) MANAGE VARIABLES                                                                   ***
 . ***    III) CLEAN DATA                                                                        ***
 . ***    IV) DESCRIPTIVE STATISTICS                                                             ***
 . ***                                                                                           ***
-. *** Authors: Seth B. Morgan                                                                               ***
-. *** Start date: July 12, 2023                                                                                                     ***
-. *** Last date modified: July 26, 2023                                                         ***
+. *** Authors: Seth B. Morgan                                                                        
+>        ***
+. *** Start date: July 12, 2023                                                                      
+>                                ***
+. *** Last date modified: July 27, 2023                                                         ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -52,10 +59,12 @@
 . /* Define globals */
 . 
 .         *Root
-.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj"
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\a
+> nalytics\BFRproj"
 
 .     adopath ++ "$root"
-  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj"
+  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\anal
+> ytics\BFRproj"
   [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
   [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
   [4]              "."
@@ -79,19 +88,26 @@
 (971 observations deleted)
 
 .         ds 
-crop          sow_to_ger~s  sow_fer~me_1  sow_fer~me_3  transp_dat~1  fert_typ~k_1  fert_amnt_~2  path_date_1   path_date_2   path_date_3   harvest_am~1  harvest_da~4
-sow_type      sow_no_thi~r  sow_fer~se_1  sow_fer~se_3  transp_med_1  fert_typ~e_1  fert_unit_2   path_~pe_1_1  path_~pe_2_1  path_~pe_3_1  harvest_un~1  harvest_am~4
-sow_date      sow_heatmat   sow_fer~te_2  sow_fer~te_4  transp_n~t_1  fert_date_1   fert_typ~k_3  path_~te_1_1  path_~te_2_1  path_~te_3_1  harvest_da~2  harvest_un~4
-sow_med       sow_heatma~p  sow_fert~k_2  sow_fert~k_4  transp_n~d_1  fert_amnt_~1  fert_typ~e_3  path_~pe_1_2  path_~pe_2_2  path_~pe_3_2  harvest_am~2  harvest_da~5
-sow_cell      sow_light_~s  sow_fer~me_2  sow_fer~me_4  transp_dat~2  fert_unit_1   fert_date_3   path_~te_1_2  path_~te_2_2  path_~te_3_2  harvest_un~2  harvest_am~5
-sow_no_cel~l  sow_light_~e  sow_fer~se_2  sow_fer~se_4  transp_med_2  fert_typ~k_2  fert_amnt_~3  path_~pe_1_3  path_~pe_2_3  path_~pe_3_3  harvest_da~3  harvest_un~5
-sow_no_see~r  sow_fer~te_1  sow_fer~te_3  transp_har~t  transp_n~t_2  fert_typ~e_2  fert_unit_3   path_~te_1_3  path_~te_2_3  path_~te_3_3  harvest_am~3  notes
-sow_no_ger~r  sow_fert~k_1  sow_fert~k_3  transp_har~d  transp_n~d_2  fert_date_2   path_type_1   path_type_2   path_type_3   harvest_da~1  harvest_un~3
+crop          sow_fer~te_1  sow_fer~me_4  fert_date_1   path_date_1   path_~te_2_3  harvest_un~2
+sow_type      sow_fert~k_1  sow_fer~se_4  fert_amnt_~1  path_~pe_1_1  path_type_3   harvest_da~3
+sow_date      sow_fer~me_1  transp_har~t  fert_unit_1   path_~te_1_1  path_date_3   harvest_am~3
+sow_med       sow_fer~se_1  transp_har~d  fert_typ~k_2  path_~pe_1_2  path_~pe_3_1  harvest_un~3
+sow_cell      sow_fer~te_2  transp_dat~1  fert_typ~e_2  path_~te_1_2  path_~te_3_1  harvest_da~4
+sow_no_cel~l  sow_fert~k_2  transp_med_1  fert_date_2   path_~pe_1_3  path_~pe_3_2  harvest_am~4
+sow_no_see~r  sow_fer~me_2  transp_n~t_1  fert_amnt_~2  path_~te_1_3  path_~te_3_2  harvest_un~4
+sow_no_ger~r  sow_fer~se_2  transp_n~d_1  fert_unit_2   path_type_2   path_~pe_3_3  harvest_da~5
+sow_to_ger~s  sow_fer~te_3  transp_dat~2  fert_typ~k_3  path_date_2   path_~te_3_3  harvest_am~5
+sow_no_thi~r  sow_fert~k_3  transp_med_2  fert_typ~e_3  path_~pe_2_1  harvest_da~1  harvest_un~5
+sow_heatmat   sow_fer~me_3  transp_n~t_2  fert_date_3   path_~te_2_1  harvest_am~1  notes
+sow_heatma~p  sow_fer~se_3  transp_n~d_2  fert_amnt_~3  path_~pe_2_2  harvest_un~1
+sow_light_~s  sow_fer~te_4  fert_typ~k_1  fert_unit_3   path_~te_2_2  harvest_da~2
+sow_light_~e  sow_fert~k_4  fert_typ~e_1  path_type_1   path_~pe_2_3  harvest_am~2
 
 .         
 .         /* Save raw TBF Market Garden 2023 data */
 .         save "$root\tbf_market_garden_data_2023_raw.dta", replace
-file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\tbf_market_garden_data_2023_raw.dta saved
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub
+    repositories\The-Brosey-Farm\analytics\BFRproj\tbf_market_garden_data_2023_raw.dta saved
 
 .         
 .    
@@ -100,8 +116,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . *=========================================================================================  
 . 
 .         /* Manage variable type */
-.         tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to charact
-> er strings.
+.         tostring *type*, replace // All "type" variables are intended to be character strings. Empt
+> y "type" variables are read in as byte numeric. Convert those to character strings.
 sow_type already string; no replace
 sow_light_type already string; no replace
 sow_fert_type_npk_1 already string; no replace
@@ -114,8 +130,8 @@ sow_fert_type_npk_4 already string; no replace
 sow_fert_type_name_4 already string; no replace
 fert_type_npk_1 already string; no replace
 fert_type_name_1 already string; no replace
-fert_type_npk_2 was byte now str1
-fert_type_name_2 was byte now str1
+fert_type_npk_2 already string; no replace
+fert_type_name_2 already string; no replace
 fert_type_npk_3 was byte now str1
 fert_type_name_3 was byte now str1
 path_type_1 already string; no replace
@@ -302,18 +318,19 @@ Espoma- Organic Tomato-tone |          2        7.41      100.00
 fert_type_n |
        pk_2 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          . |         27      100.00      100.00
+            |         21       77.78       77.78
+      3-4-6 |          6       22.22      100.00
 ------------+-----------------------------------
       Total |         27      100.00
 
 -> tabulation of fert_type_name_2  
 
-fert_type_n |
-      ame_2 |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          . |         27      100.00      100.00
-------------+-----------------------------------
-      Total |         27      100.00
+           fert_type_name_2 |      Freq.     Percent        Cum.
+----------------------------+-----------------------------------
+                            |         21       77.78       77.78
+Espoma- Organic Tomato-tone |          6       22.22      100.00
+----------------------------+-----------------------------------
+                      Total |         27      100.00
 
 -> tabulation of fert_type_npk_3  
 
@@ -457,58 +474,183 @@ path_ipm_ty |
   9.                 *pause
 .         }
 
-  +---------------------------------------------------------------------------------------------------------+
-  |                            crop                         crop_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
-  |---------------------------------------------------------------------------------------------------------|
-  |               pumpkin- ct field                 pumpkin- ct field        2     7.41         2      7.41 |
-  |                      dill- hera                        dill- hera        2     7.41         4     14.81 |
-  |              sunflower- mammoth                sunflower- mammoth        2     7.41         6     22.22 |
-  |                 carrot- touchon                   carrot- touchon        2     7.41         8     29.63 |
-  |   sweet corn- country gentleman     sweet corn- country gentleman        2     7.41        10     37.04 |
-  |---------------------------------------------------------------------------------------------------------|
-  | sweet corn- ornamental- glas gm   sweet corn- ornamental- glas gm        2     7.41        12     44.44 |
-  |             bean- fin de bagnol               bean- fin de bagnol        2     7.41        14     51.85 |
-  |          arrugula- garden tangy            arrugula- garden tangy        2     7.41        16     59.26 |
-  |                    basil- sweet                      basil- sweet        1     3.70        17     62.96 |
-  |          eggplant- black beauty            eggplant- black beauty        1     3.70        18     66.67 |
-  |---------------------------------------------------------------------------------------------------------|
-  |                        cilantro                          cilantro        1     3.70        19     70.37 |
-  |                  kale- lacinato                    kale- lacinato        1     3.70        20     74.07 |
-  |          lettuce- gourmet blend            lettuce- gourmet blend        1     3.70        21     77.78 |
-  |                 pepper- anaheim                   pepper- anaheim        1     3.70        22     81.48 |
-  |         pepper- jalapeno- early           pepper- jalapeno- early        1     3.70        23     85.19 |
-  |---------------------------------------------------------------------------------------------------------|
-  |                sage- broad leaf                  sage- broad leaf        1     3.70        24     88.89 |
-  |                    tomato- roma                      tomato- roma        1     3.70        25     92.59 |
-  |        pepper- sweet- ca wonder          pepper- sweet- ca wonder        1     3.70        26     96.30 |
-  |                   tomato- amish                     tomato- amish        1     3.70        27    100.00 |
-  +---------------------------------------------------------------------------------------------------------+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                 carrot- touchon |                 carrot- touchon |      2 |   7.41 |       2 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                               7.41                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  | sweet corn- ornamental- glas gm | sweet corn- ornamental- glas gm |      2 |   7.41 |       4 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              14.81                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |               pumpkin- ct field |               pumpkin- ct field |      2 |   7.41 |       6 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              22.22                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |             bean- fin de bagnol |             bean- fin de bagnol |      2 |   7.41 |       8 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              29.63                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |          arrugula- garden tangy |          arrugula- garden tangy |      2 |   7.41 |      10 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              37.04                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                      dill- hera |                      dill- hera |      2 |   7.41 |      12 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              44.44                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |   sweet corn- country gentleman |   sweet corn- country gentleman |      2 |   7.41 |      14 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              51.85                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |              sunflower- mammoth |              sunflower- mammoth |      2 |   7.41 |      16 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              59.26                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |          lettuce- gourmet blend |          lettuce- gourmet blend |      1 |   3.70 |      17 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              62.96                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |         pepper- jalapeno- early |         pepper- jalapeno- early |      1 |   3.70 |      18 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              66.67                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                 pepper- anaheim |                 pepper- anaheim |      1 |   3.70 |      19 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              70.37                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                   tomato- amish |                   tomato- amish |      1 |   3.70 |      20 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              74.07                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |        pepper- sweet- ca wonder |        pepper- sweet- ca wonder |      1 |   3.70 |      21 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              77.78                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                        cilantro |                        cilantro |      1 |   3.70 |      22 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              81.48                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                sage- broad leaf |                sage- broad leaf |      1 |   3.70 |      23 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              85.19                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                    tomato- roma |                    tomato- roma |      1 |   3.70 |      24 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              88.89                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |          eggplant- black beauty |          eggplant- black beauty |      1 |   3.70 |      25 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              92.59                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                    basil- sweet |                    basil- sweet |      1 |   3.70 |      26 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                              96.30                                            |
+  +-----------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------+
+  |                            crop |                       crop_code | _Freq_ | _Perc_ | _CFreq_ |
+  |                  kale- lacinato |                  kale- lacinato |      1 |   3.70 |      27 |
+  |-----------------------------------------------------------------------------------------------|
+  |                                            _CPerc_                                            |
+  |                                             100.00                                            |
+  +-----------------------------------------------------------------------------------------------+
 
   +-----------------------------------------------------------------------------------+
   |                            crop   crop_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
-  |   sweet corn- country gentleman          16        2     7.41         2      7.41 |
-  | sweet corn- ornamental- glas gm          17        2     7.41         4     14.81 |
-  |                      dill- hera           6        2     7.41         6     22.22 |
-  |              sunflower- mammoth          15        2     7.41         8     29.63 |
-  |                 carrot- touchon           4        2     7.41        10     37.04 |
+  |                 carrot- touchon           4        2     7.41         2      7.41 |
+  |             bean- fin de bagnol           3        2     7.41         4     14.81 |
+  |   sweet corn- country gentleman          16        2     7.41         6     22.22 |
+  |                      dill- hera           6        2     7.41         8     29.63 |
+  |               pumpkin- ct field          13        2     7.41        10     37.04 |
   |-----------------------------------------------------------------------------------|
   |          arrugula- garden tangy           1        2     7.41        12     44.44 |
-  |               pumpkin- ct field          13        2     7.41        14     51.85 |
-  |             bean- fin de bagnol           3        2     7.41        16     59.26 |
-  |                    tomato- roma          19        1     3.70        17     62.96 |
-  |                 pepper- anaheim          10        1     3.70        18     66.67 |
+  |              sunflower- mammoth          15        2     7.41        14     51.85 |
+  | sweet corn- ornamental- glas gm          17        2     7.41        16     59.26 |
+  |                 pepper- anaheim          10        1     3.70        17     62.96 |
+  |        pepper- sweet- ca wonder          12        1     3.70        18     66.67 |
   |-----------------------------------------------------------------------------------|
-  |                  kale- lacinato           8        1     3.70        19     70.37 |
-  |        pepper- sweet- ca wonder          12        1     3.70        20     74.07 |
+  |                    tomato- roma          19        1     3.70        19     70.37 |
+  |                  kale- lacinato           8        1     3.70        20     74.07 |
   |         pepper- jalapeno- early          11        1     3.70        21     77.78 |
-  |          lettuce- gourmet blend           9        1     3.70        22     81.48 |
-  |                        cilantro           5        1     3.70        23     85.19 |
+  |                        cilantro           5        1     3.70        22     81.48 |
+  |                   tomato- amish          18        1     3.70        23     85.19 |
   |-----------------------------------------------------------------------------------|
-  |          eggplant- black beauty           7        1     3.70        24     88.89 |
-  |                sage- broad leaf          14        1     3.70        25     92.59 |
-  |                    basil- sweet           2        1     3.70        26     96.30 |
-  |                   tomato- amish          18        1     3.70        27    100.00 |
+  |                sage- broad leaf          14        1     3.70        24     88.89 |
+  |                    basil- sweet           2        1     3.70        25     92.59 |
+  |          eggplant- black beauty           7        1     3.70        26     96.30 |
+  |          lettuce- gourmet blend           9        1     3.70        27    100.00 |
   +-----------------------------------------------------------------------------------+
 
   +-------------------------------------------------------------------------------+
@@ -672,8 +814,8 @@ path_ipm_ty |
   |------------------------------------------------------------------------------|
   |                                      .       13    48.15        13     48.15 |
   |           3-4-4                  3-4-4       10    37.04        23     85.19 |
-  |           3-4-6                  3-4-6        2     7.41        25     92.59 |
-  |          4-12-0                 4-12-0        2     7.41        27    100.00 |
+  |          4-12-0                 4-12-0        2     7.41        25     92.59 |
+  |           3-4-6                  3-4-6        2     7.41        27    100.00 |
   +------------------------------------------------------------------------------+
 
   +------------------------------------------------------------------------------+
@@ -699,8 +841,36 @@ path_ipm_ty |
   |-------------------------------------------------------------------------------------------|
   |                                                   .       13    48.15        13     48.15 |
   | Espoma- Organic Garden-tone                       2       10    37.04        23     85.19 |
-  | Espoma- Organic Tomato-tone                       3        2     7.41        25     92.59 |
-  |   Espoma- Organic Bone Meal                       1        2     7.41        27    100.00 |
+  |   Espoma- Organic Bone Meal                       1        2     7.41        25     92.59 |
+  | Espoma- Organic Tomato-tone                       3        2     7.41        27    100.00 |
+  +-------------------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | fert_type_npk_2   fert_type_npk_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       21    77.78        21     77.78 |
+  |           3-4-6                  3-4-6        6    22.22        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------+
+  | fert_type_npk_2   fert_type_npk_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------|
+  |                                      .       21    77.78        21     77.78 |
+  |           3-4-6                      1        6    22.22        27    100.00 |
+  +------------------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------------------------------+
+  |            fert_type_name_2         fert_type_name_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------------------------|
+  |                                                         .       21    77.78        21     77.78 |
+  | Espoma- Organic Tomato-tone   Espoma- Organic Tomato-tone        6    22.22        27    100.00 |
+  +-------------------------------------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------------------------+
+  |            fert_type_name_2   fert_type_name_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------------------|
+  |                                                   .       21    77.78        21     77.78 |
+  | Espoma- Organic Tomato-tone                       1        6    22.22        27    100.00 |
   +-------------------------------------------------------------------------------------------+
 
   +-------------------------------------------------------------------------+
@@ -716,9 +886,9 @@ path_ipm_ty |
   |    path_type_1   path_type_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-------------------------------------------------------------------------|
   |                                 .       24    88.89        24     88.89 |
-  |  cabbage worms                  1        1     3.70        25     92.59 |
-  |   flea beetles                  3        1     3.70        26     96.30 |
-  | cut/horn worms                  2        1     3.70        27    100.00 |
+  | cut/horn worms                  2        1     3.70        25     92.59 |
+  |  cabbage worms                  1        1     3.70        26     96.30 |
+  |   flea beetles                  3        1     3.70        27    100.00 |
   +-------------------------------------------------------------------------+
 
   +----------------------------------------------------------------------------------+
@@ -739,16 +909,16 @@ path_ipm_ty |
   |      path_type_2   path_type_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |---------------------------------------------------------------------------|
   |                                   .       25    92.59        25     92.59 |
-  | japanese beetles   japanese beetles        1     3.70        26     96.30 |
-  |   cut/horn worms     cut/horn worms        1     3.70        27    100.00 |
+  |   cut/horn worms     cut/horn worms        1     3.70        26     96.30 |
+  | japanese beetles   japanese beetles        1     3.70        27    100.00 |
   +---------------------------------------------------------------------------+
 
   +---------------------------------------------------------------------------+
   |      path_type_2   path_type_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |---------------------------------------------------------------------------|
   |                                   .       25    92.59        25     92.59 |
-  | japanese beetles                  2        1     3.70        26     96.30 |
-  |   cut/horn worms                  1        1     3.70        27    100.00 |
+  |   cut/horn worms                  1        1     3.70        26     96.30 |
+  | japanese beetles                  2        1     3.70        27    100.00 |
   +---------------------------------------------------------------------------+
 
   +----------------------------------------------------------------------------------+
@@ -780,6 +950,51 @@ path_ipm_ty |
   +----------------------------------------------------------------------------------+
 
 .         
+.         /* Convert yes/no variables from character strings to numerics with "yes" (1) /"no" (0) val
+> ue lables */
+.         local cat_yn_list sow_heatmat
+
+.         foreach var of varlist `cat_yn_list' {
+  2.                 if `var'=="." continue
+  3.                 *encode (`var'), generate(`var'_code)
+.                 *replace `var'_code= 0 if `var'_code== 1
+.                 *replace `var'_code= 1 if `var'_code== 2
+.                 tabulate `var', generate(`var'_code)
+  4.                 drop `var'_code1
+  5.                 rename `var'_code2 `var'_code
+  6.                 tablist `var' `var'_code, sort(variable) ab(32)
+  7.                 tablist `var' `var'_code, sort(variable) nolabel ab(32)
+  8.                 local varlab : variable label `var'
+  9.                 label variable `var'_code "`varlab'- code"
+ 10.                 order `var'_code, after(`var')
+ 11.                 *pause
+.         }
+
+sow_heatmat |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         no |          4       40.00       40.00
+        yes |          6       60.00      100.00
+------------+-----------------------------------
+      Total |         10      100.00
+
+  +----------------------------------------------------------------------+
+  | sow_heatmat   sow_heatmat_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |                              .       17    62.96        17     62.96 |
+  |         yes                  1        6    22.22        23     85.19 |
+  |          no                  0        4    14.81        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_heatmat   sow_heatmat_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |                              .       17    62.96        17     62.96 |
+  |         yes                  1        6    22.22        23     85.19 |
+  |          no                  0        4    14.81        27    100.00 |
+  +----------------------------------------------------------------------+
+
+.                 
+.         
 .         /* Add variable labels */
 .         include "$root\02_tbf_data_2023_labels.do" // This program creates the variable labels.
 
@@ -793,16 +1008,22 @@ path_ipm_ty |
 . *************************************************************************************************
 . ***                                                                                           ***
 . *** Program name: 02_tbf_data_2023_labels.do                                                  ***
-. *** Project: TBF Market Garden 2023                                                                       ***
-. *** Purpose: Create variable labels for TBF Market Garden 2023 data                           ***    
-. ***                                                                                                                                                                        
+. *** Project: TBF Market Garden 2023                                                                
 >        ***
-. *** Contents:                                                                                             ***
-. ***    0) SET UP CODE                                                                                         ***
+. *** Purpose: Create variable labels for TBF Market Garden 2023 data                           ***  
+>   
+. ***                                                                                                
+>                                                                                ***
+. *** Contents:                                                                                      
+>        ***
+. ***    0) SET UP CODE                                                                              
+>            ***
 . ***    I) CREATE VARIABLE LABELS                                                              ***
 . ***                                                                                           ***
-. *** Authors: Seth B. Morgan                                                                               ***
-. *** Start date: July 13, 2023                                                                                                     ***
+. *** Authors: Seth B. Morgan                                                                        
+>        ***
+. *** Start date: July 13, 2023                                                                      
+>                                ***
 . *** Last date modified: July 26, 2023                                                         ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
@@ -813,12 +1034,14 @@ path_ipm_ty |
 . 
 . capture log close labels_02
 
-. log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log", replace name(labels_02)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+. log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\B
+> FRproj\02_tbf_data_2023_labels.log", replace name(labels_02)
+-----------------------------------------------------------------------------------------------------
       name:  labels_02
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\B
+> FRproj\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  26 Jul 2023, 16:32:03
+ opened on:  27 Jul 2023, 22:02:25
 
 . 
 . 
@@ -857,10 +1080,14 @@ path_ipm_ty |
 .         
 .         /* Indoor fertilizing */
 .         forval x=1/4 {
-  2.                 label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings: round `x'"
-  3.                 label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
-  4.                 label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
-  5.                 label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings: round `x'"
+  2.                 label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings
+> : round `x'"
+  3.                 label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedli
+> ngs: round `x'"
+  4.                 label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seed
+> lings: round `x'"
+  5.                 label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings
+> : round `x'"
   6.         }
 
 .         
@@ -880,10 +1107,13 @@ path_ipm_ty |
 .         
 .         /* Outdoor fertilizing */
 .         forval x=1/3 {
-  2.                 label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
-  3.                 label variable fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
+  2.                 label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings:
+>  round `x'"
+  3.                 label variable fert_type_name_`x' "name of fertilizer applied to indoor seedling
+> s: round `x'"
   4.                 label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
-  5.                 label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round `x'"
+  5.                 label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round 
+> `x'"
   6.                 label variable fert_unit_`x' "unit of fertilizer applied to crop: round `x'"
   7.         }
 
@@ -909,10 +1139,11 @@ path_ipm_ty |
 .         
 . log close labels_02
       name:  labels_02
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\B
+> FRproj\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  26 Jul 2023, 16:32:03
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  27 Jul 2023, 22:02:25
+-----------------------------------------------------------------------------------------------------
 
 . 
 .         
@@ -924,58 +1155,866 @@ path_ipm_ty |
 .         /* Clean missing values */
 .         
 .                 *-> Seedlings variables: *sow* transp*
-.                 foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoo
-> r seeding.
-  2.                         assert missing(`var') if inlist(sow_med_code, 1, 2)
-  3.                         capture confirm numeric variable `var'
-  4.                         if _rc==0 replace `var'= .s if inlist(sow_med_code, 1, 2)
-  5.                         else replace `var'= ".s" if inlist(sow_med_code, 1, 2)
-  6.                 }
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made, 17 to missing)
-(17 real changes made, 17 to missing)
-(17 real changes made)
-(17 real changes made)
-(17 real changes made, 17 to missing)
+.                 foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables sh
+> ould be missing if the crop was direct seeded in the garden versus indoor seeding.
+  2.                         tablist sow_med_code `var', sort(var) ab(32) nolabel
+  3.                         assert missing(`var') if inlist(sow_med_code, 1, 2)
+  4.                         capture confirm numeric variable `var'
+  5.                         if _rc==0 replace `var'= .s if inlist(sow_med_code, 1, 2)
+  6.                         else replace `var'= ".s" if inlist(sow_med_code, 1, 2)
+  7.                         tablist sow_med_code `var', sort(var) ab(32) nolabel
+  8.                 }
+
+  +---------------------------------------------------------------+
+  | sow_med_code   sow_cell   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------|
+  |            2          .       12    44.44        12     44.44 |
+  |            3         32       10    37.04        22     81.48 |
+  |            1          .        5    18.52        27    100.00 |
+  +---------------------------------------------------------------+
 (17 real changes made, 17 to missing)
 
+  +---------------------------------------------------------------+
+  | sow_med_code   sow_cell   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------|
+  |            2         .s       12    44.44        12     44.44 |
+  |            3         32       10    37.04        22     81.48 |
+  |            1         .s        5    18.52        27    100.00 |
+  +---------------------------------------------------------------+
+
+  +------------------------------------------------------------------+
+  | sow_med_code   sow_heatmat   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------|
+  |            2                     12    44.44        12     44.44 |
+  |            3           yes        6    22.22        18     66.67 |
+  |            1                      5    18.52        23     85.19 |
+  |            3            no        4    14.81        27    100.00 |
+  +------------------------------------------------------------------+
+(17 real changes made)
+
+  +------------------------------------------------------------------+
+  | sow_med_code   sow_heatmat   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------|
+  |            2            .s       12    44.44        12     44.44 |
+  |            3           yes        6    22.22        18     66.67 |
+  |            1            .s        5    18.52        23     85.19 |
+  |            3            no        4    14.81        27    100.00 |
+  +------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------+
+  | sow_med_code   sow_heatmat_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------|
+  |            2                  .       12    44.44        12     44.44 |
+  |            3                  1        6    22.22        18     66.67 |
+  |            1                  .        5    18.52        23     85.19 |
+  |            3                  0        4    14.81        27    100.00 |
+  +-----------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +-----------------------------------------------------------------------+
+  | sow_med_code   sow_heatmat_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------|
+  |            2                 .s       12    44.44        12     44.44 |
+  |            3                  1        6    22.22        18     66.67 |
+  |            1                 .s        5    18.52        23     85.19 |
+  |            3                  0        4    14.81        27    100.00 |
+  +-----------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------+
+  | sow_med_code   sow_heatmat_temp   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------|
+  |            2                  .       12    44.44        12     44.44 |
+  |            3                 75        6    22.22        18     66.67 |
+  |            1                  .        5    18.52        23     85.19 |
+  |            3                  .        4    14.81        27    100.00 |
+  +-----------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +-----------------------------------------------------------------------+
+  | sow_med_code   sow_heatmat_temp   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------|
+  |            2                 .s       12    44.44        12     44.44 |
+  |            3                 75        6    22.22        18     66.67 |
+  |            1                 .s        5    18.52        23     85.19 |
+  |            3                  .        4    14.81        27    100.00 |
+  +-----------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------+
+  | sow_med_code   sow_light_hrs   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  |            2               .       12    44.44        12     44.44 |
+  |            3              16       10    37.04        22     81.48 |
+  |            1               .        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +--------------------------------------------------------------------+
+  | sow_med_code   sow_light_hrs   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  |            2              .s       12    44.44        12     44.44 |
+  |            3              16       10    37.04        22     81.48 |
+  |            1              .s        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------+
+
+  +---------------------------------------------------------------------+
+  | sow_med_code   sow_light_type   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------|
+  |            2                        12    44.44        12     44.44 |
+  |            3          45w led       10    37.04        22     81.48 |
+  |            1                         5    18.52        27    100.00 |
+  +---------------------------------------------------------------------+
+(17 real changes made)
+
+  +---------------------------------------------------------------------+
+  | sow_med_code   sow_light_type   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------|
+  |            2               .s       12    44.44        12     44.44 |
+  |            3          45w led       10    37.04        22     81.48 |
+  |            1               .s        5    18.52        27    100.00 |
+  +---------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_light_type_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                     .       12    44.44        12     44.44 |
+  |            3                     1       10    37.04        22     81.48 |
+  |            1                     .        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_light_type_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                    .s       12    44.44        12     44.44 |
+  |            3                     1       10    37.04        22     81.48 |
+  |            1                    .s        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_date_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                         12    44.44        12     44.44 |
+  |            3        2023-04-22        6    22.22        18     66.67 |
+  |            1                          5    18.52        23     85.19 |
+  |            3        2023-04-02        4    14.81        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_date_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            3        2023-04-22        6    22.22        18     66.67 |
+  |            1                .s        5    18.52        23     85.19 |
+  |            3        2023-04-02        4    14.81        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                             12    44.44        12     44.44 |
+  |            3                 2-2-2       10    37.04        22     81.48 |
+  |            1                              5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------+
+(17 real changes made)
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                    .s       12    44.44        12     44.44 |
+  |            3                 2-2-2       10    37.04        22     81.48 |
+  |            1                    .s        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  |            2                          .       12    44.44        12     44.44 |
+  |            3                          1       10    37.04        22     81.48 |
+  |            1                          .        5    18.52        27    100.00 |
+  +-------------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +-------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  |            2                         .s       12    44.44        12     44.44 |
+  |            3                          1       10    37.04        22     81.48 |
+  |            1                         .s        5    18.52        27    100.00 |
+  +-------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------+
+  | sow_med_code    sow_fert_type_name_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |            2                               12    44.44        12     44.44 |
+  |            3   Espoma- Organic Grow!       10    37.04        22     81.48 |
+  |            1                                5    18.52        27    100.00 |
+  +----------------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------------+
+  | sow_med_code    sow_fert_type_name_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |            2                      .s       12    44.44        12     44.44 |
+  |            3   Espoma- Organic Grow!       10    37.04        22     81.48 |
+  |            1                      .s        5    18.52        27    100.00 |
+  +----------------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_name_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |            2                           .       12    44.44        12     44.44 |
+  |            3                           1       10    37.04        22     81.48 |
+  |            1                           .        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +--------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_name_1_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |            2                          .s       12    44.44        12     44.44 |
+  |            3                           1       10    37.04        22     81.48 |
+  |            1                          .s        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_dose_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                         12    44.44        12     44.44 |
+  |            3              half       10    37.04        22     81.48 |
+  |            1                          5    18.52        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_dose_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            3              half       10    37.04        22     81.48 |
+  |            1                .s        5    18.52        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_date_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                         12    44.44        12     44.44 |
+  |            3        2023-05-04        6    22.22        18     66.67 |
+  |            1                          5    18.52        23     85.19 |
+  |            3        2023-04-09        4    14.81        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_date_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            3        2023-05-04        6    22.22        18     66.67 |
+  |            1                .s        5    18.52        23     85.19 |
+  |            3        2023-04-09        4    14.81        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                             12    44.44        12     44.44 |
+  |            3                 2-2-2       10    37.04        22     81.48 |
+  |            1                              5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------+
+(17 real changes made)
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                    .s       12    44.44        12     44.44 |
+  |            3                 2-2-2       10    37.04        22     81.48 |
+  |            1                    .s        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  |            2                          .       12    44.44        12     44.44 |
+  |            3                          1       10    37.04        22     81.48 |
+  |            1                          .        5    18.52        27    100.00 |
+  +-------------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +-------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  |            2                         .s       12    44.44        12     44.44 |
+  |            3                          1       10    37.04        22     81.48 |
+  |            1                         .s        5    18.52        27    100.00 |
+  +-------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------+
+  | sow_med_code    sow_fert_type_name_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |            2                               12    44.44        12     44.44 |
+  |            3   Espoma- Organic Grow!       10    37.04        22     81.48 |
+  |            1                                5    18.52        27    100.00 |
+  +----------------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------------+
+  | sow_med_code    sow_fert_type_name_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |            2                      .s       12    44.44        12     44.44 |
+  |            3   Espoma- Organic Grow!       10    37.04        22     81.48 |
+  |            1                      .s        5    18.52        27    100.00 |
+  +----------------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_name_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |            2                           .       12    44.44        12     44.44 |
+  |            3                           1       10    37.04        22     81.48 |
+  |            1                           .        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +--------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_name_2_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |            2                          .s       12    44.44        12     44.44 |
+  |            3                           1       10    37.04        22     81.48 |
+  |            1                          .s        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_dose_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                         12    44.44        12     44.44 |
+  |            3              half       10    37.04        22     81.48 |
+  |            1                          5    18.52        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_dose_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            3              half       10    37.04        22     81.48 |
+  |            1                .s        5    18.52        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_date_3   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                         12    44.44        12     44.44 |
+  |            1                          5    18.52        17     62.96 |
+  |            3        2023-05-21        4    14.81        21     77.78 |
+  |            3        2023-04-20        4    14.81        25     92.59 |
+  |            3        2023-05-18        2     7.41        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_date_3   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            1                .s        5    18.52        17     62.96 |
+  |            3        2023-04-20        4    14.81        21     77.78 |
+  |            3        2023-05-21        4    14.81        25     92.59 |
+  |            3        2023-05-18        2     7.41        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_3   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                             12    44.44        12     44.44 |
+  |            3                 2-2-2       10    37.04        22     81.48 |
+  |            1                              5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------+
+(17 real changes made)
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_3   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                    .s       12    44.44        12     44.44 |
+  |            3                 2-2-2       10    37.04        22     81.48 |
+  |            1                    .s        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_3_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  |            2                          .       12    44.44        12     44.44 |
+  |            3                          1       10    37.04        22     81.48 |
+  |            1                          .        5    18.52        27    100.00 |
+  +-------------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +-------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_3_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  |            2                         .s       12    44.44        12     44.44 |
+  |            3                          1       10    37.04        22     81.48 |
+  |            1                         .s        5    18.52        27    100.00 |
+  +-------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------+
+  | sow_med_code    sow_fert_type_name_3   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |            2                               12    44.44        12     44.44 |
+  |            3   Espoma- Organic Grow!       10    37.04        22     81.48 |
+  |            1                                5    18.52        27    100.00 |
+  +----------------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------------+
+  | sow_med_code    sow_fert_type_name_3   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |            2                      .s       12    44.44        12     44.44 |
+  |            3   Espoma- Organic Grow!       10    37.04        22     81.48 |
+  |            1                      .s        5    18.52        27    100.00 |
+  +----------------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_name_3_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |            2                           .       12    44.44        12     44.44 |
+  |            3                           1       10    37.04        22     81.48 |
+  |            1                           .        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +--------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_name_3_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |            2                          .s       12    44.44        12     44.44 |
+  |            3                           1       10    37.04        22     81.48 |
+  |            1                          .s        5    18.52        27    100.00 |
+  +--------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_dose_3   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                         12    44.44        12     44.44 |
+  |            3              half       10    37.04        22     81.48 |
+  |            1                          5    18.52        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_dose_3   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            3              half       10    37.04        22     81.48 |
+  |            1                .s        5    18.52        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_date_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                         12    44.44        12     44.44 |
+  |            3        2023-06-09        6    22.22        18     66.67 |
+  |            1                          5    18.52        23     85.19 |
+  |            3        2023-05-28        2     7.41        25     92.59 |
+  |            3                          2     7.41        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_date_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            3        2023-06-09        6    22.22        18     66.67 |
+  |            1                .s        5    18.52        23     85.19 |
+  |            3        2023-05-28        2     7.41        25     92.59 |
+  |            3                          2     7.41        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                             12    44.44        12     44.44 |
+  |            3                 2-2-2        8    29.63        20     74.07 |
+  |            1                              5    18.52        25     92.59 |
+  |            3                              2     7.41        27    100.00 |
+  +--------------------------------------------------------------------------+
+(17 real changes made)
+
+  +--------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------|
+  |            2                    .s       12    44.44        12     44.44 |
+  |            3                 2-2-2        8    29.63        20     74.07 |
+  |            1                    .s        5    18.52        25     92.59 |
+  |            3                              2     7.41        27    100.00 |
+  +--------------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_4_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  |            2                          .       12    44.44        12     44.44 |
+  |            3                          1        8    29.63        20     74.07 |
+  |            1                          .        5    18.52        25     92.59 |
+  |            3                          .        2     7.41        27    100.00 |
+  +-------------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +-------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_npk_4_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------|
+  |            2                         .s       12    44.44        12     44.44 |
+  |            3                          1        8    29.63        20     74.07 |
+  |            1                         .s        5    18.52        25     92.59 |
+  |            3                          .        2     7.41        27    100.00 |
+  +-------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------+
+  | sow_med_code    sow_fert_type_name_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |            2                               12    44.44        12     44.44 |
+  |            3   Espoma- Organic Grow!        8    29.63        20     74.07 |
+  |            1                                5    18.52        25     92.59 |
+  |            3                                2     7.41        27    100.00 |
+  +----------------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------------+
+  | sow_med_code    sow_fert_type_name_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------|
+  |            2                      .s       12    44.44        12     44.44 |
+  |            3   Espoma- Organic Grow!        8    29.63        20     74.07 |
+  |            1                      .s        5    18.52        25     92.59 |
+  |            3                                2     7.41        27    100.00 |
+  +----------------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_name_4_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |            2                           .       12    44.44        12     44.44 |
+  |            3                           1        8    29.63        20     74.07 |
+  |            1                           .        5    18.52        25     92.59 |
+  |            3                           .        2     7.41        27    100.00 |
+  +--------------------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +--------------------------------------------------------------------------------+
+  | sow_med_code   sow_fert_type_name_4_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |            2                          .s       12    44.44        12     44.44 |
+  |            3                           1        8    29.63        20     74.07 |
+  |            1                          .s        5    18.52        25     92.59 |
+  |            3                           .        2     7.41        27    100.00 |
+  +--------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_dose_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                         12    44.44        12     44.44 |
+  |            3              full        8    29.63        20     74.07 |
+  |            1                          5    18.52        25     92.59 |
+  |            3                          2     7.41        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   sow_fert_dose_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            3              full        8    29.63        20     74.07 |
+  |            1                .s        5    18.52        25     92.59 |
+  |            3                          2     7.41        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------+
+  | sow_med_code   transp_harden_date_srt   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  |            2                                12    44.44        12     44.44 |
+  |            3               2023-05-31        6    22.22        18     66.67 |
+  |            1                                 5    18.52        23     85.19 |
+  |            3               2023-04-13        2     7.41        25     92.59 |
+  |            3               2023-05-22        2     7.41        27    100.00 |
+  +-----------------------------------------------------------------------------+
+(17 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  | sow_med_code   transp_harden_date_srt   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  |            2                       .s       12    44.44        12     44.44 |
+  |            3               2023-05-31        6    22.22        18     66.67 |
+  |            1                       .s        5    18.52        23     85.19 |
+  |            3               2023-05-22        2     7.41        25     92.59 |
+  |            3               2023-04-13        2     7.41        27    100.00 |
+  +-----------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------+
+  | sow_med_code   transp_harden_date_end   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  |            2                                12    44.44        12     44.44 |
+  |            3               2023-06-09        6    22.22        18     66.67 |
+  |            1                                 5    18.52        23     85.19 |
+  |            3               2023-05-31        2     7.41        25     92.59 |
+  |            3               2023-04-22        2     7.41        27    100.00 |
+  +-----------------------------------------------------------------------------+
+(17 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  | sow_med_code   transp_harden_date_end   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  |            2                       .s       12    44.44        12     44.44 |
+  |            3               2023-06-09        6    22.22        18     66.67 |
+  |            1                       .s        5    18.52        23     85.19 |
+  |            3               2023-05-31        2     7.41        25     92.59 |
+  |            3               2023-04-22        2     7.41        27    100.00 |
+  +-----------------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------+
+  | sow_med_code   transp_date_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  |            2                       12    44.44        12     44.44 |
+  |            3      2023-05-07        7    25.93        19     70.37 |
+  |            1                        5    18.52        24     88.89 |
+  |            3      2023-04-22        3    11.11        27    100.00 |
+  +--------------------------------------------------------------------+
+(17 real changes made)
+
+  +--------------------------------------------------------------------+
+  | sow_med_code   transp_date_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  |            2              .s       12    44.44        12     44.44 |
+  |            3      2023-05-07        7    25.93        19     70.37 |
+  |            1              .s        5    18.52        24     88.89 |
+  |            3      2023-04-22        3    11.11        27    100.00 |
+  +--------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------+
+  | sow_med_code        transp_med_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------|
+  |            2                           12    44.44        12     44.44 |
+  |            3                3.25        5    18.52        17     62.96 |
+  |            1                            5    18.52        22     81.48 |
+  |            3                 4.5        2     7.41        24     88.89 |
+  |            3   raised bed- frame        2     7.41        26     96.30 |
+  |------------------------------------------------------------------------|
+  |            3                4.5d        1     3.70        27    100.00 |
+  +------------------------------------------------------------------------+
+(17 real changes made)
+
+  +------------------------------------------------------------------------+
+  | sow_med_code        transp_med_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------|
+  |            2                  .s       12    44.44        12     44.44 |
+  |            1                  .s        5    18.52        17     62.96 |
+  |            3                3.25        5    18.52        22     81.48 |
+  |            3   raised bed- frame        2     7.41        24     88.89 |
+  |            3                 4.5        2     7.41        26     96.30 |
+  |------------------------------------------------------------------------|
+  |            3                4.5d        1     3.70        27    100.00 |
+  +------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   transp_no_srt_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                 .       12    44.44        12     44.44 |
+  |            1                 .        5    18.52        17     62.96 |
+  |            3                 6        3    11.11        20     74.07 |
+  |            3                 9        1     3.70        21     77.78 |
+  |            3                19        1     3.70        22     81.48 |
+  |----------------------------------------------------------------------|
+  |            3                10        1     3.70        23     85.19 |
+  |            3                12        1     3.70        24     88.89 |
+  |            3                18        1     3.70        25     92.59 |
+  |            3                 8        1     3.70        26     96.30 |
+  |            3                32        1     3.70        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   transp_no_srt_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            1                .s        5    18.52        17     62.96 |
+  |            3                 6        3    11.11        20     74.07 |
+  |            3                12        1     3.70        21     77.78 |
+  |            3                19        1     3.70        22     81.48 |
+  |----------------------------------------------------------------------|
+  |            3                18        1     3.70        23     85.19 |
+  |            3                 9        1     3.70        24     88.89 |
+  |            3                10        1     3.70        25     92.59 |
+  |            3                32        1     3.70        26     96.30 |
+  |            3                 8        1     3.70        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   transp_no_end_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                 .       12    44.44        12     44.44 |
+  |            1                 .        5    18.52        17     62.96 |
+  |            3                 6        2     7.41        19     70.37 |
+  |            3                18        2     7.41        21     77.78 |
+  |            3                12        1     3.70        22     81.48 |
+  |----------------------------------------------------------------------|
+  |            3                 8        1     3.70        23     85.19 |
+  |            3                 0        1     3.70        24     88.89 |
+  |            3                10        1     3.70        25     92.59 |
+  |            3                 9        1     3.70        26     96.30 |
+  |            3                32        1     3.70        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   transp_no_end_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            1                .s        5    18.52        17     62.96 |
+  |            3                 6        2     7.41        19     70.37 |
+  |            3                18        2     7.41        21     77.78 |
+  |            3                32        1     3.70        22     81.48 |
+  |----------------------------------------------------------------------|
+  |            3                10        1     3.70        23     85.19 |
+  |            3                 9        1     3.70        24     88.89 |
+  |            3                 0        1     3.70        25     92.59 |
+  |            3                12        1     3.70        26     96.30 |
+  |            3                 8        1     3.70        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +--------------------------------------------------------------------+
+  | sow_med_code   transp_date_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  |            2                       12    44.44        12     44.44 |
+  |            3      2023-06-10        6    22.22        18     66.67 |
+  |            1                        5    18.52        23     85.19 |
+  |            3      2023-05-31        2     7.41        25     92.59 |
+  |            3      2023-06-14        1     3.70        26     96.30 |
+  |--------------------------------------------------------------------|
+  |            3                        1     3.70        27    100.00 |
+  +--------------------------------------------------------------------+
+(17 real changes made)
+
+  +--------------------------------------------------------------------+
+  | sow_med_code   transp_date_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------|
+  |            2              .s       12    44.44        12     44.44 |
+  |            3      2023-06-10        6    22.22        18     66.67 |
+  |            1              .s        5    18.52        23     85.19 |
+  |            3      2023-05-31        2     7.41        25     92.59 |
+  |            3                        1     3.70        26     96.30 |
+  |--------------------------------------------------------------------|
+  |            3      2023-06-14        1     3.70        27    100.00 |
+  +--------------------------------------------------------------------+
+
+  +-------------------------------------------------------------------------+
+  | sow_med_code         transp_med_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------|
+  |            2                            12    44.44        12     44.44 |
+  |            3   raised bed- ground        6    22.22        18     66.67 |
+  |            1                             5    18.52        23     85.19 |
+  |            3    raised bed- frame        3    11.11        26     96.30 |
+  |            3                             1     3.70        27    100.00 |
+  +-------------------------------------------------------------------------+
+(17 real changes made)
+
+  +-------------------------------------------------------------------------+
+  | sow_med_code         transp_med_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------|
+  |            2                   .s       12    44.44        12     44.44 |
+  |            3   raised bed- ground        6    22.22        18     66.67 |
+  |            1                   .s        5    18.52        23     85.19 |
+  |            3    raised bed- frame        3    11.11        26     96.30 |
+  |            3                             1     3.70        27    100.00 |
+  +-------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   transp_no_srt_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                 .       12    44.44        12     44.44 |
+  |            1                 .        5    18.52        17     62.96 |
+  |            3                18        2     7.41        19     70.37 |
+  |            3                 6        2     7.41        21     77.78 |
+  |            3                10        1     3.70        22     81.48 |
+  |----------------------------------------------------------------------|
+  |            3                 .        1     3.70        23     85.19 |
+  |            3                 8        1     3.70        24     88.89 |
+  |            3                 3        1     3.70        25     92.59 |
+  |            3                12        1     3.70        26     96.30 |
+  |            3                 9        1     3.70        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   transp_no_srt_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            1                .s        5    18.52        17     62.96 |
+  |            3                18        2     7.41        19     70.37 |
+  |            3                 6        2     7.41        21     77.78 |
+  |            3                 3        1     3.70        22     81.48 |
+  |----------------------------------------------------------------------|
+  |            3                 8        1     3.70        23     85.19 |
+  |            3                 9        1     3.70        24     88.89 |
+  |            3                12        1     3.70        25     92.59 |
+  |            3                10        1     3.70        26     96.30 |
+  |            3                 .        1     3.70        27    100.00 |
+  +----------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   transp_no_end_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                 .       12    44.44        12     44.44 |
+  |            1                 .        5    18.52        17     62.96 |
+  |            3                18        2     7.41        19     70.37 |
+  |            3                 6        2     7.41        21     77.78 |
+  |            3                10        1     3.70        22     81.48 |
+  |----------------------------------------------------------------------|
+  |            3                 8        1     3.70        23     85.19 |
+  |            3                 9        1     3.70        24     88.89 |
+  |            3                12        1     3.70        25     92.59 |
+  |            3                 3        1     3.70        26     96.30 |
+  |            3                 .        1     3.70        27    100.00 |
+  +----------------------------------------------------------------------+
+(17 real changes made, 17 to missing)
+
+  +----------------------------------------------------------------------+
+  | sow_med_code   transp_no_end_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |            2                .s       12    44.44        12     44.44 |
+  |            1                .s        5    18.52        17     62.96 |
+  |            3                 6        2     7.41        19     70.37 |
+  |            3                18        2     7.41        21     77.78 |
+  |            3                 .        1     3.70        22     81.48 |
+  |----------------------------------------------------------------------|
+  |            3                12        1     3.70        23     85.19 |
+  |            3                10        1     3.70        24     88.89 |
+  |            3                 8        1     3.70        25     92.59 |
+  |            3                 3        1     3.70        26     96.30 |
+  |            3                 9        1     3.70        27    100.00 |
+  +----------------------------------------------------------------------+
+
 . 
+.                 tablist sow_heatmat sow_heatmat_temp, sort(var) ab(32)
+
+  +----------------------------------------------------------------------+
+  | sow_heatmat   sow_heatmat_temp   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |          .s                 .s       17    62.96        17     62.96 |
+  |         yes                 75        6    22.22        23     85.19 |
+  |          no                  .        4    14.81        27    100.00 |
+  +----------------------------------------------------------------------+
+
+.                 assert sow_heatmat_temp==. if sow_heatmat=="no"
+
+.                 replace sow_heatmat_temp=.s if sow_heatmat=="no"
+(4 real changes made, 4 to missing)
+
+.                 tablist sow_heatmat sow_heatmat_temp, sort(var) ab(32)
+
+  +----------------------------------------------------------------------+
+  | sow_heatmat   sow_heatmat_temp   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------|
+  |          .s                 .s       17    62.96        17     62.96 |
+  |         yes                 75        6    22.22        23     85.19 |
+  |          no                 .s        4    14.81        27    100.00 |
+  +----------------------------------------------------------------------+
+
+.                 
 .         /* Save clean TBF Market Garden 2023 data */
 .         save "$root\tbf_market_garden_data_2023_clean.dta", replace
-file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\tbf_market_garden_data_2023_clean.dta saved
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub
+    repositories\The-Brosey-Farm\analytics\BFRproj\tbf_market_garden_data_2023_clean.dta saved
 
 .         
 .  
@@ -983,15 +2022,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . * IV) DESCRIPTIVE STATISTICS
 . *=========================================================================================     
 .         
-.         describe
+.         describe _all
 
-Contains data from C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\tbf_market_garden_data_2023_clean.dta
- Observations:            27                  
-    Variables:           114                  26 Jul 2023 16:32
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 crop            str31   %31s                  crop type
 crop_code       long    %31.0g     crop_code
                                               crop- code
@@ -1009,6 +2044,7 @@ sow_no_germ_per double  %10.0g                number of seeds germinated per cel
 sow_to_germ25~s byte    %10.0g                number of days to germination (25%)
 sow_no_thin_per double  %10.0g                number of seedlings per cell/row/hill after thinning
 sow_heatmat     str3    %9s                   heat mat used to germinate seedlings
+sow_heatmat_c~e byte    %8.0g                 sow_heatmat- code
 sow_heatmat_t~p byte    %10.0g                temperature (F) of heat mat used to germinate seedlings
 sow_light_hrs   byte    %10.0g                number of hours of lighting
 sow_light_type  str7    %9s                   lighting type
@@ -1057,19 +2093,23 @@ transp_med_2    str18   %18s                  transplant medium: round 2
 transp_no_srt_2 byte    %10.0g                starting number of transplants: round 2
 transp_no_end_2 byte    %10.0g                ending number of transplants: round 2
 fert_type_npk_1 str6    %9s                   npk of fertilizer applied to indoor seedlings: round 1
-fert_type_npk~e long    %8.0g      fert_type_npk_1_code
+fert_t~k_1_code long    %8.0g      fert_type_npk_1_code
                                               fert_type_npk_1- code
 fert_type_nam~1 str27   %27s                  name of fertilizer applied to indoor seedlings: round 1
-fert_type_nam~e long    %27.0g     fert_type_name_1_code
+fert_t~e_1_code long    %27.0g     fert_type_name_1_code
                                               fert_type_name_1- code
 fert_date_1     str10   %10s                  date of fertilizer applied to crop: round 1
 fert_amnt_per_1 double  %10.0g                amount of fertilizer applied per plant: round 1
 fert_unit_1     str3    %9s                   unit of fertilizer applied to crop: round 1
-fert_type_npk_2 str1    %9s                   npk of fertilizer applied to indoor seedlings: round 2
-fert_type_nam~2 str1    %9s                   name of fertilizer applied to indoor seedlings: round 2
-fert_date_2     byte    %10.0g                date of fertilizer applied to crop: round 2
-fert_amnt_per_2 byte    %10.0g                amount of fertilizer applied per plant: round 2
-fert_unit_2     byte    %10.0g                unit of fertilizer applied to crop: round 2
+fert_type_npk_2 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 2
+fert_t~k_2_code long    %8.0g      fert_type_npk_2_code
+                                              fert_type_npk_2- code
+fert_type_nam~2 str27   %27s                  name of fertilizer applied to indoor seedlings: round 2
+fert_t~e_2_code long    %27.0g     fert_type_name_2_code
+                                              fert_type_name_2- code
+fert_date_2     str10   %10s                  date of fertilizer applied to crop: round 2
+fert_amnt_per_2 double  %10.0g                amount of fertilizer applied per plant: round 2
+fert_unit_2     str3    %9s                   unit of fertilizer applied to crop: round 2
 fert_type_npk_3 str1    %9s                   npk of fertilizer applied to indoor seedlings: round 3
 fert_type_nam~3 str1    %9s                   name of fertilizer applied to indoor seedlings: round 3
 fert_date_3     byte    %10.0g                date of fertilizer applied to crop: round 3
@@ -1125,14 +2165,13 @@ harvest_date_5  byte    %10.0g                date of harvest: round 5
 harvest_amnt_5  byte    %10.0g                harvested amount (wet): round 5
 harvest_unit_5  byte    %10.0g                unit of harvest: round 5
 notes           str209  %209s                 notes
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Sorted by: 
 
 . 
 . 
 . log close _all
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\01_tbf_data_2023_cleaning.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\B
+> FRproj\01_tbf_data_2023_cleaning.log
   log type:  text
- closed on:  26 Jul 2023, 16:32:03
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  27 Jul 2023, 22:02:25
+-----------------------------------------------------------------------------------------------------
