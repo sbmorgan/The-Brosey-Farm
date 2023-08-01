@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: July 27, 2023                                                         ***
+*** Last date modified: August 1, 2023                                                        ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -74,6 +74,7 @@ pause off
 	
 	/* Manage date variables */
 	foreach var of varlist *date* {
+**# Bookmark #1
 		
 	}
 	
@@ -119,7 +120,17 @@ pause off
 *=========================================================================================     
 
 	/* Clean missing values */
-	
+		
+		*-> Non-seeded transplants (externally sourced transplants)
+		foreach var of varlist sow_date-transp_harden_date_end {
+			tablist sow_type `var', sort(var) ab(32) nolabel
+			assert missing(`var') if sow_type=="external transplant"
+			capture confirm numeric variable `var'
+			if _rc==0 replace `var'= .s if sow_type=="external transplant"
+			else replace `var'= ".s" if sow_type=="external transplant"
+			tablist sow_type `var', sort(var) ab(32) nolabel
+		}
+		
 		*-> Seedlings variables: *sow* transp*
 		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoor seeding.
 			tablist sow_med_code `var', sort(var) ab(32) nolabel

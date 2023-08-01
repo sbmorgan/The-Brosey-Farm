@@ -1,9 +1,8 @@
------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_02
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\B
-> FRproj\02_tbf_data_2023_labels.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  27 Jul 2023, 22:02:25
+ opened on:   1 Aug 2023, 17:56:44
 
 . 
 . 
@@ -42,14 +41,10 @@
 .         
 .         /* Indoor fertilizing */
 .         forval x=1/4 {
-  2.                 label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings
-> : round `x'"
-  3.                 label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedli
-> ngs: round `x'"
-  4.                 label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seed
-> lings: round `x'"
-  5.                 label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings
-> : round `x'"
+  2.                 label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings: round `x'"
+  3.                 label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
+  4.                 label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
+  5.                 label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings: round `x'"
   6.         }
 
 .         
@@ -69,13 +64,10 @@
 .         
 .         /* Outdoor fertilizing */
 .         forval x=1/3 {
-  2.                 label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings:
->  round `x'"
-  3.                 label variable fert_type_name_`x' "name of fertilizer applied to indoor seedling
-> s: round `x'"
+  2.                 label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
+  3.                 label variable fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
   4.                 label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
-  5.                 label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round 
-> `x'"
+  5.                 label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round `x'"
   6.                 label variable fert_unit_`x' "unit of fertilizer applied to crop: round `x'"
   7.         }
 
@@ -101,8 +93,7 @@
 .         
 . log close labels_02
       name:  labels_02
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\B
-> FRproj\02_tbf_data_2023_labels.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  27 Jul 2023, 22:02:25
------------------------------------------------------------------------------------------------------
+ closed on:   1 Aug 2023, 17:56:44
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
