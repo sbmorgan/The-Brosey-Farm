@@ -69,13 +69,29 @@ pause off
 * II) MANAGE VARIABLES
 *=========================================================================================  
 
+	/* Add variable labels */
+	include "$root\02_tbf_data_2023_labels.do" // This program creates the variable labels.
+	
 	/* Manage variable type */
 	tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
 	
 	/* Manage date variables */
 	foreach var of varlist *date* {
-**# Bookmark #1
-		
+		tabulate `var', missing
+		capture confirm string var `var'
+		if _rc!=0 tostring `var', replace
+		generate `var'_year= substr(`var',1,4)
+		generate `var'_month= substr(`var',6,2)
+		generate `var'_day= substr(`var',9,2)
+		foreach var2 of varlist `var'_year `var'_month `var'_day {
+			confirm string var `var2'
+			destring `var2', replace
+		}
+		generate `var'_stata= mdy(`var'_month, `var'_day, `var'_year)
+		*drop `var'_year `var'_month `var'_day
+		*local varlab : variable label `var'
+		*label variable `var'_stata "`varlab'- stata"		
+		order `var'_stata, after(`var')
 	}
 	
 	/* Convert categorical strings into categorical numerics */
@@ -109,10 +125,6 @@ pause off
 		order `var'_code, after(`var')
 		*pause
 	}
-		
-	
-	/* Add variable labels */
-	include "$root\02_tbf_data_2023_labels.do" // This program creates the variable labels.
 	
     
 *=========================================================================================
