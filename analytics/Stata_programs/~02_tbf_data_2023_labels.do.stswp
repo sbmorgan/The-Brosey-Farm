@@ -26,7 +26,7 @@
 
 
 capture log close labels_02
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log", replace name(labels_02)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\02_tbf_data_2023_labels.log", replace name(labels_02)
 
 
 *=========================================================================================

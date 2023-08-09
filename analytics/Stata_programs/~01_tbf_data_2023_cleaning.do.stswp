@@ -183,7 +183,6 @@ pause off
 			if _rc==0 assert `var'!=.
 			else assert `var'!=""
 		}
-		*/
 		
 	/* Save clean TBF Market Garden 2023 data */
 	save "$root\clean_data\tbf_market_garden_data_2023_clean.dta", replace
