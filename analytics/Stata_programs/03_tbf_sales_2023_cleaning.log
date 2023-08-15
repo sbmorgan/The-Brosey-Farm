@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.log
   log type:  text
- opened on:   9 Aug 2023, 00:15:55
+ opened on:  14 Aug 2023, 20:37:34
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: August 8, 2023                                                                                                    ***
-. *** Last date modified: August 8, 2023                                                        ***
+. *** Last date modified: August 14, 2023                                                        ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -55,13 +55,12 @@
 
 .     adopath ++ "$root"
   [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
-  [2]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data"
-  [3]  (BASE)      "C:\Program Files\Stata18\ado\base/"
-  [4]  (SITE)      "C:\Program Files\Stata18\ado\site/"
-  [5]              "."
-  [6]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
-  [7]  (PLUS)      "C:\Users\sethb\ado\plus/"
-  [8]  (OLDPLACE)  "c:\ado/"
+  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [4]              "."
+  [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
+  [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
+  [7]  (OLDPLACE)  "c:\ado/"
 
 .     
 . 
@@ -71,12 +70,12 @@
 . 
 .         /* Load raw data */
 .         import excel "$root\raw_data\Brosey Farming.xlsx", sheet("sales_2023") firstrow clear
-(9 vars, 26 obs)
+(11 vars, 44 obs)
 
 .         keep sale_date-sale_value_usd
 
 .         ds 
-sale_date     sale_locat~n  sale_crop     sale_amnt     sale_unit     sale_value~d
+sale_date     sale_locat~n  sale_locat~o  sale_locat~c  sale_crop     sale_amnt     sale_unit     sale_value~d
 
 .         
 .         /* Save raw TBF Market Garden 2023 data */
@@ -111,8 +110,10 @@ Variable      Storage   Display    Value
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 sale_date       str10   %10s                  sale date
 sale_location   str27   %27s                  sale location
+sale_location~o byte    %10.0g                sale_location_stall_no
+sale_location~c str14   %14s                  sale_location_stall_spec
 sale_crop       str24   %24s                  sale crop
-sale_amnt       byte    %10.0g                sale amount
+sale_amnt       double  %10.0g                sale amount
 sale_unit       str5    %9s                   sale amount unit
 sale_value_usd  byte    %10.0g                sale value (dollars)
 
@@ -141,9 +142,10 @@ HERE: sale_date
 
   sale date |      Freq.     Percent        Cum.
 ------------+-----------------------------------
- 2023-08-05 |         26      100.00      100.00
+ 2023-08-05 |         26       59.09       59.09
+ 2023-08-12 |         18       40.91      100.00
 ------------+-----------------------------------
-      Total |         26      100.00
+      Total |         44      100.00
 sale_date_year: all characters numeric; replaced as int
 sale_date_month: all characters numeric; replaced as byte
 sale_date_day: all characters numeric; replaced as byte
@@ -158,34 +160,36 @@ sale_date_day: all characters numeric; replaced as byte
 
               sale location |      Freq.     Percent        Cum.
 ----------------------------+-----------------------------------
-New Carlisle Farmers Market |         26      100.00      100.00
+New Carlisle Farmers Market |         44      100.00      100.00
 ----------------------------+-----------------------------------
-                      Total |         26      100.00
+                      Total |         44      100.00
 
 -> tabulation of sale_crop  
 
                sale crop |      Freq.     Percent        Cum.
 -------------------------+-----------------------------------
-     bean- fin de bagnol |          2        7.69        7.69
-                cilantro |          4       15.38       23.08
-         pepper- anaheim |          3       11.54       34.62
- pepper- jalapeno- early |          5       19.23       53.85
-    pepper- sweet banana |          2        7.69       61.54
-pepper- sweet- ca wonder |          6       23.08       84.62
-           tomato- amish |          4       15.38      100.00
+     bean- fin de bagnol |          3        6.82        6.82
+         carrot- touchon |          4        9.09       15.91
+                cilantro |          4        9.09       25.00
+  eggplant- black beauty |          3        6.82       31.82
+         pepper- anaheim |          4        9.09       40.91
+ pepper- jalapeno- early |          8       18.18       59.09
+    pepper- sweet banana |          2        4.55       63.64
+pepper- sweet- ca wonder |         10       22.73       86.36
+           tomato- amish |          6       13.64      100.00
 -------------------------+-----------------------------------
-                   Total |         26      100.00
+                   Total |         44      100.00
 
 -> tabulation of sale_unit  
 
 sale amount |
        unit |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-      bunch |          4       15.38       15.38
-      pound |          3       11.54       26.92
-       unit |         19       73.08      100.00
+      bunch |          4        9.09        9.09
+      pound |          6       13.64       22.73
+       unit |         34       77.27      100.00
 ------------+-----------------------------------
-      Total |         26      100.00
+      Total |         44      100.00
 
 .         foreach var of varlist `cat_str_list' {
   2.                 if `var'=="." continue
@@ -201,55 +205,59 @@ sale amount |
   +-------------------------------------------------------------------------------------------------+
   |               sale_location            sale_location_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market   New Carlisle Farmers Market       26   100.00        26    100.00 |
+  | New Carlisle Farmers Market   New Carlisle Farmers Market       44   100.00        44    100.00 |
   +-------------------------------------------------------------------------------------------------+
 
   +----------------------------------------------------------------------------------------+
   |               sale_location   sale_location_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |----------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market                    1       26   100.00        26    100.00 |
+  | New Carlisle Farmers Market                    1       44   100.00        44    100.00 |
   +----------------------------------------------------------------------------------------+
 
   +-------------------------------------------------------------------------------------------+
   |                sale_crop             sale_crop_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-------------------------------------------------------------------------------------------|
-  | pepper- sweet- ca wonder   pepper- sweet- ca wonder        6    23.08         6     23.08 |
-  |  pepper- jalapeno- early    pepper- jalapeno- early        5    19.23        11     42.31 |
-  |            tomato- amish              tomato- amish        4    15.38        15     57.69 |
-  |                 cilantro                   cilantro        4    15.38        19     73.08 |
-  |          pepper- anaheim            pepper- anaheim        3    11.54        22     84.62 |
+  | pepper- sweet- ca wonder   pepper- sweet- ca wonder       10    22.73        10     22.73 |
+  |  pepper- jalapeno- early    pepper- jalapeno- early        8    18.18        18     40.91 |
+  |            tomato- amish              tomato- amish        6    13.64        24     54.55 |
+  |                 cilantro                   cilantro        4     9.09        28     63.64 |
+  |          pepper- anaheim            pepper- anaheim        4     9.09        32     72.73 |
   |-------------------------------------------------------------------------------------------|
-  |     pepper- sweet banana       pepper- sweet banana        2     7.69        24     92.31 |
-  |      bean- fin de bagnol        bean- fin de bagnol        2     7.69        26    100.00 |
+  |          carrot- touchon            carrot- touchon        4     9.09        36     81.82 |
+  |      bean- fin de bagnol        bean- fin de bagnol        3     6.82        39     88.64 |
+  |   eggplant- black beauty     eggplant- black beauty        3     6.82        42     95.45 |
+  |     pepper- sweet banana       pepper- sweet banana        2     4.55        44    100.00 |
   +-------------------------------------------------------------------------------------------+
 
   +---------------------------------------------------------------------------------+
   |                sale_crop   sale_crop_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |---------------------------------------------------------------------------------|
-  | pepper- sweet- ca wonder                6        6    23.08         6     23.08 |
-  |  pepper- jalapeno- early                4        5    19.23        11     42.31 |
-  |                 cilantro                2        4    15.38        15     57.69 |
-  |            tomato- amish                7        4    15.38        19     73.08 |
-  |          pepper- anaheim                3        3    11.54        22     84.62 |
+  | pepper- sweet- ca wonder                8       10    22.73        10     22.73 |
+  |  pepper- jalapeno- early                6        8    18.18        18     40.91 |
+  |            tomato- amish                9        6    13.64        24     54.55 |
+  |          pepper- anaheim                5        4     9.09        28     63.64 |
+  |          carrot- touchon                2        4     9.09        32     72.73 |
   |---------------------------------------------------------------------------------|
-  |      bean- fin de bagnol                1        2     7.69        24     92.31 |
-  |     pepper- sweet banana                5        2     7.69        26    100.00 |
+  |                 cilantro                3        4     9.09        36     81.82 |
+  |      bean- fin de bagnol                1        3     6.82        39     88.64 |
+  |   eggplant- black beauty                4        3     6.82        42     95.45 |
+  |     pepper- sweet banana                7        2     4.55        44    100.00 |
   +---------------------------------------------------------------------------------+
 
   +------------------------------------------------------------------+
   | sale_unit   sale_unit_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |------------------------------------------------------------------|
-  |      unit             unit       19    73.08        19     73.08 |
-  |     bunch            bunch        4    15.38        23     88.46 |
-  |     pound            pound        3    11.54        26    100.00 |
+  |      unit             unit       34    77.27        34     77.27 |
+  |     pound            pound        6    13.64        40     90.91 |
+  |     bunch            bunch        4     9.09        44    100.00 |
   +------------------------------------------------------------------+
 
   +------------------------------------------------------------------+
   | sale_unit   sale_unit_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |------------------------------------------------------------------|
-  |      unit                3       19    73.08        19     73.08 |
-  |     bunch                1        4    15.38        23     88.46 |
-  |     pound                2        3    11.54        26    100.00 |
+  |      unit                3       34    77.27        34     77.27 |
+  |     pound                2        6    13.64        40     90.91 |
+  |     bunch                1        4     9.09        44    100.00 |
   +------------------------------------------------------------------+
 
 . 
@@ -259,103 +267,144 @@ sale amount |
 . *=========================================================================================     
 . 
 .         /* Clean missing values */
+.         tablist sale_location sale_location_stall_no sale_location_stall_spec, sort(variable) ab(32)
+
+  +-----------------------------------------------------------------------------------------------------------------------+
+  |               sale_location   sale_location_stall_no   sale_location_stall_spec   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market                        .              outside, east       26    59.09        26     59.09 |
+  | New Carlisle Farmers Market                        8             outside, north       18    40.91        44    100.00 |
+  +-----------------------------------------------------------------------------------------------------------------------+
+
+.         replace sale_location_stall_no= .m if missing(sale_location_stall_no)
+(26 real changes made, 26 to missing)
+
+.         replace sale_location_stall_spec= ".m" if missing(sale_location_stall_spec)
+(0 real changes made)
+
+.         
 .         foreach var of varlist _all {
   2.                 tabulate `var', missing
-  3.                 assert !missing(`var')
-  4.         }       
+  3.                 capture confirm numeric variable `var'
+  4.                 if _rc==0 assert `var' !=.
+  5.                 else assert `var' !=""
+  6.         }       
 
   sale date |      Freq.     Percent        Cum.
 ------------+-----------------------------------
- 2023-08-05 |         26      100.00      100.00
+ 2023-08-05 |         26       59.09       59.09
+ 2023-08-12 |         18       40.91      100.00
 ------------+-----------------------------------
-      Total |         26      100.00
+      Total |         44      100.00
 
  sale date- |
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-  05aug2023 |         26      100.00      100.00
+  05aug2023 |         26       59.09       59.09
+  12aug2023 |         18       40.91      100.00
 ------------+-----------------------------------
-      Total |         26      100.00
+      Total |         44      100.00
 
               sale location |      Freq.     Percent        Cum.
 ----------------------------+-----------------------------------
-New Carlisle Farmers Market |         26      100.00      100.00
+New Carlisle Farmers Market |         44      100.00      100.00
 ----------------------------+-----------------------------------
-                      Total |         26      100.00
+                      Total |         44      100.00
 
         sale location- code |      Freq.     Percent        Cum.
 ----------------------------+-----------------------------------
-New Carlisle Farmers Market |         26      100.00      100.00
+New Carlisle Farmers Market |         44      100.00      100.00
 ----------------------------+-----------------------------------
-                      Total |         26      100.00
+                      Total |         44      100.00
+
+sale_locati |
+on_stall_no |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          8 |         18       40.91       40.91
+         .m |         26       59.09      100.00
+------------+-----------------------------------
+      Total |         44      100.00
+
+sale_location_ |
+    stall_spec |      Freq.     Percent        Cum.
+---------------+-----------------------------------
+ outside, east |         26       59.09       59.09
+outside, north |         18       40.91      100.00
+---------------+-----------------------------------
+         Total |         44      100.00
 
                sale crop |      Freq.     Percent        Cum.
 -------------------------+-----------------------------------
-     bean- fin de bagnol |          2        7.69        7.69
-                cilantro |          4       15.38       23.08
-         pepper- anaheim |          3       11.54       34.62
- pepper- jalapeno- early |          5       19.23       53.85
-    pepper- sweet banana |          2        7.69       61.54
-pepper- sweet- ca wonder |          6       23.08       84.62
-           tomato- amish |          4       15.38      100.00
+     bean- fin de bagnol |          3        6.82        6.82
+         carrot- touchon |          4        9.09       15.91
+                cilantro |          4        9.09       25.00
+  eggplant- black beauty |          3        6.82       31.82
+         pepper- anaheim |          4        9.09       40.91
+ pepper- jalapeno- early |          8       18.18       59.09
+    pepper- sweet banana |          2        4.55       63.64
+pepper- sweet- ca wonder |         10       22.73       86.36
+           tomato- amish |          6       13.64      100.00
 -------------------------+-----------------------------------
-                   Total |         26      100.00
+                   Total |         44      100.00
 
          sale crop- code |      Freq.     Percent        Cum.
 -------------------------+-----------------------------------
-     bean- fin de bagnol |          2        7.69        7.69
-                cilantro |          4       15.38       23.08
-         pepper- anaheim |          3       11.54       34.62
- pepper- jalapeno- early |          5       19.23       53.85
-    pepper- sweet banana |          2        7.69       61.54
-pepper- sweet- ca wonder |          6       23.08       84.62
-           tomato- amish |          4       15.38      100.00
+     bean- fin de bagnol |          3        6.82        6.82
+         carrot- touchon |          4        9.09       15.91
+                cilantro |          4        9.09       25.00
+  eggplant- black beauty |          3        6.82       31.82
+         pepper- anaheim |          4        9.09       40.91
+ pepper- jalapeno- early |          8       18.18       59.09
+    pepper- sweet banana |          2        4.55       63.64
+pepper- sweet- ca wonder |         10       22.73       86.36
+           tomato- amish |          6       13.64      100.00
 -------------------------+-----------------------------------
-                   Total |         26      100.00
+                   Total |         44      100.00
 
 sale amount |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          1 |          7       26.92       26.92
-          2 |          8       30.77       57.69
-          3 |          1        3.85       61.54
-          4 |          4       15.38       76.92
-          5 |          2        7.69       84.62
-          6 |          1        3.85       88.46
-          7 |          1        3.85       92.31
-          8 |          1        3.85       96.15
-         10 |          1        3.85      100.00
+         .5 |          1        2.27        2.27
+          1 |         11       25.00       27.27
+          2 |         11       25.00       52.27
+          3 |          5       11.36       63.64
+          4 |          6       13.64       77.27
+          5 |          5       11.36       88.64
+          6 |          2        4.55       93.18
+          7 |          1        2.27       95.45
+          8 |          1        2.27       97.73
+         10 |          1        2.27      100.00
 ------------+-----------------------------------
-      Total |         26      100.00
+      Total |         44      100.00
 
 sale amount |
        unit |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-      bunch |          4       15.38       15.38
-      pound |          3       11.54       26.92
-       unit |         19       73.08      100.00
+      bunch |          4        9.09        9.09
+      pound |          6       13.64       22.73
+       unit |         34       77.27      100.00
 ------------+-----------------------------------
-      Total |         26      100.00
+      Total |         44      100.00
 
 sale amount |
  unit- code |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-      bunch |          4       15.38       15.38
-      pound |          3       11.54       26.92
-       unit |         19       73.08      100.00
+      bunch |          4        9.09        9.09
+      pound |          6       13.64       22.73
+       unit |         34       77.27      100.00
 ------------+-----------------------------------
-      Total |         26      100.00
+      Total |         44      100.00
 
  sale value |
   (dollars) |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          1 |         13       50.00       50.00
-          2 |          9       34.62       84.62
-          3 |          1        3.85       88.46
-          4 |          1        3.85       92.31
-          5 |          1        3.85       96.15
-          6 |          1        3.85      100.00
+          1 |         25       56.82       56.82
+          2 |         11       25.00       81.82
+          3 |          3        6.82       88.64
+          4 |          2        4.55       93.18
+          5 |          2        4.55       97.73
+          6 |          1        2.27      100.00
 ------------+-----------------------------------
-      Total |         26      100.00
+      Total |         44      100.00
 
 .                 
 .         /* Save clean TBF Market Garden 2023 data */
@@ -378,10 +427,12 @@ sale_date_stata float   %td                   sale date- stata
 sale_location   str27   %27s                  sale location
 sale_location~e long    %27.0g     sale_location_code
                                               sale location- code
+sale_location~o byte    %10.0g                sale_location_stall_no
+sale_location~c str14   %14s                  sale_location_stall_spec
 sale_crop       str24   %24s                  sale crop
 sale_crop_code  long    %24.0g     sale_crop_code
                                               sale crop- code
-sale_amnt       byte    %10.0g                sale amount
+sale_amnt       double  %10.0g                sale amount
 sale_unit       str5    %9s                   sale amount unit
 sale_unit_code  long    %8.0g      sale_unit_code
                                               sale amount unit- code
@@ -393,5 +444,5 @@ sale_value_usd  byte    %10.0g                sale value (dollars)
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.log
   log type:  text
- closed on:   9 Aug 2023, 00:15:55
+ closed on:  14 Aug 2023, 20:37:34
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
