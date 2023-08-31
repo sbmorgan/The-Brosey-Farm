@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: August 8, 2023   	   					 	     			                  ***
-*** Last date modified: August 14, 2023                                                        ***
+*** Last date modified: August 31, 2023                                                        ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -81,7 +81,7 @@ pause off
 	
 	/* Manage sales date variable */
 	foreach var of varlist *date* {
-		display as input "HERE: `var'"
+		display as input "Variable: `var'"
 		tabulate `var', missing
 		capture confirm string var `var'
 		if _rc!=0 tostring `var', replace
@@ -120,9 +120,21 @@ pause off
 *=========================================================================================     
 
 	/* Clean missing values */
+	foreach var of varlist sale_location_stall_no sale_crop sale_crop_code sale_amnt sale_unit sale_unit_code {
+		capture confirm numeric variable `var'
+		if _rc==0 {
+			assert `var'==. if sale_location== "The Brosey Farm: farm stand"
+			replace `var'=.s if sale_location== "The Brosey Farm: farm stand"
+		} 		
+		else {
+			assert `var'=="" if sale_location== "The Brosey Farm: farm stand"
+			replace `var'=".s" if sale_location== "The Brosey Farm: farm stand"			
+		}
+	}
+	
 	tablist sale_location sale_location_stall_no sale_location_stall_spec, sort(variable) ab(32)
-	replace sale_location_stall_no= .m if missing(sale_location_stall_no)
-	replace sale_location_stall_spec= ".m" if missing(sale_location_stall_spec)
+	replace sale_location_stall_no= .m if sale_location_stall_no==.
+	replace sale_location_stall_spec= ".m" if sale_location_stall_spec==""
 	
 	foreach var of varlist _all {
 		tabulate `var', missing
