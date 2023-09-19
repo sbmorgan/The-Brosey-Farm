@@ -144,7 +144,7 @@ pause off
 	}	
 		
 	/* Save clean TBF Market Garden 2023 data */
-	save "$root\tbf_market_garden_sales_2023_clean.dta", replace
+	save "$root\clean_data\tbf_market_garden_sales_2023_clean.dta", replace
 	
  
 *=========================================================================================

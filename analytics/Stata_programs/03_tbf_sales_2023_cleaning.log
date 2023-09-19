@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.log
   log type:  text
- opened on:  19 Sep 2023, 14:14:09
+ opened on:  19 Sep 2023, 14:17:10
 
 . 
 . 
@@ -246,8 +246,8 @@ sale amount |
   |                                                             .        5     3.50       132     92.31 |
   |                      cilantro                        cilantro        4     2.80       136     95.10 |
   |-----------------------------------------------------------------------------------------------------|
-  |           bean- fin de bagnol             bean- fin de bagnol        3     2.10       139     97.20 |
-  | sweet corn- country gentleman   sweet corn- country gentleman        3     2.10       142     99.30 |
+  | sweet corn- country gentleman   sweet corn- country gentleman        3     2.10       139     97.20 |
+  |           bean- fin de bagnol             bean- fin de bagnol        3     2.10       142     99.30 |
   |             pumpkin- ct field               pumpkin- ct field        1     0.70       143    100.00 |
   +-----------------------------------------------------------------------------------------------------+
 
@@ -507,8 +507,8 @@ sale amount |
 
 .                 
 .         /* Save clean TBF Market Garden 2023 data */
-.         save "$root\tbf_market_garden_sales_2023_clean.dta", replace
-file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\tbf_market_garden_sales_2023_clean.dta saved
+.         save "$root\clean_data\tbf_market_garden_sales_2023_clean.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\clean_data\tbf_market_garden_sales_2023_clean.dta saved
 
 .         
 .  
@@ -543,5 +543,5 @@ sale_value_usd  double  %10.0g                sale value (dollars)
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.log
   log type:  text
- closed on:  19 Sep 2023, 14:14:09
+ closed on:  19 Sep 2023, 14:17:10
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
