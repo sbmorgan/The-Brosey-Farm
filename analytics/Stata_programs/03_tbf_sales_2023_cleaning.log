@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.log
   log type:  text
- opened on:  19 Sep 2023, 14:17:10
+ opened on:  20 Sep 2023, 12:45:18
 
 . 
 . 
@@ -246,8 +246,8 @@ sale amount |
   |                                                             .        5     3.50       132     92.31 |
   |                      cilantro                        cilantro        4     2.80       136     95.10 |
   |-----------------------------------------------------------------------------------------------------|
-  | sweet corn- country gentleman   sweet corn- country gentleman        3     2.10       139     97.20 |
-  |           bean- fin de bagnol             bean- fin de bagnol        3     2.10       142     99.30 |
+  |           bean- fin de bagnol             bean- fin de bagnol        3     2.10       139     97.20 |
+  | sweet corn- country gentleman   sweet corn- country gentleman        3     2.10       142     99.30 |
   |             pumpkin- ct field               pumpkin- ct field        1     0.70       143    100.00 |
   +-----------------------------------------------------------------------------------------------------+
 
@@ -266,8 +266,8 @@ sale amount |
   |                                              .        5     3.50       132     92.31 |
   |                      cilantro                3        4     2.80       136     95.10 |
   |--------------------------------------------------------------------------------------|
-  | sweet corn- country gentleman               10        3     2.10       139     97.20 |
-  |           bean- fin de bagnol                1        3     2.10       142     99.30 |
+  |           bean- fin de bagnol                1        3     2.10       139     97.20 |
+  | sweet corn- country gentleman               10        3     2.10       142     99.30 |
   |             pumpkin- ct field                9        1     0.70       143    100.00 |
   +--------------------------------------------------------------------------------------+
 
@@ -543,5 +543,5 @@ sale_value_usd  double  %10.0g                sale value (dollars)
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.log
   log type:  text
- closed on:  19 Sep 2023, 14:17:10
+ closed on:  20 Sep 2023, 12:45:19
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
