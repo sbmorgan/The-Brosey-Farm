@@ -5,7 +5,7 @@
 *******************************************************************************/
 
 capture log close clean_01
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_merge.log", replace name(clean_01)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\06_tbf_data_2023_merge_sales.log", replace name(clean_01)
 
 
 *************************************************************************************************
@@ -16,14 +16,14 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***																	 				          ***
 *** Contents:                                                       				          ***
 ***    0) SET UP CODE                              				                              ***
-***    I)                                                                        ***
-***    II)                                                                    ***
-***    III)                                                                         ***
-***    IV)                                                              ***
+***    I)                                                                                     ***
+***    II)                                                                                    ***
+***    III)                                                                                   ***
+***    IV)                                                                                    ***
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: September 20, 2023   	   					 	     			              ***
-*** Last date modified: September 20, 2023                                                    ***
+*** Last date modified: September 26, 2023                                                    ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -56,20 +56,25 @@ pause off
 *=========================================================================================
 	
 	/* Load raw data */
-	*use "$root\clean_data\tbf_market_garden_data_2023_clean.dta", clear
-	
-
-	*merge  "$root\clean_data\tbf_market_garden_sales_2023_clean.dta", replace
+	*use "$root\clean_data\tbf_market_garden_data_2023_clean_indicators.dta", clear
 	
    
 *=========================================================================================
 * II) 
 *=========================================================================================  
 
-	/* Save raw TBF Market Garden 2023 data */
-	*save "$root\raw_data\tbf_market_garden_data&sales_2023_clean.dta", replace
-    
 
+*=========================================================================================
+* III) 
+*=========================================================================================  
+
+
+*=========================================================================================
+* IV) 
+*=========================================================================================  
+
+	/* Save raw TBF Market Garden 2023 data */
+	*save "$root\raw_data\[].dta", replace
 
 
 log close _all

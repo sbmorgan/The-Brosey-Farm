@@ -17,7 +17,7 @@
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 13, 2023   	   					 	     			                  ***
-*** Last date modified: September 20, 2023                                                    ***
+*** Last date modified: September 26, 2023                                                    ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
@@ -87,7 +87,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	}
 	
 	/* Harvesting */
-	forval x=1/20 {
+	forval x=1/25 {
 		label variable harvest_date_`x' "date of harvest: round `x'"
 		label variable harvest_amnt_`x' "harvested amount (wet): round `x'"
 		label variable harvest_unit_`x' "unit of harvest: round `x'"

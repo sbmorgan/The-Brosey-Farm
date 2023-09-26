@@ -1,18 +1,18 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_merge.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- opened on:  20 Sep 2023, 13:58:00
+ opened on:  26 Sep 2023, 16:34:27
 
 . 
 . 
 . *************************************************************************************************
 . ***                                                                                           ***
-. *** Program name: 04_tbf_data_2023_merge.do                                                   ***
+. *** Program name: 05_tbf_sales_2023_indicators.do                                              ***
 . *** Project: TBF Market Garden 2023                                                                       ***
-. *** Purpose: Merge TBF Market Garden 2023 data and sales                                      ***    
-. ***                                                                                                                                                            
->                    ***
+. *** Purpose: Create Analysis Indicators for TBF Market Garden 2023 sales data                       ***    
+. ***                                                                                                                                                      
+>                          ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
 . ***    I)                                                                        ***
@@ -21,8 +21,8 @@
 . ***    IV)                                                              ***
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
-. *** Start date: September 20, 2023                                                                                            ***
-. *** Last date modified: September 20, 2023                                                    ***
+. *** Start date: September 26, 2023                                                                                            ***
+. *** Last date modified: September 26, 2023                                                    ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -69,26 +69,33 @@
 . * I) 
 . *=========================================================================================
 .         
-.         /* Load raw data */
-.         *use "$root\clean_data\tbf_market_garden_data_2023_clean.dta", clear
+.         /* Load clean TBF Market Garden 2023 data */
+.         use "$root\clean_data\tbf_market_garden_sales_2023_clean.dta", clear
+
 .         
-. 
-.         *merge  "$root\clean_data\tbf_market_garden_sales_2023_clean.dta", replace
 .         
-.    
 . *=========================================================================================
 . * II) 
+. *=========================================================================================
+.    
+. *=========================================================================================
+. * III) 
 . *=========================================================================================  
 . 
-.         /* Save raw TBF Market Garden 2023 data */
-.         *save "$root\raw_data\tbf_market_garden_data&sales_2023_clean.dta", replace
+.         /* Save TBF Market Garden 2023 data with analysis indicators */
+.         quietly compress
+
+.         save "$root\clean_data\tbf_market_garden_sales_2023_clean_indicators.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\clean_data\tbf_market_garden_sales_2023_clean_indicators.dta
+    saved
+
 .     
 . 
 . 
 . 
 . log close _all
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_merge.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- closed on:  20 Sep 2023, 13:58:00
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  26 Sep 2023, 16:34:27
+-----------------------------------------------------------------------------------------------------------------------------------------------------------

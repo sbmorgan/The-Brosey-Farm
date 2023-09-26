@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  20 Sep 2023, 12:45:08
+ opened on:  26 Sep 2023, 16:34:15
 
 . 
 . 
@@ -84,7 +84,7 @@
 
 .         
 .         /* Harvesting */
-.         forval x=1/20 {
+.         forval x=1/25 {
   2.                 label variable harvest_date_`x' "date of harvest: round `x'"
   3.                 label variable harvest_amnt_`x' "harvested amount (wet): round `x'"
   4.                 label variable harvest_unit_`x' "unit of harvest: round `x'"
@@ -95,5 +95,5 @@
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  20 Sep 2023, 12:45:08
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  26 Sep 2023, 16:34:15
+-----------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: September 20, 2023                                                    ***
+*** Last date modified: September 26, 2023                                                    ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -168,10 +168,12 @@ pause off
 		replace sow_no_thin_per=.m if sow_no_thin_per==.
 		
 		foreach var of varlist transp_* {
-			tablist crop sow_date if missing(`var'), sort(var) ab(32)
-			capture confirm numeric variable `var'
-			if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
-			else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
+			capture tablist crop sow_date if missing(`var'), sort(var) ab(32)
+			if _rc==0 {
+				capture confirm numeric variable `var'
+				if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
+				else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
+			}
 		}
 		
 		foreach var of varlist transp*_2* {
@@ -203,6 +205,7 @@ pause off
 		}
 		
 	/* Save clean TBF Market Garden 2023 data */
+	quietly compress
 	save "$root\clean_data\tbf_market_garden_data_2023_clean.dta", replace
 	
  
