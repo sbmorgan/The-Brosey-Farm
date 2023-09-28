@@ -22,7 +22,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: September 26, 2023   	   					 	     			              ***
-*** Last date modified: September 26, 2023                                                    ***
+*** Last date modified: September 27, 2023                                                    ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -55,12 +55,22 @@ pause off
 *=========================================================================================
 	
 	/* Load clean TBF Market Garden 2023 data */
-	use "$root\clean_data\tbf_market_garden_data_2023_clean.dta", clear
+	use "$root\modified_data\tbf_market_garden_data_2023_clean.dta", clear
 	
 	
 *=========================================================================================
 * II) CREATE ANALYSIS INDICATORS
 *=========================================================================================
+	
+	/* */
+	generate c_harvest_no_plant=.c
+	label variable c_harvest_no_plant "number of plants harvested"
+	replace c_harvest_no_plant=transp_no_end_1 if sow_type=="indoor seed" & transp_no_end_2==.s
+	replace c_harvest_no_plant=transp_no_end_2 if sow_type=="indoor seed" & transp_no_end_2!=.s
+	replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed"
+	replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant"
+	tablist sow_type crop transp_no_end_1 transp_no_end_2 sow_no_thin_per sow_no_cellrowhill c_harvest_no_plant, sort(v) ab(32)
+	table crop, statistic(total c_harvest_no_plant)
 	
 	/* Harvest */
 	
@@ -114,16 +124,22 @@ pause off
 	/* Save TBF Market Garden 2023 data with analysis indicators */
 	drop flag_*
 	quietly compress
-	save "$root\clean_data\tbf_market_garden_data_2023_clean_indicators.dta", replace
+	save "$root\modified_data\tbf_market_garden_data_2023_clean_indicators.dta", replace
+	
+	/* */
+	des c_*
+	summarize c_*, detail
 	
    
 *=========================================================================================
 * III) 
 *=========================================================================================  
 
-	/* */
-	des c_*
-	summarize c_*, detail
+	collapse (sum) c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit, by(crop)
+	tablist crop c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit, sort(v) ab(32)
+
+	generate c_harvest_wtlb_per_plant = c_harvest_total_wtlb / c_harvest_no_plant
+	tablist crop c_harvest_wtlb_per_plant c_harvest_total_wtlb c_harvest_no_plant, sort(v) ab(32)
     
 
 log close _all

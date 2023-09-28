@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: September 26, 2023                                                    ***
+*** Last date modified: September 27, 2023                                                    ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -102,8 +102,8 @@ pause off
 	foreach var of varlist `cat_str_list' {
 		if `var'=="." continue
 		encode (`var'), generate(`var'_code)
-		tablist `var' `var'_code, sort(variable) ab(32)
-		tablist `var' `var'_code, sort(variable) nolabel ab(32)
+		tablist `var' `var'_code, sort(v) ab(32)
+		tablist `var' `var'_code, sort(v) nolabel ab(32)
 		local varlab : variable label `var'
 		label variable `var'_code "`varlab'- code"
 		order `var'_code, after(`var')
@@ -120,8 +120,8 @@ pause off
 		tabulate `var', generate(`var'_code)
 		drop `var'_code1
 		rename `var'_code2 `var'_code
-		tablist `var' `var'_code, sort(variable) ab(32)
-		tablist `var' `var'_code, sort(variable) nolabel ab(32)
+		tablist `var' `var'_code, sort(v) ab(32)
+		tablist `var' `var'_code, sort(v) nolabel ab(32)
 		local varlab : variable label `var'
 		label variable `var'_code "`varlab'- code"
 		order `var'_code, after(`var')
@@ -141,34 +141,34 @@ pause off
 		
 		*-> Non-seeded transplants (externally sourced transplants)
 		foreach var of varlist sow_date-transp_harden_date_end_stata {
-			tablist sow_type `var', sort(var) ab(32) nolabel
+			tablist sow_type `var', sort(v) ab(32) nolabel
 			assert missing(`var') if sow_type=="external transplant"
 			capture confirm numeric variable `var'
 			if _rc==0 replace `var'= .s if sow_type=="external transplant"
 			else replace `var'= ".s" if sow_type=="external transplant"
-			tablist sow_type `var', sort(var) ab(32) nolabel
+			tablist sow_type `var', sort(v) ab(32) nolabel
 		}
 		
 		*-> Seedlings variables: *sow* transp*
 		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoor seeding.
-			tablist sow_med_code `var', sort(var) ab(32) nolabel
+			tablist sow_med_code `var', sort(v) ab(32) nolabel
 			assert missing(`var') if inlist(sow_med_code, 1, 2)
 			capture confirm numeric variable `var'
 			if _rc==0 replace `var'= .s if inlist(sow_med_code, 1, 2)
 			else replace `var'= ".s" if inlist(sow_med_code, 1, 2)
-			tablist sow_med_code `var', sort(var) ab(32) nolabel
+			tablist sow_med_code `var', sort(v) ab(32) nolabel
 		}
 
-		tablist sow_heatmat sow_heatmat_temp, sort(var) ab(32)
+		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 		assert sow_heatmat_temp==. if sow_heatmat=="no"
 		replace sow_heatmat_temp=.s if sow_heatmat=="no"
-		tablist sow_heatmat sow_heatmat_temp, sort(var) ab(32)
+		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 		
-		tablist crop sow_date if sow_no_thin_per==., sort(var) ab(32) // These are true missing data. Should have been filled out but were not.
+		tablist crop sow_date if sow_no_thin_per==., sort(v) ab(32) // These are true missing data. Should have been filled out but were not.
 		replace sow_no_thin_per=.m if sow_no_thin_per==.
 		
 		foreach var of varlist transp_* {
-			capture tablist crop sow_date if missing(`var'), sort(var) ab(32)
+			capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
 			if _rc==0 {
 				capture confirm numeric variable `var'
 				if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
@@ -177,7 +177,7 @@ pause off
 		}
 		
 		foreach var of varlist transp*_2* {
-			tablist crop sow_date if missing(`var'), sort(var) ab(32)
+			tablist crop sow_date if missing(`var'), sort(v) ab(32)
 			capture confirm numeric variable `var'
 			if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
 			else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
@@ -189,7 +189,7 @@ pause off
 			capture confirm numeric variable `var'
 			if _rc==0 replace `var'= .s if missing(`var')
 			else replace `var'= ".s" if missing(`var') | `var'=="."
-			tablist sow_type `var', sort(var) ab(32) nolabel
+			tablist sow_type `var', sort(v) ab(32) nolabel
 		}
 		
 		*-> Notes
@@ -206,7 +206,7 @@ pause off
 		
 	/* Save clean TBF Market Garden 2023 data */
 	quietly compress
-	save "$root\clean_data\tbf_market_garden_data_2023_clean.dta", replace
+	save "$root\modified_data\tbf_market_garden_data_2023_clean.dta", replace
 	
  
 *=========================================================================================
