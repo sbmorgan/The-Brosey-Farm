@@ -111,7 +111,7 @@ pause off
 	replace c_harvest_total_unit= .c if flag_crop_nout==1 
 	label variable c_harvest_total_unit "total harvest- units"
 	
-	forval x=1/25 {
+	forval x=1/30 {
 		capture confirm string variable harvest_unit_`x'
 		if _rc==0 {
 			replace c_harvest_total_unit= c_harvest_total_unit + harvest_amnt_`x' if inlist(harvest_unit_`x',"unit","small","medium","large") & flag_crop_nout==0
@@ -139,7 +139,7 @@ pause off
 	tablist crop c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit, sort(v) ab(32)
 
 	generate c_harvest_wtlb_per_plant = c_harvest_total_wtlb / c_harvest_no_plant
-	tablist crop c_harvest_wtlb_per_plant c_harvest_total_wtlb c_harvest_no_plant, sort(v) ab(32)
+	tablist crop c_harvest_total_wtlb c_harvest_no_plant c_harvest_wtlb_per_plant, sort(v) ab(32)
     
 
 log close _all

@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- opened on:  27 Sep 2023, 23:40:58
+ opened on:  12 Oct 2023, 23:26:44
 
 . 
 . 
@@ -71,7 +71,7 @@
 . 
 .         /* Load raw data */
 .         import excel "$root\raw_data\Brosey Farming.xlsx", sheet("data_2023") firstrow clear
-(165 vars, 1,001 obs)
+(180 vars, 1,001 obs)
 
 .         keep crop-notes
 
@@ -79,19 +79,21 @@
 (969 observations deleted)
 
 .         ds 
-crop          sow_light_~e  sow_fer~te_4  transp_n~d_2  fert_date_3   path_~pe_2_1  path_~te_3_3  harvest_d~_5  harvest_a~_9  harvest_u~13  harvest_d~18  harvest_a~22
-sow_type      sow_fer~te_1  sow_fert~k_4  fert_typ~k_1  fert_amnt_~3  path_~te_2_1  harvest_d~_1  harvest_a~_5  harvest_u~_9  harvest_d~14  harvest_a~18  harvest_u~22
-sow_date      sow_fert~k_1  sow_fer~me_4  fert_typ~e_1  fert_unit_3   path_~pe_2_2  harvest_a~_1  harvest_u~_5  harvest_d~10  harvest_a~14  harvest_u~18  harvest_d~23
-sow_med       sow_fer~me_1  sow_fer~se_4  fert_date_1   path_type_1   path_~te_2_2  harvest_u~_1  harvest_d~_6  harvest_a~10  harvest_u~14  harvest_d~19  harvest_a~23
-sow_cell      sow_fer~se_1  transp_har~t  fert_amnt_~1  path_date_1   path_~pe_2_3  harvest_d~_2  harvest_a~_6  harvest_u~10  harvest_d~15  harvest_a~19  harvest_u~23
-sow_no_cel~l  sow_fer~te_2  transp_har~d  fert_unit_1   path_~pe_1_1  path_~te_2_3  harvest_a~_2  harvest_u~_6  harvest_d~11  harvest_a~15  harvest_u~19  harvest_d~24
-sow_no_see~r  sow_fert~k_2  transp_dat~1  fert_typ~k_2  path_~te_1_1  path_type_3   harvest_u~_2  harvest_d~_7  harvest_a~11  harvest_u~15  harvest_d~20  harvest_a~24
-sow_no_ger~r  sow_fer~me_2  transp_med_1  fert_typ~e_2  path_~pe_1_2  path_date_3   harvest_d~_3  harvest_a~_7  harvest_u~11  harvest_d~16  harvest_a~20  harvest_u~24
-sow_to_ger~s  sow_fer~se_2  transp_n~t_1  fert_date_2   path_~te_1_2  path_~pe_3_1  harvest_a~_3  harvest_u~_7  harvest_d~12  harvest_a~16  harvest_u~20  harvest_d~25
-sow_no_thi~r  sow_fer~te_3  transp_n~d_1  fert_amnt_~2  path_~pe_1_3  path_~te_3_1  harvest_u~_3  harvest_d~_8  harvest_a~12  harvest_u~16  harvest_d~21  harvest_a~25
-sow_heatmat   sow_fert~k_3  transp_dat~2  fert_unit_2   path_~te_1_3  path_~pe_3_2  harvest_d~_4  harvest_a~_8  harvest_u~12  harvest_d~17  harvest_a~21  harvest_u~25
-sow_heatma~p  sow_fer~me_3  transp_med_2  fert_typ~k_3  path_type_2   path_~te_3_2  harvest_a~_4  harvest_u~_8  harvest_d~13  harvest_a~17  harvest_u~21  notes
-sow_light_~s  sow_fer~se_3  transp_n~t_2  fert_typ~e_3  path_date_2   path_~pe_3_3  harvest_u~_4  harvest_d~_9  harvest_a~13  harvest_u~17  harvest_d~22
+crop          sow_fert~k_1  transp_har~t  fert_typ~k_2  path_~te_1_2  path_~pe_3_2  harvest_u~_4  harvest_u~_9  harvest_u~14  harvest_u~19  harvest_u~24  harvest_u~29
+sow_type      sow_fer~me_1  transp_har~d  fert_typ~e_2  path_~pe_1_3  path_~te_3_2  harvest_d~_5  harvest_d~10  harvest_d~15  harvest_d~20  harvest_d~25  harvest_d~30
+sow_date      sow_fer~se_1  transp_dat~1  fert_date_2   path_~te_1_3  path_~pe_3_3  harvest_a~_5  harvest_a~10  harvest_a~15  harvest_a~20  harvest_a~25  harvest_a~30
+sow_med       sow_fer~te_2  transp_med_1  fert_amnt_~2  path_type_2   path_~te_3_3  harvest_u~_5  harvest_u~10  harvest_u~15  harvest_u~20  harvest_u~25  harvest_u~30
+sow_cell      sow_fert~k_2  transp_n~t_1  fert_unit_2   path_date_2   harvest_d~_1  harvest_d~_6  harvest_d~11  harvest_d~16  harvest_d~21  harvest_d~26  notes
+sow_no_cel~l  sow_fer~me_2  transp_n~d_1  fert_typ~k_3  path_~pe_2_1  harvest_a~_1  harvest_a~_6  harvest_a~11  harvest_a~16  harvest_a~21  harvest_a~26
+sow_no_see~r  sow_fer~se_2  transp_dat~2  fert_typ~e_3  path_~te_2_1  harvest_u~_1  harvest_u~_6  harvest_u~11  harvest_u~16  harvest_u~21  harvest_u~26
+sow_no_ger~r  sow_fer~te_3  transp_med_2  fert_date_3   path_~pe_2_2  harvest_d~_2  harvest_d~_7  harvest_d~12  harvest_d~17  harvest_d~22  harvest_d~27
+sow_to_ger~s  sow_fert~k_3  transp_n~t_2  fert_amnt_~3  path_~te_2_2  harvest_a~_2  harvest_a~_7  harvest_a~12  harvest_a~17  harvest_a~22  harvest_a~27
+sow_no_thi~r  sow_fer~me_3  transp_n~d_2  fert_unit_3   path_~pe_2_3  harvest_u~_2  harvest_u~_7  harvest_u~12  harvest_u~17  harvest_u~22  harvest_u~27
+sow_heatmat   sow_fer~se_3  fert_typ~k_1  path_type_1   path_~te_2_3  harvest_d~_3  harvest_d~_8  harvest_d~13  harvest_d~18  harvest_d~23  harvest_d~28
+sow_heatma~p  sow_fer~te_4  fert_typ~e_1  path_date_1   path_type_3   harvest_a~_3  harvest_a~_8  harvest_a~13  harvest_a~18  harvest_a~23  harvest_a~28
+sow_light_~s  sow_fert~k_4  fert_date_1   path_~pe_1_1  path_date_3   harvest_u~_3  harvest_u~_8  harvest_u~13  harvest_u~18  harvest_u~23  harvest_u~28
+sow_light_~e  sow_fer~me_4  fert_amnt_~1  path_~te_1_1  path_~pe_3_1  harvest_d~_4  harvest_d~_9  harvest_d~14  harvest_d~19  harvest_d~24  harvest_d~29
+sow_fer~te_1  sow_fer~se_4  fert_unit_1   path_~pe_1_2  path_~te_3_1  harvest_a~_4  harvest_a~_9  harvest_a~14  harvest_a~19  harvest_a~24  harvest_a~29
 
 .         
 .         /* Save raw TBF Market Garden 2023 data */
@@ -127,7 +129,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: July 13, 2023                                                                                                     ***
-. *** Last date modified: September 26, 2023                                                    ***
+. *** Last date modified: October 12, 2023                                                    ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
@@ -142,7 +144,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  27 Sep 2023, 23:40:58
+ opened on:  12 Oct 2023, 23:26:44
 
 . 
 . 
@@ -224,7 +226,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 .         
 .         /* Harvesting */
-.         forval x=1/25 {
+.         forval x=1/30 {
   2.                 label variable harvest_date_`x' "date of harvest: round `x'"
   3.                 label variable harvest_amnt_`x' "harvested amount (wet): round `x'"
   4.                 label variable harvest_unit_`x' "unit of harvest: round `x'"
@@ -235,7 +237,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  27 Sep 2023, 23:40:58
+ closed on:  12 Oct 2023, 23:26:44
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -823,29 +825,30 @@ Variable: harvest_date_1
    harvest: |
     round 1 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         15       46.88       46.88
- 2023-07-26 |          1        3.12       50.00
- 2023-07-27 |          1        3.12       53.12
- 2023-07-29 |          2        6.25       59.38
- 2023-08-01 |          1        3.12       62.50
- 2023-08-05 |          1        3.12       65.62
- 2023-08-10 |          1        3.12       68.75
- 2023-08-12 |          6       18.75       87.50
- 2023-08-26 |          2        6.25       93.75
- 2023-09-07 |          1        3.12       96.88
- 2023-09-19 |          1        3.12      100.00
+            |         13       40.62       40.62
+ 2023-07-26 |          1        3.12       43.75
+ 2023-07-27 |          1        3.12       46.88
+ 2023-07-29 |          2        6.25       53.12
+ 2023-08-01 |          1        3.12       56.25
+ 2023-08-05 |          1        3.12       59.38
+ 2023-08-10 |          1        3.12       62.50
+ 2023-08-12 |          6       18.75       81.25
+ 2023-08-26 |          2        6.25       87.50
+ 2023-09-07 |          1        3.12       90.62
+ 2023-09-19 |          1        3.12       93.75
+ 2023-10-02 |          2        6.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(15 missing values generated)
-(15 missing values generated)
-(15 missing values generated)
+(13 missing values generated)
+(13 missing values generated)
+(13 missing values generated)
 harvest_date_1_year: all characters numeric; replaced as int
-(15 missing values generated)
+(13 missing values generated)
 harvest_date_1_month: all characters numeric; replaced as byte
-(15 missing values generated)
+(13 missing values generated)
 harvest_date_1_day: all characters numeric; replaced as byte
-(15 missing values generated)
-(15 missing values generated)
+(13 missing values generated)
+(13 missing values generated)
 Variable: harvest_date_2
 
     date of |
@@ -910,29 +913,30 @@ Variable: harvest_date_4
    harvest: |
     round 4 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         20       62.50       62.50
- 2023-08-01 |          1        3.12       65.62
- 2023-08-08 |          1        3.12       68.75
- 2023-08-12 |          2        6.25       75.00
- 2023-08-19 |          1        3.12       78.12
- 2023-08-21 |          1        3.12       81.25
- 2023-08-23 |          1        3.12       84.38
- 2023-09-02 |          1        3.12       87.50
- 2023-09-07 |          2        6.25       93.75
- 2023-09-09 |          1        3.12       96.88
- 2023-09-21 |          1        3.12      100.00
+            |         19       59.38       59.38
+ 2023-08-01 |          1        3.12       62.50
+ 2023-08-08 |          1        3.12       65.62
+ 2023-08-12 |          2        6.25       71.88
+ 2023-08-19 |          1        3.12       75.00
+ 2023-08-21 |          1        3.12       78.12
+ 2023-08-23 |          1        3.12       81.25
+ 2023-09-02 |          1        3.12       84.38
+ 2023-09-07 |          2        6.25       90.62
+ 2023-09-09 |          1        3.12       93.75
+ 2023-09-21 |          1        3.12       96.88
+ 2023-10-09 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(20 missing values generated)
-(20 missing values generated)
-(20 missing values generated)
+(19 missing values generated)
+(19 missing values generated)
+(19 missing values generated)
 harvest_date_4_year: all characters numeric; replaced as int
-(20 missing values generated)
+(19 missing values generated)
 harvest_date_4_month: all characters numeric; replaced as byte
-(20 missing values generated)
+(19 missing values generated)
 harvest_date_4_day: all characters numeric; replaced as byte
-(20 missing values generated)
-(20 missing values generated)
+(19 missing values generated)
+(19 missing values generated)
 Variable: harvest_date_5
 
     date of |
@@ -1041,218 +1045,234 @@ Variable: harvest_date_9
    harvest: |
     round 9 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         25       78.12       78.12
- 2023-08-25 |          1        3.12       81.25
- 2023-09-04 |          1        3.12       84.38
- 2023-09-06 |          2        6.25       90.62
- 2023-09-07 |          1        3.12       93.75
- 2023-09-09 |          1        3.12       96.88
- 2023-09-15 |          1        3.12      100.00
+            |         23       71.88       71.88
+ 2023-08-25 |          1        3.12       75.00
+ 2023-09-04 |          1        3.12       78.12
+ 2023-09-06 |          2        6.25       84.38
+ 2023-09-07 |          1        3.12       87.50
+ 2023-09-09 |          1        3.12       90.62
+ 2023-09-15 |          1        3.12       93.75
+ 2023-09-30 |          1        3.12       96.88
+ 2023-10-05 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(25 missing values generated)
-(25 missing values generated)
-(25 missing values generated)
+(23 missing values generated)
+(23 missing values generated)
+(23 missing values generated)
 harvest_date_9_year: all characters numeric; replaced as int
-(25 missing values generated)
+(23 missing values generated)
 harvest_date_9_month: all characters numeric; replaced as byte
-(25 missing values generated)
+(23 missing values generated)
 harvest_date_9_day: all characters numeric; replaced as byte
-(25 missing values generated)
-(25 missing values generated)
+(23 missing values generated)
+(23 missing values generated)
 Variable: harvest_date_10
 
     date of |
    harvest: |
    round 10 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         25       78.12       78.12
- 2023-08-26 |          1        3.12       81.25
- 2023-09-06 |          1        3.12       84.38
- 2023-09-09 |          3        9.38       93.75
- 2023-09-13 |          1        3.12       96.88
- 2023-09-21 |          1        3.12      100.00
+            |         24       75.00       75.00
+ 2023-08-26 |          1        3.12       78.12
+ 2023-09-06 |          1        3.12       81.25
+ 2023-09-09 |          3        9.38       90.62
+ 2023-09-13 |          1        3.12       93.75
+ 2023-09-21 |          1        3.12       96.88
+ 2023-10-03 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(25 missing values generated)
-(25 missing values generated)
-(25 missing values generated)
+(24 missing values generated)
+(24 missing values generated)
+(24 missing values generated)
 harvest_date_10_year: all characters numeric; replaced as int
-(25 missing values generated)
+(24 missing values generated)
 harvest_date_10_month: all characters numeric; replaced as byte
-(25 missing values generated)
+(24 missing values generated)
 harvest_date_10_day: all characters numeric; replaced as byte
-(25 missing values generated)
-(25 missing values generated)
+(24 missing values generated)
+(24 missing values generated)
 Variable: harvest_date_11
 
     date of |
    harvest: |
    round 11 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         25       78.12       78.12
- 2023-08-29 |          1        3.12       81.25
- 2023-09-09 |          1        3.12       84.38
- 2023-09-13 |          3        9.38       93.75
- 2023-09-15 |          1        3.12       96.88
- 2023-09-23 |          1        3.12      100.00
+            |         24       75.00       75.00
+ 2023-08-29 |          1        3.12       78.12
+ 2023-09-09 |          1        3.12       81.25
+ 2023-09-13 |          3        9.38       90.62
+ 2023-09-15 |          1        3.12       93.75
+ 2023-09-23 |          1        3.12       96.88
+ 2023-10-05 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(25 missing values generated)
-(25 missing values generated)
-(25 missing values generated)
+(24 missing values generated)
+(24 missing values generated)
+(24 missing values generated)
 harvest_date_11_year: all characters numeric; replaced as int
-(25 missing values generated)
+(24 missing values generated)
 harvest_date_11_month: all characters numeric; replaced as byte
-(25 missing values generated)
+(24 missing values generated)
 harvest_date_11_day: all characters numeric; replaced as byte
-(25 missing values generated)
-(25 missing values generated)
+(24 missing values generated)
+(24 missing values generated)
 Variable: harvest_date_12
 
     date of |
    harvest: |
    round 12 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         26       81.25       81.25
- 2023-08-30 |          1        3.12       84.38
- 2023-09-13 |          1        3.12       87.50
- 2023-09-15 |          3        9.38       96.88
- 2023-09-23 |          1        3.12      100.00
+            |         25       78.12       78.12
+ 2023-08-30 |          1        3.12       81.25
+ 2023-09-13 |          1        3.12       84.38
+ 2023-09-15 |          3        9.38       93.75
+ 2023-09-23 |          1        3.12       96.88
+ 2023-09-30 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(26 missing values generated)
-(26 missing values generated)
-(26 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
 harvest_date_12_year: all characters numeric; replaced as int
-(26 missing values generated)
+(25 missing values generated)
 harvest_date_12_month: all characters numeric; replaced as byte
-(26 missing values generated)
+(25 missing values generated)
 harvest_date_12_day: all characters numeric; replaced as byte
-(26 missing values generated)
-(26 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
 Variable: harvest_date_13
 
     date of |
    harvest: |
    round 13 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         27       84.38       84.38
- 2023-09-02 |          1        3.12       87.50
- 2023-09-23 |          4       12.50      100.00
+            |         25       78.12       78.12
+ 2023-09-02 |          1        3.12       81.25
+ 2023-09-23 |          4       12.50       93.75
+ 2023-09-30 |          1        3.12       96.88
+ 2023-10-03 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(27 missing values generated)
-(27 missing values generated)
-(27 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
 harvest_date_13_year: all characters numeric; replaced as int
-(27 missing values generated)
+(25 missing values generated)
 harvest_date_13_month: all characters numeric; replaced as byte
-(27 missing values generated)
+(25 missing values generated)
 harvest_date_13_day: all characters numeric; replaced as byte
-(27 missing values generated)
-(27 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
 Variable: harvest_date_14
 
     date of |
    harvest: |
    round 14 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         30       93.75       93.75
- 2023-09-04 |          1        3.12       96.88
- 2023-09-27 |          1        3.12      100.00
+            |         25       78.12       78.12
+ 2023-09-04 |          1        3.12       81.25
+ 2023-09-27 |          1        3.12       84.38
+ 2023-09-30 |          3        9.38       93.75
+ 2023-10-05 |          2        6.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(30 missing values generated)
-(30 missing values generated)
-(30 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
 harvest_date_14_year: all characters numeric; replaced as int
-(30 missing values generated)
+(25 missing values generated)
 harvest_date_14_month: all characters numeric; replaced as byte
-(30 missing values generated)
+(25 missing values generated)
 harvest_date_14_day: all characters numeric; replaced as byte
-(30 missing values generated)
-(30 missing values generated)
+(25 missing values generated)
+(25 missing values generated)
 Variable: harvest_date_15
 
     date of |
    harvest: |
    round 15 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         31       96.88       96.88
- 2023-09-06 |          1        3.12      100.00
+            |         26       81.25       81.25
+ 2023-09-06 |          1        3.12       84.38
+ 2023-09-30 |          1        3.12       87.50
+ 2023-10-03 |          3        9.38       96.88
+ 2023-10-11 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(31 missing values generated)
-(31 missing values generated)
-(31 missing values generated)
+(26 missing values generated)
+(26 missing values generated)
+(26 missing values generated)
 harvest_date_15_year: all characters numeric; replaced as int
-(31 missing values generated)
+(26 missing values generated)
 harvest_date_15_month: all characters numeric; replaced as byte
-(31 missing values generated)
+(26 missing values generated)
 harvest_date_15_day: all characters numeric; replaced as byte
-(31 missing values generated)
-(31 missing values generated)
+(26 missing values generated)
+(26 missing values generated)
 Variable: harvest_date_16
 
     date of |
    harvest: |
    round 16 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         31       96.88       96.88
- 2023-09-07 |          1        3.12      100.00
+            |         27       84.38       84.38
+ 2023-09-07 |          1        3.12       87.50
+ 2023-10-03 |          1        3.12       90.62
+ 2023-10-05 |          3        9.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(31 missing values generated)
-(31 missing values generated)
-(31 missing values generated)
+(27 missing values generated)
+(27 missing values generated)
+(27 missing values generated)
 harvest_date_16_year: all characters numeric; replaced as int
-(31 missing values generated)
+(27 missing values generated)
 harvest_date_16_month: all characters numeric; replaced as byte
-(31 missing values generated)
+(27 missing values generated)
 harvest_date_16_day: all characters numeric; replaced as byte
-(31 missing values generated)
-(31 missing values generated)
+(27 missing values generated)
+(27 missing values generated)
 Variable: harvest_date_17
 
     date of |
    harvest: |
    round 17 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         31       96.88       96.88
- 2023-09-09 |          1        3.12      100.00
+            |         30       93.75       93.75
+ 2023-09-09 |          1        3.12       96.88
+ 2023-10-05 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(31 missing values generated)
-(31 missing values generated)
-(31 missing values generated)
+(30 missing values generated)
+(30 missing values generated)
+(30 missing values generated)
 harvest_date_17_year: all characters numeric; replaced as int
-(31 missing values generated)
+(30 missing values generated)
 harvest_date_17_month: all characters numeric; replaced as byte
-(31 missing values generated)
+(30 missing values generated)
 harvest_date_17_day: all characters numeric; replaced as byte
-(31 missing values generated)
-(31 missing values generated)
+(30 missing values generated)
+(30 missing values generated)
 Variable: harvest_date_18
 
     date of |
    harvest: |
    round 18 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |         31       96.88       96.88
- 2023-09-13 |          1        3.12      100.00
+            |         30       93.75       93.75
+ 2023-09-13 |          1        3.12       96.88
+ 2023-10-11 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-(31 missing values generated)
-(31 missing values generated)
-(31 missing values generated)
+(30 missing values generated)
+(30 missing values generated)
+(30 missing values generated)
 harvest_date_18_year: all characters numeric; replaced as int
-(31 missing values generated)
+(30 missing values generated)
 harvest_date_18_month: all characters numeric; replaced as byte
-(31 missing values generated)
+(30 missing values generated)
 harvest_date_18_day: all characters numeric; replaced as byte
-(31 missing values generated)
-(31 missing values generated)
+(30 missing values generated)
+(30 missing values generated)
 Variable: harvest_date_19
 
     date of |
@@ -1339,55 +1359,155 @@ Variable: harvest_date_23
    harvest: |
    round 23 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          . |         32      100.00      100.00
+            |         31       96.88       96.88
+ 2023-09-30 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-harvest_date_23 was byte now str1
-(32 missing values generated)
-(32 missing values generated)
-harvest_date_23_year: all characters numeric; replaced as byte
-(32 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
+harvest_date_23_year: all characters numeric; replaced as int
+(31 missing values generated)
 harvest_date_23_month: all characters numeric; replaced as byte
-(32 missing values generated)
+(31 missing values generated)
 harvest_date_23_day: all characters numeric; replaced as byte
-(32 missing values generated)
-(32 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
 Variable: harvest_date_24
 
     date of |
    harvest: |
    round 24 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          . |         32      100.00      100.00
+            |         31       96.88       96.88
+ 2023-10-02 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-harvest_date_24 was byte now str1
-(32 missing values generated)
-(32 missing values generated)
-harvest_date_24_year: all characters numeric; replaced as byte
-(32 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
+harvest_date_24_year: all characters numeric; replaced as int
+(31 missing values generated)
 harvest_date_24_month: all characters numeric; replaced as byte
-(32 missing values generated)
+(31 missing values generated)
 harvest_date_24_day: all characters numeric; replaced as byte
-(32 missing values generated)
-(32 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
 Variable: harvest_date_25
 
     date of |
    harvest: |
    round 25 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
+            |         31       96.88       96.88
+ 2023-10-03 |          1        3.12      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+(31 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
+harvest_date_25_year: all characters numeric; replaced as int
+(31 missing values generated)
+harvest_date_25_month: all characters numeric; replaced as byte
+(31 missing values generated)
+harvest_date_25_day: all characters numeric; replaced as byte
+(31 missing values generated)
+(31 missing values generated)
+Variable: harvest_date_26
+
+    date of |
+   harvest: |
+   round 26 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         31       96.88       96.88
+ 2023-10-05 |          1        3.12      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+(31 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
+harvest_date_26_year: all characters numeric; replaced as int
+(31 missing values generated)
+harvest_date_26_month: all characters numeric; replaced as byte
+(31 missing values generated)
+harvest_date_26_day: all characters numeric; replaced as byte
+(31 missing values generated)
+(31 missing values generated)
+Variable: harvest_date_27
+
+    date of |
+   harvest: |
+   round 27 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         31       96.88       96.88
+ 2023-10-11 |          1        3.12      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+(31 missing values generated)
+(31 missing values generated)
+(31 missing values generated)
+harvest_date_27_year: all characters numeric; replaced as int
+(31 missing values generated)
+harvest_date_27_month: all characters numeric; replaced as byte
+(31 missing values generated)
+harvest_date_27_day: all characters numeric; replaced as byte
+(31 missing values generated)
+(31 missing values generated)
+Variable: harvest_date_28
+
+    date of |
+   harvest: |
+   round 28 |      Freq.     Percent        Cum.
+------------+-----------------------------------
           . |         32      100.00      100.00
 ------------+-----------------------------------
       Total |         32      100.00
-harvest_date_25 was byte now str1
+harvest_date_28 was byte now str1
 (32 missing values generated)
 (32 missing values generated)
-harvest_date_25_year: all characters numeric; replaced as byte
+harvest_date_28_year: all characters numeric; replaced as byte
 (32 missing values generated)
-harvest_date_25_month: all characters numeric; replaced as byte
+harvest_date_28_month: all characters numeric; replaced as byte
 (32 missing values generated)
-harvest_date_25_day: all characters numeric; replaced as byte
+harvest_date_28_day: all characters numeric; replaced as byte
+(32 missing values generated)
+(32 missing values generated)
+Variable: harvest_date_29
+
+    date of |
+   harvest: |
+   round 29 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+harvest_date_29 was byte now str1
+(32 missing values generated)
+(32 missing values generated)
+harvest_date_29_year: all characters numeric; replaced as byte
+(32 missing values generated)
+harvest_date_29_month: all characters numeric; replaced as byte
+(32 missing values generated)
+harvest_date_29_day: all characters numeric; replaced as byte
+(32 missing values generated)
+(32 missing values generated)
+Variable: harvest_date_30
+
+    date of |
+   harvest: |
+   round 30 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+harvest_date_30 was byte now str1
+(32 missing values generated)
+(32 missing values generated)
+harvest_date_30_year: all characters numeric; replaced as byte
+(32 missing values generated)
+harvest_date_30_month: all characters numeric; replaced as byte
+(32 missing values generated)
+harvest_date_30_day: all characters numeric; replaced as byte
 (32 missing values generated)
 (32 missing values generated)
 
@@ -4276,17 +4396,17 @@ cut/horn worms |          1        3.12       96.88
   |----------------------------------------------------------------------|
   |            1                 .        5    15.62         5     15.62 |
   |            2                 .       12    37.50        17     53.12 |
-  |            3                 6        3     9.38        20     62.50 |
-  |            3                 8        1     3.12        21     65.62 |
-  |            3                 9        1     3.12        22     68.75 |
+  |            3                 6        4    12.50        21     65.62 |
+  |            3                 8        1     3.12        22     68.75 |
+  |            3                 9        1     3.12        23     71.88 |
   |----------------------------------------------------------------------|
-  |            3                10        1     3.12        23     71.88 |
-  |            3                12        1     3.12        24     75.00 |
-  |            3                18        1     3.12        25     78.12 |
-  |            3                19        1     3.12        26     81.25 |
-  |            3                32        1     3.12        27     84.38 |
+  |            3                10        1     3.12        24     75.00 |
+  |            3                12        1     3.12        25     78.12 |
+  |            3                18        1     3.12        26     81.25 |
+  |            3                19        1     3.12        27     84.38 |
+  |            3                24        1     3.12        28     87.50 |
   |----------------------------------------------------------------------|
-  |            3                 .        2     6.25        29     90.62 |
+  |            3                32        1     3.12        29     90.62 |
   |           .s                 1        2     6.25        31     96.88 |
   |           .s                 6        1     3.12        32    100.00 |
   +----------------------------------------------------------------------+
@@ -4297,17 +4417,17 @@ cut/horn worms |          1        3.12       96.88
   |----------------------------------------------------------------------|
   |            1                .s        5    15.62         5     15.62 |
   |            2                .s       12    37.50        17     53.12 |
-  |            3                 6        3     9.38        20     62.50 |
-  |            3                 8        1     3.12        21     65.62 |
-  |            3                 9        1     3.12        22     68.75 |
+  |            3                 6        4    12.50        21     65.62 |
+  |            3                 8        1     3.12        22     68.75 |
+  |            3                 9        1     3.12        23     71.88 |
   |----------------------------------------------------------------------|
-  |            3                10        1     3.12        23     71.88 |
-  |            3                12        1     3.12        24     75.00 |
-  |            3                18        1     3.12        25     78.12 |
-  |            3                19        1     3.12        26     81.25 |
-  |            3                32        1     3.12        27     84.38 |
+  |            3                10        1     3.12        24     75.00 |
+  |            3                12        1     3.12        25     78.12 |
+  |            3                18        1     3.12        26     81.25 |
+  |            3                19        1     3.12        27     84.38 |
+  |            3                24        1     3.12        28     87.50 |
   |----------------------------------------------------------------------|
-  |            3                 .        2     6.25        29     90.62 |
+  |            3                32        1     3.12        29     90.62 |
   |           .s                 1        2     6.25        31     96.88 |
   |           .s                 6        1     3.12        32    100.00 |
   +----------------------------------------------------------------------+
@@ -4318,16 +4438,16 @@ cut/horn worms |          1        3.12       96.88
   |            1                 .        5    15.62         5     15.62 |
   |            2                 .       12    37.50        17     53.12 |
   |            3                 0        1     3.12        18     56.25 |
-  |            3                 6        2     6.25        20     62.50 |
-  |            3                 8        1     3.12        21     65.62 |
+  |            3                 6        3     9.38        21     65.62 |
+  |            3                 8        1     3.12        22     68.75 |
   |----------------------------------------------------------------------|
-  |            3                 9        1     3.12        22     68.75 |
-  |            3                10        1     3.12        23     71.88 |
-  |            3                12        1     3.12        24     75.00 |
-  |            3                18        2     6.25        26     81.25 |
-  |            3                32        1     3.12        27     84.38 |
+  |            3                 9        1     3.12        23     71.88 |
+  |            3                10        1     3.12        24     75.00 |
+  |            3                12        1     3.12        25     78.12 |
+  |            3                18        2     6.25        27     84.38 |
+  |            3                24        1     3.12        28     87.50 |
   |----------------------------------------------------------------------|
-  |            3                 .        2     6.25        29     90.62 |
+  |            3                32        1     3.12        29     90.62 |
   |           .s                 1        2     6.25        31     96.88 |
   |           .s                 6        1     3.12        32    100.00 |
   +----------------------------------------------------------------------+
@@ -4339,16 +4459,16 @@ cut/horn worms |          1        3.12       96.88
   |            1                .s        5    15.62         5     15.62 |
   |            2                .s       12    37.50        17     53.12 |
   |            3                 0        1     3.12        18     56.25 |
-  |            3                 6        2     6.25        20     62.50 |
-  |            3                 8        1     3.12        21     65.62 |
+  |            3                 6        3     9.38        21     65.62 |
+  |            3                 8        1     3.12        22     68.75 |
   |----------------------------------------------------------------------|
-  |            3                 9        1     3.12        22     68.75 |
-  |            3                10        1     3.12        23     71.88 |
-  |            3                12        1     3.12        24     75.00 |
-  |            3                18        2     6.25        26     81.25 |
-  |            3                32        1     3.12        27     84.38 |
+  |            3                 9        1     3.12        23     71.88 |
+  |            3                10        1     3.12        24     75.00 |
+  |            3                12        1     3.12        25     78.12 |
+  |            3                18        2     6.25        27     84.38 |
+  |            3                24        1     3.12        28     87.50 |
   |----------------------------------------------------------------------|
-  |            3                 .        2     6.25        29     90.62 |
+  |            3                32        1     3.12        29     90.62 |
   |           .s                 1        2     6.25        31     96.88 |
   |           .s                 6        1     3.12        32    100.00 |
   +----------------------------------------------------------------------+
@@ -4568,8 +4688,8 @@ cut/horn worms |          1        3.12       96.88
 (0 real changes made)
 (0 real changes made)
 (0 real changes made)
-(2 real changes made, 2 to missing)
-(2 real changes made, 2 to missing)
+(0 real changes made)
+(0 real changes made)
 (2 real changes made)
 (2 real changes made, 2 to missing)
 (2 real changes made)
@@ -5807,7 +5927,7 @@ Variable: path_ipm_date_3_3_stata
   |        outdoor seed                        .s       17    53.12        32    100.00 |
   +-------------------------------------------------------------------------------------+
 Variable: harvest_date_1
-(15 real changes made)
+(13 real changes made)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_date_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -5821,17 +5941,19 @@ Variable: harvest_date_1
   |         indoor seed       2023-08-01        1     3.12        12     37.50 |
   |         indoor seed       2023-08-10        1     3.12        13     40.62 |
   |         indoor seed       2023-08-12        2     6.25        15     46.88 |
-  |        outdoor seed               .s        9    28.12        24     75.00 |
-  |        outdoor seed       2023-07-26        1     3.12        25     78.12 |
+  |        outdoor seed               .s        7    21.88        22     68.75 |
+  |        outdoor seed       2023-07-26        1     3.12        23     71.88 |
   |----------------------------------------------------------------------------|
-  |        outdoor seed       2023-08-05        1     3.12        26     81.25 |
-  |        outdoor seed       2023-08-12        2     6.25        28     87.50 |
-  |        outdoor seed       2023-08-26        2     6.25        30     93.75 |
-  |        outdoor seed       2023-09-07        1     3.12        31     96.88 |
-  |        outdoor seed       2023-09-19        1     3.12        32    100.00 |
+  |        outdoor seed       2023-08-05        1     3.12        24     75.00 |
+  |        outdoor seed       2023-08-12        2     6.25        26     81.25 |
+  |        outdoor seed       2023-08-26        2     6.25        28     87.50 |
+  |        outdoor seed       2023-09-07        1     3.12        29     90.62 |
+  |        outdoor seed       2023-09-19        1     3.12        30     93.75 |
+  |----------------------------------------------------------------------------|
+  |        outdoor seed       2023-10-02        2     6.25        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_date_1_stata
-(15 real changes made, 15 to missing)
+(13 real changes made, 13 to missing)
 
   +----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_1_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -5852,10 +5974,12 @@ Variable: harvest_date_1_stata
   |        outdoor seed              26aug2023        2     6.25        21     65.62 |
   |        outdoor seed              07sep2023        1     3.12        22     68.75 |
   |        outdoor seed              19sep2023        1     3.12        23     71.88 |
-  |        outdoor seed                     .s        9    28.12        32    100.00 |
+  |        outdoor seed              02oct2023        2     6.25        25     78.12 |
+  |----------------------------------------------------------------------------------|
+  |        outdoor seed                     .s        7    21.88        32    100.00 |
   +----------------------------------------------------------------------------------+
 Variable: harvest_amnt_1
-(15 real changes made, 15 to missing)
+(14 real changes made, 14 to missing)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -5878,11 +6002,12 @@ Variable: harvest_amnt_1
   |        outdoor seed                8        1     3.12        21     65.62 |
   |        outdoor seed               20        1     3.12        22     68.75 |
   |----------------------------------------------------------------------------|
-  |        outdoor seed               58        1     3.12        23     71.88 |
-  |        outdoor seed               .s        9    28.12        32    100.00 |
+  |        outdoor seed            29.25        1     3.12        23     71.88 |
+  |        outdoor seed               58        1     3.12        24     75.00 |
+  |        outdoor seed               .s        8    25.00        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_unit_1
-(15 real changes made)
+(13 real changes made)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_1   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -5893,10 +6018,10 @@ Variable: harvest_unit_1
   |         indoor seed            ounce        1     3.12        10     31.25 |
   |         indoor seed            pound        5    15.62        15     46.88 |
   |----------------------------------------------------------------------------|
-  |        outdoor seed               .s        9    28.12        24     75.00 |
-  |        outdoor seed           medium        1     3.12        25     78.12 |
-  |        outdoor seed           ounces        1     3.12        26     81.25 |
-  |        outdoor seed            pound        3     9.38        29     90.62 |
+  |        outdoor seed               .s        7    21.88        22     68.75 |
+  |        outdoor seed           medium        1     3.12        23     71.88 |
+  |        outdoor seed           ounces        1     3.12        24     75.00 |
+  |        outdoor seed            pound        5    15.62        29     90.62 |
   |        outdoor seed            small        1     3.12        30     93.75 |
   |----------------------------------------------------------------------------|
   |        outdoor seed             unit        2     6.25        32    100.00 |
@@ -6082,7 +6207,7 @@ Variable: harvest_unit_3
   |        outdoor seed           pounds        1     3.12        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_date_4
-(20 real changes made)
+(19 real changes made)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_date_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -6097,14 +6222,15 @@ Variable: harvest_date_4
   |         indoor seed       2023-08-21        1     3.12        13     40.62 |
   |         indoor seed       2023-08-23        1     3.12        14     43.75 |
   |         indoor seed       2023-09-02        1     3.12        15     46.88 |
-  |        outdoor seed               .s       14    43.75        29     90.62 |
+  |        outdoor seed               .s       13    40.62        28     87.50 |
   |----------------------------------------------------------------------------|
-  |        outdoor seed       2023-08-01        1     3.12        30     93.75 |
-  |        outdoor seed       2023-09-09        1     3.12        31     96.88 |
-  |        outdoor seed       2023-09-21        1     3.12        32    100.00 |
+  |        outdoor seed       2023-08-01        1     3.12        29     90.62 |
+  |        outdoor seed       2023-09-09        1     3.12        30     93.75 |
+  |        outdoor seed       2023-09-21        1     3.12        31     96.88 |
+  |        outdoor seed       2023-10-09        1     3.12        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_date_4_stata
-(20 real changes made, 20 to missing)
+(19 real changes made, 19 to missing)
 
   +----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_4_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -6123,10 +6249,11 @@ Variable: harvest_date_4_stata
   |----------------------------------------------------------------------------------|
   |        outdoor seed              09sep2023        1     3.12        17     53.12 |
   |        outdoor seed              21sep2023        1     3.12        18     56.25 |
-  |        outdoor seed                     .s       14    43.75        32    100.00 |
+  |        outdoor seed              09oct2023        1     3.12        19     59.38 |
+  |        outdoor seed                     .s       13    40.62        32    100.00 |
   +----------------------------------------------------------------------------------+
 Variable: harvest_amnt_4
-(20 real changes made, 20 to missing)
+(19 real changes made, 19 to missing)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -6145,11 +6272,12 @@ Variable: harvest_amnt_4
   |----------------------------------------------------------------------------|
   |        outdoor seed               .5        1     3.12        16     50.00 |
   |        outdoor seed                1        1     3.12        17     53.12 |
-  |        outdoor seed             3.75        1     3.12        18     56.25 |
-  |        outdoor seed               .s       14    43.75        32    100.00 |
+  |        outdoor seed                2        1     3.12        18     56.25 |
+  |        outdoor seed             3.75        1     3.12        19     59.38 |
+  |        outdoor seed               .s       13    40.62        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_unit_4
-(20 real changes made)
+(19 real changes made)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_4   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -6158,10 +6286,11 @@ Variable: harvest_unit_4
   |         indoor seed               .s        6    18.75         9     28.12 |
   |         indoor seed            ounce        4    12.50        13     40.62 |
   |         indoor seed            pound        2     6.25        15     46.88 |
-  |        outdoor seed               .s       14    43.75        29     90.62 |
+  |        outdoor seed               .s       13    40.62        28     87.50 |
   |----------------------------------------------------------------------------|
-  |        outdoor seed            large        1     3.12        30     93.75 |
-  |        outdoor seed            pound        2     6.25        32    100.00 |
+  |        outdoor seed            large        1     3.12        29     90.62 |
+  |        outdoor seed            pound        2     6.25        31     96.88 |
+  |        outdoor seed            small        1     3.12        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_date_5
 (21 real changes made)
@@ -6449,49 +6578,53 @@ Variable: harvest_unit_8
   |        outdoor seed               .s       17    53.12        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_date_9
-(25 real changes made)
+(23 real changes made)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_date_9   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |----------------------------------------------------------------------------|
-  | external transplant               .s        2     6.25         2      6.25 |
-  | external transplant       2023-09-06        1     3.12         3      9.38 |
+  | external transplant       2023-09-06        1     3.12         1      3.12 |
+  | external transplant       2023-09-30        1     3.12         2      6.25 |
+  | external transplant       2023-10-05        1     3.12         3      9.38 |
   |         indoor seed               .s        6    18.75         9     28.12 |
   |         indoor seed       2023-08-25        1     3.12        10     31.25 |
-  |         indoor seed       2023-09-04        1     3.12        11     34.38 |
   |----------------------------------------------------------------------------|
+  |         indoor seed       2023-09-04        1     3.12        11     34.38 |
   |         indoor seed       2023-09-06        1     3.12        12     37.50 |
   |         indoor seed       2023-09-07        1     3.12        13     40.62 |
   |         indoor seed       2023-09-09        1     3.12        14     43.75 |
   |         indoor seed       2023-09-15        1     3.12        15     46.88 |
+  |----------------------------------------------------------------------------|
   |        outdoor seed               .s       17    53.12        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_date_9_stata
-(25 real changes made, 25 to missing)
+(23 real changes made, 23 to missing)
 
   +----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_9_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |----------------------------------------------------------------------------------|
   | external transplant              06sep2023        1     3.12         1      3.12 |
-  | external transplant                     .s        2     6.25         3      9.38 |
+  | external transplant              30sep2023        1     3.12         2      6.25 |
+  | external transplant              05oct2023        1     3.12         3      9.38 |
   |         indoor seed              25aug2023        1     3.12         4     12.50 |
   |         indoor seed              04sep2023        1     3.12         5     15.62 |
-  |         indoor seed              06sep2023        1     3.12         6     18.75 |
   |----------------------------------------------------------------------------------|
+  |         indoor seed              06sep2023        1     3.12         6     18.75 |
   |         indoor seed              07sep2023        1     3.12         7     21.88 |
   |         indoor seed              09sep2023        1     3.12         8     25.00 |
   |         indoor seed              15sep2023        1     3.12         9     28.12 |
   |         indoor seed                     .s        6    18.75        15     46.88 |
+  |----------------------------------------------------------------------------------|
   |        outdoor seed                     .s       17    53.12        32    100.00 |
   +----------------------------------------------------------------------------------+
 Variable: harvest_amnt_9
-(25 real changes made, 25 to missing)
+(23 real changes made, 23 to missing)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_9   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |----------------------------------------------------------------------------|
-  | external transplant                2        1     3.12         1      3.12 |
-  | external transplant               .s        2     6.25         3      9.38 |
+  | external transplant                2        2     6.25         2      6.25 |
+  | external transplant                5        1     3.12         3      9.38 |
   |         indoor seed              2.5        1     3.12         4     12.50 |
   |         indoor seed             3.75        1     3.12         5     15.62 |
   |         indoor seed                7        1     3.12         6     18.75 |
@@ -6503,12 +6636,12 @@ Variable: harvest_amnt_9
   |        outdoor seed               .s       17    53.12        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_unit_9
-(25 real changes made)
+(23 real changes made)
 
   +----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_9   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |----------------------------------------------------------------------------|
-  | external transplant               .s        2     6.25         2      6.25 |
+  | external transplant            ounce        2     6.25         2      6.25 |
   | external transplant            pound        1     3.12         3      9.38 |
   |         indoor seed               .s        6    18.75         9     28.12 |
   |         indoor seed            ounce        3     9.38        12     37.50 |
@@ -6517,65 +6650,69 @@ Variable: harvest_unit_9
   |        outdoor seed               .s       17    53.12        32    100.00 |
   +----------------------------------------------------------------------------+
 Variable: harvest_date_10
-(25 real changes made)
+(24 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_10   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        2     6.25         2      6.25 |
-  | external transplant        2023-09-09        1     3.12         3      9.38 |
+  | external transplant                .s        1     3.12         1      3.12 |
+  | external transplant        2023-09-09        1     3.12         2      6.25 |
+  | external transplant        2023-10-03        1     3.12         3      9.38 |
   |         indoor seed                .s        6    18.75         9     28.12 |
   |         indoor seed        2023-08-26        1     3.12        10     31.25 |
-  |         indoor seed        2023-09-06        1     3.12        11     34.38 |
   |-----------------------------------------------------------------------------|
+  |         indoor seed        2023-09-06        1     3.12        11     34.38 |
   |         indoor seed        2023-09-09        2     6.25        13     40.62 |
   |         indoor seed        2023-09-13        1     3.12        14     43.75 |
   |         indoor seed        2023-09-21        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_10_stata
-(25 real changes made, 25 to missing)
+(24 real changes made, 24 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_10_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
   | external transplant               09sep2023        1     3.12         1      3.12 |
-  | external transplant                      .s        2     6.25         3      9.38 |
+  | external transplant               03oct2023        1     3.12         2      6.25 |
+  | external transplant                      .s        1     3.12         3      9.38 |
   |         indoor seed               26aug2023        1     3.12         4     12.50 |
   |         indoor seed               06sep2023        1     3.12         5     15.62 |
-  |         indoor seed               09sep2023        2     6.25         7     21.88 |
   |-----------------------------------------------------------------------------------|
+  |         indoor seed               09sep2023        2     6.25         7     21.88 |
   |         indoor seed               13sep2023        1     3.12         8     25.00 |
   |         indoor seed               21sep2023        1     3.12         9     28.12 |
   |         indoor seed                      .s        6    18.75        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_10
-(25 real changes made, 25 to missing)
+(24 real changes made, 24 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_10   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                24        1     3.12         1      3.12 |
-  | external transplant                .s        2     6.25         3      9.38 |
+  | external transplant                 2        1     3.12         1      3.12 |
+  | external transplant                24        1     3.12         2      6.25 |
+  | external transplant                .s        1     3.12         3      9.38 |
   |         indoor seed               .75        1     3.12         4     12.50 |
   |         indoor seed               1.5        1     3.12         5     15.62 |
-  |         indoor seed                35        1     3.12         6     18.75 |
   |-----------------------------------------------------------------------------|
+  |         indoor seed                35        1     3.12         6     18.75 |
   |         indoor seed                38        1     3.12         7     21.88 |
   |         indoor seed               215        1     3.12         8     25.00 |
   |         indoor seed               576        1     3.12         9     28.12 |
   |         indoor seed                .s        6    18.75        15     46.88 |
+  |-----------------------------------------------------------------------------|
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_10
-(25 real changes made)
+(24 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_10   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        2     6.25         2      6.25 |
-  | external transplant             ounce        1     3.12         3      9.38 |
+  | external transplant                .s        1     3.12         1      3.12 |
+  | external transplant             ounce        2     6.25         3      9.38 |
   |         indoor seed                .s        6    18.75         9     28.12 |
   |         indoor seed             ounce        4    12.50        13     40.62 |
   |         indoor seed             pound        2     6.25        15     46.88 |
@@ -6583,64 +6720,67 @@ Variable: harvest_unit_10
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_11
-(25 real changes made)
+(24 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_11   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        2     6.25         2      6.25 |
-  | external transplant        2023-09-13        1     3.12         3      9.38 |
+  | external transplant                .s        1     3.12         1      3.12 |
+  | external transplant        2023-09-13        1     3.12         2      6.25 |
+  | external transplant        2023-10-05        1     3.12         3      9.38 |
   |         indoor seed                .s        6    18.75         9     28.12 |
   |         indoor seed        2023-08-29        1     3.12        10     31.25 |
-  |         indoor seed        2023-09-09        1     3.12        11     34.38 |
   |-----------------------------------------------------------------------------|
+  |         indoor seed        2023-09-09        1     3.12        11     34.38 |
   |         indoor seed        2023-09-13        2     6.25        13     40.62 |
   |         indoor seed        2023-09-15        1     3.12        14     43.75 |
   |         indoor seed        2023-09-23        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_11_stata
-(25 real changes made, 25 to missing)
+(24 real changes made, 24 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_11_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
   | external transplant               13sep2023        1     3.12         1      3.12 |
-  | external transplant                      .s        2     6.25         3      9.38 |
+  | external transplant               05oct2023        1     3.12         2      6.25 |
+  | external transplant                      .s        1     3.12         3      9.38 |
   |         indoor seed               29aug2023        1     3.12         4     12.50 |
   |         indoor seed               09sep2023        1     3.12         5     15.62 |
-  |         indoor seed               13sep2023        2     6.25         7     21.88 |
   |-----------------------------------------------------------------------------------|
+  |         indoor seed               13sep2023        2     6.25         7     21.88 |
   |         indoor seed               15sep2023        1     3.12         8     25.00 |
   |         indoor seed               23sep2023        1     3.12         9     28.12 |
   |         indoor seed                      .s        6    18.75        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_11
-(25 real changes made, 25 to missing)
+(24 real changes made, 24 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_11   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                 8        1     3.12         1      3.12 |
-  | external transplant                .s        2     6.25         3      9.38 |
+  | external transplant                 2        1     3.12         1      3.12 |
+  | external transplant                 8        1     3.12         2      6.25 |
+  | external transplant                .s        1     3.12         3      9.38 |
   |         indoor seed                 4        1     3.12         4     12.50 |
   |         indoor seed                11        2     6.25         6     18.75 |
-  |         indoor seed              11.5        1     3.12         7     21.88 |
   |-----------------------------------------------------------------------------|
+  |         indoor seed              11.5        1     3.12         7     21.88 |
   |         indoor seed                18        1     3.12         8     25.00 |
   |         indoor seed                24        1     3.12         9     28.12 |
   |         indoor seed                .s        6    18.75        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_11
-(25 real changes made)
+(24 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_11   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        2     6.25         2      6.25 |
-  | external transplant             ounce        1     3.12         3      9.38 |
+  | external transplant                .s        1     3.12         1      3.12 |
+  | external transplant             ounce        2     6.25         3      9.38 |
   |         indoor seed                .s        6    18.75         9     28.12 |
   |         indoor seed             ounce        3     9.38        12     37.50 |
   |         indoor seed             pound        3     9.38        15     46.88 |
@@ -6648,23 +6788,24 @@ Variable: harvest_unit_11
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_12
-(26 real changes made)
+(25 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_12   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        2     6.25         2      6.25 |
   | external transplant        2023-09-15        1     3.12         3      9.38 |
-  |         indoor seed                .s        7    21.88        10     31.25 |
-  |         indoor seed        2023-08-30        1     3.12        11     34.38 |
-  |         indoor seed        2023-09-13        1     3.12        12     37.50 |
+  |         indoor seed                .s        6    18.75         9     28.12 |
+  |         indoor seed        2023-08-30        1     3.12        10     31.25 |
+  |         indoor seed        2023-09-13        1     3.12        11     34.38 |
   |-----------------------------------------------------------------------------|
-  |         indoor seed        2023-09-15        2     6.25        14     43.75 |
-  |         indoor seed        2023-09-23        1     3.12        15     46.88 |
+  |         indoor seed        2023-09-15        2     6.25        13     40.62 |
+  |         indoor seed        2023-09-23        1     3.12        14     43.75 |
+  |         indoor seed        2023-09-30        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_12_stata
-(26 real changes made, 26 to missing)
+(25 real changes made, 25 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_12_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -6676,56 +6817,61 @@ Variable: harvest_date_12_stata
   |         indoor seed               15sep2023        2     6.25         7     21.88 |
   |-----------------------------------------------------------------------------------|
   |         indoor seed               23sep2023        1     3.12         8     25.00 |
-  |         indoor seed                      .s        7    21.88        15     46.88 |
+  |         indoor seed               30sep2023        1     3.12         9     28.12 |
+  |         indoor seed                      .s        6    18.75        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_12
-(26 real changes made, 26 to missing)
+(25 real changes made, 25 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_12   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                 6        1     3.12         1      3.12 |
   | external transplant                .s        2     6.25         3      9.38 |
-  |         indoor seed                16        1     3.12         4     12.50 |
-  |         indoor seed                27        1     3.12         5     15.62 |
-  |         indoor seed              27.5        1     3.12         6     18.75 |
+  |         indoor seed              2.75        1     3.12         4     12.50 |
+  |         indoor seed                16        1     3.12         5     15.62 |
+  |         indoor seed                27        1     3.12         6     18.75 |
   |-----------------------------------------------------------------------------|
-  |         indoor seed                74        1     3.12         7     21.88 |
-  |         indoor seed               166        1     3.12         8     25.00 |
-  |         indoor seed                .s        7    21.88        15     46.88 |
+  |         indoor seed              27.5        1     3.12         7     21.88 |
+  |         indoor seed                74        1     3.12         8     25.00 |
+  |         indoor seed               166        1     3.12         9     28.12 |
+  |         indoor seed                .s        6    18.75        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_12
-(26 real changes made)
+(25 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_12   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        2     6.25         2      6.25 |
   | external transplant             ounce        1     3.12         3      9.38 |
-  |         indoor seed                .s        7    21.88        10     31.25 |
-  |         indoor seed             ounce        4    12.50        14     43.75 |
-  |         indoor seed             pound        1     3.12        15     46.88 |
+  |         indoor seed                .s        6    18.75         9     28.12 |
+  |         indoor seed             ounce        4    12.50        13     40.62 |
+  |         indoor seed             pound        1     3.12        14     43.75 |
   |-----------------------------------------------------------------------------|
+  |         indoor seed            pounds        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_13
-(27 real changes made)
+(25 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_13   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        2     6.25         2      6.25 |
   | external transplant        2023-09-23        1     3.12         3      9.38 |
-  |         indoor seed                .s        8    25.00        11     34.38 |
-  |         indoor seed        2023-09-02        1     3.12        12     37.50 |
-  |         indoor seed        2023-09-23        3     9.38        15     46.88 |
+  |         indoor seed                .s        6    18.75         9     28.12 |
+  |         indoor seed        2023-09-02        1     3.12        10     31.25 |
+  |         indoor seed        2023-09-23        3     9.38        13     40.62 |
   |-----------------------------------------------------------------------------|
+  |         indoor seed        2023-09-30        1     3.12        14     43.75 |
+  |         indoor seed        2023-10-03        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_13_stata
-(27 real changes made, 27 to missing)
+(25 real changes made, 25 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_13_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -6734,12 +6880,14 @@ Variable: harvest_date_13_stata
   | external transplant                      .s        2     6.25         3      9.38 |
   |         indoor seed               02sep2023        1     3.12         4     12.50 |
   |         indoor seed               23sep2023        3     9.38         7     21.88 |
-  |         indoor seed                      .s        8    25.00        15     46.88 |
+  |         indoor seed               30sep2023        1     3.12         8     25.00 |
   |-----------------------------------------------------------------------------------|
+  |         indoor seed               03oct2023        1     3.12         9     28.12 |
+  |         indoor seed                      .s        6    18.75        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_13
-(27 real changes made, 27 to missing)
+(25 real changes made, 25 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_13   _Freq_   _Perc_   _CFreq_   _CPerc_ |
@@ -6747,249 +6895,308 @@ Variable: harvest_amnt_13
   | external transplant                 8        1     3.12         1      3.12 |
   | external transplant                .s        2     6.25         3      9.38 |
   |         indoor seed               1.5        1     3.12         4     12.50 |
-  |         indoor seed              14.5        1     3.12         5     15.62 |
-  |         indoor seed                22        1     3.12         6     18.75 |
+  |         indoor seed              3.75        1     3.12         5     15.62 |
+  |         indoor seed              14.5        1     3.12         6     18.75 |
   |-----------------------------------------------------------------------------|
-  |         indoor seed               170        1     3.12         7     21.88 |
-  |         indoor seed                .s        8    25.00        15     46.88 |
+  |         indoor seed                22        1     3.12         7     21.88 |
+  |         indoor seed                24        1     3.12         8     25.00 |
+  |         indoor seed               170        1     3.12         9     28.12 |
+  |         indoor seed                .s        6    18.75        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_13
-(27 real changes made)
+(25 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_13   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        2     6.25         2      6.25 |
   | external transplant             ounce        1     3.12         3      9.38 |
-  |         indoor seed                .s        8    25.00        11     34.38 |
-  |         indoor seed             ounce        2     6.25        13     40.62 |
-  |         indoor seed             pound        2     6.25        15     46.88 |
+  |         indoor seed                .s        6    18.75         9     28.12 |
+  |         indoor seed             ounce        3     9.38        12     37.50 |
+  |         indoor seed             pound        3     9.38        15     46.88 |
   |-----------------------------------------------------------------------------|
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_14
-(30 real changes made)
+(25 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_14   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       10    31.25        13     40.62 |
-  |         indoor seed        2023-09-04        1     3.12        14     43.75 |
-  |         indoor seed        2023-09-27        1     3.12        15     46.88 |
+  | external transplant                .s        2     6.25         2      6.25 |
+  | external transplant        2023-09-30        1     3.12         3      9.38 |
+  |         indoor seed                .s        6    18.75         9     28.12 |
+  |         indoor seed        2023-09-04        1     3.12        10     31.25 |
+  |         indoor seed        2023-09-27        1     3.12        11     34.38 |
+  |-----------------------------------------------------------------------------|
+  |         indoor seed        2023-09-30        2     6.25        13     40.62 |
+  |         indoor seed        2023-10-05        2     6.25        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_14_stata
-(30 real changes made, 30 to missing)
+(25 real changes made, 25 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_14_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
-  | external transplant                      .s        3     9.38         3      9.38 |
+  | external transplant               30sep2023        1     3.12         1      3.12 |
+  | external transplant                      .s        2     6.25         3      9.38 |
   |         indoor seed               04sep2023        1     3.12         4     12.50 |
   |         indoor seed               27sep2023        1     3.12         5     15.62 |
-  |         indoor seed                      .s       10    31.25        15     46.88 |
+  |         indoor seed               30sep2023        2     6.25         7     21.88 |
+  |-----------------------------------------------------------------------------------|
+  |         indoor seed               05oct2023        2     6.25         9     28.12 |
+  |         indoor seed                      .s        6    18.75        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_14
-(30 real changes made, 30 to missing)
+(25 real changes made, 25 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_14   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed               2.5        1     3.12         4     12.50 |
-  |         indoor seed                25        1     3.12         5     15.62 |
-  |         indoor seed                .s       10    31.25        15     46.88 |
+  | external transplant                10        1     3.12         1      3.12 |
+  | external transplant                .s        2     6.25         3      9.38 |
+  |         indoor seed                .5        1     3.12         4     12.50 |
+  |         indoor seed                 2        1     3.12         5     15.62 |
+  |         indoor seed               2.5        1     3.12         6     18.75 |
+  |-----------------------------------------------------------------------------|
+  |         indoor seed                17        1     3.12         7     21.88 |
+  |         indoor seed                23        1     3.12         8     25.00 |
+  |         indoor seed                25        1     3.12         9     28.12 |
+  |         indoor seed                .s        6    18.75        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_14
-(30 real changes made)
+(25 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_14   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       10    31.25        13     40.62 |
-  |         indoor seed             ounce        1     3.12        14     43.75 |
-  |         indoor seed             pound        1     3.12        15     46.88 |
+  | external transplant                .s        2     6.25         2      6.25 |
+  | external transplant             ounce        1     3.12         3      9.38 |
+  |         indoor seed                .s        6    18.75         9     28.12 |
+  |         indoor seed             ounce        3     9.38        12     37.50 |
+  |         indoor seed             pound        3     9.38        15     46.88 |
+  |-----------------------------------------------------------------------------|
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_15
-(31 real changes made)
+(26 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_15   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       11    34.38        14     43.75 |
-  |         indoor seed        2023-09-06        1     3.12        15     46.88 |
+  | external transplant                .s        2     6.25         2      6.25 |
+  | external transplant        2023-10-03        1     3.12         3      9.38 |
+  |         indoor seed                .s        7    21.88        10     31.25 |
+  |         indoor seed        2023-09-06        1     3.12        11     34.38 |
+  |         indoor seed        2023-09-30        1     3.12        12     37.50 |
+  |-----------------------------------------------------------------------------|
+  |         indoor seed        2023-10-03        2     6.25        14     43.75 |
+  |         indoor seed        2023-10-11        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_15_stata
-(31 real changes made, 31 to missing)
+(26 real changes made, 26 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_15_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
-  | external transplant                      .s        3     9.38         3      9.38 |
+  | external transplant               03oct2023        1     3.12         1      3.12 |
+  | external transplant                      .s        2     6.25         3      9.38 |
   |         indoor seed               06sep2023        1     3.12         4     12.50 |
-  |         indoor seed                      .s       11    34.38        15     46.88 |
+  |         indoor seed               30sep2023        1     3.12         5     15.62 |
+  |         indoor seed               03oct2023        2     6.25         7     21.88 |
+  |-----------------------------------------------------------------------------------|
+  |         indoor seed               11oct2023        1     3.12         8     25.00 |
+  |         indoor seed                      .s        7    21.88        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_15
-(31 real changes made, 31 to missing)
+(26 real changes made, 26 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_15   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed             13.25        1     3.12         4     12.50 |
-  |         indoor seed                .s       11    34.38        15     46.88 |
+  | external transplant                11        1     3.12         1      3.12 |
+  | external transplant                .s        2     6.25         3      9.38 |
+  |         indoor seed               1.5        1     3.12         4     12.50 |
+  |         indoor seed              3.75        1     3.12         5     15.62 |
+  |         indoor seed             13.25        1     3.12         6     18.75 |
+  |-----------------------------------------------------------------------------|
+  |         indoor seed                24        1     3.12         7     21.88 |
+  |         indoor seed                82        1     3.12         8     25.00 |
+  |         indoor seed                .s        7    21.88        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_15
-(31 real changes made)
+(26 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_15   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       11    34.38        14     43.75 |
-  |         indoor seed             pound        1     3.12        15     46.88 |
+  | external transplant                .s        2     6.25         2      6.25 |
+  | external transplant             ounce        1     3.12         3      9.38 |
+  |         indoor seed                .s        7    21.88        10     31.25 |
+  |         indoor seed             ounce        2     6.25        12     37.50 |
+  |         indoor seed             pound        3     9.38        15     46.88 |
+  |-----------------------------------------------------------------------------|
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_16
-(31 real changes made)
+(27 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_16   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       11    34.38        14     43.75 |
-  |         indoor seed        2023-09-07        1     3.12        15     46.88 |
+  | external transplant                .s        2     6.25         2      6.25 |
+  | external transplant        2023-10-05        1     3.12         3      9.38 |
+  |         indoor seed                .s        8    25.00        11     34.38 |
+  |         indoor seed        2023-09-07        1     3.12        12     37.50 |
+  |         indoor seed        2023-10-03        1     3.12        13     40.62 |
+  |-----------------------------------------------------------------------------|
+  |         indoor seed        2023-10-05        2     6.25        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_16_stata
-(31 real changes made, 31 to missing)
+(27 real changes made, 27 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_16_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
-  | external transplant                      .s        3     9.38         3      9.38 |
+  | external transplant               05oct2023        1     3.12         1      3.12 |
+  | external transplant                      .s        2     6.25         3      9.38 |
   |         indoor seed               07sep2023        1     3.12         4     12.50 |
-  |         indoor seed                      .s       11    34.38        15     46.88 |
+  |         indoor seed               03oct2023        1     3.12         5     15.62 |
+  |         indoor seed               05oct2023        2     6.25         7     21.88 |
+  |-----------------------------------------------------------------------------------|
+  |         indoor seed                      .s        8    25.00        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_16
-(31 real changes made, 31 to missing)
+(27 real changes made, 27 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_16   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                12        1     3.12         4     12.50 |
-  |         indoor seed                .s       11    34.38        15     46.88 |
+  | external transplant                 5        1     3.12         1      3.12 |
+  | external transplant                .s        2     6.25         3      9.38 |
+  |         indoor seed               .75        1     3.12         4     12.50 |
+  |         indoor seed               8.5        1     3.12         5     15.62 |
+  |         indoor seed                12        1     3.12         6     18.75 |
+  |-----------------------------------------------------------------------------|
+  |         indoor seed                22        1     3.12         7     21.88 |
+  |         indoor seed                .s        8    25.00        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_16
-(31 real changes made)
+(27 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_16   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
-  | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       11    34.38        14     43.75 |
-  |         indoor seed             pound        1     3.12        15     46.88 |
+  | external transplant                .s        2     6.25         2      6.25 |
+  | external transplant             ounce        1     3.12         3      9.38 |
+  |         indoor seed                .s        8    25.00        11     34.38 |
+  |         indoor seed             ounce        1     3.12        12     37.50 |
+  |         indoor seed             pound        3     9.38        15     46.88 |
+  |-----------------------------------------------------------------------------|
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_17
-(31 real changes made)
+(30 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_17   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       11    34.38        14     43.75 |
-  |         indoor seed        2023-09-09        1     3.12        15     46.88 |
+  |         indoor seed                .s       10    31.25        13     40.62 |
+  |         indoor seed        2023-09-09        1     3.12        14     43.75 |
+  |         indoor seed        2023-10-05        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_17_stata
-(31 real changes made, 31 to missing)
+(30 real changes made, 30 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_17_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
   | external transplant                      .s        3     9.38         3      9.38 |
   |         indoor seed               09sep2023        1     3.12         4     12.50 |
-  |         indoor seed                      .s       11    34.38        15     46.88 |
+  |         indoor seed               05oct2023        1     3.12         5     15.62 |
+  |         indoor seed                      .s       10    31.25        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_17
-(31 real changes made, 31 to missing)
+(30 real changes made, 30 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_17   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed             12.25        1     3.12         4     12.50 |
-  |         indoor seed                .s       11    34.38        15     46.88 |
+  |         indoor seed                 3        1     3.12         4     12.50 |
+  |         indoor seed             12.25        1     3.12         5     15.62 |
+  |         indoor seed                .s       10    31.25        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_17
-(31 real changes made)
+(30 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_17   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       11    34.38        14     43.75 |
-  |         indoor seed             pound        1     3.12        15     46.88 |
+  |         indoor seed                .s       10    31.25        13     40.62 |
+  |         indoor seed             pound        2     6.25        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_18
-(31 real changes made)
+(30 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_18   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       11    34.38        14     43.75 |
-  |         indoor seed        2023-09-13        1     3.12        15     46.88 |
+  |         indoor seed                .s       10    31.25        13     40.62 |
+  |         indoor seed        2023-09-13        1     3.12        14     43.75 |
+  |         indoor seed        2023-10-11        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_18_stata
-(31 real changes made, 31 to missing)
+(30 real changes made, 30 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_18_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
   | external transplant                      .s        3     9.38         3      9.38 |
   |         indoor seed               13sep2023        1     3.12         4     12.50 |
-  |         indoor seed                      .s       11    34.38        15     46.88 |
+  |         indoor seed               11oct2023        1     3.12         5     15.62 |
+  |         indoor seed                      .s       10    31.25        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_18
-(31 real changes made, 31 to missing)
+(30 real changes made, 30 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_18   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                11        1     3.12         4     12.50 |
-  |         indoor seed                .s       11    34.38        15     46.88 |
+  |         indoor seed                 5        1     3.12         4     12.50 |
+  |         indoor seed                11        1     3.12         5     15.62 |
+  |         indoor seed                .s       10    31.25        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_18
-(31 real changes made)
+(30 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_18   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       11    34.38        14     43.75 |
-  |         indoor seed             pound        1     3.12        15     46.88 |
+  |         indoor seed                .s       10    31.25        13     40.62 |
+  |         indoor seed             pound        2     6.25        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_19
@@ -7169,123 +7376,343 @@ Variable: harvest_unit_22
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_23
-variable harvest_date_23 was str1 now str2
-(32 real changes made)
+(31 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_23   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       12    37.50        15     46.88 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed        2023-09-30        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_23_stata
-(32 real changes made, 32 to missing)
+(31 real changes made, 31 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_23_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
   | external transplant                      .s        3     9.38         3      9.38 |
-  |         indoor seed                      .s       12    37.50        15     46.88 |
+  |         indoor seed               30sep2023        1     3.12         4     12.50 |
+  |         indoor seed                      .s       11    34.38        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_23
-(32 real changes made, 32 to missing)
+(31 real changes made, 31 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_23   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       12    37.50        15     46.88 |
+  |         indoor seed               220        1     3.12         4     12.50 |
+  |         indoor seed                .s       11    34.38        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_23
-(32 real changes made, 32 to missing)
+(31 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_23   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       12    37.50        15     46.88 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed             ounce        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_24
-variable harvest_date_24 was str1 now str2
-(32 real changes made)
+(31 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_24   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       12    37.50        15     46.88 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed        2023-10-02        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_24_stata
-(32 real changes made, 32 to missing)
+(31 real changes made, 31 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_24_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
   | external transplant                      .s        3     9.38         3      9.38 |
-  |         indoor seed                      .s       12    37.50        15     46.88 |
+  |         indoor seed               02oct2023        1     3.12         4     12.50 |
+  |         indoor seed                      .s       11    34.38        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_24
-(32 real changes made, 32 to missing)
+(31 real changes made, 31 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_24   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       12    37.50        15     46.88 |
+  |         indoor seed              13.5        1     3.12         4     12.50 |
+  |         indoor seed                .s       11    34.38        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_24
-(32 real changes made, 32 to missing)
+(31 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_24   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       12    37.50        15     46.88 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed             pound        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_25
-variable harvest_date_25 was str1 now str2
-(32 real changes made)
+(31 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_date_25   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       12    37.50        15     46.88 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed        2023-10-03        1     3.12        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_date_25_stata
-(32 real changes made, 32 to missing)
+(31 real changes made, 31 to missing)
 
   +-----------------------------------------------------------------------------------+
   |            sow_type   harvest_date_25_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------|
   | external transplant                      .s        3     9.38         3      9.38 |
-  |         indoor seed                      .s       12    37.50        15     46.88 |
+  |         indoor seed               03oct2023        1     3.12         4     12.50 |
+  |         indoor seed                      .s       11    34.38        15     46.88 |
   |        outdoor seed                      .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------------+
 Variable: harvest_amnt_25
-(32 real changes made, 32 to missing)
+(31 real changes made, 31 to missing)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_amnt_25   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
-  |         indoor seed                .s       12    37.50        15     46.88 |
+  |         indoor seed              3.25        1     3.12         4     12.50 |
+  |         indoor seed                .s       11    34.38        15     46.88 |
   |        outdoor seed                .s       17    53.12        32    100.00 |
   +-----------------------------------------------------------------------------+
 Variable: harvest_unit_25
-(32 real changes made, 32 to missing)
+(31 real changes made)
 
   +-----------------------------------------------------------------------------+
   |            sow_type   harvest_unit_25   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed             pound        1     3.12        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_26
+(31 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_date_26   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed        2023-10-05        1     3.12        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_26_stata
+(31 real changes made, 31 to missing)
+
+  +-----------------------------------------------------------------------------------+
+  |            sow_type   harvest_date_26_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------|
+  | external transplant                      .s        3     9.38         3      9.38 |
+  |         indoor seed               05oct2023        1     3.12         4     12.50 |
+  |         indoor seed                      .s       11    34.38        15     46.88 |
+  |        outdoor seed                      .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------------+
+Variable: harvest_amnt_26
+(31 real changes made, 31 to missing)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_amnt_26   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed             11.25        1     3.12         4     12.50 |
+  |         indoor seed                .s       11    34.38        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_unit_26
+(31 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_unit_26   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed             pound        1     3.12        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_27
+(31 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_date_27   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed        2023-10-11        1     3.12        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_27_stata
+(31 real changes made, 31 to missing)
+
+  +-----------------------------------------------------------------------------------+
+  |            sow_type   harvest_date_27_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------|
+  | external transplant                      .s        3     9.38         3      9.38 |
+  |         indoor seed               11oct2023        1     3.12         4     12.50 |
+  |         indoor seed                      .s       11    34.38        15     46.88 |
+  |        outdoor seed                      .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------------+
+Variable: harvest_amnt_27
+(31 real changes made, 31 to missing)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_amnt_27   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed               171        1     3.12         4     12.50 |
+  |         indoor seed                .s       11    34.38        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_unit_27
+(31 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_unit_27   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       11    34.38        14     43.75 |
+  |         indoor seed             ounce        1     3.12        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_28
+variable harvest_date_28 was str1 now str2
+(32 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_date_28   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       12    37.50        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_28_stata
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------------+
+  |            sow_type   harvest_date_28_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------|
+  | external transplant                      .s        3     9.38         3      9.38 |
+  |         indoor seed                      .s       12    37.50        15     46.88 |
+  |        outdoor seed                      .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------------+
+Variable: harvest_amnt_28
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_amnt_28   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       12    37.50        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_unit_28
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_unit_28   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       12    37.50        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_29
+variable harvest_date_29 was str1 now str2
+(32 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_date_29   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       12    37.50        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_29_stata
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------------+
+  |            sow_type   harvest_date_29_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------|
+  | external transplant                      .s        3     9.38         3      9.38 |
+  |         indoor seed                      .s       12    37.50        15     46.88 |
+  |        outdoor seed                      .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------------+
+Variable: harvest_amnt_29
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_amnt_29   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       12    37.50        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_unit_29
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_unit_29   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       12    37.50        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_30
+variable harvest_date_30 was str1 now str2
+(32 real changes made)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_date_30   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       12    37.50        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_date_30_stata
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------------+
+  |            sow_type   harvest_date_30_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------|
+  | external transplant                      .s        3     9.38         3      9.38 |
+  |         indoor seed                      .s       12    37.50        15     46.88 |
+  |        outdoor seed                      .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------------+
+Variable: harvest_amnt_30
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_amnt_30   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  | external transplant                .s        3     9.38         3      9.38 |
+  |         indoor seed                .s       12    37.50        15     46.88 |
+  |        outdoor seed                .s       17    53.12        32    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: harvest_unit_30
+(32 real changes made, 32 to missing)
+
+  +-----------------------------------------------------------------------------+
+  |            sow_type   harvest_unit_30   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------|
   | external transplant                .s        3     9.38         3      9.38 |
   |         indoor seed                .s       12    37.50        15     46.88 |
@@ -8087,15 +8514,15 @@ transplants |
   : round 1 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
           1 |          2        6.25        6.25
-          6 |          4       12.50       18.75
-          8 |          1        3.12       21.88
-          9 |          1        3.12       25.00
-         10 |          1        3.12       28.12
-         12 |          1        3.12       31.25
-         18 |          1        3.12       34.38
-         19 |          1        3.12       37.50
-         32 |          1        3.12       40.62
-         .f |          2        6.25       46.88
+          6 |          5       15.62       21.88
+          8 |          1        3.12       25.00
+          9 |          1        3.12       28.12
+         10 |          1        3.12       31.25
+         12 |          1        3.12       34.38
+         18 |          1        3.12       37.50
+         19 |          1        3.12       40.62
+         24 |          1        3.12       43.75
+         32 |          1        3.12       46.88
          .s |         17       53.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
@@ -8108,14 +8535,14 @@ transplants |
 ------------+-----------------------------------
           0 |          1        3.12        3.12
           1 |          2        6.25        9.38
-          6 |          3        9.38       18.75
-          8 |          1        3.12       21.88
-          9 |          1        3.12       25.00
-         10 |          1        3.12       28.12
-         12 |          1        3.12       31.25
-         18 |          2        6.25       37.50
-         32 |          1        3.12       40.62
-         .f |          2        6.25       46.88
+          6 |          4       12.50       21.88
+          8 |          1        3.12       25.00
+          9 |          1        3.12       28.12
+         10 |          1        3.12       31.25
+         12 |          1        3.12       34.38
+         18 |          2        6.25       40.62
+         24 |          1        3.12       43.75
+         32 |          1        3.12       46.88
          .s |         17       53.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
@@ -8922,17 +9349,18 @@ Variable: harvest_date_1
    harvest: |
     round 1 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         15       46.88       46.88
- 2023-07-26 |          1        3.12       50.00
- 2023-07-27 |          1        3.12       53.12
- 2023-07-29 |          2        6.25       59.38
- 2023-08-01 |          1        3.12       62.50
- 2023-08-05 |          1        3.12       65.62
- 2023-08-10 |          1        3.12       68.75
- 2023-08-12 |          6       18.75       87.50
- 2023-08-26 |          2        6.25       93.75
- 2023-09-07 |          1        3.12       96.88
- 2023-09-19 |          1        3.12      100.00
+         .s |         13       40.62       40.62
+ 2023-07-26 |          1        3.12       43.75
+ 2023-07-27 |          1        3.12       46.88
+ 2023-07-29 |          2        6.25       53.12
+ 2023-08-01 |          1        3.12       56.25
+ 2023-08-05 |          1        3.12       59.38
+ 2023-08-10 |          1        3.12       62.50
+ 2023-08-12 |          6       18.75       81.25
+ 2023-08-26 |          2        6.25       87.50
+ 2023-09-07 |          1        3.12       90.62
+ 2023-09-19 |          1        3.12       93.75
+ 2023-10-02 |          2        6.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_1_stata
@@ -8952,7 +9380,8 @@ Variable: harvest_date_1_stata
   26aug2023 |          2        6.25       46.88
   07sep2023 |          1        3.12       50.00
   19sep2023 |          1        3.12       53.12
-         .s |         15       46.88      100.00
+  02oct2023 |          2        6.25       59.38
+         .s |         13       40.62      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_1
@@ -8972,8 +9401,9 @@ Variable: harvest_amnt_1
           8 |          1        3.12       40.62
           9 |          1        3.12       43.75
          20 |          2        6.25       50.00
-         58 |          1        3.12       53.12
-         .s |         15       46.88      100.00
+      29.25 |          1        3.12       53.12
+         58 |          1        3.12       56.25
+         .s |         14       43.75      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_1
@@ -8982,11 +9412,11 @@ Variable: harvest_unit_1
    harvest: |
     round 1 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         15       46.88       46.88
-     medium |          1        3.12       50.00
-      ounce |          3        9.38       59.38
-     ounces |          1        3.12       62.50
-      pound |          9       28.12       90.62
+         .s |         13       40.62       40.62
+     medium |          1        3.12       43.75
+      ounce |          3        9.38       53.12
+     ounces |          1        3.12       56.25
+      pound |         11       34.38       90.62
       small |          1        3.12       93.75
        unit |          2        6.25      100.00
 ------------+-----------------------------------
@@ -9147,17 +9577,18 @@ Variable: harvest_date_4
    harvest: |
     round 4 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         20       62.50       62.50
- 2023-08-01 |          1        3.12       65.62
- 2023-08-08 |          1        3.12       68.75
- 2023-08-12 |          2        6.25       75.00
- 2023-08-19 |          1        3.12       78.12
- 2023-08-21 |          1        3.12       81.25
- 2023-08-23 |          1        3.12       84.38
- 2023-09-02 |          1        3.12       87.50
- 2023-09-07 |          2        6.25       93.75
- 2023-09-09 |          1        3.12       96.88
- 2023-09-21 |          1        3.12      100.00
+         .s |         19       59.38       59.38
+ 2023-08-01 |          1        3.12       62.50
+ 2023-08-08 |          1        3.12       65.62
+ 2023-08-12 |          2        6.25       71.88
+ 2023-08-19 |          1        3.12       75.00
+ 2023-08-21 |          1        3.12       78.12
+ 2023-08-23 |          1        3.12       81.25
+ 2023-09-02 |          1        3.12       84.38
+ 2023-09-07 |          2        6.25       90.62
+ 2023-09-09 |          1        3.12       93.75
+ 2023-09-21 |          1        3.12       96.88
+ 2023-10-09 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_4_stata
@@ -9177,7 +9608,8 @@ Variable: harvest_date_4_stata
   07sep2023 |          2        6.25       31.25
   09sep2023 |          1        3.12       34.38
   21sep2023 |          1        3.12       37.50
-         .s |         20       62.50      100.00
+  09oct2023 |          1        3.12       40.62
+         .s |         19       59.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_4
@@ -9190,13 +9622,14 @@ Variable: harvest_amnt_4
          .5 |          2        6.25        6.25
           1 |          2        6.25       12.50
         1.5 |          1        3.12       15.62
-       3.75 |          1        3.12       18.75
-         10 |          1        3.12       21.88
-      16.25 |          1        3.12       25.00
-         26 |          2        6.25       31.25
-         41 |          1        3.12       34.38
-         88 |          1        3.12       37.50
-         .s |         20       62.50      100.00
+          2 |          1        3.12       18.75
+       3.75 |          1        3.12       21.88
+         10 |          1        3.12       25.00
+      16.25 |          1        3.12       28.12
+         26 |          2        6.25       34.38
+         41 |          1        3.12       37.50
+         88 |          1        3.12       40.62
+         .s |         19       59.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_4
@@ -9205,10 +9638,11 @@ Variable: harvest_unit_4
    harvest: |
     round 4 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         20       62.50       62.50
-      large |          1        3.12       65.62
-      ounce |          7       21.88       87.50
-      pound |          4       12.50      100.00
+         .s |         19       59.38       59.38
+      large |          1        3.12       62.50
+      ounce |          7       21.88       84.38
+      pound |          4       12.50       96.88
+      small |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_5
@@ -9468,13 +9902,15 @@ Variable: harvest_date_9
    harvest: |
     round 9 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         25       78.12       78.12
- 2023-08-25 |          1        3.12       81.25
- 2023-09-04 |          1        3.12       84.38
- 2023-09-06 |          2        6.25       90.62
- 2023-09-07 |          1        3.12       93.75
- 2023-09-09 |          1        3.12       96.88
- 2023-09-15 |          1        3.12      100.00
+         .s |         23       71.88       71.88
+ 2023-08-25 |          1        3.12       75.00
+ 2023-09-04 |          1        3.12       78.12
+ 2023-09-06 |          2        6.25       84.38
+ 2023-09-07 |          1        3.12       87.50
+ 2023-09-09 |          1        3.12       90.62
+ 2023-09-15 |          1        3.12       93.75
+ 2023-09-30 |          1        3.12       96.88
+ 2023-10-05 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_9_stata
@@ -9490,7 +9926,9 @@ Variable: harvest_date_9_stata
   07sep2023 |          1        3.12       15.62
   09sep2023 |          1        3.12       18.75
   15sep2023 |          1        3.12       21.88
-         .s |         25       78.12      100.00
+  30sep2023 |          1        3.12       25.00
+  05oct2023 |          1        3.12       28.12
+         .s |         23       71.88      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_9
@@ -9500,14 +9938,15 @@ Variable: harvest_amnt_9
      (wet): |
     round 9 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          2 |          1        3.12        3.12
-        2.5 |          1        3.12        6.25
-       3.75 |          1        3.12        9.38
-          7 |          1        3.12       12.50
-       10.5 |          1        3.12       15.62
-         47 |          1        3.12       18.75
-        115 |          1        3.12       21.88
-         .s |         25       78.12      100.00
+          2 |          2        6.25        6.25
+        2.5 |          1        3.12        9.38
+       3.75 |          1        3.12       12.50
+          5 |          1        3.12       15.62
+          7 |          1        3.12       18.75
+       10.5 |          1        3.12       21.88
+         47 |          1        3.12       25.00
+        115 |          1        3.12       28.12
+         .s |         23       71.88      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_9
@@ -9516,8 +9955,8 @@ Variable: harvest_unit_9
    harvest: |
     round 9 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         25       78.12       78.12
-      ounce |          3        9.38       87.50
+         .s |         23       71.88       71.88
+      ounce |          5       15.62       87.50
       pound |          4       12.50      100.00
 ------------+-----------------------------------
       Total |         32      100.00
@@ -9527,12 +9966,13 @@ Variable: harvest_date_10
    harvest: |
    round 10 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         25       78.12       78.12
- 2023-08-26 |          1        3.12       81.25
- 2023-09-06 |          1        3.12       84.38
- 2023-09-09 |          3        9.38       93.75
- 2023-09-13 |          1        3.12       96.88
- 2023-09-21 |          1        3.12      100.00
+         .s |         24       75.00       75.00
+ 2023-08-26 |          1        3.12       78.12
+ 2023-09-06 |          1        3.12       81.25
+ 2023-09-09 |          3        9.38       90.62
+ 2023-09-13 |          1        3.12       93.75
+ 2023-09-21 |          1        3.12       96.88
+ 2023-10-03 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_10_stata
@@ -9547,7 +9987,8 @@ Variable: harvest_date_10_stata
   09sep2023 |          3        9.38       15.62
   13sep2023 |          1        3.12       18.75
   21sep2023 |          1        3.12       21.88
-         .s |         25       78.12      100.00
+  03oct2023 |          1        3.12       25.00
+         .s |         24       75.00      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_10
@@ -9559,12 +10000,13 @@ Variable: harvest_amnt_10
 ------------+-----------------------------------
         .75 |          1        3.12        3.12
         1.5 |          1        3.12        6.25
-         24 |          1        3.12        9.38
-         35 |          1        3.12       12.50
-         38 |          1        3.12       15.62
-        215 |          1        3.12       18.75
-        576 |          1        3.12       21.88
-         .s |         25       78.12      100.00
+          2 |          1        3.12        9.38
+         24 |          1        3.12       12.50
+         35 |          1        3.12       15.62
+         38 |          1        3.12       18.75
+        215 |          1        3.12       21.88
+        576 |          1        3.12       25.00
+         .s |         24       75.00      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_10
@@ -9573,8 +10015,8 @@ Variable: harvest_unit_10
    harvest: |
    round 10 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         25       78.12       78.12
-      ounce |          5       15.62       93.75
+         .s |         24       75.00       75.00
+      ounce |          6       18.75       93.75
       pound |          2        6.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
@@ -9584,12 +10026,13 @@ Variable: harvest_date_11
    harvest: |
    round 11 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         25       78.12       78.12
- 2023-08-29 |          1        3.12       81.25
- 2023-09-09 |          1        3.12       84.38
- 2023-09-13 |          3        9.38       93.75
- 2023-09-15 |          1        3.12       96.88
- 2023-09-23 |          1        3.12      100.00
+         .s |         24       75.00       75.00
+ 2023-08-29 |          1        3.12       78.12
+ 2023-09-09 |          1        3.12       81.25
+ 2023-09-13 |          3        9.38       90.62
+ 2023-09-15 |          1        3.12       93.75
+ 2023-09-23 |          1        3.12       96.88
+ 2023-10-05 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_11_stata
@@ -9604,7 +10047,8 @@ Variable: harvest_date_11_stata
   13sep2023 |          3        9.38       15.62
   15sep2023 |          1        3.12       18.75
   23sep2023 |          1        3.12       21.88
-         .s |         25       78.12      100.00
+  05oct2023 |          1        3.12       25.00
+         .s |         24       75.00      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_11
@@ -9614,13 +10058,14 @@ Variable: harvest_amnt_11
      (wet): |
    round 11 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          4 |          1        3.12        3.12
-          8 |          1        3.12        6.25
-         11 |          2        6.25       12.50
-       11.5 |          1        3.12       15.62
-         18 |          1        3.12       18.75
-         24 |          1        3.12       21.88
-         .s |         25       78.12      100.00
+          2 |          1        3.12        3.12
+          4 |          1        3.12        6.25
+          8 |          1        3.12        9.38
+         11 |          2        6.25       15.62
+       11.5 |          1        3.12       18.75
+         18 |          1        3.12       21.88
+         24 |          1        3.12       25.00
+         .s |         24       75.00      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_11
@@ -9629,8 +10074,8 @@ Variable: harvest_unit_11
    harvest: |
    round 11 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         25       78.12       78.12
-      ounce |          4       12.50       90.62
+         .s |         24       75.00       75.00
+      ounce |          5       15.62       90.62
       pound |          3        9.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
@@ -9640,11 +10085,12 @@ Variable: harvest_date_12
    harvest: |
    round 12 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         26       81.25       81.25
- 2023-08-30 |          1        3.12       84.38
- 2023-09-13 |          1        3.12       87.50
- 2023-09-15 |          3        9.38       96.88
- 2023-09-23 |          1        3.12      100.00
+         .s |         25       78.12       78.12
+ 2023-08-30 |          1        3.12       81.25
+ 2023-09-13 |          1        3.12       84.38
+ 2023-09-15 |          3        9.38       93.75
+ 2023-09-23 |          1        3.12       96.88
+ 2023-09-30 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_12_stata
@@ -9658,7 +10104,8 @@ Variable: harvest_date_12_stata
   13sep2023 |          1        3.12        6.25
   15sep2023 |          3        9.38       15.62
   23sep2023 |          1        3.12       18.75
-         .s |         26       81.25      100.00
+  30sep2023 |          1        3.12       21.88
+         .s |         25       78.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_12
@@ -9668,13 +10115,14 @@ Variable: harvest_amnt_12
      (wet): |
    round 12 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          6 |          1        3.12        3.12
-         16 |          1        3.12        6.25
-         27 |          1        3.12        9.38
-       27.5 |          1        3.12       12.50
-         74 |          1        3.12       15.62
-        166 |          1        3.12       18.75
-         .s |         26       81.25      100.00
+       2.75 |          1        3.12        3.12
+          6 |          1        3.12        6.25
+         16 |          1        3.12        9.38
+         27 |          1        3.12       12.50
+       27.5 |          1        3.12       15.62
+         74 |          1        3.12       18.75
+        166 |          1        3.12       21.88
+         .s |         25       78.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_12
@@ -9683,9 +10131,10 @@ Variable: harvest_unit_12
    harvest: |
    round 12 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         26       81.25       81.25
-      ounce |          5       15.62       96.88
-      pound |          1        3.12      100.00
+         .s |         25       78.12       78.12
+      ounce |          5       15.62       93.75
+      pound |          1        3.12       96.88
+     pounds |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_13
@@ -9694,9 +10143,11 @@ Variable: harvest_date_13
    harvest: |
    round 13 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         27       84.38       84.38
- 2023-09-02 |          1        3.12       87.50
- 2023-09-23 |          4       12.50      100.00
+         .s |         25       78.12       78.12
+ 2023-09-02 |          1        3.12       81.25
+ 2023-09-23 |          4       12.50       93.75
+ 2023-09-30 |          1        3.12       96.88
+ 2023-10-03 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_13_stata
@@ -9708,7 +10159,9 @@ Variable: harvest_date_13_stata
 ------------+-----------------------------------
   02sep2023 |          1        3.12        3.12
   23sep2023 |          4       12.50       15.62
-         .s |         27       84.38      100.00
+  30sep2023 |          1        3.12       18.75
+  03oct2023 |          1        3.12       21.88
+         .s |         25       78.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_13
@@ -9719,11 +10172,13 @@ Variable: harvest_amnt_13
    round 13 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
         1.5 |          1        3.12        3.12
-          8 |          1        3.12        6.25
-       14.5 |          1        3.12        9.38
-         22 |          1        3.12       12.50
-        170 |          1        3.12       15.62
-         .s |         27       84.38      100.00
+       3.75 |          1        3.12        6.25
+          8 |          1        3.12        9.38
+       14.5 |          1        3.12       12.50
+         22 |          1        3.12       15.62
+         24 |          1        3.12       18.75
+        170 |          1        3.12       21.88
+         .s |         25       78.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_13
@@ -9732,9 +10187,9 @@ Variable: harvest_unit_13
    harvest: |
    round 13 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         27       84.38       84.38
-      ounce |          3        9.38       93.75
-      pound |          2        6.25      100.00
+         .s |         25       78.12       78.12
+      ounce |          4       12.50       90.62
+      pound |          3        9.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_14
@@ -9743,9 +10198,11 @@ Variable: harvest_date_14
    harvest: |
    round 14 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         30       93.75       93.75
- 2023-09-04 |          1        3.12       96.88
- 2023-09-27 |          1        3.12      100.00
+         .s |         25       78.12       78.12
+ 2023-09-04 |          1        3.12       81.25
+ 2023-09-27 |          1        3.12       84.38
+ 2023-09-30 |          3        9.38       93.75
+ 2023-10-05 |          2        6.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_14_stata
@@ -9757,7 +10214,9 @@ Variable: harvest_date_14_stata
 ------------+-----------------------------------
   04sep2023 |          1        3.12        3.12
   27sep2023 |          1        3.12        6.25
-         .s |         30       93.75      100.00
+  30sep2023 |          3        9.38       15.62
+  05oct2023 |          2        6.25       21.88
+         .s |         25       78.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_14
@@ -9767,9 +10226,14 @@ Variable: harvest_amnt_14
      (wet): |
    round 14 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-        2.5 |          1        3.12        3.12
-         25 |          1        3.12        6.25
-         .s |         30       93.75      100.00
+         .5 |          1        3.12        3.12
+          2 |          1        3.12        6.25
+        2.5 |          1        3.12        9.38
+         10 |          1        3.12       12.50
+         17 |          1        3.12       15.62
+         23 |          1        3.12       18.75
+         25 |          1        3.12       21.88
+         .s |         25       78.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_14
@@ -9778,9 +10242,9 @@ Variable: harvest_unit_14
    harvest: |
    round 14 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         30       93.75       93.75
-      ounce |          1        3.12       96.88
-      pound |          1        3.12      100.00
+         .s |         25       78.12       78.12
+      ounce |          4       12.50       90.62
+      pound |          3        9.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_15
@@ -9789,8 +10253,11 @@ Variable: harvest_date_15
    harvest: |
    round 15 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         31       96.88       96.88
- 2023-09-06 |          1        3.12      100.00
+         .s |         26       81.25       81.25
+ 2023-09-06 |          1        3.12       84.38
+ 2023-09-30 |          1        3.12       87.50
+ 2023-10-03 |          3        9.38       96.88
+ 2023-10-11 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_15_stata
@@ -9801,7 +10268,10 @@ Variable: harvest_date_15_stata
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
   06sep2023 |          1        3.12        3.12
-         .s |         31       96.88      100.00
+  30sep2023 |          1        3.12        6.25
+  03oct2023 |          3        9.38       15.62
+  11oct2023 |          1        3.12       18.75
+         .s |         26       81.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_15
@@ -9811,8 +10281,13 @@ Variable: harvest_amnt_15
      (wet): |
    round 15 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-      13.25 |          1        3.12        3.12
-         .s |         31       96.88      100.00
+        1.5 |          1        3.12        3.12
+       3.75 |          1        3.12        6.25
+         11 |          1        3.12        9.38
+      13.25 |          1        3.12       12.50
+         24 |          1        3.12       15.62
+         82 |          1        3.12       18.75
+         .s |         26       81.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_15
@@ -9821,8 +10296,9 @@ Variable: harvest_unit_15
    harvest: |
    round 15 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         31       96.88       96.88
-      pound |          1        3.12      100.00
+         .s |         26       81.25       81.25
+      ounce |          3        9.38       90.62
+      pound |          3        9.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_16
@@ -9831,8 +10307,10 @@ Variable: harvest_date_16
    harvest: |
    round 16 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         31       96.88       96.88
- 2023-09-07 |          1        3.12      100.00
+         .s |         27       84.38       84.38
+ 2023-09-07 |          1        3.12       87.50
+ 2023-10-03 |          1        3.12       90.62
+ 2023-10-05 |          3        9.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_16_stata
@@ -9843,7 +10321,9 @@ Variable: harvest_date_16_stata
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
   07sep2023 |          1        3.12        3.12
-         .s |         31       96.88      100.00
+  03oct2023 |          1        3.12        6.25
+  05oct2023 |          3        9.38       15.62
+         .s |         27       84.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_16
@@ -9853,8 +10333,12 @@ Variable: harvest_amnt_16
      (wet): |
    round 16 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         12 |          1        3.12        3.12
-         .s |         31       96.88      100.00
+        .75 |          1        3.12        3.12
+          5 |          1        3.12        6.25
+        8.5 |          1        3.12        9.38
+         12 |          1        3.12       12.50
+         22 |          1        3.12       15.62
+         .s |         27       84.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_16
@@ -9863,8 +10347,9 @@ Variable: harvest_unit_16
    harvest: |
    round 16 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         31       96.88       96.88
-      pound |          1        3.12      100.00
+         .s |         27       84.38       84.38
+      ounce |          2        6.25       90.62
+      pound |          3        9.38      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_17
@@ -9873,8 +10358,9 @@ Variable: harvest_date_17
    harvest: |
    round 17 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         31       96.88       96.88
- 2023-09-09 |          1        3.12      100.00
+         .s |         30       93.75       93.75
+ 2023-09-09 |          1        3.12       96.88
+ 2023-10-05 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_17_stata
@@ -9885,7 +10371,8 @@ Variable: harvest_date_17_stata
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
   09sep2023 |          1        3.12        3.12
-         .s |         31       96.88      100.00
+  05oct2023 |          1        3.12        6.25
+         .s |         30       93.75      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_17
@@ -9895,8 +10382,9 @@ Variable: harvest_amnt_17
      (wet): |
    round 17 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-      12.25 |          1        3.12        3.12
-         .s |         31       96.88      100.00
+          3 |          1        3.12        3.12
+      12.25 |          1        3.12        6.25
+         .s |         30       93.75      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_17
@@ -9905,8 +10393,8 @@ Variable: harvest_unit_17
    harvest: |
    round 17 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         31       96.88       96.88
-      pound |          1        3.12      100.00
+         .s |         30       93.75       93.75
+      pound |          2        6.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_18
@@ -9915,8 +10403,9 @@ Variable: harvest_date_18
    harvest: |
    round 18 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         31       96.88       96.88
- 2023-09-13 |          1        3.12      100.00
+         .s |         30       93.75       93.75
+ 2023-09-13 |          1        3.12       96.88
+ 2023-10-11 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_18_stata
@@ -9927,7 +10416,8 @@ Variable: harvest_date_18_stata
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
   13sep2023 |          1        3.12        3.12
-         .s |         31       96.88      100.00
+  11oct2023 |          1        3.12        6.25
+         .s |         30       93.75      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_18
@@ -9937,8 +10427,9 @@ Variable: harvest_amnt_18
      (wet): |
    round 18 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         11 |          1        3.12        3.12
-         .s |         31       96.88      100.00
+          5 |          1        3.12        3.12
+         11 |          1        3.12        6.25
+         .s |         30       93.75      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_18
@@ -9947,8 +10438,8 @@ Variable: harvest_unit_18
    harvest: |
    round 18 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         31       96.88       96.88
-      pound |          1        3.12      100.00
+         .s |         30       93.75       93.75
+      pound |          2        6.25      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_19
@@ -10125,7 +10616,8 @@ Variable: harvest_date_23
    harvest: |
    round 23 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+         .s |         31       96.88       96.88
+ 2023-09-30 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_23_stata
@@ -10135,7 +10627,8 @@ Variable: harvest_date_23_stata
   round 23- |
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+  30sep2023 |          1        3.12        3.12
+         .s |         31       96.88      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_23
@@ -10145,7 +10638,8 @@ Variable: harvest_amnt_23
      (wet): |
    round 23 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+        220 |          1        3.12        3.12
+         .s |         31       96.88      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_23
@@ -10154,7 +10648,8 @@ Variable: harvest_unit_23
    harvest: |
    round 23 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+         .s |         31       96.88       96.88
+      ounce |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_24
@@ -10163,7 +10658,8 @@ Variable: harvest_date_24
    harvest: |
    round 24 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+         .s |         31       96.88       96.88
+ 2023-10-02 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_24_stata
@@ -10173,7 +10669,8 @@ Variable: harvest_date_24_stata
   round 24- |
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+  02oct2023 |          1        3.12        3.12
+         .s |         31       96.88      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_24
@@ -10183,7 +10680,8 @@ Variable: harvest_amnt_24
      (wet): |
    round 24 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+       13.5 |          1        3.12        3.12
+         .s |         31       96.88      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_24
@@ -10192,7 +10690,8 @@ Variable: harvest_unit_24
    harvest: |
    round 24 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+         .s |         31       96.88       96.88
+      pound |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_25
@@ -10201,7 +10700,8 @@ Variable: harvest_date_25
    harvest: |
    round 25 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+         .s |         31       96.88       96.88
+ 2023-10-03 |          1        3.12      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_date_25_stata
@@ -10211,7 +10711,8 @@ Variable: harvest_date_25_stata
   round 25- |
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+  03oct2023 |          1        3.12        3.12
+         .s |         31       96.88      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_amnt_25
@@ -10221,7 +10722,8 @@ Variable: harvest_amnt_25
      (wet): |
    round 25 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .s |         32      100.00      100.00
+       3.25 |          1        3.12        3.12
+         .s |         31       96.88      100.00
 ------------+-----------------------------------
       Total |         32      100.00
 Variable: harvest_unit_25
@@ -10229,6 +10731,205 @@ Variable: harvest_unit_25
     unit of |
    harvest: |
    round 25 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         31       96.88       96.88
+      pound |          1        3.12      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_26
+
+    date of |
+   harvest: |
+   round 26 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         31       96.88       96.88
+ 2023-10-05 |          1        3.12      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_26_stata
+
+    date of |
+   harvest: |
+  round 26- |
+      stata |      Freq.     Percent        Cum.
+------------+-----------------------------------
+  05oct2023 |          1        3.12        3.12
+         .s |         31       96.88      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_amnt_26
+
+  harvested |
+     amount |
+     (wet): |
+   round 26 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+      11.25 |          1        3.12        3.12
+         .s |         31       96.88      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_unit_26
+
+    unit of |
+   harvest: |
+   round 26 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         31       96.88       96.88
+      pound |          1        3.12      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_27
+
+    date of |
+   harvest: |
+   round 27 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         31       96.88       96.88
+ 2023-10-11 |          1        3.12      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_27_stata
+
+    date of |
+   harvest: |
+  round 27- |
+      stata |      Freq.     Percent        Cum.
+------------+-----------------------------------
+  11oct2023 |          1        3.12        3.12
+         .s |         31       96.88      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_amnt_27
+
+  harvested |
+     amount |
+     (wet): |
+   round 27 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+        171 |          1        3.12        3.12
+         .s |         31       96.88      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_unit_27
+
+    unit of |
+   harvest: |
+   round 27 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         31       96.88       96.88
+      ounce |          1        3.12      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_28
+
+    date of |
+   harvest: |
+   round 28 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_28_stata
+
+    date of |
+   harvest: |
+  round 28- |
+      stata |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_amnt_28
+
+  harvested |
+     amount |
+     (wet): |
+   round 28 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_unit_28
+
+    unit of |
+   harvest: |
+   round 28 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_29
+
+    date of |
+   harvest: |
+   round 29 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_29_stata
+
+    date of |
+   harvest: |
+  round 29- |
+      stata |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_amnt_29
+
+  harvested |
+     amount |
+     (wet): |
+   round 29 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_unit_29
+
+    unit of |
+   harvest: |
+   round 29 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_30
+
+    date of |
+   harvest: |
+   round 30 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_date_30_stata
+
+    date of |
+   harvest: |
+  round 30- |
+      stata |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_amnt_30
+
+  harvested |
+     amount |
+     (wet): |
+   round 30 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |         32      100.00      100.00
+------------+-----------------------------------
+      Total |         32      100.00
+Variable: harvest_unit_30
+
+    unit of |
+   harvest: |
+   round 30 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
          .s |         32      100.00      100.00
 ------------+-----------------------------------
@@ -10465,7 +11166,7 @@ harvest_unit_11 str5    %9s                   unit of harvest: round 11
 harvest_date_12 str10   %10s                  date of harvest: round 12
 harves~12_stata int     %td                   date of harvest: round 12- stata
 harvest_amnt_12 double  %10.0g                harvested amount (wet): round 12
-harvest_unit_12 str5    %9s                   unit of harvest: round 12
+harvest_unit_12 str6    %9s                   unit of harvest: round 12
 harvest_date_13 str10   %10s                  date of harvest: round 13
 harves~13_stata int     %td                   date of harvest: round 13- stata
 harvest_amnt_13 double  %10.0g                harvested amount (wet): round 13
@@ -10480,7 +11181,7 @@ harvest_amnt_15 double  %10.0g                harvested amount (wet): round 15
 harvest_unit_15 str5    %9s                   unit of harvest: round 15
 harvest_date_16 str10   %10s                  date of harvest: round 16
 harves~16_stata int     %td                   date of harvest: round 16- stata
-harvest_amnt_16 byte    %10.0g                harvested amount (wet): round 16
+harvest_amnt_16 double  %10.0g                harvested amount (wet): round 16
 harvest_unit_16 str5    %9s                   unit of harvest: round 16
 harvest_date_17 str10   %10s                  date of harvest: round 17
 harves~17_stata int     %td                   date of harvest: round 17- stata
@@ -10506,18 +11207,38 @@ harvest_date_22 str10   %10s                  date of harvest: round 22
 harves~22_stata int     %td                   date of harvest: round 22- stata
 harvest_amnt_22 int     %10.0g                harvested amount (wet): round 22
 harvest_unit_22 str5    %9s                   unit of harvest: round 22
-harvest_date_23 str2    %9s                   date of harvest: round 23
-harves~23_stata byte    %td                   date of harvest: round 23- stata
-harvest_amnt_23 byte    %10.0g                harvested amount (wet): round 23
-harvest_unit_23 byte    %10.0g                unit of harvest: round 23
-harvest_date_24 str2    %9s                   date of harvest: round 24
-harves~24_stata byte    %td                   date of harvest: round 24- stata
-harvest_amnt_24 byte    %10.0g                harvested amount (wet): round 24
-harvest_unit_24 byte    %10.0g                unit of harvest: round 24
-harvest_date_25 str2    %9s                   date of harvest: round 25
-harves~25_stata byte    %td                   date of harvest: round 25- stata
-harvest_amnt_25 byte    %10.0g                harvested amount (wet): round 25
-harvest_unit_25 byte    %10.0g                unit of harvest: round 25
+harvest_date_23 str10   %10s                  date of harvest: round 23
+harves~23_stata int     %td                   date of harvest: round 23- stata
+harvest_amnt_23 int     %10.0g                harvested amount (wet): round 23
+harvest_unit_23 str5    %9s                   unit of harvest: round 23
+harvest_date_24 str10   %10s                  date of harvest: round 24
+harves~24_stata int     %td                   date of harvest: round 24- stata
+harvest_amnt_24 double  %10.0g                harvested amount (wet): round 24
+harvest_unit_24 str5    %9s                   unit of harvest: round 24
+harvest_date_25 str10   %10s                  date of harvest: round 25
+harves~25_stata int     %td                   date of harvest: round 25- stata
+harvest_amnt_25 double  %10.0g                harvested amount (wet): round 25
+harvest_unit_25 str5    %9s                   unit of harvest: round 25
+harvest_date_26 str10   %10s                  date of harvest: round 26
+harves~26_stata int     %td                   date of harvest: round 26- stata
+harvest_amnt_26 double  %10.0g                harvested amount (wet): round 26
+harvest_unit_26 str5    %9s                   unit of harvest: round 26
+harvest_date_27 str10   %10s                  date of harvest: round 27
+harves~27_stata int     %td                   date of harvest: round 27- stata
+harvest_amnt_27 int     %10.0g                harvested amount (wet): round 27
+harvest_unit_27 str5    %9s                   unit of harvest: round 27
+harvest_date_28 str2    %9s                   date of harvest: round 28
+harves~28_stata byte    %td                   date of harvest: round 28- stata
+harvest_amnt_28 byte    %10.0g                harvested amount (wet): round 28
+harvest_unit_28 byte    %10.0g                unit of harvest: round 28
+harvest_date_29 str2    %9s                   date of harvest: round 29
+harves~29_stata byte    %td                   date of harvest: round 29- stata
+harvest_amnt_29 byte    %10.0g                harvested amount (wet): round 29
+harvest_unit_29 byte    %10.0g                unit of harvest: round 29
+harvest_date_30 str2    %9s                   date of harvest: round 30
+harves~30_stata byte    %td                   date of harvest: round 30- stata
+harvest_amnt_30 byte    %10.0g                harvested amount (wet): round 30
+harvest_unit_30 byte    %10.0g                unit of harvest: round 30
 notes           str306  %306s                 notes
 
 . 
@@ -10526,5 +11247,5 @@ notes           str306  %306s                 notes
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- closed on:  27 Sep 2023, 23:41:01
+ closed on:  12 Oct 2023, 23:26:47
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
