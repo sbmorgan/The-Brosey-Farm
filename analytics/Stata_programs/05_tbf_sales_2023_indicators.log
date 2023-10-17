@@ -1,8 +1,8 @@
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- opened on:  27 Sep 2023, 23:41:13
+ opened on:  17 Oct 2023, 11:47:39
 
 . 
 . 
@@ -11,8 +11,7 @@
 . *** Program name: 05_tbf_sales_2023_indicators.do                                             ***
 . *** Project: TBF Market Garden 2023                                                                       ***
 . *** Purpose: Create Analysis Indicators for TBF Market Garden 2023 sales data                 ***    
-. ***                                                                                                                                                                           
->     ***
+. ***                                                                                                                                                                               ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
 . ***    I)                                                                                     ***
@@ -96,5 +95,5 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- closed on:  27 Sep 2023, 23:41:13
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  17 Oct 2023, 11:47:39
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

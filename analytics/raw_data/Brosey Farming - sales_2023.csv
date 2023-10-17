@@ -1,5 +1,5 @@
-sale_date,sale_location,sale_location_stall_no,sale_location_stall_spec,sale_crop,sale_amnt,sale_unit,sale_value_usd,,,
-2023-08-05,New Carlisle Farmers Market,,"outside, east",bean- fin de bagnol,2,pound,5,,TOTAL SALES 2023:,522
+sale_date,sale_location,sale_location_stall_no,sale_location_stall_spec,sale_item,sale_amnt,sale_unit,sale_value_usd,,,
+2023-08-05,New Carlisle Farmers Market,,"outside, east",bean- fin de bagnol,2,pound,5,,TOTAL SALES 2023:,575
 2023-08-05,New Carlisle Farmers Market,,"outside, east",bean- fin de bagnol,2,pound,6,,,
 2023-08-05,New Carlisle Farmers Market,,"outside, east",pepper- sweet banana,4,unit,1,,,
 2023-08-05,New Carlisle Farmers Market,,"outside, east",pepper- anaheim,7,unit,2,,,
@@ -174,3 +174,7 @@ sale_date,sale_location,sale_location_stall_no,sale_location_stall_spec,sale_cro
 2023-10-04,The Brosey Farm: farm stand,,roadside,,,,3,,,
 2023-10-09,The Brosey Farm: farm stand,,roadside,,,,7,,,
 2023-10-11,The Brosey Farm: farm stand,,roadside,,,,20,,,
+2023-10-14,The Brosey Farm: farm stand,,roadside,,,,6,,,
+2023-10-14,New Carlisle Farmers Market,,NC night market,sweet corn- ornamental- glas gm,4,unit,5,,,
+2023-10-14,New Carlisle Farmers Market,,NC night market,tomato-jalapeno salsa,5,unit,35,,,
+2023-10-14,New Carlisle Farmers Market,,NC night market,tomato sauce,1,unit,7,,,

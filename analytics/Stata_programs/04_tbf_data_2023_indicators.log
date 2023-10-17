@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.log
   log type:  text
- opened on:  12 Oct 2023, 23:28:31
+ opened on:  17 Oct 2023, 11:47:32
 
 . 
 . 
@@ -635,7 +635,7 @@ crop type                  |
 .         label variable c_harvest_total_unit "total harvest- units"
 
 .         
-.         forval x=1/25 {
+.         forval x=1/30 {
   2.                 capture confirm string variable harvest_unit_`x'
   3.                 if _rc==0 {
   4.                         replace c_harvest_total_unit= c_harvest_total_unit + harvest_amnt_`x' if inlist(harvest_unit_`x',"unit","small","medium","large") & flag_crop_nout==0
@@ -647,6 +647,8 @@ crop type                  |
 (2 real changes made)
 (2 real changes made)
 (1 real change made)
+(0 real changes made)
+(0 real changes made)
 (0 real changes made)
 (0 real changes made)
 (0 real changes made)
@@ -809,37 +811,37 @@ c_harvest_tot~t byte    %9.0g                 total harvest- units
 . 
 .         generate c_harvest_wtlb_per_plant = c_harvest_total_wtlb / c_harvest_no_plant
 
-.         tablist crop c_harvest_wtlb_per_plant c_harvest_total_wtlb c_harvest_no_plant, sort(v) ab(32)
+.         tablist crop c_harvest_total_wtlb c_harvest_no_plant c_harvest_wtlb_per_plant, sort(v) ab(32)
 
   +----------------------------------------------------------------------------------------------------------------------------------------------+
-  |                            crop   c_harvest_wtlb_per_plant   c_harvest_total_wtlb   c_harvest_no_plant   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |                            crop   c_harvest_total_wtlb   c_harvest_no_plant   c_harvest_wtlb_per_plant   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |----------------------------------------------------------------------------------------------------------------------------------------------|
-  |          arrugula- garden tangy                          0                      0                   55        1     4.55         1      4.55 |
-  |                    basil- sweet                          0                      0                    6        1     4.55         2      9.09 |
-  |             bean- fin de bagnol                   .3645833                9.84375                   27        1     4.55         3     13.64 |
-  |                 carrot- touchon                   .0877193                     10                  114        1     4.55         4     18.18 |
-  |                        cilantro                          0                      0                   27        1     4.55         5     22.73 |
+  |          arrugula- garden tangy                      0                   55                          0        1     4.55         1      4.55 |
+  |                    basil- sweet                      0                    6                          0        1     4.55         2      9.09 |
+  |             bean- fin de bagnol                9.84375                   27                   .3645833        1     4.55         3     13.64 |
+  |                 carrot- touchon                     10                  114                   .0877193        1     4.55         4     18.18 |
+  |                        cilantro                      0                   27                          0        1     4.55         5     22.73 |
   |----------------------------------------------------------------------------------------------------------------------------------------------|
-  |                      dill- hera                          0                      0                   20        1     4.55         6     27.27 |
-  |          eggplant- black beauty                   5.597222                 50.375                    9        1     4.55         7     31.82 |
-  |                  kale- lacinato                          0                      0                    6        1     4.55         8     36.36 |
-  |          lettuce- gourmet blend                          0                      0                   32        1     4.55         9     40.91 |
-  |                 pepper- anaheim                   3.683594               29.46875                    8        1     4.55        10     45.45 |
+  |                      dill- hera                      0                   20                          0        1     4.55         6     27.27 |
+  |          eggplant- black beauty                 50.375                    9                   5.597222        1     4.55         7     31.82 |
+  |                  kale- lacinato                      0                    6                          0        1     4.55         8     36.36 |
+  |          lettuce- gourmet blend                      0                   32                          0        1     4.55         9     40.91 |
+  |                 pepper- anaheim               29.46875                    8                   3.683594        1     4.55        10     45.45 |
   |----------------------------------------------------------------------------------------------------------------------------------------------|
-  |                  pepper- ghost                         1.5                    1.5                    1        1     4.55        11     50.00 |
-  |                pepper- habanero                     1.8125                 1.8125                    1        1     4.55        12     54.55 |
-  |         pepper- jalapeno- early                    2.58125                25.8125                   10        1     4.55        13     59.09 |
-  |            pepper- sweet banana                    2.90625                17.4375                    6        1     4.55        14     63.64 |
-  |        pepper- sweet- ca wonder                   2.538194                45.6875                   18        1     4.55        15     68.18 |
+  |                  pepper- ghost                     1.5                    1                        1.5        1     4.55        11     50.00 |
+  |                pepper- habanero                 1.8125                    1                     1.8125        1     4.55        12     54.55 |
+  |         pepper- jalapeno- early                25.8125                   10                    2.58125        1     4.55        13     59.09 |
+  |            pepper- sweet banana                17.4375                    6                    2.90625        1     4.55        14     63.64 |
+  |        pepper- sweet- ca wonder                45.6875                   18                   2.538194        1     4.55        15     68.18 |
   |----------------------------------------------------------------------------------------------------------------------------------------------|
-  |               pumpkin- ct field                          0                      0                   26        1     4.55        16     72.73 |
-  |                sage- broad leaf                          0                      0                    3        1     4.55        17     77.27 |
-  |              sunflower- mammoth                          0                      0                   70        1     4.55        18     81.82 |
-  |   sweet corn- country gentleman                          0                      0                  140        1     4.55        19     86.36 |
-  | sweet corn- ornamental- glas gm                          0                      0                  140        1     4.55        20     90.91 |
+  |               pumpkin- ct field                      0                   26                          0        1     4.55        16     72.73 |
+  |                sage- broad leaf                      0                    3                          0        1     4.55        17     77.27 |
+  |              sunflower- mammoth                      0                   70                          0        1     4.55        18     81.82 |
+  |   sweet corn- country gentleman                      0                  140                          0        1     4.55        19     86.36 |
+  | sweet corn- ornamental- glas gm                      0                  140                          0        1     4.55        20     90.91 |
   |----------------------------------------------------------------------------------------------------------------------------------------------|
-  |                   tomato- amish                   17.02604               204.3125                   12        1     4.55        21     95.45 |
-  |                    tomato- roma                         13                    234                   18        1     4.55        22    100.00 |
+  |                   tomato- amish               204.3125                   12                   17.02604        1     4.55        21     95.45 |
+  |                    tomato- roma                    234                   18                         13        1     4.55        22    100.00 |
   +----------------------------------------------------------------------------------------------------------------------------------------------+
 
 .     
@@ -848,5 +850,5 @@ c_harvest_tot~t byte    %9.0g                 total harvest- units
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.log
   log type:  text
- closed on:  12 Oct 2023, 23:28:31
+ closed on:  17 Oct 2023, 11:47:33
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
