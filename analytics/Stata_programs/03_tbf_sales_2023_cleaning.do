@@ -105,7 +105,6 @@ pause off
 	local cat_str_list sale_location sale_item sale_unit
 	tab1 `cat_str_list', missing
 	foreach var of varlist `cat_str_list' {
-		if `var'=="." continue
 		encode (`var'), generate(`var'_code)
 		tablist `var' `var'_code, sort(variable) ab(32)
 		tablist `var' `var'_code, sort(variable) nolabel ab(32)

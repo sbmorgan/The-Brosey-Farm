@@ -1,8 +1,9 @@
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.lo
+> g
   log type:  text
- opened on:  27 Jan 2024, 15:45:27
+ opened on:  27 Jan 2024, 18:28:40
 
 . 
 . 
@@ -11,8 +12,8 @@
 . *** Program name: 03_tbf_sales_2023_cleaning.do                                               ***
 . *** Project: TBF Market Garden 2023                                                                       ***
 . *** Purpose: Clean TBF Market Garden 2023 sales data                                          ***    
-. ***                                                                                                                                                       
->                         ***
+. ***                                                                                                                                           
+>                                     ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
 . ***    I) LOAD RAW DATA                                                                       ***
@@ -81,7 +82,11 @@ sale_date     sale_locat~n  sale_locat~o  sale_locat~c  sale_item     sale_amnt 
 .         
 .         /* Save raw TBF Market Garden 2023 data */
 .         save "$root\raw_data\tbf_market_garden_sales_2023_raw.dta", replace
-file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_sales_2023_raw.dta saved
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_sales_2023_raw.dta
+    saved
+
+.         export excel "$root\raw_data\tbf_market_garden_sales_2023_raw.xlsx", firstrow(variables) replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_sales_2023_raw.xlsx saved
 
 .         
 .    
@@ -108,7 +113,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
 sale_date       str10   %10s                  sale date
 sale_location   str27   %27s                  sale location
 sale_location~o byte    %10.0g                sale_location_stall_no
@@ -221,14 +226,13 @@ sale amount |
       Total |        180      100.00
 
 .         foreach var of varlist `cat_str_list' {
-  2.                 if `var'=="." continue
-  3.                 encode (`var'), generate(`var'_code)
-  4.                 tablist `var' `var'_code, sort(variable) ab(32)
-  5.                 tablist `var' `var'_code, sort(variable) nolabel ab(32)
-  6.                 local varlab : variable label `var'
-  7.                 label variable `var'_code "`varlab'- code"
-  8.                 order `var'_code, after(`var')
-  9.                 *pause
+  2.                 encode (`var'), generate(`var'_code)
+  3.                 tablist `var' `var'_code, sort(variable) ab(32)
+  4.                 tablist `var' `var'_code, sort(variable) nolabel ab(32)
+  5.                 local varlab : variable label `var'
+  6.                 label variable `var'_code "`varlab'- code"
+  7.                 order `var'_code, after(`var')
+  8.                 *pause
 .         }
 
   +-------------------------------------------------------------------------------------------------+
@@ -254,21 +258,21 @@ sale amount |
   |                    tomato- roma                      tomato- roma       16     8.89        98     54.44 |
   |          eggplant- black beauty            eggplant- black beauty       15     8.33       113     62.78 |
   |---------------------------------------------------------------------------------------------------------|
-  |                 carrot- touchon                   carrot- touchon       14     7.78       127     70.56 |
-  |            pepper- sweet banana              pepper- sweet banana       14     7.78       141     78.33 |
+  |            pepper- sweet banana              pepper- sweet banana       14     7.78       127     70.56 |
+  |                 carrot- touchon                   carrot- touchon       14     7.78       141     78.33 |
   |                                                                 .       12     6.67       153     85.00 |
   |                 pepper- anaheim                   pepper- anaheim       10     5.56       163     90.56 |
   |                        cilantro                          cilantro        4     2.22       167     92.78 |
   |---------------------------------------------------------------------------------------------------------|
-  |             bean- fin de bagnol               bean- fin de bagnol        3     1.67       170     94.44 |
-  |   sweet corn- country gentleman     sweet corn- country gentleman        3     1.67       173     96.11 |
+  |   sweet corn- country gentleman     sweet corn- country gentleman        3     1.67       170     94.44 |
+  |             bean- fin de bagnol               bean- fin de bagnol        3     1.67       173     96.11 |
   |               pumpkin- ct field                 pumpkin- ct field        2     1.11       175     97.22 |
-  | sweet corn- ornamental- glas gm   sweet corn- ornamental- glas gm        1     0.56       176     97.78 |
-  |           tomato-jalapeno salsa             tomato-jalapeno salsa        1     0.56       177     98.33 |
+  |                    tomato sauce                      tomato sauce        1     0.56       176     97.78 |
+  | sweet corn- ornamental- glas gm   sweet corn- ornamental- glas gm        1     0.56       177     98.33 |
   |---------------------------------------------------------------------------------------------------------|
   |                pepper- habanero                  pepper- habanero        1     0.56       178     98.89 |
   |                  pepper- ghost                      pepper- ghost        1     0.56       179     99.44 |
-  |                    tomato sauce                      tomato sauce        1     0.56       180    100.00 |
+  |           tomato-jalapeno salsa             tomato-jalapeno salsa        1     0.56       180    100.00 |
   +---------------------------------------------------------------------------------------------------------+
 
   +----------------------------------------------------------------------------------------+
@@ -289,12 +293,12 @@ sale amount |
   |   sweet corn- country gentleman               12        3     1.67       170     94.44 |
   |             bean- fin de bagnol                1        3     1.67       173     96.11 |
   |               pumpkin- ct field               11        2     1.11       175     97.22 |
-  |           tomato-jalapeno salsa               17        1     0.56       176     97.78 |
-  |                    tomato sauce               14        1     0.56       177     98.33 |
+  | sweet corn- ornamental- glas gm               13        1     0.56       176     97.78 |
+  |           tomato-jalapeno salsa               17        1     0.56       177     98.33 |
   |----------------------------------------------------------------------------------------|
-  | sweet corn- ornamental- glas gm               13        1     0.56       178     98.89 |
+  |                pepper- habanero                7        1     0.56       178     98.89 |
   |                  pepper- ghost                 6        1     0.56       179     99.44 |
-  |                pepper- habanero                7        1     0.56       180    100.00 |
+  |                    tomato sauce               14        1     0.56       180    100.00 |
   +----------------------------------------------------------------------------------------+
 
   +------------------------------------------------------------------+
@@ -357,9 +361,9 @@ Variable: sale_unit_code
   | New Carlisle Farmers Market                        4             outside, north       26    14.44       109     60.56 |
   | New Carlisle Farmers Market                        .              outside, east       26    14.44       135     75.00 |
   | New Carlisle Farmers Market                        8             outside, north       18    10.00       153     85.00 |
-  | The Brosey Farm: farm stand                       .s                   roadside       12     6.67       165     91.67 |
+  | New Carlisle Farmers Market                        6             outside, north       12     6.67       165     91.67 |
   |-----------------------------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market                        6             outside, north       12     6.67       177     98.33 |
+  | The Brosey Farm: farm stand                       .s                   roadside       12     6.67       177     98.33 |
   | New Carlisle Farmers Market                        .            NC night market        3     1.67       180    100.00 |
   +-----------------------------------------------------------------------------------------------------------------------+
 
@@ -582,10 +586,12 @@ sale amount |
 .         quietly compress
 
 .         save "$root\modified_data\tbf_market_garden_sales_2023_clean.dta", replace
-file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2023_clean.dta saved
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub
+    repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2023_clean.dta saved
 
 .         export excel "$root\modified_data\tbf_market_garden_sales_2023_clean.xlsx", firstrow(variables) replace
-file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2023_clean.xlsx saved
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2023_clean.xls
+> x saved
 
 .         
 .  
@@ -597,7 +603,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
 sale_date       str10   %10s                  sale date
 sale_date_stata int     %td                   sale date- stata
 sale_location   str27   %27s                  sale location
@@ -618,7 +624,8 @@ sale_value_usd  double  %10.0g                sale value (dollars)
 . 
 . log close _all
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\03_tbf_sales_2023_cleaning.lo
+> g
   log type:  text
- closed on:  27 Jan 2024, 15:45:28
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  27 Jan 2024, 18:28:40
+------------------------------------------------------------------------------------------------------------------------------------------------

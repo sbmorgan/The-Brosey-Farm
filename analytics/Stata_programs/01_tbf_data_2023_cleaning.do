@@ -114,10 +114,6 @@ pause off
 	/* Convert yes/no variables from character strings to numerics with "yes" (1) /"no" (0) value lables */
 	local cat_yn_list sow_heatmat
 	foreach var of varlist `cat_yn_list' {
-		if `var'=="." continue
-		*encode (`var'), generate(`var'_code)
-		*replace `var'_code= 0 if `var'_code== 1
-		*replace `var'_code= 1 if `var'_code== 2
 		tabulate `var', generate(`var'_code)
 		drop `var'_code1
 		rename `var'_code2 `var'_code
