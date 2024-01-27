@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- opened on:  27 Jan 2024, 15:45:53
+ opened on:  27 Jan 2024, 17:28:29
 
 . 
 . 
@@ -101,6 +101,9 @@ sow_fert~k_1  transp_har~d  fert_date_2   path_type_2   harvest_d~_1  harvest_a~
 .         save "$root\raw_data\tbf_market_garden_data_2023_raw.dta", replace
 file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_data_2023_raw.dta saved
 
+.         export excel "$root\raw_data\tbf_market_garden_data_2023_raw.xlsx", firstrow(variables) replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_data_2023_raw.xlsx saved
+
 .         
 .    
 . *=========================================================================================
@@ -146,7 +149,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  27 Jan 2024, 15:45:53
+ opened on:  27 Jan 2024, 17:28:30
 
 . 
 . 
@@ -239,7 +242,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  27 Jan 2024, 15:45:53
+ closed on:  27 Jan 2024, 17:28:30
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -11319,5 +11322,5 @@ notes           str306  %306s                 notes
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- closed on:  27 Jan 2024, 15:45:56
+ closed on:  27 Jan 2024, 17:28:32
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
