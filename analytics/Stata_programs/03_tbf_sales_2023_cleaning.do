@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: August 8, 2023   	   					 	     			                  ***
-*** Last date modified: October 17, 2023                                                      ***
+*** Last date modified: January 27, 2023                                                      ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -147,6 +147,7 @@ pause off
 	/* Save clean TBF Market Garden 2023 data */
 	quietly compress
 	save "$root\modified_data\tbf_market_garden_sales_2023_clean.dta", replace
+	export excel "$root\modified_data\tbf_market_garden_sales_2023_clean.xlsx", firstrow(variables) replace
 	
  
 *=========================================================================================

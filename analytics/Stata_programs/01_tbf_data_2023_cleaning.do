@@ -212,6 +212,7 @@ pause off
 	/* Save clean TBF Market Garden 2023 data */
 	quietly compress
 	save "$root\modified_data\tbf_market_garden_data_2023_clean.dta", replace
+	export excel "$root\modified_data\tbf_market_garden_data_2023_clean.xlsx", firstrow(variables) replace
 	
  
 *=========================================================================================
