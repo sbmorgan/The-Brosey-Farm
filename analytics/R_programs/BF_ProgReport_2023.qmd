@@ -1,0 +1,198 @@
+---
+title: "Grow Season 2023 Progress Report - Market Sales"
+author: "The Brosey Farm Analytics Team"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+format: 
+    html:
+        theme: cosmos
+        toc: true
+        code-fold: TRUE 
+editor: visual
+fig-width: 8
+fig-asp: 0.618
+embed-resources: TRUE
+---
+
+```{r}
+#| echo: FALSE
+
+
+pacman::p_load(tidyverse,
+               haven,
+               readr,
+               visdat,
+               stringr,
+               janitor,
+               DT,
+               skimr,
+               wesanderson,
+               gtExtras,
+               codebookr,
+               readxl)
+
+#color_pal <- wes_palette(6, name = "AsteroidCity2", type = "discrete")
+color_pal = c("#C52E19", "#AC9765", "#54D8B1", "#b67c3b", "#175149", "#AF4E24", "#0A9F9D", "#CEB175")
+```
+
+```{r}
+#| label: load-data
+#| echo: false
+#| include: FALSE
+
+
+#bf_2023 <- read_excel("C:/Users/larei/OneDrive/Documents/R Work Folder/The-Brosey-Farm/analytics/modified_data/tbf_market_garden_data_2023_clean.xlsx")
+file_path <- "C:/Users/larei/OneDrive/Documents/R Work Folder/The-Brosey-Farm/analytics/modified_data/tbf_market_garden_sales_2023_clean_indicators.dta"
+
+bf_2023 <- haven::read_dta(file_path)
+skim(bf_2023)
+#gtExtras::gt_plt_summary(bf_2023)
+
+# make codebook
+#bf_data_2023_codebook = codebookr::codebook(bf_2023)
+#print(bf_data_2023_codebook, "bf_data_2023_codebook.docx")
+
+# subset data
+bf_2023_sub = bf_2023 |> 
+    select(sale_date, sale_item, sale_unit, sale_amnt, sale_value_usd)
+skim(bf_2023_sub)
+
+bf_2023_summary = bf_2023_sub |> 
+    filter(sale_item != ".s") |> 
+    #mutate(sale_date = as.Date(sale_date)) |> 
+    group_by(sale_item, sale_unit) |> 
+    summarize(tot_sale_amnt = sum(sale_amnt), 
+              tot_sale_value = sum(sale_value_usd)) |> 
+    ungroup() |> 
+    arrange(desc(tot_sale_value))
+```
+
+## Tables
+
+::: {.panel-tabset .nav-pills}
+### Average sales by crop
+
+```{r}
+#| label: tbl-sparklines
+#| eval: TRUE
+#| warning: FALSE
+#| echo: FALSE
+
+
+summary = bf_2023_sub %>%
+  filter(sale_item != ".s") |> 
+  group_by(sale_item) |> 
+  summarize(mean  = mean(sale_amnt), 
+              sd = sd(sale_amnt),
+            sale_data = list(sale_amnt),
+            .groups = "drop")
+# sparklines
+summary |> 
+    arrange(sale_item) |> 
+    gt() |> 
+    gtExtras::gt_plt_sparkline(sale_data) %>%
+    fmt_number(columns = mean:sd, decimals = 1)
+```
+
+### Table of total sales by crop
+
+```{r}
+#| label: tbl-dot-bar
+#| eval: TRUE
+#| warning: FALSE
+#| echo: FALSE
+
+
+dot_bar_tab = bf_2023_summary |> 
+    filter(! sale_item %in% c("tomato sauce", "tomato-jalapeno salsa")) |> 
+    separate(sale_item, into = c("type", "rest"), sep = "-", remove = FALSE, extra = "merge") |> 
+    select(type, sale_unit, tot_sale_value) |> 
+    mutate(crop_type = 
+    case_when(
+        type == "tomato" ~ "tomato",
+        type == "pepper" ~ "pepper",
+        type == "eggplant" ~"eggplant",
+        type == "carrot" ~ "carrot",
+        type == "bean" ~ "bean",
+        type == "cilantro" ~ "cilantro",
+        type == "sweet corn" ~ "sweet corn",
+        type == "pumpkin" ~ "pumpkin"
+    )) |> 
+    group_by(crop_type) |> 
+    summarize(tot_sale_value = sum(tot_sale_value)) |> 
+    ungroup() |> 
+    gt() |> 
+    gt_plt_dot(column = tot_sale_value, category_column = crop_type,
+        palette = c("#C52E19", "#AC9765", "#54D8B1", "#b67c3b", "#175149", "#AF4E24")) |> 
+    cols_width(crop_type ~ px(125)) |> 
+    cols_label(
+        crop_type = "Crop Type",
+        tot_sale_value = "Total Sales (USD)"
+    )
+
+dot_bar_tab
+
+```
+:::
+
+## Graphs
+### Total amount by week by crop
+```{r}
+#| label: graph-amnt-month 
+#| eval: TRUE 
+#| warning: FALSE 
+#| echo: FALSE
+
+
+bf_2023_month = bf_2023_sub|> 
+    filter(! sale_item %in% c("tomato sauce", "tomato-jalapeno salsa", ".s")) |> 
+    mutate(sale_date = as.Date(sale_date)) |> 
+    # extract week of the month from the date variable
+    mutate(week = week(sale_date) - week(floor_date(sale_date, "month")) + 1) |> 
+    mutate(month = lubridate::month(sale_date)) |> 
+    mutate(month_name = month.abb[month]) |> 
+    mutate(monthweek = paste0(month_name, "_", week)) |> 
+    #mutate(monthweek = paste0(month, "_", week)) |> 
+    
+    separate(sale_item, into = c("type", "rest"), sep = "-", remove = FALSE, extra = "merge") |> 
+    select(monthweek, week, type, sale_amnt) |> 
+    mutate(crop_type = 
+      case_when(
+          type == "tomato" ~ "tomato",
+          type == "pepper" ~ "pepper",
+          type == "eggplant" ~"eggplant",
+          type == "carrot" ~ "carrot",
+          type == "bean" ~ "bean",
+          type == "cilantro" ~ "cilantro",
+          type == "sweet corn" ~ "sweet corn",
+          type == "pumpkin" ~ "pumpkin"
+    )) |> 
+    group_by(monthweek, crop_type) |>   
+    summarize(tot_amnt = sum(sale_amnt)) |> 
+    ungroup()
+
+bf_2023_month |> 
+  ggplot(aes(x = factor(monthweek, levels = unique(monthweek)), y = tot_amnt, fill = crop_type)) + 
+  geom_col() + 
+  theme_minimal() + 
+    labs( title = "Total Sale Amounts by Month by Crop", 
+          x = "week", 
+          y = "Amount sold (by unit)", 
+          caption = "Source: Brosey Farm Market Garden Data, 2023") +
+  theme(
+     legend.position = "bottom",
+     legend.title=element_blank()
+  ) +
+  scale_fill_manual(values = color_pal) # +
+  #TODO fix order such that Oct is at the end
+  # scale_x_continuous(
+  #   labels = function(x) paste0(month,"-",x),
+  #   breaks = seq(30,45, by = 1)
+  # )
+
+```
+
+
+
+
+
+**Copyright Brosey Farm, LLC (2024)**

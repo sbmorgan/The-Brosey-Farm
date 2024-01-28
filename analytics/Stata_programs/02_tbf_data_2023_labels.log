@@ -1,15 +1,15 @@
----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_02
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  14 Jul 2023, 00:25:27
+ opened on:  27 Jan 2024, 15:45:53
 
 . 
 . 
 . *=========================================================================================
 . * I) CREATE VARIABLE LABELS    
 . *=========================================================================================
-. 
+.         
 .         label variable crop "crop type"
 
 .         label variable sow_type "seed sowing type"
@@ -39,13 +39,16 @@
 .         label variable sow_light_type "lighting type"
 
 .         
+.         /* Indoor fertilizing */
 .         forval x=1/4 {
   2.                 label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings: round `x'"
-  3.                 label variable sow_fert_type_`x' "type of fertilizer applied to indoor seedlings: round `x'"
-  4.                 label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings: round `x'"
-  5.         }
+  3.                 label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
+  4.                 label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
+  5.                 label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings: round `x'"
+  6.         }
 
 .         
+.         /* Transplanting */
 .         label variable transp_harden_date_srt "transplant harden off start date"
 
 .         label variable transp_harden_date_end "transplant harden off end date"
@@ -59,15 +62,18 @@
   6.         }
 
 .         
+.         /* Outdoor fertilizing */
 .         forval x=1/3 {
-  2.                 label variable fert_type_`x' "type of fertilizer applied to crop: round `x'"
-  3.                 label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
-  4.                 label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round `x'"
-  5.                 label variable fert_unit_`x' "unit of fertilizer applied to crop: round `x'"
-  6.         }
+  2.                 label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
+  3.                 label variable fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
+  4.                 label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
+  5.                 label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round `x'"
+  6.                 label variable fert_unit_`x' "unit of fertilizer applied to crop: round `x'"
+  7.         }
 
 .         
-.         forval x=1/2 {
+.         /* Pest management */
+.         forval x=1/3 {
   2.                 label variable path_type_`x' "pathogen type: pathogen `x'"
   3.                 label variable path_date_`x' "pathogen date: pathogen `x'"
   4.                 forval y=1/3 {
@@ -77,10 +83,17 @@
   8.         }
 
 .         
+.         /* Harvesting */
+.         forval x=1/30 {
+  2.                 label variable harvest_date_`x' "date of harvest: round `x'"
+  3.                 label variable harvest_amnt_`x' "harvested amount (wet): round `x'"
+  4.                 label variable harvest_unit_`x' "unit of harvest: round `x'"
+  5.         }
+
 .         
 . log close labels_02
       name:  labels_02
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  14 Jul 2023, 00:25:27
----------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  27 Jan 2024, 15:45:53
+------------------------------------------------------------------------------------------------------------------------------------------------------------

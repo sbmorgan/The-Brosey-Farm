@@ -17,7 +17,7 @@
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 13, 2023   	   					 	     			                  ***
-*** Last date modified: July 13, 2023                                                         ***
+*** Last date modified: October 12, 2023                                                    ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
@@ -26,13 +26,13 @@
 
 
 capture log close labels_02
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\BFRproj\02_tbf_data_2023_labels.log", replace name(labels_02)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log", replace name(labels_02)
 
 
 *=========================================================================================
 * I) CREATE VARIABLE LABELS    
 *=========================================================================================
-
+	
 	label variable crop "crop type"
 	label variable sow_type "seed sowing type"
 	label variable sow_date "seed sowing date"
@@ -48,12 +48,15 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	label variable sow_light_hrs "number of hours of lighting" 
 	label variable sow_light_type "lighting type"
 	
+	/* Indoor fertilizing */
 	forval x=1/4 {
 		label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings: round `x'"
-		label variable sow_fert_type_`x' "type of fertilizer applied to indoor seedlings: round `x'"
+		label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
+		label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
 		label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings: round `x'"
 	}
 	
+	/* Transplanting */
 	label variable transp_harden_date_srt "transplant harden off start date"
 	label variable transp_harden_date_end "transplant harden off end date"
 	
@@ -64,14 +67,17 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 		label variable transp_no_end_`x' "ending number of transplants: round `x'"
 	}
 	
+	/* Outdoor fertilizing */
 	forval x=1/3 {
-		label variable fert_type_`x' "type of fertilizer applied to crop: round `x'"
+		label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
+		label variable fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
 		label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
 		label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round `x'"
 		label variable fert_unit_`x' "unit of fertilizer applied to crop: round `x'"
 	}
 	
-	forval x=1/2 {
+	/* Pest management */
+	forval x=1/3 {
 		label variable path_type_`x' "pathogen type: pathogen `x'"
 		label variable path_date_`x' "pathogen date: pathogen `x'"
 		forval y=1/3 {
@@ -80,5 +86,11 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 		}
 	}
 	
+	/* Harvesting */
+	forval x=1/30 {
+		label variable harvest_date_`x' "date of harvest: round `x'"
+		label variable harvest_amnt_`x' "harvested amount (wet): round `x'"
+		label variable harvest_unit_`x' "unit of harvest: round `x'"
+	}
 	
 log close labels_02
