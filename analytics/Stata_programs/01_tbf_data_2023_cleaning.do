@@ -163,20 +163,23 @@ pause off
 		
 		tablist crop crop_code, sort(v) nolabel
 		foreach var of varlist sow_no_germ_per sow_to_germ25_days sow_no_thin_per {	
-			replace `var'=.s if `var'==. & crop_code==8 // For the garlic that has not germinated yet. Plant in FA23 for harvest SU24.
+			replace `var'=.s if `var'==. & crop_code==8 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
 		}
 		
 		tablist crop sow_date if sow_no_thin_per==., sort(v) ab(32) // These are true missing data. Should have been filled out but were not.
 		replace sow_no_thin_per=.m if sow_no_thin_per==.
 		
+		/*
 		foreach var of varlist transp_* {
 			capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
 			if _rc==0 {
 				capture confirm numeric variable `var'
-				if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
-				else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
+				*if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
+				*else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
+				// All plants have now been transplanted but saving this loop for next season;s iteration of this crop data cleaning program
 			}
 		}
+		*/
 		
 		foreach var of varlist transp*_2* {
 			tablist crop sow_date if missing(`var'), sort(v) ab(32)

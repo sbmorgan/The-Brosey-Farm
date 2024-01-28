@@ -22,23 +22,24 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: September 26, 2023   	   					 	     			              ***
-*** Last date modified: September 27, 2023                                                    ***
+*** Last date modified: January 28, 2024                                                      ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
 ***                                                                                           ***
 *************************************************************************************************
 
-clear all
-version 18.0
-set more off
-set varabbrev off
-pause off
-
 
 *=========================================================================================
 * 0) SET UP CODE
 *=========================================================================================	
+
+/* Set do-file preferences */
+	clear all
+	version 18.0
+	set more off
+	set varabbrev off
+	pause off
 
 /* Set seed */
 	set seed 7122023
@@ -62,64 +63,85 @@ pause off
 * II) CREATE ANALYSIS INDICATORS
 *=========================================================================================
 	
-	/* */
+	/* Harvest */
+	
+	*-> Number of plants harvested
 	generate c_harvest_no_plant=.c
 	label variable c_harvest_no_plant "number of plants harvested"
 	replace c_harvest_no_plant=transp_no_end_1 if sow_type=="indoor seed" & transp_no_end_2==.s
-	replace c_harvest_no_plant=transp_no_end_2 if sow_type=="indoor seed" & transp_no_end_2!=.s
-	replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed"
-	replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant"
-	tablist sow_type crop transp_no_end_1 transp_no_end_2 sow_no_thin_per sow_no_cellrowhill c_harvest_no_plant, sort(v) ab(32)
+	replace c_harvest_no_plant=transp_no_end_2 if sow_type=="indoor seed" & transp_no_end_2!=.s // Use final transplant number if multiple transplantings (e.g., from seed tray to small container (1), then to garden plot (2))
+	replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & crop_code!=8 // "& crop_code!=8" to exclude a calculation for the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
+	replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant" // These are starts purchased outside the farm.
+	tablist sow_date sow_type crop transp_no_end_1 transp_no_end_2 sow_no_thin_per sow_no_cellrowhill c_harvest_no_plant, sort(v) ab(32)
 	table crop, statistic(total c_harvest_no_plant)
-	
-	/* Harvest */
 	
 	*-> Total harvest- weight
 	tablist crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
-	generate flag_crop_nowt= inlist(crop_code,1,2,5,6,8,9) | inlist(crop_code,16,17,18,19,20) 
-	tablist crop crop_code flag_crop_nowt harvest_unit_1, sort(v) ab(32) nolabel
-	label variable flag_crop_nowt "flags crops not harvested by weight"
+	generate flag_crop_wt= inlist(crop_code,1,2,5,6,8,9) | inlist(crop_code,10,16,17,18,19,20) 
+	tablist crop crop_code flag_crop_wt harvest_unit_1, sort(v) ab(32) nolabel
+	label variable flag_crop_wt "flags crops not harvested by weight"
 	
 	generate c_harvest_total_wtoz= 0
-	replace c_harvest_total_wtoz= .c if flag_crop_nowt==1 
+	replace c_harvest_total_wtoz= .c if flag_crop_wt==0 
 	label variable c_harvest_total_wtoz "total harvest- weight, ounces"
 	
-	forval x=1/25 {
-		capture confirm string variable harvest_unit_`x'
-		if _rc==0 {
-			replace c_harvest_total_wtoz= c_harvest_total_wtoz + harvest_amnt_`x' if harvest_unit_`x'=="ounce" & flag_crop_nowt==0
-			replace c_harvest_total_wtoz= c_harvest_total_wtoz + (harvest_amnt_`x' * 16) if harvest_unit_`x'=="pound" & flag_crop_nowt==0
-		}
-		else assert harvest_unit_`x'==.s // No harvest collected.
-	} 
-	assert c_harvest_total_wtoz==.c if flag_crop_nowt==1 
-	table crop if flag_crop_nowt==0, statistic(total c_harvest_total_wtoz)
-	
-	clonevar c_harvest_total_wtlb= c_harvest_total_wtoz
-	label variable c_harvest_total_wtlb "total harvest- weight, pounds"
-	replace c_harvest_total_wtlb= c_harvest_total_wtlb/16 if flag_crop_nowt==0
-	assert c_harvest_total_wtlb==.c if flag_crop_nowt==1 
-	table crop if flag_crop_nowt==0, statistic(total c_harvest_total_wtlb)	
-
-	*-> Total harvest- unit
-	tablist crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
-	generate flag_crop_nout= !inlist(crop_code,16,19,20)
-	tablist crop crop_code flag_crop_nout harvest_unit_1, sort(v) ab(32) nolabel
-	label variable flag_crop_nout "flags crops not harvested by unit"
-	
-	generate c_harvest_total_unit= 0
-	replace c_harvest_total_unit= .c if flag_crop_nout==1 
-	label variable c_harvest_total_unit "total harvest- units"
+	generate c_harvest_total_wtoz_prev=0
+	replace c_harvest_total_wtoz_prev= .c if flag_crop_wt==0 
+	label variable c_harvest_total_wtoz_prev "total harvest- weight, ounces (previous sum in loop iteration)"
 	
 	forval x=1/30 {
 		capture confirm string variable harvest_unit_`x'
 		if _rc==0 {
-			replace c_harvest_total_unit= c_harvest_total_unit + harvest_amnt_`x' if inlist(harvest_unit_`x',"unit","small","medium","large") & flag_crop_nout==0
+			replace c_harvest_total_wtoz= c_harvest_total_wtoz + harvest_amnt_`x' if harvest_unit_`x'=="ounce" & flag_crop_wt==1
+			replace c_harvest_total_wtoz= c_harvest_total_wtoz + (harvest_amnt_`x' * 16) if harvest_unit_`x'=="pound" & flag_crop_wt==1
+			tablist flag_crop_wt crop c_harvest_total_wtoz harvest_amnt_`x' harvest_unit_`x' c_harvest_total_wtoz_prev, sort(v) ab(32)
+			*pause
+			replace c_harvest_total_wtoz_prev= c_harvest_total_wtoz if flag_crop_wt==1
+		}
+		else assert harvest_unit_`x'==.s // No harvest collected.
+	} 
+	assert c_harvest_total_wtoz==.c if flag_crop_wt==0 
+	table crop if flag_crop_wt==1, statistic(total c_harvest_total_wtoz)
+	drop c_harvest_total_wtoz_prev
+	
+	clonevar c_harvest_total_wtlb= c_harvest_total_wtoz
+	label variable c_harvest_total_wtlb "total harvest- weight, pounds"
+	replace c_harvest_total_wtlb= c_harvest_total_wtlb/16 if flag_crop_wt==1
+	tablist flag_crop_wt crop sow_date c_harvest_total_wtlb c_harvest_total_wtoz, sort(v) ab(32)
+	tablist flag_crop_wt crop sow_date sow_date_stata c_harvest_total_wtlb c_harvest_total_wtoz if crop_code==21, sort(v) ab(32) // The ornamental corn was harvested all together and not separated by sow date.
+	replace c_harvest_total_wtoz=.c if crop_code==21 & sow_date=="2023-06-10"
+	replace c_harvest_total_wtlb=.c if crop_code==21 & sow_date=="2023-06-10"
+	tablist flag_crop_wt crop sow_date c_harvest_total_wtlb c_harvest_total_wtoz, sort(v) ab(32)
+	assert c_harvest_total_wtlb==.c if flag_crop_wt==0 
+	table crop if flag_crop_wt==1, statistic(total c_harvest_total_wtlb)	
+
+	*-> Total harvest- unit
+	tablist crop crop_code harvest_unit_1 harvest_amnt_1, sort(v) ab(32) nolabel
+	generate flag_crop_unit= inlist(crop_code,17,20)
+	tablist crop crop_code flag_crop_unit harvest_unit_1, sort(v) ab(32) nolabel
+	label variable flag_crop_unit "flags crops harvested by unit"
+	
+	generate c_harvest_total_unit= 0
+	replace c_harvest_total_unit= .c if flag_crop_unit==0
+	label variable c_harvest_total_unit "total harvest- units"
+	
+	generate c_harvest_total_unit_prev=0
+	replace c_harvest_total_unit_prev= .c if flag_crop_unit==0
+	label variable c_harvest_total_unit_prev "total harvest- units (previous sum in loop iteration)"
+	
+	forval x=1/30 {
+		capture confirm string variable harvest_unit_`x'
+		if _rc==0 {
+			replace c_harvest_total_unit= c_harvest_total_unit + harvest_amnt_`x' if inlist(harvest_unit_`x',"unit","small","medium","large") & flag_crop_unit==1
+			tablist flag_crop_unit crop c_harvest_total_unit harvest_amnt_`x' c_harvest_total_unit_prev, sort(v) ab(32)
+			*pause
+			replace c_harvest_total_unit_prev= c_harvest_total_unit if flag_crop_unit==1
 		} 
 		else assert harvest_unit_`x'==.s // No harvest collected.
 	}
-	assert c_harvest_total_unit==.c if flag_crop_nout==1 
-	table crop if flag_crop_nout==0, statistic(total c_harvest_total_unit)
+	assert c_harvest_total_unit==.c if flag_crop_unit==0
+	table crop if flag_crop_unit==1, statistic(total c_harvest_total_unit)
+	drop c_harvest_total_unit_prev
 
 	/* Save TBF Market Garden 2023 data with analysis indicators */
 	drop flag_*
@@ -131,15 +153,4 @@ pause off
 	summarize c_*, detail
 	
    
-*=========================================================================================
-* III) 
-*=========================================================================================  
-
-	collapse (sum) c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit, by(crop)
-	tablist crop c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit, sort(v) ab(32)
-
-	generate c_harvest_wtlb_per_plant = c_harvest_total_wtlb / c_harvest_no_plant
-	tablist crop c_harvest_total_wtlb c_harvest_no_plant c_harvest_wtlb_per_plant, sort(v) ab(32)
-    
-
 log close _all

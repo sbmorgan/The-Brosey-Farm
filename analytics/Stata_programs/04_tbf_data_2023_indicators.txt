@@ -1,0 +1,1191 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}clean_01_txt
+       {txt}log:  {res}C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.txt
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}28 Jan 2024, 12:40:34
+{txt}
+{com}. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 04_tbf_data_2023_indicators.do                                              ***
+. *** Project: TBF Market Garden 2023                                                                       ***
+. *** Purpose: Create Analysis Indicators for TBF Market Garden 2023 data                       ***    
+. ***                                                                                                                                                                               ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) LOAD DATA                                                                           ***
+. ***    II) CREATE ANALYSIS INDICATORS                                                         ***
+. ***    III)                                                                                   ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: September 26, 2023                                                                                            ***
+. *** Last date modified: January 28, 2024                                                      ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***                                                                                           ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. clear all
+{res}{txt}
+{com}. version 18.0
+{txt}
+{com}. set more off
+{txt}
+{com}. set varabbrev off
+{txt}
+{com}. pause off
+{txt}
+{com}. 
+. 
+. *=========================================================================================
+. * 0) SET UP CODE
+. *=========================================================================================      
+. 
+. /* Set seed */
+.         set seed 7122023
+{txt}
+{com}.         
+. /* Define globals */
+. 
+.         *Root
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+{txt}
+{com}.     adopath ++ "$root"
+{txt}  [1]              "{res}C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics{txt}"
+  [2]  (BASE)      "{res}C:\Program Files\Stata18\ado\base/{txt}"
+  [3]  (SITE)      "{res}C:\Program Files\Stata18\ado\site/{txt}"
+  [4]              "{res}.{txt}"
+  [5]  (PERSONAL)  "{res}C:\Users\sethb\ado\personal/{txt}"
+  [6]  (PLUS)      "{res}C:\Users\sethb\ado\plus/{txt}"
+  [7]  (OLDPLACE)  "{res}c:\ado/{txt}"
+
+{com}.     
+. 
+. *=========================================================================================
+. * I) LOAD DATA
+. *=========================================================================================
+.         
+.         /* Load clean TBF Market Garden 2023 data */
+.         use "$root\modified_data\tbf_market_garden_data_2023_clean.dta", clear
+{txt}
+{com}.         
+.         
+. *=========================================================================================
+. * II) CREATE ANALYSIS INDICATORS
+. *=========================================================================================
+.         
+.         /* */
+.         generate c_harvest_no_plant=.c
+{txt}(33 missing values generated)
+
+{com}.         label variable c_harvest_no_plant "number of plants harvested"
+{txt}
+{com}.         replace c_harvest_no_plant=transp_no_end_1 if sow_type=="indoor seed" & transp_no_end_2==.s
+{txt}(1 real change made)
+
+{com}.         replace c_harvest_no_plant=transp_no_end_2 if sow_type=="indoor seed" & transp_no_end_2!=.s
+{txt}(11 real changes made, 2 to missing)
+
+{com}.         replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed"
+{txt}(18 real changes made, 1 to missing)
+
+{com}.         replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant"
+{txt}(3 real changes made)
+
+{com}.         tablist sow_type crop transp_no_end_1 transp_no_end_2 sow_no_thin_per sow_no_cellrowhill c_harvest_no_plant, sort(v) ab(32)
+{res}
+  {txt}{c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}external transplant {txt}{c |} {res}                     pepper- ghost  {txt}{c |} {res}              1 {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}                .s {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 1         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      1         {txt}{c |}         {res}   3.03         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}external transplant {txt}{c |} {res}                   pepper- habanero {txt}{c |} {res}              1 {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}                .s {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 1         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      2         {txt}{c |}         {res}   6.06         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}external transplant {txt}{c |} {res}               pepper- sweet banana {txt}{c |} {res}              6 {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}                .s {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 6         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      3         {txt}{c |}         {res}   9.09         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}                       basil- sweet {txt}{c |} {res}              6 {txt}{c |} {res}              6 {txt}{c |} {res}             .m {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 6         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      4         {txt}{c |}         {res}  12.12         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}             eggplant- black beauty {txt}{c |} {res}              9 {txt}{c |} {res}              9 {txt}{c |} {res}             .m {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 9         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      5         {txt}{c |}         {res}  15.15         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}                     kale- lacinato {txt}{c |} {res}              6 {txt}{c |} {res}              6 {txt}{c |} {res}             .m {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 6         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      6         {txt}{c |}         {res}  18.18         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}                     kale- lacinato {txt}{c |} {res}              6 {txt}{c |} {res}             .f {txt}{c |} {res}              1 {txt}{c |} {res}                 8 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                .f         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      7         {txt}{c |}         {res}  21.21         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}             lettuce- gourmet blend {txt}{c |} {res}             24 {txt}{c |} {res}             .f {txt}{c |} {res}              1 {txt}{c |} {res}                24 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                .f         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      8         {txt}{c |}         {res}  24.24         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}             lettuce- gourmet blend {txt}{c |} {res}             32 {txt}{c |} {res}             .s {txt}{c |} {res}             .m {txt}{c |} {res}                20 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                32         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}      9         {txt}{c |}         {res}  27.27         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}                    pepper- anaheim {txt}{c |} {res}              8 {txt}{c |} {res}              8 {txt}{c |} {res}             .m {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 8         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     10         {txt}{c |}         {res}  30.30         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}            pepper- jalapeno- early {txt}{c |} {res}             10 {txt}{c |} {res}             10 {txt}{c |} {res}             .m {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                10         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     11         {txt}{c |}         {res}  33.33         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}           pepper- sweet- ca wonder {txt}{c |} {res}             18 {txt}{c |} {res}             18 {txt}{c |} {res}             .m {txt}{c |} {res}                 8 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                18         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     12         {txt}{c |}         {res}  36.36         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}                   sage- broad leaf {txt}{c |} {res}              0 {txt}{c |} {res}              3 {txt}{c |} {res}             .m {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 3         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     13         {txt}{c |}         {res}  39.39         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}                      tomato- amish {txt}{c |} {res}             12 {txt}{c |} {res}             12 {txt}{c |} {res}             .m {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                12         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     14         {txt}{c |}         {res}  42.42         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}        indoor seed {txt}{c |} {res}                       tomato- roma {txt}{c |} {res}             18 {txt}{c |} {res}             18 {txt}{c |} {res}             .m {txt}{c |} {res}                 8 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                18         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     15         {txt}{c |}         {res}  45.45         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}             arrugula- garden tangy {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             20 {txt}{c |} {res}                 1 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                20         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     16         {txt}{c |}         {res}  48.48         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}             arrugula- garden tangy {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             35 {txt}{c |} {res}                 1 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                35         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     17         {txt}{c |}         {res}  51.52         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                bean- fin de bagnol {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}              9 {txt}{c |} {res}                 1 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 9         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     18         {txt}{c |}         {res}  54.55         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                bean- fin de bagnol {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             18 {txt}{c |} {res}                 1 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                18         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     19         {txt}{c |}         {res}  57.58         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                    carrot- touchon {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             18 {txt}{c |} {res}                 3 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                54         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     20         {txt}{c |}         {res}  60.61         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                    carrot- touchon {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             20 {txt}{c |} {res}                 3 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                60         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     21         {txt}{c |}         {res}  63.64         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                           cilantro {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             27 {txt}{c |} {res}                 1 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                27         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     22         {txt}{c |}         {res}  66.67         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                         dill- hera {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             10 {txt}{c |} {res}                 1 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                10         {txt}{c |}        {res}     2         {txt}{c |}        {res}  6.06         {txt}{c |}        {res}     24         {txt}{c |}         {res}  72.73         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}garlic- german extra hardy hardneck {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}                 2 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                 .         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     25         {txt}{c |}         {res}  75.76         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                  pumpkin- ct field {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}              3 {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                12         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     26         {txt}{c |}         {res}  78.79         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                  pumpkin- ct field {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}            3.5 {txt}{c |} {res}                 4 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                14         {txt}{c |}        {res}     1         {txt}{c |}        {res}  3.03         {txt}{c |}        {res}     27         {txt}{c |}         {res}  81.82         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}                 sunflower- mammoth {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             35 {txt}{c |} {res}                 1 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                35         {txt}{c |}        {res}     2         {txt}{c |}        {res}  6.06         {txt}{c |}        {res}     29         {txt}{c |}         {res}  87.88         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}      sweet corn- country gentleman {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             35 {txt}{c |} {res}                 2 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                70         {txt}{c |}        {res}     2         {txt}{c |}        {res}  6.06         {txt}{c |}        {res}     31         {txt}{c |}         {res}  93.94         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+  {c TLC}{hline 21}{c TT}{hline 37}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 17}{c TT}{hline 20}{c TRC}
+  {c |}            sow_type {c |}                                crop {c |} transp_no_end_1 {c |} transp_no_end_2 {c |} sow_no_thin_per {c |} sow_no_cellrowhill {c |}
+  {c |} {res}       outdoor seed {txt}{c |} {res}    sweet corn- ornamental- glas gm {txt}{c |} {res}             .s {txt}{c |} {res}             .s {txt}{c |} {res}             35 {txt}{c |} {res}                 2 {txt}{c |}
+  {c LT}{hline 21}{c BT}{hline 13}{c TT}{hline 23}{c +}{hline 17}{c BT}{hline 5}{c TT}{hline 11}{c BT}{hline 12}{c TT}{hline 4}{c BT}{hline 20}{c RT}
+  {c |}        c_harvest_no_plant         {c |}        _Freq_         {c |}        _Perc_         {c |}        _CFreq_         {c |}         _CPerc_         {c |}
+  {c |}        {res}                70         {txt}{c |}        {res}     2         {txt}{c |}        {res}  6.06         {txt}{c |}        {res}     33         {txt}{c |}         {res} 100.00         {txt}{c |}
+  {c BLC}{hline 35}{c BT}{hline 23}{c BT}{hline 23}{c BT}{hline 24}{c BT}{hline 25}{c BRC}
+
+{com}.         table crop, statistic(total c_harvest_no_plant)
+{res}
+{smcl}
+{reset}{...}
+{hline 37}{c -}{c TT}{c -}{c -}{hline 5}
+{space 37} {c |}  Total
+{hline 37}{c -}{c +}{c -}{c -}{hline 5}
+crop type{space 28} {c |}  {space 5}
+  arrugula- garden tangy{space 13} {c |}  {space 3}{result:55}
+  basil- sweet{space 23} {c |}  {space 4}{result:6}
+  bean- fin de bagnol{space 16} {c |}  {space 3}{result:27}
+  carrot- touchon{space 20} {c |}  {space 2}{result:114}
+  cilantro{space 27} {c |}  {space 3}{result:27}
+  dill- hera{space 25} {c |}  {space 3}{result:20}
+  eggplant- black beauty{space 13} {c |}  {space 4}{result:9}
+  garlic- german extra hardy hardneck {c |}  {space 4}{result:0}
+  kale- lacinato{space 21} {c |}  {space 4}{result:6}
+  lettuce- gourmet blend{space 13} {c |}  {space 3}{result:32}
+  pepper- anaheim{space 20} {c |}  {space 4}{result:8}
+  pepper- ghost {space 21} {c |}  {space 4}{result:1}
+  pepper- habanero{space 19} {c |}  {space 4}{result:1}
+  pepper- jalapeno- early{space 12} {c |}  {space 3}{result:10}
+  pepper- sweet banana{space 15} {c |}  {space 4}{result:6}
+  pepper- sweet- ca wonder{space 11} {c |}  {space 3}{result:18}
+  pumpkin- ct field{space 18} {c |}  {space 3}{result:26}
+  sage- broad leaf{space 19} {c |}  {space 4}{result:3}
+  sunflower- mammoth{space 17} {c |}  {space 3}{result:70}
+  sweet corn- country gentleman{space 6} {c |}  {space 2}{result:140}
+  sweet corn- ornamental- glas gm{space 4} {c |}  {space 2}{result:140}
+  tomato- amish{space 22} {c |}  {space 3}{result:12}
+  tomato- roma{space 23} {c |}  {space 3}{result:18}
+  Total{space 30} {c |}  {space 2}{result:749}
+{hline 37}{c -}{c BT}{c -}{c -}{hline 5}
+
+{com}.         
+.         /* Harvest */
+.         
+.         *-> Total harvest- weight
+.         tablist crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
+{res}{txt}
+  {c TLC}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c TRC}
+  {c |} {res}                               crop   crop_code   harvest_unit_1   _Freq_   _Perc_   _CFreq_   _CPerc_ {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}             arrugula- garden tangy           1               .s        2     6.06         2      6.06 {txt}{c |}
+  {c |} {res}                       basil- sweet           2               .s        1     3.03         3      9.09 {txt}{c |}
+  {c |} {res}                bean- fin de bagnol           3            pound        2     6.06         5     15.15 {txt}{c |}
+  {c |} {res}                    carrot- touchon           4           ounces        1     3.03         6     18.18 {txt}{c |}
+  {c |} {res}                    carrot- touchon           4            pound        1     3.03         7     21.21 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}                           cilantro           5               .s        1     3.03         8     24.24 {txt}{c |}
+  {c |} {res}                         dill- hera           6               .s        2     6.06        10     30.30 {txt}{c |}
+  {c |} {res}             eggplant- black beauty           7            pound        1     3.03        11     33.33 {txt}{c |}
+  {c |} {res}garlic- german extra hardy hardneck           8               .s        1     3.03        12     36.36 {txt}{c |}
+  {c |} {res}                     kale- lacinato           9               .s        2     6.06        14     42.42 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}             lettuce- gourmet blend          10               .s        2     6.06        16     48.48 {txt}{c |}
+  {c |} {res}                    pepper- anaheim          11            pound        1     3.03        17     51.52 {txt}{c |}
+  {c |} {res}                     pepper- ghost           12            ounce        1     3.03        18     54.55 {txt}{c |}
+  {c |} {res}                   pepper- habanero          13            ounce        1     3.03        19     57.58 {txt}{c |}
+  {c |} {res}            pepper- jalapeno- early          14            pound        1     3.03        20     60.61 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}               pepper- sweet banana          15            pound        1     3.03        21     63.64 {txt}{c |}
+  {c |} {res}           pepper- sweet- ca wonder          16            pound        1     3.03        22     66.67 {txt}{c |}
+  {c |} {res}                  pumpkin- ct field          17           medium        1     3.03        23     69.70 {txt}{c |}
+  {c |} {res}                  pumpkin- ct field          17            small        1     3.03        24     72.73 {txt}{c |}
+  {c |} {res}                   sage- broad leaf          18               .s        1     3.03        25     75.76 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}                 sunflower- mammoth          19               .s        2     6.06        27     81.82 {txt}{c |}
+  {c |} {res}      sweet corn- country gentleman          20             unit        2     6.06        29     87.88 {txt}{c |}
+  {c |} {res}    sweet corn- ornamental- glas gm          21            pound        2     6.06        31     93.94 {txt}{c |}
+  {c |} {res}                      tomato- amish          22            pound        1     3.03        32     96.97 {txt}{c |}
+  {c |} {res}                       tomato- roma          23            ounce        1     3.03        33    100.00 {txt}{c |}
+  {c BLC}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c BRC}
+
+{com}.         generate flag_crop_nowt= inlist(crop_code,1,2,5,6,8,9) | inlist(crop_code,16,17,18,19,20) 
+{txt}
+{com}.         tablist crop crop_code flag_crop_nowt harvest_unit_1, sort(v) ab(32) nolabel
+{res}{txt}
+  {c TLC}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c TRC}
+  {c |} {res}                               crop   crop_code   flag_crop_nowt   harvest_unit_1   _Freq_   _Perc_   _CFreq_   _CPerc_ {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}             arrugula- garden tangy           1                1               .s        2     6.06         2      6.06 {txt}{c |}
+  {c |} {res}                       basil- sweet           2                1               .s        1     3.03         3      9.09 {txt}{c |}
+  {c |} {res}                bean- fin de bagnol           3                0            pound        2     6.06         5     15.15 {txt}{c |}
+  {c |} {res}                    carrot- touchon           4                0           ounces        1     3.03         6     18.18 {txt}{c |}
+  {c |} {res}                    carrot- touchon           4                0            pound        1     3.03         7     21.21 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}                           cilantro           5                1               .s        1     3.03         8     24.24 {txt}{c |}
+  {c |} {res}                         dill- hera           6                1               .s        2     6.06        10     30.30 {txt}{c |}
+  {c |} {res}             eggplant- black beauty           7                0            pound        1     3.03        11     33.33 {txt}{c |}
+  {c |} {res}garlic- german extra hardy hardneck           8                1               .s        1     3.03        12     36.36 {txt}{c |}
+  {c |} {res}                     kale- lacinato           9                1               .s        2     6.06        14     42.42 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}             lettuce- gourmet blend          10                0               .s        2     6.06        16     48.48 {txt}{c |}
+  {c |} {res}                    pepper- anaheim          11                0            pound        1     3.03        17     51.52 {txt}{c |}
+  {c |} {res}                     pepper- ghost           12                0            ounce        1     3.03        18     54.55 {txt}{c |}
+  {c |} {res}                   pepper- habanero          13                0            ounce        1     3.03        19     57.58 {txt}{c |}
+  {c |} {res}            pepper- jalapeno- early          14                0            pound        1     3.03        20     60.61 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}               pepper- sweet banana          15                0            pound        1     3.03        21     63.64 {txt}{c |}
+  {c |} {res}           pepper- sweet- ca wonder          16                1            pound        1     3.03        22     66.67 {txt}{c |}
+  {c |} {res}                  pumpkin- ct field          17                1           medium        1     3.03        23     69.70 {txt}{c |}
+  {c |} {res}                  pumpkin- ct field          17                1            small        1     3.03        24     72.73 {txt}{c |}
+  {c |} {res}                   sage- broad leaf          18                1               .s        1     3.03        25     75.76 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}                 sunflower- mammoth          19                1               .s        2     6.06        27     81.82 {txt}{c |}
+  {c |} {res}      sweet corn- country gentleman          20                1             unit        2     6.06        29     87.88 {txt}{c |}
+  {c |} {res}    sweet corn- ornamental- glas gm          21                0            pound        2     6.06        31     93.94 {txt}{c |}
+  {c |} {res}                      tomato- amish          22                0            pound        1     3.03        32     96.97 {txt}{c |}
+  {c |} {res}                       tomato- roma          23                0            ounce        1     3.03        33    100.00 {txt}{c |}
+  {c BLC}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c BRC}
+
+{com}.         label variable flag_crop_nowt "flags crops not harvested by weight"
+{txt}
+{com}.         
+.         generate c_harvest_total_wtoz= 0
+{txt}
+{com}.         replace c_harvest_total_wtoz= .c if flag_crop_nowt==1 
+{txt}(17 real changes made, 17 to missing)
+
+{com}.         label variable c_harvest_total_wtoz "total harvest- weight, ounces"
+{txt}
+{com}.         
+.         forval x=1/25 {c -(}
+{txt}  2{com}.                 capture confirm string variable harvest_unit_`x'
+{txt}  3{com}.                 if _rc==0 {c -(}
+{txt}  4{com}.                         replace c_harvest_total_wtoz= c_harvest_total_wtoz + harvest_amnt_`x' if harvest_unit_`x'=="ounce" & flag_crop_nowt==0
+{txt}  5{com}.                         replace c_harvest_total_wtoz= c_harvest_total_wtoz + (harvest_amnt_`x' * 16) if harvest_unit_`x'=="pound" & flag_crop_nowt==0
+{txt}  6{com}.                 {c )-}
+{txt}  7{com}.                 else assert harvest_unit_`x'==.s // No harvest collected.
+{txt}  8{com}.         {c )-} 
+{txt}(3 real changes made)
+(10 real changes made, 1 to missing)
+(6 real changes made)
+(4 real changes made)
+(5 real changes made)
+(5 real changes made)
+(6 real changes made)
+(4 real changes made)
+(6 real changes made)
+(3 real changes made)
+(7 real changes made)
+(2 real changes made)
+(4 real changes made)
+(5 real changes made)
+(2 real changes made)
+(6 real changes made)
+(4 real changes made)
+(4 real changes made)
+(6 real changes made)
+(1 real change made)
+(4 real changes made)
+(3 real changes made)
+(5 real changes made)
+(1 real change made)
+(4 real changes made)
+(2 real changes made)
+(4 real changes made)
+(2 real changes made)
+(3 real changes made)
+(2 real changes made)
+(2 real changes made)
+(3 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(1 real change made)
+
+{com}.         assert c_harvest_total_wtoz==.c if flag_crop_nowt==1 
+{txt}
+{com}.         table crop if flag_crop_nowt==0, statistic(total c_harvest_total_wtoz)
+{res}
+{smcl}
+{reset}{...}
+{hline 33}{c -}{c TT}{c -}{c -}{hline 5}
+{space 33} {c |}  Total
+{hline 33}{c -}{c +}{c -}{c -}{hline 5}
+crop type{space 24} {c |}  {space 5}
+  bean- fin de bagnol{space 12} {c |}  {result:157.5}
+  carrot- touchon{space 16} {c |}  {space 2}{result:160}
+  eggplant- black beauty{space 9} {c |}  {space 2}{result:806}
+  lettuce- gourmet blend{space 9} {c |}  {space 4}{result:0}
+  pepper- anaheim{space 16} {c |}  {result:471.5}
+  pepper- ghost {space 17} {c |}  {space 3}{result:24}
+  pepper- habanero{space 15} {c |}  {space 3}{result:29}
+  pepper- jalapeno- early{space 8} {c |}  {space 2}{result:413}
+  pepper- sweet banana{space 11} {c |}  {space 2}{result:279}
+  sweet corn- ornamental- glas gm {c |}  {space 2}{result:468}
+  tomato- amish{space 18} {c |}  {result:3,269}
+  tomato- roma{space 19} {c |}  {result:3,744}
+  Total{space 26} {c |}  {result:9,821}
+{hline 33}{c -}{c BT}{c -}{c -}{hline 5}
+
+{com}.         
+.         clonevar c_harvest_total_wtlb= c_harvest_total_wtoz
+{txt}(18 missing values generated)
+
+{com}.         label variable c_harvest_total_wtlb "total harvest- weight, pounds"
+{txt}
+{com}.         replace c_harvest_total_wtlb= c_harvest_total_wtlb/16 if flag_crop_nowt==0
+{txt}(13 real changes made)
+
+{com}.         assert c_harvest_total_wtlb==.c if flag_crop_nowt==1 
+{txt}
+{com}.         table crop if flag_crop_nowt==0, statistic(total c_harvest_total_wtlb)  
+{res}
+{smcl}
+{reset}{...}
+{hline 33}{c -}{c TT}{c -}{c -}{hline 7}
+{space 33} {c |}  {space 2}Total
+{hline 33}{c -}{c +}{c -}{c -}{hline 7}
+crop type{space 24} {c |}  {space 7}
+  bean- fin de bagnol{space 12} {c |}  {result:9.84375}
+  carrot- touchon{space 16} {c |}  {space 5}{result:10}
+  eggplant- black beauty{space 9} {c |}  {space 1}{result:50.375}
+  lettuce- gourmet blend{space 9} {c |}  {space 6}{result:0}
+  pepper- anaheim{space 16} {c |}  {result:29.4688}
+  pepper- ghost {space 17} {c |}  {space 4}{result:1.5}
+  pepper- habanero{space 15} {c |}  {space 1}{result:1.8125}
+  pepper- jalapeno- early{space 8} {c |}  {result:25.8125}
+  pepper- sweet banana{space 11} {c |}  {result:17.4375}
+  sweet corn- ornamental- glas gm {c |}  {space 2}{result:29.25}
+  tomato- amish{space 18} {c |}  {result:204.313}
+  tomato- roma{space 19} {c |}  {space 4}{result:234}
+  Total{space 26} {c |}  {result:613.813}
+{hline 33}{c -}{c BT}{c -}{c -}{hline 7}
+
+{com}. 
+.         *-> Total harvest- unit
+.         tablist crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
+{res}{txt}
+  {c TLC}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c TRC}
+  {c |} {res}                               crop   crop_code   harvest_unit_1   _Freq_   _Perc_   _CFreq_   _CPerc_ {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}             arrugula- garden tangy           1               .s        2     6.06         2      6.06 {txt}{c |}
+  {c |} {res}                       basil- sweet           2               .s        1     3.03         3      9.09 {txt}{c |}
+  {c |} {res}                bean- fin de bagnol           3            pound        2     6.06         5     15.15 {txt}{c |}
+  {c |} {res}                    carrot- touchon           4           ounces        1     3.03         6     18.18 {txt}{c |}
+  {c |} {res}                    carrot- touchon           4            pound        1     3.03         7     21.21 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}                           cilantro           5               .s        1     3.03         8     24.24 {txt}{c |}
+  {c |} {res}                         dill- hera           6               .s        2     6.06        10     30.30 {txt}{c |}
+  {c |} {res}             eggplant- black beauty           7            pound        1     3.03        11     33.33 {txt}{c |}
+  {c |} {res}garlic- german extra hardy hardneck           8               .s        1     3.03        12     36.36 {txt}{c |}
+  {c |} {res}                     kale- lacinato           9               .s        2     6.06        14     42.42 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}             lettuce- gourmet blend          10               .s        2     6.06        16     48.48 {txt}{c |}
+  {c |} {res}                    pepper- anaheim          11            pound        1     3.03        17     51.52 {txt}{c |}
+  {c |} {res}                     pepper- ghost           12            ounce        1     3.03        18     54.55 {txt}{c |}
+  {c |} {res}                   pepper- habanero          13            ounce        1     3.03        19     57.58 {txt}{c |}
+  {c |} {res}            pepper- jalapeno- early          14            pound        1     3.03        20     60.61 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}               pepper- sweet banana          15            pound        1     3.03        21     63.64 {txt}{c |}
+  {c |} {res}           pepper- sweet- ca wonder          16            pound        1     3.03        22     66.67 {txt}{c |}
+  {c |} {res}                  pumpkin- ct field          17           medium        1     3.03        23     69.70 {txt}{c |}
+  {c |} {res}                  pumpkin- ct field          17            small        1     3.03        24     72.73 {txt}{c |}
+  {c |} {res}                   sage- broad leaf          18               .s        1     3.03        25     75.76 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}                 sunflower- mammoth          19               .s        2     6.06        27     81.82 {txt}{c |}
+  {c |} {res}      sweet corn- country gentleman          20             unit        2     6.06        29     87.88 {txt}{c |}
+  {c |} {res}    sweet corn- ornamental- glas gm          21            pound        2     6.06        31     93.94 {txt}{c |}
+  {c |} {res}                      tomato- amish          22            pound        1     3.03        32     96.97 {txt}{c |}
+  {c |} {res}                       tomato- roma          23            ounce        1     3.03        33    100.00 {txt}{c |}
+  {c BLC}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c BRC}
+
+{com}.         generate flag_crop_nout= !inlist(crop_code,16,19,20)
+{txt}
+{com}.         tablist crop crop_code flag_crop_nout harvest_unit_1, sort(v) ab(32) nolabel
+{res}{txt}
+  {c TLC}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c TRC}
+  {c |} {res}                               crop   crop_code   flag_crop_nout   harvest_unit_1   _Freq_   _Perc_   _CFreq_   _CPerc_ {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}             arrugula- garden tangy           1                1               .s        2     6.06         2      6.06 {txt}{c |}
+  {c |} {res}                       basil- sweet           2                1               .s        1     3.03         3      9.09 {txt}{c |}
+  {c |} {res}                bean- fin de bagnol           3                1            pound        2     6.06         5     15.15 {txt}{c |}
+  {c |} {res}                    carrot- touchon           4                1           ounces        1     3.03         6     18.18 {txt}{c |}
+  {c |} {res}                    carrot- touchon           4                1            pound        1     3.03         7     21.21 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}                           cilantro           5                1               .s        1     3.03         8     24.24 {txt}{c |}
+  {c |} {res}                         dill- hera           6                1               .s        2     6.06        10     30.30 {txt}{c |}
+  {c |} {res}             eggplant- black beauty           7                1            pound        1     3.03        11     33.33 {txt}{c |}
+  {c |} {res}garlic- german extra hardy hardneck           8                1               .s        1     3.03        12     36.36 {txt}{c |}
+  {c |} {res}                     kale- lacinato           9                1               .s        2     6.06        14     42.42 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}             lettuce- gourmet blend          10                1               .s        2     6.06        16     48.48 {txt}{c |}
+  {c |} {res}                    pepper- anaheim          11                1            pound        1     3.03        17     51.52 {txt}{c |}
+  {c |} {res}                     pepper- ghost           12                1            ounce        1     3.03        18     54.55 {txt}{c |}
+  {c |} {res}                   pepper- habanero          13                1            ounce        1     3.03        19     57.58 {txt}{c |}
+  {c |} {res}            pepper- jalapeno- early          14                1            pound        1     3.03        20     60.61 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}               pepper- sweet banana          15                1            pound        1     3.03        21     63.64 {txt}{c |}
+  {c |} {res}           pepper- sweet- ca wonder          16                0            pound        1     3.03        22     66.67 {txt}{c |}
+  {c |} {res}                  pumpkin- ct field          17                1           medium        1     3.03        23     69.70 {txt}{c |}
+  {c |} {res}                  pumpkin- ct field          17                1            small        1     3.03        24     72.73 {txt}{c |}
+  {c |} {res}                   sage- broad leaf          18                1               .s        1     3.03        25     75.76 {txt}{c |}
+  {c LT}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c RT}
+  {c |} {res}                 sunflower- mammoth          19                0               .s        2     6.06        27     81.82 {txt}{c |}
+  {c |} {res}      sweet corn- country gentleman          20                0             unit        2     6.06        29     87.88 {txt}{c |}
+  {c |} {res}    sweet corn- ornamental- glas gm          21                1            pound        2     6.06        31     93.94 {txt}{c |}
+  {c |} {res}                      tomato- amish          22                1            pound        1     3.03        32     96.97 {txt}{c |}
+  {c |} {res}                       tomato- roma          23                1            ounce        1     3.03        33    100.00 {txt}{c |}
+  {c BLC}{hline 37}{c -}{hline 11}{c -}{hline 16}{c -}{hline 16}{c -}{hline 8}{c -}{hline 8}{c -}{hline 9}{c -}{hline 9}{c BRC}
+
+{com}.         label variable flag_crop_nout "flags crops not harvested by unit"
+{txt}
+{com}.         
+.         generate c_harvest_total_unit= 0
+{txt}
+{com}.         replace c_harvest_total_unit= .c if flag_crop_nout==1 
+{txt}(28 real changes made, 28 to missing)
+
+{com}.         label variable c_harvest_total_unit "total harvest- units"
+{txt}
+{com}.         
+.         forval x=1/30 {c -(}
+{txt}  2{com}.                 capture confirm string variable harvest_unit_`x'
+{txt}  3{com}.                 if _rc==0 {c -(}
+{txt}  4{com}.                         replace c_harvest_total_unit= c_harvest_total_unit + harvest_amnt_`x' if inlist(harvest_unit_`x',"unit","small","medium","large") & flag_crop_nout==0
+{txt}  5{com}.                 {c )-} 
+{txt}  6{com}.                 else assert harvest_unit_`x'==.s // No harvest collected.
+{txt}  7{com}.         {c )-}
+{txt}(2 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+{com}.         assert c_harvest_total_unit==.c if flag_crop_nout==1 
+{txt}
+{com}.         table crop if flag_crop_nout==0, statistic(total c_harvest_total_unit)
+{res}
+{smcl}
+{reset}{...}
+{hline 31}{c -}{c TT}{c -}{c -}{hline 5}
+{space 31} {c |}  Total
+{hline 31}{c -}{c +}{c -}{c -}{hline 5}
+crop type{space 22} {c |}  {space 5}
+  pepper- sweet- ca wonder{space 5} {c |}  {space 4}{result:0}
+  sunflower- mammoth{space 11} {c |}  {space 4}{result:0}
+  sweet corn- country gentleman {c |}  {space 3}{result:40}
+  Total{space 24} {c |}  {space 3}{result:40}
+{hline 31}{c -}{c BT}{c -}{c -}{hline 5}
+
+{com}. 
+.         /* Save TBF Market Garden 2023 data with analysis indicators */
+.         drop flag_*
+{txt}
+{com}.         quietly compress
+{txt}
+{com}.         save "$root\modified_data\tbf_market_garden_data_2023_clean_indicators.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2023_clean_indicators.dta{rm}
+saved
+{p_end}
+
+{com}.         
+.         /* */
+.         des c_*
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:c_harvest_no_~t}{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}number of plants harvested{p_end}
+{p 0 48}{bind:c_harvest_tot~z}{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}total harvest- weight, ounces{p_end}
+{p 0 48}{bind:c_harvest_tot~b}{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}total harvest- weight, pounds{p_end}
+{p 0 48}{bind:c_harvest_tot~t}{txt}{bind: byte    }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}total harvest- units{p_end}
+{txt}
+{com}.         summarize c_*, detail
+
+                 {txt}number of plants harvested
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        1              1
+{txt} 5%    {res}        1              1
+{txt}10%    {res}      4.5              3       {txt}Obs         {res}         30
+{txt}25%    {res}        9              6       {txt}Sum of wgt. {res}         30
+
+{txt}50%    {res}       16                      {txt}Mean          {res} 24.96667
+                        {txt}Largest       Std. dev.     {res} 23.00297
+{txt}75%    {res}       35             70
+{txt}90%    {res}       70             70       {txt}Variance      {res} 529.1368
+{txt}95%    {res}       70             70       {txt}Skewness      {res} 1.001788
+{txt}99%    {res}       70             70       {txt}Kurtosis      {res} 2.602125
+
+                {txt}total harvest- weight, ounces
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        0              0
+{txt} 5%    {res}        0              0
+{txt}10%    {res}        0             24       {txt}Obs         {res}         15
+{txt}25%    {res}       29             29       {txt}Sum of wgt. {res}         15
+
+{txt}50%    {res}      117                      {txt}Mean          {res} 654.7333
+                        {txt}Largest       Std. dev.     {res} 1184.528
+{txt}75%    {res}    471.5          471.5
+{txt}90%    {res}     3269            806       {txt}Variance      {res}  1403106
+{txt}95%    {res}     3744           3269       {txt}Skewness      {res} 2.021756
+{txt}99%    {res}     3744           3744       {txt}Kurtosis      {res} 5.401075
+
+                {txt}total harvest- weight, pounds
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        0              0
+{txt} 5%    {res}        0              0
+{txt}10%    {res}        0            1.5       {txt}Obs         {res}         15
+{txt}25%    {res}   1.8125         1.8125       {txt}Sum of wgt. {res}         15
+
+{txt}50%    {res}   7.3125                      {txt}Mean          {res} 40.92083
+                        {txt}Largest       Std. dev.     {res} 74.03299
+{txt}75%    {res} 29.46875       29.46875
+{txt}90%    {res} 204.3125         50.375       {txt}Variance      {res} 5480.884
+{txt}95%    {res}      234       204.3125       {txt}Skewness      {res} 2.021756
+{txt}99%    {res}      234            234       {txt}Kurtosis      {res} 5.401075
+
+                    {txt}total harvest- units
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        0              0
+{txt} 5%    {res}        0              0
+{txt}10%    {res}        0              0       {txt}Obs         {res}          5
+{txt}25%    {res}        0             20       {txt}Sum of wgt. {res}          5
+
+{txt}50%    {res}        0                      {txt}Mean          {res}        8
+                        {txt}Largest       Std. dev.     {res} 10.95445
+{txt}75%    {res}       20              0
+{txt}90%    {res}       20              0       {txt}Variance      {res}      120
+{txt}95%    {res}       20             20       {txt}Skewness      {res} .4082483
+{txt}99%    {res}       20             20       {txt}Kurtosis      {res} 1.166667
+{txt}
+{com}.         
+.    
+. *=========================================================================================
+. * III) 
+. *=========================================================================================  
+. 
+.         collapse (sum) c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit, by(crop)
+{res}{txt}
+{com}.         tablist crop c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit, sort(v) ab(32)
+{res}
+  {txt}{c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}             arrugula- garden tangy {txt}{c |} {res}                55 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      1                   {txt}{c |}                   {res}   4.35                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                       basil- sweet {txt}{c |} {res}                 6 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      2                   {txt}{c |}                   {res}   8.70                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                bean- fin de bagnol {txt}{c |} {res}                27 {txt}{c |} {res}               157.5 {txt}{c |} {res}             9.84375 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      3                   {txt}{c |}                   {res}  13.04                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                    carrot- touchon {txt}{c |} {res}               114 {txt}{c |} {res}                 160 {txt}{c |} {res}                  10 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      4                   {txt}{c |}                   {res}  17.39                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                           cilantro {txt}{c |} {res}                27 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      5                   {txt}{c |}                   {res}  21.74                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                         dill- hera {txt}{c |} {res}                20 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      6                   {txt}{c |}                   {res}  26.09                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}             eggplant- black beauty {txt}{c |} {res}                 9 {txt}{c |} {res}                 806 {txt}{c |} {res}              50.375 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      7                   {txt}{c |}                   {res}  30.43                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}garlic- german extra hardy hardneck {txt}{c |} {res}                 0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      8                   {txt}{c |}                   {res}  34.78                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                     kale- lacinato {txt}{c |} {res}                 6 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}      9                   {txt}{c |}                   {res}  39.13                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}             lettuce- gourmet blend {txt}{c |} {res}                32 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     10                   {txt}{c |}                   {res}  43.48                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                    pepper- anaheim {txt}{c |} {res}                 8 {txt}{c |} {res}               471.5 {txt}{c |} {res}            29.46875 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     11                   {txt}{c |}                   {res}  47.83                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                     pepper- ghost  {txt}{c |} {res}                 1 {txt}{c |} {res}                  24 {txt}{c |} {res}                 1.5 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     12                   {txt}{c |}                   {res}  52.17                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                   pepper- habanero {txt}{c |} {res}                 1 {txt}{c |} {res}                  29 {txt}{c |} {res}              1.8125 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     13                   {txt}{c |}                   {res}  56.52                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}            pepper- jalapeno- early {txt}{c |} {res}                10 {txt}{c |} {res}                 413 {txt}{c |} {res}             25.8125 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     14                   {txt}{c |}                   {res}  60.87                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}               pepper- sweet banana {txt}{c |} {res}                 6 {txt}{c |} {res}                 279 {txt}{c |} {res}             17.4375 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     15                   {txt}{c |}                   {res}  65.22                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}           pepper- sweet- ca wonder {txt}{c |} {res}                18 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     16                   {txt}{c |}                   {res}  69.57                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                  pumpkin- ct field {txt}{c |} {res}                26 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     17                   {txt}{c |}                   {res}  73.91                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                   sage- broad leaf {txt}{c |} {res}                 3 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     18                   {txt}{c |}                   {res}  78.26                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                 sunflower- mammoth {txt}{c |} {res}                70 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     19                   {txt}{c |}                   {res}  82.61                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}      sweet corn- country gentleman {txt}{c |} {res}               140 {txt}{c |} {res}                   0 {txt}{c |} {res}                   0 {txt}{c |} {res}                  40 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     20                   {txt}{c |}                   {res}  86.96                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}    sweet corn- ornamental- glas gm {txt}{c |} {res}               140 {txt}{c |} {res}                 468 {txt}{c |} {res}               29.25 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     21                   {txt}{c |}                   {res}  91.30                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                      tomato- amish {txt}{c |} {res}                12 {txt}{c |} {res}                3269 {txt}{c |} {res}            204.3125 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     22                   {txt}{c |}                   {res}  95.65                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 20}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 22}{c TT}{hline 8}{c TRC}
+  {c |}                                crop {c |} c_harvest_no_plant {c |} c_harvest_total_wtoz {c |} c_harvest_total_wtlb {c |} c_harvest_total_unit {c |} _Freq_ {c |}
+  {c |} {res}                       tomato- roma {txt}{c |} {res}                18 {txt}{c |} {res}                3744 {txt}{c |} {res}                 234 {txt}{c |} {res}                   0 {txt}{c |} {res}     1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 6}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c TT}{hline 13}{c BT}{hline 22}{c BT}{hline 8}{c RT}
+  {c |}                   _Perc_                   {c |}                   _CFreq_                   {c |}                   _CPerc_                   {c |}
+  {c |}                   {res}  4.35                   {txt}{c |}                   {res}     23                   {txt}{c |}                   {res} 100.00                   {txt}{c |}
+  {c BLC}{hline 44}{c BT}{hline 45}{c BT}{hline 45}{c BRC}
+
+{com}. 
+.         generate c_harvest_wtlb_per_plant = c_harvest_total_wtlb / c_harvest_no_plant
+{txt}(1 missing value generated)
+
+{com}.         tablist crop c_harvest_total_wtlb c_harvest_no_plant c_harvest_wtlb_per_plant, sort(v) ab(32)
+{res}
+  {txt}{c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}             arrugula- garden tangy {txt}{c |} {res}                   0 {txt}{c |} {res}                55 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      1 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}   4.35                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                       basil- sweet {txt}{c |} {res}                   0 {txt}{c |} {res}                 6 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      2 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}   8.70                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                bean- fin de bagnol {txt}{c |} {res}             9.84375 {txt}{c |} {res}                27 {txt}{c |} {res}                .3645833 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      3 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  13.04                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                    carrot- touchon {txt}{c |} {res}                  10 {txt}{c |} {res}               114 {txt}{c |} {res}                .0877193 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      4 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  17.39                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                           cilantro {txt}{c |} {res}                   0 {txt}{c |} {res}                27 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      5 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  21.74                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                         dill- hera {txt}{c |} {res}                   0 {txt}{c |} {res}                20 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      6 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  26.09                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}             eggplant- black beauty {txt}{c |} {res}              50.375 {txt}{c |} {res}                 9 {txt}{c |} {res}                5.597222 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      7 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  30.43                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}garlic- german extra hardy hardneck {txt}{c |} {res}                   0 {txt}{c |} {res}                 0 {txt}{c |} {res}                       . {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      8 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  34.78                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                     kale- lacinato {txt}{c |} {res}                   0 {txt}{c |} {res}                 6 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}      9 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  39.13                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}             lettuce- gourmet blend {txt}{c |} {res}                   0 {txt}{c |} {res}                32 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     10 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  43.48                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                    pepper- anaheim {txt}{c |} {res}            29.46875 {txt}{c |} {res}                 8 {txt}{c |} {res}                3.683594 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     11 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  47.83                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                     pepper- ghost  {txt}{c |} {res}                 1.5 {txt}{c |} {res}                 1 {txt}{c |} {res}                     1.5 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     12 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  52.17                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                   pepper- habanero {txt}{c |} {res}              1.8125 {txt}{c |} {res}                 1 {txt}{c |} {res}                  1.8125 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     13 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  56.52                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}            pepper- jalapeno- early {txt}{c |} {res}             25.8125 {txt}{c |} {res}                10 {txt}{c |} {res}                 2.58125 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     14 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  60.87                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}               pepper- sweet banana {txt}{c |} {res}             17.4375 {txt}{c |} {res}                 6 {txt}{c |} {res}                 2.90625 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     15 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  65.22                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}           pepper- sweet- ca wonder {txt}{c |} {res}                   0 {txt}{c |} {res}                18 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     16 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  69.57                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                  pumpkin- ct field {txt}{c |} {res}                   0 {txt}{c |} {res}                26 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     17 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  73.91                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                   sage- broad leaf {txt}{c |} {res}                   0 {txt}{c |} {res}                 3 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     18 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  78.26                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                 sunflower- mammoth {txt}{c |} {res}                   0 {txt}{c |} {res}                70 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     19 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  82.61                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}      sweet corn- country gentleman {txt}{c |} {res}                   0 {txt}{c |} {res}               140 {txt}{c |} {res}                       0 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     20 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  86.96                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}    sweet corn- ornamental- glas gm {txt}{c |} {res}               29.25 {txt}{c |} {res}               140 {txt}{c |} {res}                .2089286 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     21 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  91.30                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                      tomato- amish {txt}{c |} {res}            204.3125 {txt}{c |} {res}                12 {txt}{c |} {res}                17.02604 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     22 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res}  95.65                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+  {c TLC}{hline 37}{c TT}{hline 22}{c TT}{hline 20}{c TT}{hline 26}{c TT}{hline 8}{c TT}{hline 8}{c TT}{hline 9}{c TRC}
+  {c |}                                crop {c |} c_harvest_total_wtlb {c |} c_harvest_no_plant {c |} c_harvest_wtlb_per_plant {c |} _Freq_ {c |} _Perc_ {c |} _CFreq_ {c |}
+  {c |} {res}                       tomato- roma {txt}{c |} {res}                 234 {txt}{c |} {res}                18 {txt}{c |} {res}                      13 {txt}{c |} {res}     1 {txt}{c |} {res}  4.35 {txt}{c |} {res}     23 {txt}{c |}
+  {c LT}{hline 37}{c BT}{hline 22}{c BT}{hline 20}{c BT}{hline 26}{c BT}{hline 8}{c BT}{hline 8}{c BT}{hline 9}{c RT}
+  {c |}                                                                _CPerc_                                                                 {c |}
+  {c |}                                                                {res} 100.00                                                                 {txt}{c |}
+  {c BLC}{hline 136}{c BRC}
+
+{com}.     
+. 
+. log close _all
+      {txt}name:  {res}clean_01_txt
+       {txt}log:  {res}C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.txt
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}28 Jan 2024, 12:40:35
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
