@@ -143,6 +143,44 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	table crop if flag_crop_unit==1, statistic(total c_harvest_total_unit)
 	drop c_harvest_total_unit_prev
 
+	*-> Total harvest- unit size: small, medium, larg
+	tablist crop crop_code harvest_unit_1 harvest_amnt_1, sort(v) ab(32) nolabel
+	generate flag_crop_unit_size= inlist(crop_code,17)
+	tablist crop crop_code flag_crop_unit_size harvest_unit_1, sort(v) ab(32) nolabel
+	label variable flag_crop_unit_size "flags crops harvested by unit size"
+	
+	local size_list1 sml med lrg
+	local size_list2 small medium large
+	forval x =1/3 {
+		
+		local sz1 : word `x' of `size_list1'
+		local sz2 : word `x' of `size_list2'
+
+		display as input "size1; `sz1' , size2: `sz2'"
+		
+		generate c_harvest_total_unit_`sz1'= 0
+		replace c_harvest_total_unit_`sz1'= .c if flag_crop_unit_size==0
+		label variable c_harvest_total_unit_`sz1' "total harvest- units `sz2'"
+		
+		generate c_harvest_total_unit_prev_`sz1'= 0
+		replace c_harvest_total_unit_prev_`sz1'= .c if flag_crop_unit_size==0
+		label variable c_harvest_total_unit_prev_`sz1' "total harvest- units `sz2' (previous sum in loop iteration)"
+	
+		forval x=1/30 {
+			capture confirm string variable harvest_unit_`x'
+			if _rc==0 {
+				replace c_harvest_total_unit_`sz1'=  c_harvest_total_unit_`sz1' + harvest_amnt_`x' if harvest_unit_`x' == "`sz2'" & flag_crop_unit_size==1
+				tablist flag_crop_unit_size crop c_harvest_total_unit_`sz1' harvest_unit_`x' harvest_amnt_`x' c_harvest_total_unit_prev_`sz1', sort(v) ab(32)
+				pause
+				replace c_harvest_total_unit_prev_`sz1'= c_harvest_total_unit_`sz1' if flag_crop_unit_size==1
+			} 
+			else assert harvest_unit_`x'==.s // No harvest collected.
+		}
+		assert c_harvest_total_unit_`sz1'==.c if flag_crop_unit_size==0
+		table crop if flag_crop_unit_size==1, statistic(total c_harvest_total_unit_`sz1')
+		drop c_harvest_total_unit_prev_`sz1'
+	}
+	
 	/* Save TBF Market Garden 2023 data with analysis indicators */
 	drop flag_*
 	quietly compress
