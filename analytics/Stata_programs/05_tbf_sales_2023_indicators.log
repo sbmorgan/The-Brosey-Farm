@@ -1,8 +1,8 @@
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- opened on:  29 Jan 2024, 22:45:38
+ opened on:  30 Jan 2024, 12:05:22
 
 . 
 . 
@@ -14,11 +14,11 @@
 . ***                                                                                                                                                                               ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
-. ***    I) CREATE ANALYSIS INDICATORS                                                          ***
+. ***    I) CREATE SALES ANALYSIS INDICATORS                                                    ***
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 26, 2023                                                                                            ***
-. *** Last date modified: September 29, 2023                                                    ***
+. *** Last date modified: January 30, 2023                                                      ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -62,19 +62,125 @@
 .     
 . 
 . *=========================================================================================
-. * I) 
+. * I) CREATE SALES ANALYSIS INDICATORS 
 . *=========================================================================================
 .         
-.         /* Load clean TBF Market Garden 2023 data */
+.         /* Load clean TBF Market Garden 2023 sales data */
 .         use "$root\modified_data\tbf_market_garden_sales_2023_clean.dta", clear
 
 .         
 .         /* Sales */
 .         collapse (sum) sale_value_usd, by(sale_location sale_item)
 
+.         rename sale_value_usd c_sale_value_crop_usd 
+
+.         egen c_sale_value_tot_usd= total(c_sale_value_crop_usd)
+
+.         label variable c_sale_value_crop_usd "sale value (dollars)- crop"
+
+.         label variable c_sale_value_tot_usd "sale value (dollars)- total"
+
+.         tablist sale_location sale_item c_sale_value_crop_usd c_sale_value_tot_usd, sort(v) ab(32)
+
+  +----------------------------------------------------------------------------------------------------------------------------------------------------+
+  |               sale_location                         sale_item   c_sale_value_crop_usd   c_sale_value_tot_usd   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market               bean- fin de bagnol                      12                    585        1     5.56         1      5.56 |
+  | New Carlisle Farmers Market                   carrot- touchon                      23                    585        1     5.56         2     11.11 |
+  | New Carlisle Farmers Market                          cilantro                      10                    585        1     5.56         3     16.67 |
+  | New Carlisle Farmers Market            eggplant- black beauty                      41                    585        1     5.56         4     22.22 |
+  | New Carlisle Farmers Market                   pepper- anaheim                    10.5                    585        1     5.56         5     27.78 |
+  |----------------------------------------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market                    pepper- ghost                        1                    585        1     5.56         6     33.33 |
+  | New Carlisle Farmers Market                  pepper- habanero                       1                    585        1     5.56         7     38.89 |
+  | New Carlisle Farmers Market           pepper- jalapeno- early                    46.5                    585        1     5.56         8     44.44 |
+  | New Carlisle Farmers Market              pepper- sweet banana                      16                    585        1     5.56         9     50.00 |
+  | New Carlisle Farmers Market          pepper- sweet- ca wonder                      28                    585        1     5.56        10     55.56 |
+  |----------------------------------------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market                 pumpkin- ct field                      13                    585        1     5.56        11     61.11 |
+  | New Carlisle Farmers Market     sweet corn- country gentleman                       4                    585        1     5.56        12     66.67 |
+  | New Carlisle Farmers Market   sweet corn- ornamental- glas gm                       5                    585        1     5.56        13     72.22 |
+  | New Carlisle Farmers Market                      tomato sauce                       7                    585        1     5.56        14     77.78 |
+  | New Carlisle Farmers Market                     tomato- amish                      95                    585        1     5.56        15     83.33 |
+  |----------------------------------------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market                      tomato- roma                      32                    585        1     5.56        16     88.89 |
+  | New Carlisle Farmers Market             tomato-jalapeno salsa                      35                    585        1     5.56        17     94.44 |
+  | The Brosey Farm: farm stand                                .s                     205                    585        1     5.56        18    100.00 |
+  +----------------------------------------------------------------------------------------------------------------------------------------------------+
+
 .         
+.         /* Add TBF 2023 Crop Codes */
+.         tempfile pre_crop_codes crop_codes
+
+.         save `pre_crop_codes', replace
+(file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000010.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000010.tmp saved as .dta format
+
+.         
+.         import excel "$root\modified_data\tbf_crop_codes_2023.xlsx", firstrow clear
+(2 vars, 23 obs)
+
+.         tablist crop crop_code, sort(v) ab(32)
+
+  +---------------------------------------------------------------------------------------+
+  |                                crop   crop_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------------------------|
+  |              arrugula- garden tangy           1        1     4.35         1      4.35 |
+  |                        basil- sweet           2        1     4.35         2      8.70 |
+  |                 bean- fin de bagnol           3        1     4.35         3     13.04 |
+  |                     carrot- touchon           4        1     4.35         4     17.39 |
+  |                            cilantro           5        1     4.35         5     21.74 |
+  |---------------------------------------------------------------------------------------|
+  |                          dill- hera           6        1     4.35         6     26.09 |
+  |              eggplant- black beauty           7        1     4.35         7     30.43 |
+  | garlic- german extra hardy hardneck           8        1     4.35         8     34.78 |
+  |                      kale- lacinato           9        1     4.35         9     39.13 |
+  |              lettuce- gourmet blend          10        1     4.35        10     43.48 |
+  |---------------------------------------------------------------------------------------|
+  |                     pepper- anaheim          11        1     4.35        11     47.83 |
+  |                      pepper- ghost           12        1     4.35        12     52.17 |
+  |                    pepper- habanero          13        1     4.35        13     56.52 |
+  |             pepper- jalapeno- early          14        1     4.35        14     60.87 |
+  |                pepper- sweet banana          15        1     4.35        15     65.22 |
+  |---------------------------------------------------------------------------------------|
+  |            pepper- sweet- ca wonder          16        1     4.35        16     69.57 |
+  |                   pumpkin- ct field          17        1     4.35        17     73.91 |
+  |                    sage- broad leaf          18        1     4.35        18     78.26 |
+  |                  sunflower- mammoth          19        1     4.35        19     82.61 |
+  |       sweet corn- country gentleman          20        1     4.35        20     86.96 |
+  |---------------------------------------------------------------------------------------|
+  |     sweet corn- ornamental- glas gm          21        1     4.35        21     91.30 |
+  |                       tomato- amish          22        1     4.35        22     95.65 |
+  |                        tomato- roma          23        1     4.35        23    100.00 |
+  +---------------------------------------------------------------------------------------+
+
+.         save `crop_codes', replace
+(file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000011.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000011.tmp saved as .dta format
+
+.         
+.         use `pre_crop_codes', replace
+
+.         rename sale_item crop
+
+.         drop if inlist(crop,".s",".m","tomato sauce","tomato-jalapeno salsa")
+(3 observations deleted)
+
+.         merge 1:1 crop using `crop_codes', assert(2 3) keep(3) nogenerate
+(variable crop was str31, now str35 to accommodate using data's values)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                15  
+    -----------------------------------------
+
 .         
 .         /* Save TBF Market Garden 2023 data with analysis indicators */
+.         order crop crop_code sale_location c_sale_value_crop_usd c_sale_value_tot_usd
+
+.         isid crop
+
 .         quietly compress
 
 .         save "$root\modified_data\tbf_market_garden_sales_2023_clean_indicators.dta", replace
@@ -86,5 +192,5 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- closed on:  29 Jan 2024, 22:45:38
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  30 Jan 2024, 12:05:22
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

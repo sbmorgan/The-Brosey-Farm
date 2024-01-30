@@ -1,8 +1,8 @@
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- opened on:  28 Jan 2024, 14:58:32
+ opened on:  30 Jan 2024, 12:24:24
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: July 12, 2023                                                                                                     ***
-. *** Last date modified: January 26, 2024                                                      ***
+. *** Last date modified: January 30, 2024                                                      ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -78,17 +78,16 @@
 (968 observations deleted)
 
 .         ds 
-crop          sow_heatma~p  sow_fer~te_3  transp_med_1  fert_unit_1   path_type_1   path_~te_2_1  path_~pe_3_3  harvest_d~_4  harvest_u~_7  harvest_a~11  harvest_d~15  harvest_u~18  harvest_a~22  harvest_d~26  harvest_u~29
-sow_type      sow_light_~s  sow_fert~k_3  transp_n~t_1  fert_typ~k_2  path_date_1   path_~pe_2_2  path_~te_3_3  harvest_a~_4  harvest_d~_8  harvest_u~11  harvest_a~15  harvest_d~19  harvest_u~22  harvest_a~26  harvest_d~30
-sow_date      sow_light_~e  sow_fer~me_3  transp_n~d_1  fert_typ~e_2  path_~pe_1_1  path_~te_2_2  harvest_d~_1  harvest_u~_4  harvest_a~_8  harvest_d~12  harvest_u~15  harvest_a~19  harvest_d~23  harvest_u~26  harvest_a~30
-sow_med       sow_fer~te_1  sow_fer~se_3  transp_dat~2  fert_date_2   path_~te_1_1  path_~pe_2_3  harvest_a~_1  harvest_d~_5  harvest_u~_8  harvest_a~12  harvest_d~16  harvest_u~19  harvest_a~23  harvest_d~27  harvest_u~30
-sow_cell      sow_fert~k_1  sow_fer~te_4  transp_med_2  fert_amnt_~2  path_~pe_1_2  path_~te_2_3  harvest_u~_1  harvest_a~_5  harvest_d~_9  harvest_u~12  harvest_a~16  harvest_d~20  harvest_u~23  harvest_a~27  notes
-sow_no_cel~l  sow_fer~me_1  sow_fert~k_4  transp_n~t_2  fert_unit_2   path_~te_1_2  path_type_3   harvest_d~_2  harvest_u~_5  harvest_a~_9  harvest_d~13  harvest_u~16  harvest_a~20  harvest_d~24  harvest_u~27
-sow_no_see~r  sow_fer~se_1  sow_fer~me_4  transp_n~d_2  fert_typ~k_3  path_~pe_1_3  path_date_3   harvest_a~_2  harvest_d~_6  harvest_u~_9  harvest_a~13  harvest_d~17  harvest_u~20  harvest_a~24  harvest_d~28
-sow_no_ger~r  sow_fer~te_2  sow_fer~se_4  fert_typ~k_1  fert_typ~e_3  path_~te_1_3  path_~pe_3_1  harvest_u~_2  harvest_a~_6  harvest_d~10  harvest_u~13  harvest_a~17  harvest_d~21  harvest_u~24  harvest_a~28
-sow_to_ger~s  sow_fert~k_2  transp_har~t  fert_typ~e_1  fert_date_3   path_type_2   path_~te_3_1  harvest_d~_3  harvest_u~_6  harvest_a~10  harvest_d~14  harvest_u~17  harvest_a~21  harvest_d~25  harvest_u~28
-sow_no_thi~r  sow_fer~me_2  transp_har~d  fert_date_1   fert_amnt_~3  path_date_2   path_~pe_3_2  harvest_a~_3  harvest_d~_7  harvest_u~10  harvest_a~14  harvest_d~18  harvest_u~21  harvest_a~25  harvest_d~29
-sow_heatmat   sow_fer~se_2  transp_dat~1  fert_amnt_~1  fert_unit_3   path_~pe_2_1  path_~te_3_2  harvest_u~_3  harvest_a~_7  harvest_d~11  harvest_u~14  harvest_a~18  harvest_d~22  harvest_u~25  harvest_a~29
+crop          sow_heatmat   sow_fer~me_2  transp_har~t  fert_typ~k_1  fert_typ~k_3  path_~te_1_2  path_~te_2_3  harvest_a~_1  harvest_u~_4  harvest_d~_8  harvest_a~11  harvest_u~14  harvest_d~18  harvest_a~21  harvest_u~24  harvest_d~28
+sow_type      sow_heatma~p  sow_fer~se_2  transp_har~d  fert_typ~e_1  fert_typ~e_3  path_~pe_1_3  path_type_3   harvest_u~_1  harvest_d~_5  harvest_a~_8  harvest_u~11  harvest_d~15  harvest_a~18  harvest_u~21  harvest_d~25  harvest_a~28
+sow_date      sow_light_~s  sow_fer~te_3  transp_dat~1  fert_date_1   fert_date_3   path_~te_1_3  path_date_3   harvest_d~_2  harvest_a~_5  harvest_u~_8  harvest_d~12  harvest_a~15  harvest_u~18  harvest_d~22  harvest_a~25  harvest_u~28
+sow_med       sow_light_~e  sow_fert~k_3  transp_med_1  fert_amnt_~1  fert_amnt_~3  path_type_2   path_~pe_3_1  harvest_a~_2  harvest_u~_5  harvest_d~_9  harvest_a~12  harvest_u~15  harvest_d~19  harvest_a~22  harvest_u~25  harvest_d~29
+sow_cell      sow_fer~te_1  sow_fer~me_3  transp_n~t_1  fert_unit_1   fert_unit_3   path_date_2   path_~te_3_1  harvest_u~_2  harvest_d~_6  harvest_a~_9  harvest_u~12  harvest_d~16  harvest_a~19  harvest_u~22  harvest_d~26  harvest_a~29
+sow_no_cel~l  sow_fert~k_1  sow_fer~se_3  transp_n~d_1  fert_typ~k_2  path_type_1   path_~pe_2_1  path_~pe_3_2  harvest_d~_3  harvest_a~_6  harvest_u~_9  harvest_d~13  harvest_a~16  harvest_u~19  harvest_d~23  harvest_a~26  harvest_u~29
+sow_no_see~r  sow_fer~me_1  sow_fer~te_4  transp_dat~2  fert_typ~e_2  path_date_1   path_~te_2_1  path_~te_3_2  harvest_a~_3  harvest_u~_6  harvest_d~10  harvest_a~13  harvest_u~16  harvest_d~20  harvest_a~23  harvest_u~26  harvest_d~30
+sow_no_ger~r  sow_fer~se_1  sow_fert~k_4  transp_med_2  fert_date_2   path_~pe_1_1  path_~pe_2_2  path_~pe_3_3  harvest_u~_3  harvest_d~_7  harvest_a~10  harvest_u~13  harvest_d~17  harvest_a~20  harvest_u~23  harvest_d~27  harvest_a~30
+sow_to_ger~s  sow_fer~te_2  sow_fer~me_4  transp_n~t_2  fert_amnt_~2  path_~te_1_1  path_~te_2_2  path_~te_3_3  harvest_d~_4  harvest_a~_7  harvest_u~10  harvest_d~14  harvest_a~17  harvest_u~20  harvest_d~24  harvest_a~27  harvest_u~30
+sow_no_thi~r  sow_fert~k_2  sow_fer~se_4  transp_n~d_2  fert_unit_2   path_~pe_1_2  path_~pe_2_3  harvest_d~_1  harvest_a~_4  harvest_u~_7  harvest_d~11  harvest_a~14  harvest_u~17  harvest_d~21  harvest_a~24  harvest_u~27  notes
 
 .         
 .         /* Save raw TBF Market Garden 2023 data */
@@ -137,11 +136,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . capture log close labels_02
 
 . log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log", replace name(labels_02)
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  28 Jan 2024, 14:58:32
+ opened on:  30 Jan 2024, 12:24:24
 
 . 
 . 
@@ -234,8 +233,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  28 Jan 2024, 14:58:32
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  30 Jan 2024, 12:24:24
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
@@ -2302,6 +2301,98 @@ cut/horn worms |          1        3.03       96.97
   |                                          .       31    93.94        31     93.94 |
   |            manual                        1        2     6.06        33    100.00 |
   +----------------------------------------------------------------------------------+
+
+.         
+.         /* Export codes for reference in other programs/scripts */
+.         tempfile pre_code_export
+
+.         save `pre_code_export'
+file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000012.tmp saved as .dta format
+
+.         
+.         tablist crop crop_code, sort(v) nolabel
+
+  +--------------------------------------------------------------------------------------+
+  |                                crop   crop_c~e   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------------|
+  |              arrugula- garden tangy          1        2     6.06         2      6.06 |
+  |                        basil- sweet          2        1     3.03         3      9.09 |
+  |                 bean- fin de bagnol          3        2     6.06         5     15.15 |
+  |                     carrot- touchon          4        2     6.06         7     21.21 |
+  |                            cilantro          5        1     3.03         8     24.24 |
+  |--------------------------------------------------------------------------------------|
+  |                          dill- hera          6        2     6.06        10     30.30 |
+  |              eggplant- black beauty          7        1     3.03        11     33.33 |
+  | garlic- german extra hardy hardneck          8        1     3.03        12     36.36 |
+  |                      kale- lacinato          9        2     6.06        14     42.42 |
+  |              lettuce- gourmet blend         10        2     6.06        16     48.48 |
+  |--------------------------------------------------------------------------------------|
+  |                     pepper- anaheim         11        1     3.03        17     51.52 |
+  |                      pepper- ghost          12        1     3.03        18     54.55 |
+  |                    pepper- habanero         13        1     3.03        19     57.58 |
+  |             pepper- jalapeno- early         14        1     3.03        20     60.61 |
+  |                pepper- sweet banana         15        1     3.03        21     63.64 |
+  |--------------------------------------------------------------------------------------|
+  |            pepper- sweet- ca wonder         16        1     3.03        22     66.67 |
+  |                   pumpkin- ct field         17        2     6.06        24     72.73 |
+  |                    sage- broad leaf         18        1     3.03        25     75.76 |
+  |                  sunflower- mammoth         19        2     6.06        27     81.82 |
+  |       sweet corn- country gentleman         20        2     6.06        29     87.88 |
+  |--------------------------------------------------------------------------------------|
+  |     sweet corn- ornamental- glas gm         21        2     6.06        31     93.94 |
+  |                       tomato- amish         22        1     3.03        32     96.97 |
+  |                        tomato- roma         23        1     3.03        33    100.00 |
+  +--------------------------------------------------------------------------------------+
+
+.         keep crop crop_code
+
+.         duplicates drop
+
+Duplicates in terms of all variables
+
+(10 observations deleted)
+
+.         tablist crop crop_code, sort(v) nolabel
+
+  +--------------------------------------------------------------------------------------+
+  |                                crop   crop_c~e   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------------|
+  |              arrugula- garden tangy          1        1     4.35         1      4.35 |
+  |                        basil- sweet          2        1     4.35         2      8.70 |
+  |                 bean- fin de bagnol          3        1     4.35         3     13.04 |
+  |                     carrot- touchon          4        1     4.35         4     17.39 |
+  |                            cilantro          5        1     4.35         5     21.74 |
+  |--------------------------------------------------------------------------------------|
+  |                          dill- hera          6        1     4.35         6     26.09 |
+  |              eggplant- black beauty          7        1     4.35         7     30.43 |
+  | garlic- german extra hardy hardneck          8        1     4.35         8     34.78 |
+  |                      kale- lacinato          9        1     4.35         9     39.13 |
+  |              lettuce- gourmet blend         10        1     4.35        10     43.48 |
+  |--------------------------------------------------------------------------------------|
+  |                     pepper- anaheim         11        1     4.35        11     47.83 |
+  |                      pepper- ghost          12        1     4.35        12     52.17 |
+  |                    pepper- habanero         13        1     4.35        13     56.52 |
+  |             pepper- jalapeno- early         14        1     4.35        14     60.87 |
+  |                pepper- sweet banana         15        1     4.35        15     65.22 |
+  |--------------------------------------------------------------------------------------|
+  |            pepper- sweet- ca wonder         16        1     4.35        16     69.57 |
+  |                   pumpkin- ct field         17        1     4.35        17     73.91 |
+  |                    sage- broad leaf         18        1     4.35        18     78.26 |
+  |                  sunflower- mammoth         19        1     4.35        19     82.61 |
+  |       sweet corn- country gentleman         20        1     4.35        20     86.96 |
+  |--------------------------------------------------------------------------------------|
+  |     sweet corn- ornamental- glas gm         21        1     4.35        21     91.30 |
+  |                       tomato- amish         22        1     4.35        22     95.65 |
+  |                        tomato- roma         23        1     4.35        23    100.00 |
+  +--------------------------------------------------------------------------------------+
+
+.         sort crop_code
+
+.         export excel "$root\modified_data\tbf_crop_codes_2023.xlsx", firstrow(variables) nolabel replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_crop_codes_2023.xlsx saved
+
+.         
+.         use `pre_code_export', replace
 
 .         
 .         /* Convert yes/no variables from character strings to numerics with "yes" (1) /"no" (0) value lables */
@@ -11004,6 +11095,8 @@ planted 4 hills of 6 seeds each withi.. |          2        6.06      100.00
 
 .                 
 .         /* Save clean TBF Market Garden 2023 data */
+.         isid crop sow_date
+
 .         quietly compress
 
 .         save "$root\modified_data\tbf_market_garden_data_2023_clean.dta", replace
@@ -11022,7 +11115,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 crop            str35   %35s                  crop type
 crop_code       byte    %35.0g     crop_code
                                               crop type- code
@@ -11301,5 +11394,5 @@ notes           str306  %306s                 notes
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- closed on:  28 Jan 2024, 14:58:35
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  30 Jan 2024, 12:24:27
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

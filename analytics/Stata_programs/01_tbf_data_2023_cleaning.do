@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: January 26, 2024                                                      ***
+*** Last date modified: January 30, 2024                                                      ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -110,6 +110,19 @@ pause off
 		order `var'_code, after(`var')
 		*pause
 	}
+	
+	/* Export codes for reference in other programs/scripts */
+	tempfile pre_code_export
+	save `pre_code_export'
+	
+	tablist crop crop_code, sort(v) nolabel
+	keep crop crop_code
+	duplicates drop
+	tablist crop crop_code, sort(v) nolabel
+	sort crop_code
+	export excel "$root\modified_data\tbf_crop_codes_2023.xlsx", firstrow(variables) nolabel replace
+	
+	use `pre_code_export', replace
 	
 	/* Convert yes/no variables from character strings to numerics with "yes" (1) /"no" (0) value lables */
 	local cat_yn_list sow_heatmat
@@ -210,6 +223,7 @@ pause off
 		}
 		
 	/* Save clean TBF Market Garden 2023 data */
+	isid crop sow_date
 	quietly compress
 	save "$root\modified_data\tbf_market_garden_data_2023_clean.dta", replace
 	export excel "$root\modified_data\tbf_market_garden_data_2023_clean.xlsx", firstrow(variables) replace

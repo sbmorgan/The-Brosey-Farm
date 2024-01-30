@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: August 8, 2023   	   					 	     			                  ***
-*** Last date modified: January 27, 2024                                                      ***
+*** Last date modified: January 30, 2024                                                      ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -144,7 +144,12 @@ pause off
 		else assert `var' !=""
 	}	
 		
+	sort sale_date sale_location sale_item sale_amnt sale_unit sale_value_usd	
+	bysort sale_date sale_location (sale_item sale_amnt sale_unit sale_value_usd): generate sale_code= _n
+	tablist sale_date sale_location sale_item sale_amnt sale_unit sale_value_usd sale_code, sort(v) ab(32)
+	
 	/* Save clean TBF Market Garden 2023 data */
+	isid sale_date sale_location sale_code
 	quietly compress
 	save "$root\modified_data\tbf_market_garden_sales_2023_clean.dta", replace
 	export excel "$root\modified_data\tbf_market_garden_sales_2023_clean.xlsx", firstrow(variables) replace

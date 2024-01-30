@@ -16,11 +16,11 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***																	 				          ***
 *** Contents:                                                       				          ***
 ***    0) SET UP CODE                              				                              ***
-***    I) CREATE ANALYSIS INDICATORS                                                          ***
+***    I) CREATE CROP ANALYSIS INDICATORS                                                     ***
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: September 26, 2023   	   					 	     			              ***
-*** Last date modified: January 29, 2024                                                      ***
+*** Last date modified: January 30, 2024                                                      ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -50,10 +50,10 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	
 	
 *=========================================================================================
-* I) CREATE ANALYSIS INDICATORS
+* I) CREATE CROP ANALYSIS INDICATORS
 *=========================================================================================
 	
-	/* Load clean TBF Market Garden 2023 data */
+	/* Load clean TBF Market Garden 2023 crop data */
 	use "$root\modified_data\tbf_market_garden_data_2023_clean.dta", clear
 	
 	/* Harvest */
@@ -70,9 +70,9 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	
 	*-> Total harvest- weight
 	tablist crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
-	generate flag_crop_wt= inlist(crop_code,1,2,5,6,8,9) | inlist(crop_code,10,16,17,18,19,20) 
+	generate flag_crop_wt= !inlist(crop_code,1,2,5,6,8,9) & !inlist(crop_code,10,17,18,19,20) 
 	tablist crop crop_code flag_crop_wt harvest_unit_1, sort(v) ab(32) nolabel
-	label variable flag_crop_wt "flags crops not harvested by weight"
+	label variable flag_crop_wt "flags crops harvested by weight"
 	
 	generate c_harvest_total_wtoz= 0
 	replace c_harvest_total_wtoz= .c if flag_crop_wt==0 
@@ -81,6 +81,8 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	generate c_harvest_total_wtoz_prev=0
 	replace c_harvest_total_wtoz_prev= .c if flag_crop_wt==0 
 	label variable c_harvest_total_wtoz_prev "total harvest- weight, ounces (previous sum in loop iteration)"
+	
+	tablist flag_crop_wt crop crop_code harvest_unit_1 c_harvest_total_wtoz, sort(v) ab(32) nolabel
 	
 	forval x=1/30 {
 		capture confirm string variable harvest_unit_`x'
@@ -111,7 +113,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	*-> Total harvest- unit
 	tablist crop crop_code harvest_unit_1 harvest_amnt_1, sort(v) ab(32) nolabel
 	generate flag_crop_unit= inlist(crop_code,17,20)
-	tablist crop crop_code flag_crop_unit harvest_unit_1, sort(v) ab(32) nolabel
+	tablist flag_crop_unit crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
 	label variable flag_crop_unit "flags crops harvested by unit"
 	
 	generate c_harvest_total_unit= 0
@@ -121,6 +123,8 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	generate c_harvest_total_unit_prev=0
 	replace c_harvest_total_unit_prev= .c if flag_crop_unit==0
 	label variable c_harvest_total_unit_prev "total harvest- units (previous sum in loop iteration)"
+	
+	tablist flag_crop_unit crop crop_code harvest_unit_1 c_harvest_total_unit, sort(v) ab(32) nolabel
 	
 	forval x=1/30 {
 		capture confirm string variable harvest_unit_`x'
@@ -173,9 +177,13 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 		table crop if flag_crop_unit_size==1, statistic(total c_harvest_total_unit_`sz1')
 		drop c_harvest_total_unit_prev_`sz1'
 	}
+	assert c_harvest_total_unit_sml + c_harvest_total_unit_med + c_harvest_total_unit_lrg == c_harvest_total_unit if flag_crop_unit_size==1
+	
+	tablist flag_* crop crop_code sow_type sow_date c_*, sort(v) ab(32) nolabel 
 	
 	/* Save TBF Market Garden 2023 data with analysis indicators */
 	drop flag_*
+	isid crop sow_date
 	quietly compress
 	save "$root\modified_data\tbf_market_garden_data_2023_clean_indicators.dta", replace
 	
