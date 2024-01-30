@@ -1,8 +1,8 @@
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.log
   log type:  text
- opened on:  28 Jan 2024, 19:24:54
+ opened on:  29 Jan 2024, 22:43:23
 
 . 
 . 
@@ -14,13 +14,11 @@
 . ***                                                                                                                                                                               ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
-. ***    I) LOAD DATA                                                                           ***
-. ***    II) CREATE ANALYSIS INDICATORS                                                         ***
-. ***    III)                                                                                   ***
+. ***    I) CREATE ANALYSIS INDICATORS                                                          ***
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 26, 2023                                                                                            ***
-. *** Last date modified: January 28, 2024                                                      ***
+. *** Last date modified: January 29, 2024                                                      ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -62,20 +60,15 @@
   [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
   [7]  (OLDPLACE)  "c:\ado/"
 
-.     
-. 
+.         
+.         
 . *=========================================================================================
-. * I) LOAD DATA
+. * I) CREATE ANALYSIS INDICATORS
 . *=========================================================================================
 .         
 .         /* Load clean TBF Market Garden 2023 data */
 .         use "$root\modified_data\tbf_market_garden_data_2023_clean.dta", clear
 
-.         
-.         
-. *=========================================================================================
-. * II) CREATE ANALYSIS INDICATORS
-. *=========================================================================================
 .         
 .         /* Harvest */
 .         
@@ -91,8 +84,7 @@
 .         replace c_harvest_no_plant=transp_no_end_2 if sow_type=="indoor seed" & transp_no_end_2!=.s // Use final transplant number if multiple transplantings (e.g., from seed tray to small container (1), then to garden plot (2))
 (9 real changes made)
 
-.         replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & crop_code!=8 // "& crop_code!=8" to exclude a calculation for the garlic that has not germinated yet. Planted in FA23 for harvest 
-> SU24.
+.         replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & crop_code!=8 // "& crop_code!=8" to exclude a calculation for the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
 (17 real changes made)
 
 .         replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant" // These are starts purchased outside the farm.
@@ -5528,12 +5520,12 @@ crop type           |
 file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2023_clean_indicators.dta saved
 
 .         
-.         /* */
+.         /* Descriptive statistics */
 .         des c_*
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 c_harvest_no_~t byte    %9.0g                 number of plants harvested
 c_harvest_tot~z int     %9.0g                 total harvest- weight, ounces
 c_harvest_tot~b float   %9.0g                 total harvest- weight, pounds
@@ -5655,5 +5647,5 @@ c_harvest_tot~g byte    %9.0g                 total harvest- units large
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.log
   log type:  text
- closed on:  28 Jan 2024, 19:24:55
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  29 Jan 2024, 22:43:24
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

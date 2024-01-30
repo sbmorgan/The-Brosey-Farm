@@ -16,13 +16,11 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***																	 				          ***
 *** Contents:                                                       				          ***
 ***    0) SET UP CODE                              				                              ***
-***    I) LOAD DATA                                                                           ***
-***    II) CREATE ANALYSIS INDICATORS                                                         ***
-***    III)                                                                                   ***
+***    I) CREATE ANALYSIS INDICATORS                                                          ***
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: September 26, 2023   	   					 	     			              ***
-*** Last date modified: January 28, 2024                                                      ***
+*** Last date modified: January 29, 2024                                                      ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -49,19 +47,14 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	*Root
 	global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
     adopath ++ "$root"
-    
-
+	
+	
 *=========================================================================================
-* I) LOAD DATA
+* I) CREATE ANALYSIS INDICATORS
 *=========================================================================================
 	
 	/* Load clean TBF Market Garden 2023 data */
 	use "$root\modified_data\tbf_market_garden_data_2023_clean.dta", clear
-	
-	
-*=========================================================================================
-* II) CREATE ANALYSIS INDICATORS
-*=========================================================================================
 	
 	/* Harvest */
 	
@@ -186,7 +179,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	quietly compress
 	save "$root\modified_data\tbf_market_garden_data_2023_clean_indicators.dta", replace
 	
-	/* */
+	/* Descriptive statistics */
 	des c_*
 	summarize c_*, detail
 	

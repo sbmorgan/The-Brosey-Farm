@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- opened on:   6 Nov 2023, 16:43:22
+ opened on:  29 Jan 2024, 22:45:38
 
 . 
 . 
@@ -14,14 +14,11 @@
 . ***                                                                                                                                                                               ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
-. ***    I)                                                                                     ***
-. ***    II)                                                                                    ***
-. ***    III)                                                                                   ***
-. ***    IV)                                                                                    ***
+. ***    I) CREATE ANALYSIS INDICATORS                                                          ***
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 26, 2023                                                                                            ***
-. *** Last date modified: September 27, 2023                                                    ***
+. *** Last date modified: September 29, 2023                                                    ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -72,15 +69,11 @@
 .         use "$root\modified_data\tbf_market_garden_sales_2023_clean.dta", clear
 
 .         
+.         /* Sales */
+.         collapse (sum) sale_value_usd, by(sale_location sale_item)
+
 .         
-. *=========================================================================================
-. * II) 
-. *=========================================================================================
-.    
-. *=========================================================================================
-. * III) 
-. *=========================================================================================  
-. 
+.         
 .         /* Save TBF Market Garden 2023 data with analysis indicators */
 .         quietly compress
 
@@ -89,11 +82,9 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 .     
 . 
-. 
-. 
 . log close _all
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- closed on:   6 Nov 2023, 16:43:22
+ closed on:  29 Jan 2024, 22:45:38
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
