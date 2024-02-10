@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: January 30, 2024                                                      ***
+*** Last date modified: February 10, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -174,9 +174,10 @@ pause off
 		replace sow_heatmat_temp=.s if sow_heatmat=="no"
 		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 		
+**# Bookmark #1
 		tablist crop crop_code, sort(v) nolabel
 		foreach var of varlist sow_no_germ_per sow_to_germ25_days sow_no_thin_per {	
-			replace `var'=.s if `var'==. & crop_code==8 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
+			replace `var'=.s if `var'==. & crop_code==9 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
 		}
 		
 		tablist crop sow_date if sow_no_thin_per==., sort(v) ab(32) // These are true missing data. Should have been filled out but were not.

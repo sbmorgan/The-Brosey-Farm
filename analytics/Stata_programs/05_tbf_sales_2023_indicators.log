@@ -1,8 +1,8 @@
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- opened on:   3 Feb 2024, 12:31:26
+ opened on:  10 Feb 2024, 17:12:16
 
 . 
 . 
@@ -18,7 +18,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 26, 2023                                                                                            ***
-. *** Last date modified: January 30, 2023                                                      ***
+. *** Last date modified: February 10, 2024                                                     ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -82,39 +82,39 @@
 
 .         tablist sale_location sale_item c_sale_value_crop_usd c_sale_value_tot_usd, sort(v) ab(32)
 
-  +----------------------------------------------------------------------------------------------------------------------------------------------------+
-  |               sale_location                         sale_item   c_sale_value_crop_usd   c_sale_value_tot_usd   _Freq_   _Perc_   _CFreq_   _CPerc_ |
-  |----------------------------------------------------------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market               bean- fin de bagnol                      12                    585        1     5.56         1      5.56 |
-  | New Carlisle Farmers Market                   carrot- touchon                      23                    585        1     5.56         2     11.11 |
-  | New Carlisle Farmers Market                          cilantro                      10                    585        1     5.56         3     16.67 |
-  | New Carlisle Farmers Market            eggplant- black beauty                      41                    585        1     5.56         4     22.22 |
-  | New Carlisle Farmers Market                   pepper- anaheim                    10.5                    585        1     5.56         5     27.78 |
-  |----------------------------------------------------------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market                    pepper- ghost                        1                    585        1     5.56         6     33.33 |
-  | New Carlisle Farmers Market                  pepper- habanero                       1                    585        1     5.56         7     38.89 |
-  | New Carlisle Farmers Market           pepper- jalapeno- early                    46.5                    585        1     5.56         8     44.44 |
-  | New Carlisle Farmers Market              pepper- sweet banana                      16                    585        1     5.56         9     50.00 |
-  | New Carlisle Farmers Market          pepper- sweet- ca wonder                      28                    585        1     5.56        10     55.56 |
-  |----------------------------------------------------------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market                 pumpkin- ct field                      13                    585        1     5.56        11     61.11 |
-  | New Carlisle Farmers Market     sweet corn- country gentleman                       4                    585        1     5.56        12     66.67 |
-  | New Carlisle Farmers Market   sweet corn- ornamental- glas gm                       5                    585        1     5.56        13     72.22 |
-  | New Carlisle Farmers Market                      tomato sauce                       7                    585        1     5.56        14     77.78 |
-  | New Carlisle Farmers Market                     tomato- amish                      95                    585        1     5.56        15     83.33 |
-  |----------------------------------------------------------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market                      tomato- roma                      32                    585        1     5.56        16     88.89 |
-  | New Carlisle Farmers Market             tomato-jalapeno salsa                      35                    585        1     5.56        17     94.44 |
-  | The Brosey Farm: farm stand                                .s                     205                    585        1     5.56        18    100.00 |
-  +----------------------------------------------------------------------------------------------------------------------------------------------------+
+  +--------------------------------------------------------------------------------------------------------------------------------------------------+
+  |               sale_location                       sale_item   c_sale_value_crop_usd   c_sale_value_tot_usd   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market             bean- fin de bagnol                      12                    585        1     5.56         1      5.56 |
+  | New Carlisle Farmers Market                 carrot- touchon                      23                    585        1     5.56         2     11.11 |
+  | New Carlisle Farmers Market                        cilantro                      10                    585        1     5.56         3     16.67 |
+  | New Carlisle Farmers Market     corn- ornamental, glass gem                       5                    585        1     5.56         4     22.22 |
+  | New Carlisle Farmers Market          eggplant- black beauty                      41                    585        1     5.56         5     27.78 |
+  |--------------------------------------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market                 pepper- anaheim                    10.5                    585        1     5.56         6     33.33 |
+  | New Carlisle Farmers Market        pepper- califonia wonder                      28                    585        1     5.56         7     38.89 |
+  | New Carlisle Farmers Market                  pepper- ghost                        1                    585        1     5.56         8     44.44 |
+  | New Carlisle Farmers Market                pepper- habanero                       1                    585        1     5.56         9     50.00 |
+  | New Carlisle Farmers Market         pepper- jalapeno, early                    46.5                    585        1     5.56        10     55.56 |
+  |--------------------------------------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market            pepper- sweet banana                      16                    585        1     5.56        11     61.11 |
+  | New Carlisle Farmers Market      pumpkin- connecticut field                      13                    585        1     5.56        12     66.67 |
+  | New Carlisle Farmers Market   sweet corn- country gentleman                       4                    585        1     5.56        13     72.22 |
+  | New Carlisle Farmers Market                    tomato sauce                       7                    585        1     5.56        14     77.78 |
+  | New Carlisle Farmers Market                   tomato- amish                      95                    585        1     5.56        15     83.33 |
+  |--------------------------------------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market                    tomato- roma                      32                    585        1     5.56        16     88.89 |
+  | New Carlisle Farmers Market           tomato-jalapeno salsa                      35                    585        1     5.56        17     94.44 |
+  | The Brosey Farm: farm stand                              .s                     205                    585        1     5.56        18    100.00 |
+  +--------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .         
 .         /* Add TBF 2023 Crop Codes */
 .         tempfile pre_crop_codes crop_codes
 
 .         save `pre_crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_2060_000001.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_2060_000001.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_6090_000002.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_6090_000002.tmp saved as .dta format
 
 .         
 .         import excel "$root\modified_data\tbf_crop_codes_2023.xlsx", firstrow clear
@@ -131,32 +131,32 @@ file C:\Users\sethb\AppData\Local\Temp\ST_2060_000001.tmp saved as .dta format
   |                     carrot- touchon           4        1     4.35         4     17.39 |
   |                            cilantro           5        1     4.35         5     21.74 |
   |---------------------------------------------------------------------------------------|
-  |                          dill- hera           6        1     4.35         6     26.09 |
-  |              eggplant- black beauty           7        1     4.35         7     30.43 |
-  | garlic- german extra hardy hardneck           8        1     4.35         8     34.78 |
-  |                      kale- lacinato           9        1     4.35         9     39.13 |
-  |              lettuce- gourmet blend          10        1     4.35        10     43.48 |
+  |         corn- ornamental, glass gem           6        1     4.35         6     26.09 |
+  |                          dill- hera           7        1     4.35         7     30.43 |
+  |              eggplant- black beauty           8        1     4.35         8     34.78 |
+  | garlic- german extra hardy hardneck           9        1     4.35         9     39.13 |
+  |                      kale- lacinato          10        1     4.35        10     43.48 |
   |---------------------------------------------------------------------------------------|
-  |                     pepper- anaheim          11        1     4.35        11     47.83 |
-  |                      pepper- ghost           12        1     4.35        12     52.17 |
-  |                    pepper- habanero          13        1     4.35        13     56.52 |
-  |             pepper- jalapeno- early          14        1     4.35        14     60.87 |
-  |                pepper- sweet banana          15        1     4.35        15     65.22 |
+  |              lettuce- gourmet blend          11        1     4.35        11     47.83 |
+  |                     pepper- anaheim          12        1     4.35        12     52.17 |
+  |            pepper- califonia wonder          13        1     4.35        13     56.52 |
+  |                      pepper- ghost           14        1     4.35        14     60.87 |
+  |                    pepper- habanero          15        1     4.35        15     65.22 |
   |---------------------------------------------------------------------------------------|
-  |            pepper- sweet- ca wonder          16        1     4.35        16     69.57 |
-  |                   pumpkin- ct field          17        1     4.35        17     73.91 |
-  |                    sage- broad leaf          18        1     4.35        18     78.26 |
-  |                  sunflower- mammoth          19        1     4.35        19     82.61 |
-  |       sweet corn- country gentleman          20        1     4.35        20     86.96 |
+  |             pepper- jalapeno, early          16        1     4.35        16     69.57 |
+  |                pepper- sweet banana          17        1     4.35        17     73.91 |
+  |          pumpkin- connecticut field          18        1     4.35        18     78.26 |
+  |                    sage- broad leaf          19        1     4.35        19     82.61 |
+  |                  sunflower- mammoth          20        1     4.35        20     86.96 |
   |---------------------------------------------------------------------------------------|
-  |     sweet corn- ornamental- glas gm          21        1     4.35        21     91.30 |
+  |       sweet corn- country gentleman          21        1     4.35        21     91.30 |
   |                       tomato- amish          22        1     4.35        22     95.65 |
   |                        tomato- roma          23        1     4.35        23    100.00 |
   +---------------------------------------------------------------------------------------+
 
 .         save `crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_2060_000002.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_2060_000002.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_6090_000003.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_6090_000003.tmp saved as .dta format
 
 .         
 .         use `pre_crop_codes', replace
@@ -167,7 +167,7 @@ file C:\Users\sethb\AppData\Local\Temp\ST_2060_000002.tmp saved as .dta format
 (3 observations deleted)
 
 .         merge 1:1 crop using `crop_codes', assert(2 3) keep(3) nogenerate
-(variable crop was str31, now str35 to accommodate using data's values)
+(variable crop was str29, now str35 to accommodate using data's values)
 
     Result                      Number of obs
     -----------------------------------------
@@ -192,5 +192,5 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- closed on:   3 Feb 2024, 12:31:26
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  10 Feb 2024, 17:12:16
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

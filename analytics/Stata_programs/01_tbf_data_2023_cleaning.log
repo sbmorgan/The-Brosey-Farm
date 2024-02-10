@@ -1,8 +1,8 @@
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- opened on:   3 Feb 2024, 12:27:01
+ opened on:  10 Feb 2024, 17:12:05
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: July 12, 2023                                                                                                     ***
-. *** Last date modified: January 30, 2024                                                      ***
+. *** Last date modified: February 10, 2024                                                     ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -136,11 +136,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . capture log close labels_02
 
 . log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log", replace name(labels_02)
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- opened on:   3 Feb 2024, 12:27:02
+ opened on:  10 Feb 2024, 17:12:05
 
 . 
 . 
@@ -233,8 +233,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- closed on:   3 Feb 2024, 12:27:02
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  10 Feb 2024, 17:12:05
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
@@ -1522,22 +1522,22 @@ harvest_date_30_day: all characters numeric; replaced as byte
                 bean- fin de bagnol |          2        6.06       15.15
                     carrot- touchon |          2        6.06       21.21
                            cilantro |          1        3.03       24.24
-                         dill- hera |          2        6.06       30.30
-             eggplant- black beauty |          1        3.03       33.33
-garlic- german extra hardy hardneck |          1        3.03       36.36
-                     kale- lacinato |          2        6.06       42.42
-             lettuce- gourmet blend |          2        6.06       48.48
-                    pepper- anaheim |          1        3.03       51.52
-                     pepper- ghost  |          1        3.03       54.55
-                   pepper- habanero |          1        3.03       57.58
-            pepper- jalapeno- early |          1        3.03       60.61
-               pepper- sweet banana |          1        3.03       63.64
-           pepper- sweet- ca wonder |          1        3.03       66.67
-                  pumpkin- ct field |          2        6.06       72.73
-                   sage- broad leaf |          1        3.03       75.76
-                 sunflower- mammoth |          2        6.06       81.82
-      sweet corn- country gentleman |          2        6.06       87.88
-    sweet corn- ornamental- glas gm |          2        6.06       93.94
+        corn- ornamental, glass gem |          2        6.06       30.30
+                         dill- hera |          2        6.06       36.36
+             eggplant- black beauty |          1        3.03       39.39
+garlic- german extra hardy hardneck |          1        3.03       42.42
+                     kale- lacinato |          2        6.06       48.48
+             lettuce- gourmet blend |          2        6.06       54.55
+                    pepper- anaheim |          1        3.03       57.58
+           pepper- califonia wonder |          1        3.03       60.61
+                     pepper- ghost  |          1        3.03       63.64
+                   pepper- habanero |          1        3.03       66.67
+            pepper- jalapeno, early |          1        3.03       69.70
+               pepper- sweet banana |          1        3.03       72.73
+         pumpkin- connecticut field |          2        6.06       78.79
+                   sage- broad leaf |          1        3.03       81.82
+                 sunflower- mammoth |          2        6.06       87.88
+      sweet corn- country gentleman |          2        6.06       93.94
                       tomato- amish |          1        3.03       96.97
                        tomato- roma |          1        3.03      100.00
 ------------------------------------+-----------------------------------
@@ -1905,25 +1905,25 @@ cut/horn worms |          1        3.03       96.97
   |                     carrot- touchon                       carrot- touchon        2     6.06         7     21.21 |
   |                            cilantro                              cilantro        1     3.03         8     24.24 |
   |-----------------------------------------------------------------------------------------------------------------|
-  |                          dill- hera                            dill- hera        2     6.06        10     30.30 |
-  |              eggplant- black beauty                eggplant- black beauty        1     3.03        11     33.33 |
-  | garlic- german extra hardy hardneck   garlic- german extra hardy hardneck        1     3.03        12     36.36 |
-  |                      kale- lacinato                        kale- lacinato        2     6.06        14     42.42 |
-  |              lettuce- gourmet blend                lettuce- gourmet blend        2     6.06        16     48.48 |
+  |         corn- ornamental, glass gem           corn- ornamental, glass gem        2     6.06        10     30.30 |
+  |                          dill- hera                            dill- hera        2     6.06        12     36.36 |
+  |              eggplant- black beauty                eggplant- black beauty        1     3.03        13     39.39 |
+  | garlic- german extra hardy hardneck   garlic- german extra hardy hardneck        1     3.03        14     42.42 |
+  |                      kale- lacinato                        kale- lacinato        2     6.06        16     48.48 |
   |-----------------------------------------------------------------------------------------------------------------|
-  |                     pepper- anaheim                       pepper- anaheim        1     3.03        17     51.52 |
-  |                      pepper- ghost                          pepper- ghost        1     3.03        18     54.55 |
-  |                    pepper- habanero                      pepper- habanero        1     3.03        19     57.58 |
-  |             pepper- jalapeno- early               pepper- jalapeno- early        1     3.03        20     60.61 |
-  |                pepper- sweet banana                  pepper- sweet banana        1     3.03        21     63.64 |
+  |              lettuce- gourmet blend                lettuce- gourmet blend        2     6.06        18     54.55 |
+  |                     pepper- anaheim                       pepper- anaheim        1     3.03        19     57.58 |
+  |            pepper- califonia wonder              pepper- califonia wonder        1     3.03        20     60.61 |
+  |                      pepper- ghost                          pepper- ghost        1     3.03        21     63.64 |
+  |                    pepper- habanero                      pepper- habanero        1     3.03        22     66.67 |
   |-----------------------------------------------------------------------------------------------------------------|
-  |            pepper- sweet- ca wonder              pepper- sweet- ca wonder        1     3.03        22     66.67 |
-  |                   pumpkin- ct field                     pumpkin- ct field        2     6.06        24     72.73 |
-  |                    sage- broad leaf                      sage- broad leaf        1     3.03        25     75.76 |
-  |                  sunflower- mammoth                    sunflower- mammoth        2     6.06        27     81.82 |
-  |       sweet corn- country gentleman         sweet corn- country gentleman        2     6.06        29     87.88 |
+  |             pepper- jalapeno, early               pepper- jalapeno, early        1     3.03        23     69.70 |
+  |                pepper- sweet banana                  pepper- sweet banana        1     3.03        24     72.73 |
+  |          pumpkin- connecticut field            pumpkin- connecticut field        2     6.06        26     78.79 |
+  |                    sage- broad leaf                      sage- broad leaf        1     3.03        27     81.82 |
+  |                  sunflower- mammoth                    sunflower- mammoth        2     6.06        29     87.88 |
   |-----------------------------------------------------------------------------------------------------------------|
-  |     sweet corn- ornamental- glas gm       sweet corn- ornamental- glas gm        2     6.06        31     93.94 |
+  |       sweet corn- country gentleman         sweet corn- country gentleman        2     6.06        31     93.94 |
   |                       tomato- amish                         tomato- amish        1     3.03        32     96.97 |
   |                        tomato- roma                          tomato- roma        1     3.03        33    100.00 |
   +-----------------------------------------------------------------------------------------------------------------+
@@ -1937,25 +1937,25 @@ cut/horn worms |          1        3.03       96.97
   |                     carrot- touchon           4        2     6.06         7     21.21 |
   |                            cilantro           5        1     3.03         8     24.24 |
   |---------------------------------------------------------------------------------------|
-  |                          dill- hera           6        2     6.06        10     30.30 |
-  |              eggplant- black beauty           7        1     3.03        11     33.33 |
-  | garlic- german extra hardy hardneck           8        1     3.03        12     36.36 |
-  |                      kale- lacinato           9        2     6.06        14     42.42 |
-  |              lettuce- gourmet blend          10        2     6.06        16     48.48 |
+  |         corn- ornamental, glass gem           6        2     6.06        10     30.30 |
+  |                          dill- hera           7        2     6.06        12     36.36 |
+  |              eggplant- black beauty           8        1     3.03        13     39.39 |
+  | garlic- german extra hardy hardneck           9        1     3.03        14     42.42 |
+  |                      kale- lacinato          10        2     6.06        16     48.48 |
   |---------------------------------------------------------------------------------------|
-  |                     pepper- anaheim          11        1     3.03        17     51.52 |
-  |                      pepper- ghost           12        1     3.03        18     54.55 |
-  |                    pepper- habanero          13        1     3.03        19     57.58 |
-  |             pepper- jalapeno- early          14        1     3.03        20     60.61 |
-  |                pepper- sweet banana          15        1     3.03        21     63.64 |
+  |              lettuce- gourmet blend          11        2     6.06        18     54.55 |
+  |                     pepper- anaheim          12        1     3.03        19     57.58 |
+  |            pepper- califonia wonder          13        1     3.03        20     60.61 |
+  |                      pepper- ghost           14        1     3.03        21     63.64 |
+  |                    pepper- habanero          15        1     3.03        22     66.67 |
   |---------------------------------------------------------------------------------------|
-  |            pepper- sweet- ca wonder          16        1     3.03        22     66.67 |
-  |                   pumpkin- ct field          17        2     6.06        24     72.73 |
-  |                    sage- broad leaf          18        1     3.03        25     75.76 |
-  |                  sunflower- mammoth          19        2     6.06        27     81.82 |
-  |       sweet corn- country gentleman          20        2     6.06        29     87.88 |
+  |             pepper- jalapeno, early          16        1     3.03        23     69.70 |
+  |                pepper- sweet banana          17        1     3.03        24     72.73 |
+  |          pumpkin- connecticut field          18        2     6.06        26     78.79 |
+  |                    sage- broad leaf          19        1     3.03        27     81.82 |
+  |                  sunflower- mammoth          20        2     6.06        29     87.88 |
   |---------------------------------------------------------------------------------------|
-  |     sweet corn- ornamental- glas gm          21        2     6.06        31     93.94 |
+  |       sweet corn- country gentleman          21        2     6.06        31     93.94 |
   |                       tomato- amish          22        1     3.03        32     96.97 |
   |                        tomato- roma          23        1     3.03        33    100.00 |
   +---------------------------------------------------------------------------------------+
@@ -2307,7 +2307,7 @@ cut/horn worms |          1        3.03       96.97
 .         tempfile pre_code_export
 
 .         save `pre_code_export'
-file C:\Users\sethb\AppData\Local\Temp\ST_874c_000002.tmp saved as .dta format
+file C:\Users\sethb\AppData\Local\Temp\ST_6090_000002.tmp saved as .dta format
 
 .         
 .         tablist crop crop_code, sort(v) nolabel
@@ -2321,25 +2321,25 @@ file C:\Users\sethb\AppData\Local\Temp\ST_874c_000002.tmp saved as .dta format
   |                     carrot- touchon          4        2     6.06         7     21.21 |
   |                            cilantro          5        1     3.03         8     24.24 |
   |--------------------------------------------------------------------------------------|
-  |                          dill- hera          6        2     6.06        10     30.30 |
-  |              eggplant- black beauty          7        1     3.03        11     33.33 |
-  | garlic- german extra hardy hardneck          8        1     3.03        12     36.36 |
-  |                      kale- lacinato          9        2     6.06        14     42.42 |
-  |              lettuce- gourmet blend         10        2     6.06        16     48.48 |
+  |         corn- ornamental, glass gem          6        2     6.06        10     30.30 |
+  |                          dill- hera          7        2     6.06        12     36.36 |
+  |              eggplant- black beauty          8        1     3.03        13     39.39 |
+  | garlic- german extra hardy hardneck          9        1     3.03        14     42.42 |
+  |                      kale- lacinato         10        2     6.06        16     48.48 |
   |--------------------------------------------------------------------------------------|
-  |                     pepper- anaheim         11        1     3.03        17     51.52 |
-  |                      pepper- ghost          12        1     3.03        18     54.55 |
-  |                    pepper- habanero         13        1     3.03        19     57.58 |
-  |             pepper- jalapeno- early         14        1     3.03        20     60.61 |
-  |                pepper- sweet banana         15        1     3.03        21     63.64 |
+  |              lettuce- gourmet blend         11        2     6.06        18     54.55 |
+  |                     pepper- anaheim         12        1     3.03        19     57.58 |
+  |            pepper- califonia wonder         13        1     3.03        20     60.61 |
+  |                      pepper- ghost          14        1     3.03        21     63.64 |
+  |                    pepper- habanero         15        1     3.03        22     66.67 |
   |--------------------------------------------------------------------------------------|
-  |            pepper- sweet- ca wonder         16        1     3.03        22     66.67 |
-  |                   pumpkin- ct field         17        2     6.06        24     72.73 |
-  |                    sage- broad leaf         18        1     3.03        25     75.76 |
-  |                  sunflower- mammoth         19        2     6.06        27     81.82 |
-  |       sweet corn- country gentleman         20        2     6.06        29     87.88 |
+  |             pepper- jalapeno, early         16        1     3.03        23     69.70 |
+  |                pepper- sweet banana         17        1     3.03        24     72.73 |
+  |          pumpkin- connecticut field         18        2     6.06        26     78.79 |
+  |                    sage- broad leaf         19        1     3.03        27     81.82 |
+  |                  sunflower- mammoth         20        2     6.06        29     87.88 |
   |--------------------------------------------------------------------------------------|
-  |     sweet corn- ornamental- glas gm         21        2     6.06        31     93.94 |
+  |       sweet corn- country gentleman         21        2     6.06        31     93.94 |
   |                       tomato- amish         22        1     3.03        32     96.97 |
   |                        tomato- roma         23        1     3.03        33    100.00 |
   +--------------------------------------------------------------------------------------+
@@ -2363,25 +2363,25 @@ Duplicates in terms of all variables
   |                     carrot- touchon          4        1     4.35         4     17.39 |
   |                            cilantro          5        1     4.35         5     21.74 |
   |--------------------------------------------------------------------------------------|
-  |                          dill- hera          6        1     4.35         6     26.09 |
-  |              eggplant- black beauty          7        1     4.35         7     30.43 |
-  | garlic- german extra hardy hardneck          8        1     4.35         8     34.78 |
-  |                      kale- lacinato          9        1     4.35         9     39.13 |
-  |              lettuce- gourmet blend         10        1     4.35        10     43.48 |
+  |         corn- ornamental, glass gem          6        1     4.35         6     26.09 |
+  |                          dill- hera          7        1     4.35         7     30.43 |
+  |              eggplant- black beauty          8        1     4.35         8     34.78 |
+  | garlic- german extra hardy hardneck          9        1     4.35         9     39.13 |
+  |                      kale- lacinato         10        1     4.35        10     43.48 |
   |--------------------------------------------------------------------------------------|
-  |                     pepper- anaheim         11        1     4.35        11     47.83 |
-  |                      pepper- ghost          12        1     4.35        12     52.17 |
-  |                    pepper- habanero         13        1     4.35        13     56.52 |
-  |             pepper- jalapeno- early         14        1     4.35        14     60.87 |
-  |                pepper- sweet banana         15        1     4.35        15     65.22 |
+  |              lettuce- gourmet blend         11        1     4.35        11     47.83 |
+  |                     pepper- anaheim         12        1     4.35        12     52.17 |
+  |            pepper- califonia wonder         13        1     4.35        13     56.52 |
+  |                      pepper- ghost          14        1     4.35        14     60.87 |
+  |                    pepper- habanero         15        1     4.35        15     65.22 |
   |--------------------------------------------------------------------------------------|
-  |            pepper- sweet- ca wonder         16        1     4.35        16     69.57 |
-  |                   pumpkin- ct field         17        1     4.35        17     73.91 |
-  |                    sage- broad leaf         18        1     4.35        18     78.26 |
-  |                  sunflower- mammoth         19        1     4.35        19     82.61 |
-  |       sweet corn- country gentleman         20        1     4.35        20     86.96 |
+  |             pepper- jalapeno, early         16        1     4.35        16     69.57 |
+  |                pepper- sweet banana         17        1     4.35        17     73.91 |
+  |          pumpkin- connecticut field         18        1     4.35        18     78.26 |
+  |                    sage- broad leaf         19        1     4.35        19     82.61 |
+  |                  sunflower- mammoth         20        1     4.35        20     86.96 |
   |--------------------------------------------------------------------------------------|
-  |     sweet corn- ornamental- glas gm         21        1     4.35        21     91.30 |
+  |       sweet corn- country gentleman         21        1     4.35        21     91.30 |
   |                       tomato- amish         22        1     4.35        22     95.65 |
   |                        tomato- roma         23        1     4.35        23    100.00 |
   +--------------------------------------------------------------------------------------+
@@ -4753,6 +4753,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
   +----------------------------------------------------------------------+
 
 .                 
+. **# Bookmark #1
 .                 tablist crop crop_code, sort(v) nolabel
 
   +--------------------------------------------------------------------------------------+
@@ -4764,31 +4765,31 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
   |                     carrot- touchon          4        2     6.06         7     21.21 |
   |                            cilantro          5        1     3.03         8     24.24 |
   |--------------------------------------------------------------------------------------|
-  |                          dill- hera          6        2     6.06        10     30.30 |
-  |              eggplant- black beauty          7        1     3.03        11     33.33 |
-  | garlic- german extra hardy hardneck          8        1     3.03        12     36.36 |
-  |                      kale- lacinato          9        2     6.06        14     42.42 |
-  |              lettuce- gourmet blend         10        2     6.06        16     48.48 |
+  |         corn- ornamental, glass gem          6        2     6.06        10     30.30 |
+  |                          dill- hera          7        2     6.06        12     36.36 |
+  |              eggplant- black beauty          8        1     3.03        13     39.39 |
+  | garlic- german extra hardy hardneck          9        1     3.03        14     42.42 |
+  |                      kale- lacinato         10        2     6.06        16     48.48 |
   |--------------------------------------------------------------------------------------|
-  |                     pepper- anaheim         11        1     3.03        17     51.52 |
-  |                      pepper- ghost          12        1     3.03        18     54.55 |
-  |                    pepper- habanero         13        1     3.03        19     57.58 |
-  |             pepper- jalapeno- early         14        1     3.03        20     60.61 |
-  |                pepper- sweet banana         15        1     3.03        21     63.64 |
+  |              lettuce- gourmet blend         11        2     6.06        18     54.55 |
+  |                     pepper- anaheim         12        1     3.03        19     57.58 |
+  |            pepper- califonia wonder         13        1     3.03        20     60.61 |
+  |                      pepper- ghost          14        1     3.03        21     63.64 |
+  |                    pepper- habanero         15        1     3.03        22     66.67 |
   |--------------------------------------------------------------------------------------|
-  |            pepper- sweet- ca wonder         16        1     3.03        22     66.67 |
-  |                   pumpkin- ct field         17        2     6.06        24     72.73 |
-  |                    sage- broad leaf         18        1     3.03        25     75.76 |
-  |                  sunflower- mammoth         19        2     6.06        27     81.82 |
-  |       sweet corn- country gentleman         20        2     6.06        29     87.88 |
+  |             pepper- jalapeno, early         16        1     3.03        23     69.70 |
+  |                pepper- sweet banana         17        1     3.03        24     72.73 |
+  |          pumpkin- connecticut field         18        2     6.06        26     78.79 |
+  |                    sage- broad leaf         19        1     3.03        27     81.82 |
+  |                  sunflower- mammoth         20        2     6.06        29     87.88 |
   |--------------------------------------------------------------------------------------|
-  |     sweet corn- ornamental- glas gm         21        2     6.06        31     93.94 |
+  |       sweet corn- country gentleman         21        2     6.06        31     93.94 |
   |                       tomato- amish         22        1     3.03        32     96.97 |
   |                        tomato- roma         23        1     3.03        33    100.00 |
   +--------------------------------------------------------------------------------------+
 
 .                 foreach var of varlist sow_no_germ_per sow_to_germ25_days sow_no_thin_per {     
-  2.                         replace `var'=.s if `var'==. & crop_code==8 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
+  2.                         replace `var'=.s if `var'==. & crop_code==9 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
   3.                 }
 (1 real change made, 1 to missing)
 (1 real change made, 1 to missing)
@@ -4806,8 +4807,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
   |   lettuce- gourmet blend   2023-03-12        1    10.00         4     40.00 |
   |          pepper- anaheim   2023-03-26        1    10.00         5     50.00 |
   |-----------------------------------------------------------------------------|
-  |  pepper- jalapeno- early   2023-03-26        1    10.00         6     60.00 |
-  | pepper- sweet- ca wonder   2023-03-26        1    10.00         7     70.00 |
+  | pepper- califonia wonder   2023-03-26        1    10.00         6     60.00 |
+  |  pepper- jalapeno, early   2023-03-26        1    10.00         7     70.00 |
   |         sage- broad leaf   2023-03-12        1    10.00         8     80.00 |
   |            tomato- amish   2023-03-26        1    10.00         9     90.00 |
   |             tomato- roma   2023-03-26        1    10.00        10    100.00 |
@@ -4860,26 +4861,26 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
   |----------------------------------------------------------------------------------------|
   |                     carrot- touchon   2023-06-01        1     4.17         6     25.00 |
   |                            cilantro   2023-05-20        1     4.17         7     29.17 |
-  |                          dill- hera   2023-04-22        1     4.17         8     33.33 |
-  |                          dill- hera   2023-05-20        1     4.17         9     37.50 |
-  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        10     41.67 |
+  |         corn- ornamental, glass gem   2023-05-31        1     4.17         8     33.33 |
+  |         corn- ornamental, glass gem   2023-06-10        1     4.17         9     37.50 |
+  |                          dill- hera   2023-04-22        1     4.17        10     41.67 |
   |----------------------------------------------------------------------------------------|
-  |                      kale- lacinato   2023-08-13        1     4.17        11     45.83 |
-  |              lettuce- gourmet blend   2023-03-12        1     4.17        12     50.00 |
-  |              lettuce- gourmet blend   2023-08-13        1     4.17        13     54.17 |
-  |                      pepper- ghost            .s        1     4.17        14     58.33 |
-  |                    pepper- habanero           .s        1     4.17        15     62.50 |
+  |                          dill- hera   2023-05-20        1     4.17        11     45.83 |
+  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        12     50.00 |
+  |                      kale- lacinato   2023-08-13        1     4.17        13     54.17 |
+  |              lettuce- gourmet blend   2023-03-12        1     4.17        14     58.33 |
+  |              lettuce- gourmet blend   2023-08-13        1     4.17        15     62.50 |
   |----------------------------------------------------------------------------------------|
-  |                pepper- sweet banana           .s        1     4.17        16     66.67 |
-  |                   pumpkin- ct field   2023-06-01        1     4.17        17     70.83 |
-  |                   pumpkin- ct field   2023-06-10        1     4.17        18     75.00 |
-  |                  sunflower- mammoth   2023-05-31        1     4.17        19     79.17 |
-  |                  sunflower- mammoth   2023-06-15        1     4.17        20     83.33 |
+  |                      pepper- ghost            .s        1     4.17        16     66.67 |
+  |                    pepper- habanero           .s        1     4.17        17     70.83 |
+  |                pepper- sweet banana           .s        1     4.17        18     75.00 |
+  |          pumpkin- connecticut field   2023-06-01        1     4.17        19     79.17 |
+  |          pumpkin- connecticut field   2023-06-10        1     4.17        20     83.33 |
   |----------------------------------------------------------------------------------------|
-  |       sweet corn- country gentleman   2023-05-31        1     4.17        21     87.50 |
-  |       sweet corn- country gentleman   2023-06-10        1     4.17        22     91.67 |
-  |     sweet corn- ornamental- glas gm   2023-05-31        1     4.17        23     95.83 |
-  |     sweet corn- ornamental- glas gm   2023-06-10        1     4.17        24    100.00 |
+  |                  sunflower- mammoth   2023-05-31        1     4.17        21     87.50 |
+  |                  sunflower- mammoth   2023-06-15        1     4.17        22     91.67 |
+  |       sweet corn- country gentleman   2023-05-31        1     4.17        23     95.83 |
+  |       sweet corn- country gentleman   2023-06-10        1     4.17        24    100.00 |
   +----------------------------------------------------------------------------------------+
 (6 real changes made, 6 to missing)
 
@@ -4907,26 +4908,26 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
   |----------------------------------------------------------------------------------------|
   |                     carrot- touchon   2023-06-01        1     4.17         6     25.00 |
   |                            cilantro   2023-05-20        1     4.17         7     29.17 |
-  |                          dill- hera   2023-04-22        1     4.17         8     33.33 |
-  |                          dill- hera   2023-05-20        1     4.17         9     37.50 |
-  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        10     41.67 |
+  |         corn- ornamental, glass gem   2023-05-31        1     4.17         8     33.33 |
+  |         corn- ornamental, glass gem   2023-06-10        1     4.17         9     37.50 |
+  |                          dill- hera   2023-04-22        1     4.17        10     41.67 |
   |----------------------------------------------------------------------------------------|
-  |                      kale- lacinato   2023-08-13        1     4.17        11     45.83 |
-  |              lettuce- gourmet blend   2023-03-12        1     4.17        12     50.00 |
-  |              lettuce- gourmet blend   2023-08-13        1     4.17        13     54.17 |
-  |                      pepper- ghost            .s        1     4.17        14     58.33 |
-  |                    pepper- habanero           .s        1     4.17        15     62.50 |
+  |                          dill- hera   2023-05-20        1     4.17        11     45.83 |
+  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        12     50.00 |
+  |                      kale- lacinato   2023-08-13        1     4.17        13     54.17 |
+  |              lettuce- gourmet blend   2023-03-12        1     4.17        14     58.33 |
+  |              lettuce- gourmet blend   2023-08-13        1     4.17        15     62.50 |
   |----------------------------------------------------------------------------------------|
-  |                pepper- sweet banana           .s        1     4.17        16     66.67 |
-  |                   pumpkin- ct field   2023-06-01        1     4.17        17     70.83 |
-  |                   pumpkin- ct field   2023-06-10        1     4.17        18     75.00 |
-  |                  sunflower- mammoth   2023-05-31        1     4.17        19     79.17 |
-  |                  sunflower- mammoth   2023-06-15        1     4.17        20     83.33 |
+  |                      pepper- ghost            .s        1     4.17        16     66.67 |
+  |                    pepper- habanero           .s        1     4.17        17     70.83 |
+  |                pepper- sweet banana           .s        1     4.17        18     75.00 |
+  |          pumpkin- connecticut field   2023-06-01        1     4.17        19     79.17 |
+  |          pumpkin- connecticut field   2023-06-10        1     4.17        20     83.33 |
   |----------------------------------------------------------------------------------------|
-  |       sweet corn- country gentleman   2023-05-31        1     4.17        21     87.50 |
-  |       sweet corn- country gentleman   2023-06-10        1     4.17        22     91.67 |
-  |     sweet corn- ornamental- glas gm   2023-05-31        1     4.17        23     95.83 |
-  |     sweet corn- ornamental- glas gm   2023-06-10        1     4.17        24    100.00 |
+  |                  sunflower- mammoth   2023-05-31        1     4.17        21     87.50 |
+  |                  sunflower- mammoth   2023-06-15        1     4.17        22     91.67 |
+  |       sweet corn- country gentleman   2023-05-31        1     4.17        23     95.83 |
+  |       sweet corn- country gentleman   2023-06-10        1     4.17        24    100.00 |
   +----------------------------------------------------------------------------------------+
 (6 real changes made, 6 to missing)
 
@@ -4941,26 +4942,26 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
   |----------------------------------------------------------------------------------------|
   |                     carrot- touchon   2023-06-01        1     4.17         6     25.00 |
   |                            cilantro   2023-05-20        1     4.17         7     29.17 |
-  |                          dill- hera   2023-04-22        1     4.17         8     33.33 |
-  |                          dill- hera   2023-05-20        1     4.17         9     37.50 |
-  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        10     41.67 |
+  |         corn- ornamental, glass gem   2023-05-31        1     4.17         8     33.33 |
+  |         corn- ornamental, glass gem   2023-06-10        1     4.17         9     37.50 |
+  |                          dill- hera   2023-04-22        1     4.17        10     41.67 |
   |----------------------------------------------------------------------------------------|
-  |                      kale- lacinato   2023-08-13        1     4.17        11     45.83 |
-  |              lettuce- gourmet blend   2023-03-12        1     4.17        12     50.00 |
-  |              lettuce- gourmet blend   2023-08-13        1     4.17        13     54.17 |
-  |                      pepper- ghost            .s        1     4.17        14     58.33 |
-  |                    pepper- habanero           .s        1     4.17        15     62.50 |
+  |                          dill- hera   2023-05-20        1     4.17        11     45.83 |
+  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        12     50.00 |
+  |                      kale- lacinato   2023-08-13        1     4.17        13     54.17 |
+  |              lettuce- gourmet blend   2023-03-12        1     4.17        14     58.33 |
+  |              lettuce- gourmet blend   2023-08-13        1     4.17        15     62.50 |
   |----------------------------------------------------------------------------------------|
-  |                pepper- sweet banana           .s        1     4.17        16     66.67 |
-  |                   pumpkin- ct field   2023-06-01        1     4.17        17     70.83 |
-  |                   pumpkin- ct field   2023-06-10        1     4.17        18     75.00 |
-  |                  sunflower- mammoth   2023-05-31        1     4.17        19     79.17 |
-  |                  sunflower- mammoth   2023-06-15        1     4.17        20     83.33 |
+  |                      pepper- ghost            .s        1     4.17        16     66.67 |
+  |                    pepper- habanero           .s        1     4.17        17     70.83 |
+  |                pepper- sweet banana           .s        1     4.17        18     75.00 |
+  |          pumpkin- connecticut field   2023-06-01        1     4.17        19     79.17 |
+  |          pumpkin- connecticut field   2023-06-10        1     4.17        20     83.33 |
   |----------------------------------------------------------------------------------------|
-  |       sweet corn- country gentleman   2023-05-31        1     4.17        21     87.50 |
-  |       sweet corn- country gentleman   2023-06-10        1     4.17        22     91.67 |
-  |     sweet corn- ornamental- glas gm   2023-05-31        1     4.17        23     95.83 |
-  |     sweet corn- ornamental- glas gm   2023-06-10        1     4.17        24    100.00 |
+  |                  sunflower- mammoth   2023-05-31        1     4.17        21     87.50 |
+  |                  sunflower- mammoth   2023-06-15        1     4.17        22     91.67 |
+  |       sweet corn- country gentleman   2023-05-31        1     4.17        23     95.83 |
+  |       sweet corn- country gentleman   2023-06-10        1     4.17        24    100.00 |
   +----------------------------------------------------------------------------------------+
 (6 real changes made, 6 to missing)
 
@@ -7883,22 +7884,22 @@ Variable: crop
                 bean- fin de bagnol |          2        6.06       15.15
                     carrot- touchon |          2        6.06       21.21
                            cilantro |          1        3.03       24.24
-                         dill- hera |          2        6.06       30.30
-             eggplant- black beauty |          1        3.03       33.33
-garlic- german extra hardy hardneck |          1        3.03       36.36
-                     kale- lacinato |          2        6.06       42.42
-             lettuce- gourmet blend |          2        6.06       48.48
-                    pepper- anaheim |          1        3.03       51.52
-                     pepper- ghost  |          1        3.03       54.55
-                   pepper- habanero |          1        3.03       57.58
-            pepper- jalapeno- early |          1        3.03       60.61
-               pepper- sweet banana |          1        3.03       63.64
-           pepper- sweet- ca wonder |          1        3.03       66.67
-                  pumpkin- ct field |          2        6.06       72.73
-                   sage- broad leaf |          1        3.03       75.76
-                 sunflower- mammoth |          2        6.06       81.82
-      sweet corn- country gentleman |          2        6.06       87.88
-    sweet corn- ornamental- glas gm |          2        6.06       93.94
+        corn- ornamental, glass gem |          2        6.06       30.30
+                         dill- hera |          2        6.06       36.36
+             eggplant- black beauty |          1        3.03       39.39
+garlic- german extra hardy hardneck |          1        3.03       42.42
+                     kale- lacinato |          2        6.06       48.48
+             lettuce- gourmet blend |          2        6.06       54.55
+                    pepper- anaheim |          1        3.03       57.58
+           pepper- califonia wonder |          1        3.03       60.61
+                     pepper- ghost  |          1        3.03       63.64
+                   pepper- habanero |          1        3.03       66.67
+            pepper- jalapeno, early |          1        3.03       69.70
+               pepper- sweet banana |          1        3.03       72.73
+         pumpkin- connecticut field |          2        6.06       78.79
+                   sage- broad leaf |          1        3.03       81.82
+                 sunflower- mammoth |          2        6.06       87.88
+      sweet corn- country gentleman |          2        6.06       93.94
                       tomato- amish |          1        3.03       96.97
                        tomato- roma |          1        3.03      100.00
 ------------------------------------+-----------------------------------
@@ -7912,22 +7913,22 @@ Variable: crop_code
                 bean- fin de bagnol |          2        6.06       15.15
                     carrot- touchon |          2        6.06       21.21
                            cilantro |          1        3.03       24.24
-                         dill- hera |          2        6.06       30.30
-             eggplant- black beauty |          1        3.03       33.33
-garlic- german extra hardy hardneck |          1        3.03       36.36
-                     kale- lacinato |          2        6.06       42.42
-             lettuce- gourmet blend |          2        6.06       48.48
-                    pepper- anaheim |          1        3.03       51.52
-                     pepper- ghost  |          1        3.03       54.55
-                   pepper- habanero |          1        3.03       57.58
-            pepper- jalapeno- early |          1        3.03       60.61
-               pepper- sweet banana |          1        3.03       63.64
-           pepper- sweet- ca wonder |          1        3.03       66.67
-                  pumpkin- ct field |          2        6.06       72.73
-                   sage- broad leaf |          1        3.03       75.76
-                 sunflower- mammoth |          2        6.06       81.82
-      sweet corn- country gentleman |          2        6.06       87.88
-    sweet corn- ornamental- glas gm |          2        6.06       93.94
+        corn- ornamental, glass gem |          2        6.06       30.30
+                         dill- hera |          2        6.06       36.36
+             eggplant- black beauty |          1        3.03       39.39
+garlic- german extra hardy hardneck |          1        3.03       42.42
+                     kale- lacinato |          2        6.06       48.48
+             lettuce- gourmet blend |          2        6.06       54.55
+                    pepper- anaheim |          1        3.03       57.58
+           pepper- califonia wonder |          1        3.03       60.61
+                     pepper- ghost  |          1        3.03       63.64
+                   pepper- habanero |          1        3.03       66.67
+            pepper- jalapeno, early |          1        3.03       69.70
+               pepper- sweet banana |          1        3.03       72.73
+         pumpkin- connecticut field |          2        6.06       78.79
+                   sage- broad leaf |          1        3.03       81.82
+                 sunflower- mammoth |          2        6.06       87.88
+      sweet corn- country gentleman |          2        6.06       93.94
                       tomato- amish |          1        3.03       96.97
                        tomato- roma |          1        3.03      100.00
 ------------------------------------+-----------------------------------
@@ -11115,7 +11116,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 crop            str35   %35s                  crop type
 crop_code       byte    %35.0g     crop_code
                                               crop type- code
@@ -11394,5 +11395,5 @@ notes           str306  %306s                 notes
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- closed on:   3 Feb 2024, 12:27:03
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  10 Feb 2024, 17:12:06
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
