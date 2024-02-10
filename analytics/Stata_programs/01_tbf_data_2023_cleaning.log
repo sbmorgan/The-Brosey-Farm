@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- opened on:  30 Jan 2024, 12:24:24
+ opened on:   3 Feb 2024, 12:27:01
 
 . 
 . 
@@ -140,7 +140,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- opened on:  30 Jan 2024, 12:24:24
+ opened on:   3 Feb 2024, 12:27:02
 
 . 
 . 
@@ -233,7 +233,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_02
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
   log type:  text
- closed on:  30 Jan 2024, 12:24:24
+ closed on:   3 Feb 2024, 12:27:02
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -2307,7 +2307,7 @@ cut/horn worms |          1        3.03       96.97
 .         tempfile pre_code_export
 
 .         save `pre_code_export'
-file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000012.tmp saved as .dta format
+file C:\Users\sethb\AppData\Local\Temp\ST_874c_000002.tmp saved as .dta format
 
 .         
 .         tablist crop crop_code, sort(v) nolabel
@@ -11394,5 +11394,5 @@ notes           str306  %306s                 notes
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log
   log type:  text
- closed on:  30 Jan 2024, 12:24:27
+ closed on:   3 Feb 2024, 12:27:03
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

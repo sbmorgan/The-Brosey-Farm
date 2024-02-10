@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- opened on:  30 Jan 2024, 12:05:22
+ opened on:   3 Feb 2024, 12:31:26
 
 . 
 . 
@@ -113,8 +113,8 @@
 .         tempfile pre_crop_codes crop_codes
 
 .         save `pre_crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000010.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000010.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_2060_000001.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_2060_000001.tmp saved as .dta format
 
 .         
 .         import excel "$root\modified_data\tbf_crop_codes_2023.xlsx", firstrow clear
@@ -155,8 +155,8 @@ file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000010.tmp saved as .dta format
   +---------------------------------------------------------------------------------------+
 
 .         save `crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000011.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_47a4_000011.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_2060_000002.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_2060_000002.tmp saved as .dta format
 
 .         
 .         use `pre_crop_codes', replace
@@ -192,5 +192,5 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\05_tbf_sales_2023_indicators.log
   log type:  text
- closed on:  30 Jan 2024, 12:05:22
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   3 Feb 2024, 12:31:26
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
