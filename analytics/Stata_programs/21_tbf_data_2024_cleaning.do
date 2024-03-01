@@ -4,7 +4,7 @@
 * of The Brosey Farm 
 *******************************************************************************/
 
-capture log close clean_01
+capture log close clean_21
 log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log", replace name(clean_21)
 
 

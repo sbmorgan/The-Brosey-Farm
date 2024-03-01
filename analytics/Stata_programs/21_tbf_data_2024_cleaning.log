@@ -1,0 +1,284 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  clean_21
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
+  log type:  text
+ opened on:  29 Feb 2024, 17:04:51
+
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 01_tbf_data_2024_cleaning.do                                                ***
+. *** Project: TBF Market Garden 2024                                                                       ***
+. *** Purpose: Clean TBF Market Garden 2024 data                                                ***    
+. ***                                                                                                                                                                               ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) LOAD RAW DATA                                                                       ***
+. ***    II) MANAGE VARIABLES                                                                   ***
+. ***    III) CLEAN DATA                                                                        ***
+. ***    IV) DESCRIPTIVE STATISTICS                                                             ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: February 29, 2024                                                                                                 ***
+. *** Last date modified: February 29, 2024                                                     ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***                                                                                           ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. clear all
+
+. version 18.0
+
+. set more off
+
+. set varabbrev off
+
+. pause off
+
+. 
+. 
+. *=========================================================================================
+. * 0) SET UP CODE
+. *=========================================================================================      
+. 
+. /* Set seed */
+.         set seed 7122024
+
+.         
+. /* Define globals */
+. 
+.         *Root
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+
+.     adopath ++ "$root"
+  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [4]              "."
+  [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
+  [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
+  [7]  (OLDPLACE)  "c:\ado/"
+
+.     
+. 
+. *=========================================================================================
+. * I) LOAD RAW DATA 
+. *=========================================================================================
+. 
+.         /* Load raw data */
+.         import excel "$root\raw_data\Brosey Farming.xlsx", sheet("data_2024") firstrow clear
+(180 vars, 1,002 obs)
+
+.         keep crop-notes
+
+.         drop if missing(crop)
+(984 observations deleted)
+
+.         ds 
+crop          sow_fer~te_1  sow_fer~me_4  fert_date_1   path_date_1   path_~te_2_3  harvest_u~_2  harvest_a~_7  harvest_d~12  harvest_u~16  harvest_a~21  harvest_d~26  harvest_u~30
+sow_type      sow_fert~k_1  sow_fer~se_4  fert_amnt_~1  path_~pe_1_1  path_type_3   harvest_d~_3  harvest_u~_7  harvest_a~12  harvest_d~17  harvest_u~21  harvest_a~26  notes
+sow_date      sow_fer~me_1  transp_har~t  fert_unit_1   path_~te_1_1  path_date_3   harvest_a~_3  harvest_d~_8  harvest_u~12  harvest_a~17  harvest_d~22  harvest_u~26
+sow_med       sow_fer~se_1  transp_har~d  fert_typ~k_2  path_~pe_1_2  path_~pe_3_1  harvest_u~_3  harvest_a~_8  harvest_d~13  harvest_u~17  harvest_a~22  harvest_d~27
+sow_cell      sow_fer~te_2  transp_dat~1  fert_typ~e_2  path_~te_1_2  path_~te_3_1  harvest_d~_4  harvest_u~_8  harvest_a~13  harvest_d~18  harvest_u~22  harvest_a~27
+sow_no_cel~l  sow_fert~k_2  transp_med_1  fert_date_2   path_~pe_1_3  path_~pe_3_2  harvest_a~_4  harvest_d~_9  harvest_u~13  harvest_a~18  harvest_d~23  harvest_u~27
+sow_no_see~r  sow_fer~me_2  transp_n~t_1  fert_amnt_~2  path_~te_1_3  path_~te_3_2  harvest_u~_4  harvest_a~_9  harvest_d~14  harvest_u~18  harvest_a~23  harvest_d~28
+sow_no_ger~r  sow_fer~se_2  transp_n~d_1  fert_unit_2   path_type_2   path_~pe_3_3  harvest_d~_5  harvest_u~_9  harvest_a~14  harvest_d~19  harvest_u~23  harvest_a~28
+sow_to_ger~s  sow_fer~te_3  transp_dat~2  fert_typ~k_3  path_date_2   path_~te_3_3  harvest_a~_5  harvest_d~10  harvest_u~14  harvest_a~19  harvest_d~24  harvest_u~28
+sow_no_thi~r  sow_fert~k_3  transp_med_2  fert_typ~e_3  path_~pe_2_1  harvest_d~_1  harvest_u~_5  harvest_a~10  harvest_d~15  harvest_u~19  harvest_a~24  harvest_d~29
+sow_heatmat   sow_fer~me_3  transp_n~t_2  fert_date_3   path_~te_2_1  harvest_a~_1  harvest_d~_6  harvest_u~10  harvest_a~15  harvest_d~20  harvest_u~24  harvest_a~29
+sow_heatma~p  sow_fer~se_3  transp_n~d_2  fert_amnt_~3  path_~pe_2_2  harvest_u~_1  harvest_a~_6  harvest_d~11  harvest_u~15  harvest_a~20  harvest_d~25  harvest_u~29
+sow_light_~s  sow_fer~te_4  fert_typ~k_1  fert_unit_3   path_~te_2_2  harvest_d~_2  harvest_u~_6  harvest_a~11  harvest_d~16  harvest_u~20  harvest_a~25  harvest_d~30
+sow_light_~e  sow_fert~k_4  fert_typ~e_1  path_type_1   path_~pe_2_3  harvest_a~_2  harvest_d~_7  harvest_u~11  harvest_a~16  harvest_d~21  harvest_u~25  harvest_a~30
+
+.         
+.         /* Save raw TBF Market Garden 2024 data */
+.         save "$root\raw_data\tbf_market_garden_data_2024_raw.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_data_2024_raw.dta saved
+
+.         export excel "$root\raw_data\tbf_market_garden_data_2024_raw.xlsx", firstrow(variables) replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_data_2024_raw.xlsx saved
+
+.         
+. /*   
+> *=========================================================================================
+> * II) MANAGE VARIABLES
+> *=========================================================================================  
+> 
+>         /* Add variable labels */
+>         include "$root\Stata_programs\02_tbf_data_2024_labels.do" // This program creates the variable labels.
+>         
+>         /* Manage variable type */
+>         tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
+>         
+>         /* Manage date variables */
+>         foreach var of varlist *date* {
+>                 display as input "Variable: `var'"
+>                 tabulate `var', missing
+>                 capture confirm string var `var'
+>                 if _rc!=0 tostring `var', replace
+>                 generate `var'_year= substr(`var',1,4)
+>                 generate `var'_month= substr(`var',6,2)
+>                 generate `var'_day= substr(`var',9,2)
+>                 foreach var2 of varlist `var'_year `var'_month `var'_day {
+>                         confirm string var `var2'
+>                         destring `var2', replace
+>                 }
+>                 generate `var'_stata= mdy(`var'_month, `var'_day, `var'_year)
+>                 drop `var'_year `var'_month `var'_day
+>                 local varlab : variable label `var'
+>                 label variable `var'_stata "`varlab'- stata"            
+>                 format `var'_stata %td
+>                 order `var'_stata, after(`var')
+>         }
+>         
+>         /* Convert categorical strings into categorical numerics */
+>         local cat_str_list crop sow_med *type*
+>         tab1 `cat_str_list', missing
+>         foreach var of varlist `cat_str_list' {
+>                 if `var'=="." continue
+>                 encode (`var'), generate(`var'_code)
+>                 tablist `var' `var'_code, sort(v) ab(32)
+>                 tablist `var' `var'_code, sort(v) nolabel ab(32)
+>                 local varlab : variable label `var'
+>                 label variable `var'_code "`varlab'- code"
+>                 order `var'_code, after(`var')
+>                 *pause
+>         }
+>         
+>         /* Export codes for reference in other programs/scripts */
+>         tempfile pre_code_export
+>         save `pre_code_export'
+>         
+>         tablist crop crop_code, sort(v) nolabel
+>         keep crop crop_code
+>         duplicates drop
+>         tablist crop crop_code, sort(v) nolabel
+>         sort crop_code
+>         export excel "$root\modified_data\tbf_crop_codes_2024.xlsx", firstrow(variables) nolabel replace
+>         
+>         use `pre_code_export', replace
+>         
+>         /* Convert yes/no variables from character strings to numerics with "yes" (1) /"no" (0) value lables */
+>         local cat_yn_list sow_heatmat
+>         foreach var of varlist `cat_yn_list' {
+>                 tabulate `var', generate(`var'_code)
+>                 drop `var'_code1
+>                 rename `var'_code2 `var'_code
+>                 tablist `var' `var'_code, sort(v) ab(32)
+>                 tablist `var' `var'_code, sort(v) nolabel ab(32)
+>                 local varlab : variable label `var'
+>                 label variable `var'_code "`varlab'- code"
+>                 order `var'_code, after(`var')
+>                 *pause
+>         }
+>         
+>     
+> *=========================================================================================
+> * III) CLEAN DATA
+> *=========================================================================================     
+> 
+>         /* Clean missing values */
+>                 
+>                 *-> Crop
+>                 assert !missing(crop)
+>                 assert !missing(sow_type)
+>                 
+>                 *-> Non-seeded transplants (externally sourced transplants)
+>                 foreach var of varlist sow_date-transp_harden_date_end_stata {
+>                         tablist sow_type `var', sort(v) ab(32) nolabel
+>                         assert missing(`var') if sow_type=="external transplant"
+>                         capture confirm numeric variable `var'
+>                         if _rc==0 replace `var'= .s if sow_type=="external transplant"
+>                         else replace `var'= ".s" if sow_type=="external transplant"
+>                         tablist sow_type `var', sort(v) ab(32) nolabel
+>                 }
+>                 
+>                 *-> Seedlings variables: *sow* transp*
+>                 foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoor seeding.
+>                         tablist sow_med_code `var', sort(v) ab(32) nolabel
+>                         assert missing(`var') if inlist(sow_med_code, 1, 2)
+>                         capture confirm numeric variable `var'
+>                         if _rc==0 replace `var'= .s if inlist(sow_med_code, 1, 2)
+>                         else replace `var'= ".s" if inlist(sow_med_code, 1, 2)
+>                         tablist sow_med_code `var', sort(v) ab(32) nolabel
+>                 }
+> 
+>                 tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
+>                 assert sow_heatmat_temp==. if sow_heatmat=="no"
+>                 replace sow_heatmat_temp=.s if sow_heatmat=="no"
+>                 tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
+>                 
+> **# Bookmark #1
+>                 tablist crop crop_code, sort(v) nolabel
+>                 foreach var of varlist sow_no_germ_per sow_to_germ25_days sow_no_thin_per {     
+>                         replace `var'=.s if `var'==. & crop_code==9 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
+>                 }
+>                 
+>                 tablist crop sow_date if sow_no_thin_per==., sort(v) ab(32) // These are true missing data. Should have been filled out but were not.
+>                 replace sow_no_thin_per=.m if sow_no_thin_per==.
+>                 
+>                 /*
+>                 foreach var of varlist transp_* {
+>                         capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
+>                         if _rc==0 {
+>                                 capture confirm numeric variable `var'
+>                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that hav
+> e not yet been transplanted.
+>                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have n
+> ot yet been transplanted.
+>                                 // All plants have now been transplanted but saving this loop for next season;s iteration of this crop data cleaning program
+>                         }
+>                 }
+>                 */
+>                 
+>                 foreach var of varlist transp*_2* {
+>                         tablist crop sow_date if missing(`var'), sort(v) ab(32)
+>                         capture confirm numeric variable `var'
+>                         if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
+>                         else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
+>                 }
+>                 
+>                 *-> Fertilizing, pathogen, and harvesting variables: *fert_* path_* harvest_*
+>                 foreach var of varlist *fert_* path_* harvest_* {
+>                         display as input "Variable: `var'"
+>                         capture confirm numeric variable `var'
+>                         if _rc==0 replace `var'= .s if missing(`var')
+>                         else replace `var'= ".s" if missing(`var') | `var'=="."
+>                         tablist sow_type `var', sort(v) ab(32) nolabel
+>                 }
+>                 
+>                 *-> Notes
+>                 replace notes=".s" if missing(notes)
+>                 
+>                 *-> Check all missing values have been cleaned
+>                 foreach var of varlist _all {
+>                         display as input "Variable: `var'"
+>                         tabulate `var', missing
+>                         capture confirm numeric variable `var'
+>                         if _rc==0 assert `var' !=. 
+>                         else assert `var' !=""
+>                 }
+>                 
+>         /* Save clean TBF Market Garden 2024 data */
+>         isid crop sow_date
+>         quietly compress
+>         save "$root\modified_data\tbf_market_garden_data_2024_clean.dta", replace
+>         export excel "$root\modified_data\tbf_market_garden_data_2024_clean.xlsx", firstrow(variables) replace
+>         
+>  
+> *=========================================================================================
+> * IV) DESCRIPTIVE STATISTICS
+> *=========================================================================================     
+>         
+>         describe _all
+> */
+. 
+. log close _all
+      name:  clean_21
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
+  log type:  text
+ closed on:  29 Feb 2024, 17:04:51
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
