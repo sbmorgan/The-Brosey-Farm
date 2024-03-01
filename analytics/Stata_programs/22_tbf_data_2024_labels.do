@@ -9,7 +9,7 @@
 ***                                                                                           ***
 *** Program name: 22_tbf_data_2024_labels.do                                                  ***
 *** Project: TBF Market Garden 2023                                 				          ***
-*** Purpose: Create variable labels for TBF Market Garden 2023 data                           ***    
+*** Purpose: Create variable labels for TBF Market Garden 2024 data                           ***    
 ***																	 				          ***
 *** Contents:                                                       				          ***
 ***    0) SET UP CODE                              				                              ***
