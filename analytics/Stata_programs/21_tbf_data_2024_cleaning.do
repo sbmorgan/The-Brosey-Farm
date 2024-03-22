@@ -222,7 +222,7 @@ pause off
 			if _rc==0 assert `var' !=. 
 			else assert `var' !=""
 		}
-		
+*/		
 	/* Save clean TBF Market Garden 2024 data */
 	isid crop sow_date
 	quietly compress
@@ -235,6 +235,6 @@ pause off
 *=========================================================================================     
 	
 	describe _all
-*/
+
 
 log close _all
