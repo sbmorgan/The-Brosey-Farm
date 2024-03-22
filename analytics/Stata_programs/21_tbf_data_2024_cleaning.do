@@ -22,7 +22,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***    IV) DESCRIPTIVE STATISTICS                                                             ***
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
-*** Start date: February 29, 2024  	   					 	     			                  ***
+*** Start date: March 22, 2024  	   					 	     			                  ***
 *** Last date modified: March 15, 2024                                                        ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***

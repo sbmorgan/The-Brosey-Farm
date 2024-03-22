@@ -2,7 +2,7 @@
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  15 Mar 2024, 10:35:46
+ opened on:  22 Mar 2024, 19:27:57
 
 . 
 . 
@@ -20,7 +20,7 @@
 . ***    IV) DESCRIPTIVE STATISTICS                                                             ***
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
-. *** Start date: February 29, 2024                                                                                                 ***
+. *** Start date: March 22, 2024                                                                                                    ***
 . *** Last date modified: March 15, 2024                                                        ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
@@ -280,5 +280,5 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  15 Mar 2024, 10:35:47
+ closed on:  22 Mar 2024, 19:27:58
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
