@@ -2,7 +2,7 @@
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  22 Mar 2024, 19:29:50
+ opened on:  22 Mar 2024, 19:32:15
 
 . 
 . 
@@ -20,8 +20,8 @@
 . ***    IV) DESCRIPTIVE STATISTICS                                                             ***
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
-. *** Start date: March 22, 2024                                                                                                    ***
-. *** Last date modified: March 15, 2024                                                        ***
+. *** Start date: February 29, 2024                                                                                                 ***
+. *** Last date modified: March 22, 2024                                                        ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -268,7 +268,6 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 .         quietly compress
 
 .         save "$root\modified_data\tbf_market_garden_data_2024_clean.dta", replace
-(file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2024_clean.dta not found)
 file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2024_clean.dta saved
 
 .         export excel "$root\modified_data\tbf_market_garden_data_2024_clean.xlsx", firstrow(variables) replace
@@ -462,5 +461,5 @@ notes           byte    %10.0g                notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  22 Mar 2024, 19:29:50
+ closed on:  22 Mar 2024, 19:32:16
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
