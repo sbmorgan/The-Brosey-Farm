@@ -2,7 +2,7 @@
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  23 Apr 2024, 17:41:56
+ opened on:  29 Apr 2024, 21:54:48
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: April 23, 2024                                                         ***
+. *** Last date modified: April 29, 2024                                                         ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -75,7 +75,7 @@
 .         keep crop-notes
 
 .         drop if missing(crop)
-(971 observations deleted)
+(961 observations deleted)
 
 .         ds 
 crop          sow_fer~te_1  sow_fer~me_4  fert_date_1   path_date_1   path_~te_2_3  harvest_u~_2  harvest_a~_7  harvest_d~12  harvest_u~16  harvest_a~21  harvest_d~26  harvest_u~30
@@ -288,7 +288,7 @@ crop            str35   %35s                  crop
 sow_type        str12   %12s                  sow_type
 sow_date        str10   %10s                  sow_date
 sow_med         str18   %18s                  sow_med
-sow_cell        byte    %10.0g                sow_cell
+sow_cell        double  %10.0g                sow_cell
 sow_no_cellro~l byte    %10.0g                sow_no_cellrowhill
 sow_no_seed_per byte    %10.0g                sow_no_seed_per
 sow_to_germ50~s byte    %10.0g                sow_to_germ50_days
@@ -314,10 +314,10 @@ sow_fert_date_4 str10   %10s                  sow_fert_date_4
 sow_fert_ty~k_4 str5    %9s                   sow_fert_type_npk_4
 sow_fert_ty~e_4 str21   %21s                  sow_fert_type_name_4
 sow_fert_dose_4 str4    %9s                   sow_fert_dose_4
-transp_harden~t byte    %10.0g                transp_harden_date_srt
-transp_harden~d byte    %10.0g                transp_harden_date_end
+transp_harden~t str10   %10s                  transp_harden_date_srt
+transp_harden~d str10   %10s                  transp_harden_date_end
 transp_date_1   str10   %10s                  transp_date_1
-transp_med_1    double  %10.0g                transp_med_1
+transp_med_1    str5    %9s                   transp_med_1
 transp_no_srt_1 byte    %10.0g                transp_no_srt_1
 transp_no_end_1 byte    %10.0g                transp_no_end_1
 transp_date_2   byte    %10.0g                transp_date_2
@@ -461,5 +461,5 @@ notes           byte    %10.0g                notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  23 Apr 2024, 17:41:57
+ closed on:  29 Apr 2024, 21:54:49
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
