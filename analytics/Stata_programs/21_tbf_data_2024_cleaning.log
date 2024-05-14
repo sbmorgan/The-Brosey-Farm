@@ -2,7 +2,7 @@
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  11 May 2024, 16:28:41
+ opened on:  14 May 2024, 12:46:07
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: May 11, 2024                                                           ***
+. *** Last date modified: May 14, 2024                                                          ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -457,7 +457,7 @@ harvest_unit_29 byte    %10.0g                harvest_unit_29
 harvest_date_30 byte    %10.0g                harvest_date_30
 harvest_amnt_30 byte    %10.0g                harvest_amnt_30
 harvest_unit_30 byte    %10.0g                harvest_unit_30
-notes           str46   %46s                  notes
+notes           str102  %102s                 notes
 
 . 
 . 
@@ -465,5 +465,5 @@ notes           str46   %46s                  notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  11 May 2024, 16:28:42
+ closed on:  14 May 2024, 12:46:08
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
