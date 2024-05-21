@@ -2,7 +2,7 @@
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  17 May 2024, 10:47:50
+ opened on:  21 May 2024, 14:53:15
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: May 17, 2024                                                          ***
+. *** Last date modified: May 21, 2024                                                          ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -100,17 +100,180 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_data_2024_raw.xlsx saved
 
 .         
-. /*   
-> *=========================================================================================
-> * II) MANAGE VARIABLES
-> *=========================================================================================  
-> 
->         /* Add variable labels */
->         include "$root\Stata_programs\02_tbf_data_2024_labels.do" // This program creates the variable labels.
->         
->         /* Manage variable type */
->         tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
->         
+.   
+. *=========================================================================================
+. * II) MANAGE VARIABLES
+. *=========================================================================================  
+. 
+.         /* Add variable labels */
+.         include "$root\Stata_programs\22_tbf_data_2024_labels.do" // This program creates the variable labels.
+
+. /******************************************************************************
+> * Copyright (C) The Brosey Farm, LLC. 
+> * This code cannot be copied, distributed or used without the express written permission
+> * of The Brosey Farm 
+> *******************************************************************************/
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 22_tbf_data_2024_labels.do                                                  ***
+. *** Project: TBF Market Garden 2023                                                                       ***
+. *** Purpose: Create variable labels for TBF Market Garden 2024 data                           ***    
+. ***                                                                                                                                                                               ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) CREATE VARIABLE LABELS                                                              ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: May 11, 2024                                                                                                  ***
+. *** Last date modified: February 29, 2024                                                     ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. 
+. capture log close labels_22
+
+. log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_22)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  labels_22
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
+  log type:  text
+ opened on:  21 May 2024, 14:53:15
+
+. 
+. 
+. *=========================================================================================
+. * I) CREATE VARIABLE LABELS    
+. *=========================================================================================
+.         
+.         label variable crop "crop type"
+
+.         label variable sow_type "seed sowing type"
+
+.         label variable sow_date "seed sowing date"
+
+.         label variable sow_med "seed sowing medium"
+
+.         label variable sow_cell "seed sowing cell type"
+
+.         label variable sow_no_cellrowhill "number of cells/rows/hills sown"
+
+.         label variable sow_no_seed_per "number of seeds sown per cell/row/hill" 
+
+.         label variable sow_no_germ_per "number of seeds germinated per cell/row/hill" 
+
+.         label variable sow_to_germ50_days "number of days to germination (50%)" 
+
+.         label variable sow_no_thin_per "number of seedlings per cell/row/hill after thinning" 
+
+.         label variable sow_heatmat "heat mat used to germinate seedlings" 
+
+.         label variable sow_heatmat_temp "temperature (F) of heat mat used to germinate seedlings" 
+
+.         label variable sow_light_hrs "number of hours of lighting" 
+
+.         label variable sow_light_type "lighting type"
+
+.         
+.         /* Indoor fertilizing */
+.         forval x=1/5 {
+  2.                 label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings: round `x'"
+  3.                 label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
+  4.                 label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
+  5.                 label variable sow_fert_dose_`x' "dose of fertilizer applied to indoor seedlings: round `x'"
+  6.         }
+
+.         
+.         /* Transplanting */
+.         label variable transp_harden_date_srt "transplant harden off start date"
+
+.         label variable transp_harden_date_end "transplant harden off end date"
+
+.         
+.         forval x=1/2 {
+  2.                 label variable transp_date_`x' "transplant date: round `x'"
+  3.                 label variable transp_med_`x' "transplant medium: round `x'"
+  4.                 label variable transp_no_srt_`x' "starting number of transplants: round `x'"
+  5.                 label variable transp_no_end_`x' "ending number of transplants: round `x'"
+  6.         }
+
+.         
+.         /* Outdoor fertilizing */
+.         forval x=1/3 {
+  2.                 label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
+  3.                 label variable fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
+  4.                 label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
+  5.                 label variable fert_amnt_per_`x' "amount of fertilizer applied per plant: round `x'"
+  6.                 label variable fert_unit_`x' "unit of fertilizer applied to crop: round `x'"
+  7.         }
+
+.         
+.         /* Pest management */
+.         forval x=1/3 {
+  2.                 label variable path_type_`x' "pathogen type: pathogen `x'"
+  3.                 label variable path_date_`x' "pathogen date: pathogen `x'"
+  4.                 forval y=1/3 {
+  5.                         label variable path_ipm_type_`x'_`y' "ipm type, type `y': pathogen `x'"
+  6.                         label variable path_ipm_date_`x'_`y' "ipm date, type `y': pathogen `x'"
+  7.                 }
+  8.         }
+
+.         
+.         /* Harvesting */
+.         forval x=1/30 {
+  2.                 label variable harvest_date_`x' "date of harvest: round `x'"
+  3.                 label variable harvest_amnt_`x' "harvested amount (wet): round `x'"
+  4.                 label variable harvest_unit_`x' "unit of harvest: round `x'"
+  5.         }
+
+.         
+. log close labels_22
+      name:  labels_22
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
+  log type:  text
+ closed on:  21 May 2024, 14:53:15
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+. 
+.         
+.         /* Manage variable type */
+.         tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
+sow_type already string; no replace
+sow_light_type already string; no replace
+sow_fert_type_npk_1 already string; no replace
+sow_fert_type_name_1 already string; no replace
+sow_fert_type_npk_2 already string; no replace
+sow_fert_type_name_2 already string; no replace
+sow_fert_type_npk_3 already string; no replace
+sow_fert_type_name_3 already string; no replace
+sow_fert_type_npk_4 already string; no replace
+sow_fert_type_name_4 already string; no replace
+sow_fert_type_npk_5 already string; no replace
+sow_fert_type_name_5 already string; no replace
+fert_type_npk_1 was byte now str1
+fert_type_name_1 was byte now str1
+fert_type_npk_2 was byte now str1
+fert_type_name_2 was byte now str1
+fert_type_npk_3 was byte now str1
+fert_type_name_3 was byte now str1
+path_type_1 was byte now str1
+path_ipm_type_1_1 was byte now str1
+path_ipm_type_1_2 was byte now str1
+path_ipm_type_1_3 was byte now str1
+path_type_2 was byte now str1
+path_ipm_type_2_1 was byte now str1
+path_ipm_type_2_2 was byte now str1
+path_ipm_type_2_3 was byte now str1
+path_type_3 was byte now str1
+path_ipm_type_3_1 was byte now str1
+path_ipm_type_3_2 was byte now str1
+path_ipm_type_3_3 was byte now str1
+
+. /*      
 >         /* Manage date variables */
 >         foreach var of varlist *date* {
 >                 display as input "Variable: `var'"
@@ -281,179 +444,179 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-crop            str35   %35s                  crop
-sow_type        str12   %12s                  sow_type
-sow_date        str10   %10s                  sow_date
-sow_med         str18   %18s                  sow_med
-sow_cell        double  %10.0g                sow_cell
-sow_no_cellro~l byte    %10.0g                sow_no_cellrowhill
-sow_no_seed_per byte    %10.0g                sow_no_seed_per
-sow_to_germ50~s byte    %10.0g                sow_to_germ50_days
-sow_no_germ_per byte    %10.0g                sow_no_germ_per
-sow_no_thin_per byte    %10.0g                sow_no_thin_per
-sow_heatmat     str3    %9s                   sow_heatmat
-sow_heatmat_t~p byte    %10.0g                sow_heatmat_temp
-sow_light_hrs   byte    %10.0g                sow_light_hrs
-sow_light_type  str7    %9s                   sow_light_type
-sow_fert_date_1 str10   %10s                  sow_fert_date_1
-sow_fert_ty~k_1 str5    %9s                   sow_fert_type_npk_1
-sow_fert_ty~e_1 str21   %21s                  sow_fert_type_name_1
-sow_fert_dose_1 str4    %9s                   sow_fert_dose_1
-sow_fert_date_2 str10   %10s                  sow_fert_date_2
-sow_fert_ty~k_2 str5    %9s                   sow_fert_type_npk_2
-sow_fert_ty~e_2 str21   %21s                  sow_fert_type_name_2
-sow_fert_dose_2 str4    %9s                   sow_fert_dose_2
-sow_fert_date_3 str10   %10s                  sow_fert_date_3
-sow_fert_ty~k_3 str5    %9s                   sow_fert_type_npk_3
-sow_fert_ty~e_3 str21   %21s                  sow_fert_type_name_3
-sow_fert_dose_3 str4    %9s                   sow_fert_dose_3
-sow_fert_date_4 str10   %10s                  sow_fert_date_4
-sow_fert_ty~k_4 str5    %9s                   sow_fert_type_npk_4
-sow_fert_ty~e_4 str21   %21s                  sow_fert_type_name_4
-sow_fert_dose_4 str4    %9s                   sow_fert_dose_4
-sow_fert_date_5 str10   %10s                  sow_fert_date_5
-sow_fert_ty~k_5 str5    %9s                   sow_fert_type_npk_5
-sow_fert_ty~e_5 str21   %21s                  sow_fert_type_name_5
-sow_fert_dose_5 str4    %9s                   sow_fert_dose_5
-transp_harden~t str10   %10s                  transp_harden_date_srt
-transp_harden~d str10   %10s                  transp_harden_date_end
-transp_date_1   str10   %10s                  transp_date_1
-transp_med_1    str5    %9s                   transp_med_1
-transp_no_srt_1 byte    %10.0g                transp_no_srt_1
-transp_no_end_1 byte    %10.0g                transp_no_end_1
-transp_date_2   str10   %10s                  transp_date_2
-transp_med_2    str18   %18s                  transp_med_2
-transp_no_srt_2 byte    %10.0g                transp_no_srt_2
-transp_no_end_2 byte    %10.0g                transp_no_end_2
-fert_type_npk_1 byte    %10.0g                fert_type_npk_1
-fert_type_nam~1 byte    %10.0g                fert_type_name_1
-fert_date_1     byte    %10.0g                fert_date_1
-fert_amnt_per_1 byte    %10.0g                fert_amnt_per_1
-fert_unit_1     byte    %10.0g                fert_unit_1
-fert_type_npk_2 byte    %10.0g                fert_type_npk_2
-fert_type_nam~2 byte    %10.0g                fert_type_name_2
-fert_date_2     byte    %10.0g                fert_date_2
-fert_amnt_per_2 byte    %10.0g                fert_amnt_per_2
-fert_unit_2     byte    %10.0g                fert_unit_2
-fert_type_npk_3 byte    %10.0g                fert_type_npk_3
-fert_type_nam~3 byte    %10.0g                fert_type_name_3
-fert_date_3     byte    %10.0g                fert_date_3
-fert_amnt_per_3 byte    %10.0g                fert_amnt_per_3
-fert_unit_3     byte    %10.0g                fert_unit_3
-path_type_1     byte    %10.0g                path_type_1
-path_date_1     byte    %10.0g                path_date_1
-path_ipm_ty~1_1 byte    %10.0g                path_ipm_type_1_1
-path_ipm_da~1_1 byte    %10.0g                path_ipm_date_1_1
-path_ipm_ty~1_2 byte    %10.0g                path_ipm_type_1_2
-path_ipm_da~1_2 byte    %10.0g                path_ipm_date_1_2
-path_ipm_ty~1_3 byte    %10.0g                path_ipm_type_1_3
-path_ipm_da~1_3 byte    %10.0g                path_ipm_date_1_3
-path_type_2     byte    %10.0g                path_type_2
-path_date_2     byte    %10.0g                path_date_2
-path_ipm_ty~2_1 byte    %10.0g                path_ipm_type_2_1
-path_ipm_da~2_1 byte    %10.0g                path_ipm_date_2_1
-path_ipm_ty~2_2 byte    %10.0g                path_ipm_type_2_2
-path_ipm_da~2_2 byte    %10.0g                path_ipm_date_2_2
-path_ipm_ty~2_3 byte    %10.0g                path_ipm_type_2_3
-path_ipm_da~2_3 byte    %10.0g                path_ipm_date_2_3
-path_type_3     byte    %10.0g                path_type_3
-path_date_3     byte    %10.0g                path_date_3
-path_ipm_ty~3_1 byte    %10.0g                path_ipm_type_3_1
-path_ipm_da~3_1 byte    %10.0g                path_ipm_date_3_1
-path_ipm_ty~3_2 byte    %10.0g                path_ipm_type_3_2
-path_ipm_da~3_2 byte    %10.0g                path_ipm_date_3_2
-path_ipm_ty~3_3 byte    %10.0g                path_ipm_type_3_3
-path_ipm_da~3_3 byte    %10.0g                path_ipm_date_3_3
-harvest_date_1  byte    %10.0g                harvest_date_1
-harvest_amnt_1  byte    %10.0g                harvest_amnt_1
-harvest_unit_1  byte    %10.0g                harvest_unit_1
-harvest_date_2  byte    %10.0g                harvest_date_2
-harvest_amnt_2  byte    %10.0g                harvest_amnt_2
-harvest_unit_2  byte    %10.0g                harvest_unit_2
-harvest_date_3  byte    %10.0g                harvest_date_3
-harvest_amnt_3  byte    %10.0g                harvest_amnt_3
-harvest_unit_3  byte    %10.0g                harvest_unit_3
-harvest_date_4  byte    %10.0g                harvest_date_4
-harvest_amnt_4  byte    %10.0g                harvest_amnt_4
-harvest_unit_4  byte    %10.0g                harvest_unit_4
-harvest_date_5  byte    %10.0g                harvest_date_5
-harvest_amnt_5  byte    %10.0g                harvest_amnt_5
-harvest_unit_5  byte    %10.0g                harvest_unit_5
-harvest_date_6  byte    %10.0g                harvest_date_6
-harvest_amnt_6  byte    %10.0g                harvest_amnt_6
-harvest_unit_6  byte    %10.0g                harvest_unit_6
-harvest_date_7  byte    %10.0g                harvest_date_7
-harvest_amnt_7  byte    %10.0g                harvest_amnt_7
-harvest_unit_7  byte    %10.0g                harvest_unit_7
-harvest_date_8  byte    %10.0g                harvest_date_8
-harvest_amnt_8  byte    %10.0g                harvest_amnt_8
-harvest_unit_8  byte    %10.0g                harvest_unit_8
-harvest_date_9  byte    %10.0g                harvest_date_9
-harvest_amnt_9  byte    %10.0g                harvest_amnt_9
-harvest_unit_9  byte    %10.0g                harvest_unit_9
-harvest_date_10 byte    %10.0g                harvest_date_10
-harvest_amnt_10 byte    %10.0g                harvest_amnt_10
-harvest_unit_10 byte    %10.0g                harvest_unit_10
-harvest_date_11 byte    %10.0g                harvest_date_11
-harvest_amnt_11 byte    %10.0g                harvest_amnt_11
-harvest_unit_11 byte    %10.0g                harvest_unit_11
-harvest_date_12 byte    %10.0g                harvest_date_12
-harvest_amnt_12 byte    %10.0g                harvest_amnt_12
-harvest_unit_12 byte    %10.0g                harvest_unit_12
-harvest_date_13 byte    %10.0g                harvest_date_13
-harvest_amnt_13 byte    %10.0g                harvest_amnt_13
-harvest_unit_13 byte    %10.0g                harvest_unit_13
-harvest_date_14 byte    %10.0g                harvest_date_14
-harvest_amnt_14 byte    %10.0g                harvest_amnt_14
-harvest_unit_14 byte    %10.0g                harvest_unit_14
-harvest_date_15 byte    %10.0g                harvest_date_15
-harvest_amnt_15 byte    %10.0g                harvest_amnt_15
-harvest_unit_15 byte    %10.0g                harvest_unit_15
-harvest_date_16 byte    %10.0g                harvest_date_16
-harvest_amnt_16 byte    %10.0g                harvest_amnt_16
-harvest_unit_16 byte    %10.0g                harvest_unit_16
-harvest_date_17 byte    %10.0g                harvest_date_17
-harvest_amnt_17 byte    %10.0g                harvest_amnt_17
-harvest_unit_17 byte    %10.0g                harvest_unit_17
-harvest_date_18 byte    %10.0g                harvest_date_18
-harvest_amnt_18 byte    %10.0g                harvest_amnt_18
-harvest_unit_18 byte    %10.0g                harvest_unit_18
-harvest_date_19 byte    %10.0g                harvest_date_19
-harvest_amnt_19 byte    %10.0g                harvest_amnt_19
-harvest_unit_19 byte    %10.0g                harvest_unit_19
-harvest_date_20 byte    %10.0g                harvest_date_20
-harvest_amnt_20 byte    %10.0g                harvest_amnt_20
-harvest_unit_20 byte    %10.0g                harvest_unit_20
-harvest_date_21 byte    %10.0g                harvest_date_21
-harvest_amnt_21 byte    %10.0g                harvest_amnt_21
-harvest_unit_21 byte    %10.0g                harvest_unit_21
-harvest_date_22 byte    %10.0g                harvest_date_22
-harvest_amnt_22 byte    %10.0g                harvest_amnt_22
-harvest_unit_22 byte    %10.0g                harvest_unit_22
-harvest_date_23 byte    %10.0g                harvest_date_23
-harvest_amnt_23 byte    %10.0g                harvest_amnt_23
-harvest_unit_23 byte    %10.0g                harvest_unit_23
-harvest_date_24 byte    %10.0g                harvest_date_24
-harvest_amnt_24 byte    %10.0g                harvest_amnt_24
-harvest_unit_24 byte    %10.0g                harvest_unit_24
-harvest_date_25 byte    %10.0g                harvest_date_25
-harvest_amnt_25 byte    %10.0g                harvest_amnt_25
-harvest_unit_25 byte    %10.0g                harvest_unit_25
-harvest_date_26 byte    %10.0g                harvest_date_26
-harvest_amnt_26 byte    %10.0g                harvest_amnt_26
-harvest_unit_26 byte    %10.0g                harvest_unit_26
-harvest_date_27 byte    %10.0g                harvest_date_27
-harvest_amnt_27 byte    %10.0g                harvest_amnt_27
-harvest_unit_27 byte    %10.0g                harvest_unit_27
-harvest_date_28 byte    %10.0g                harvest_date_28
-harvest_amnt_28 byte    %10.0g                harvest_amnt_28
-harvest_unit_28 byte    %10.0g                harvest_unit_28
-harvest_date_29 byte    %10.0g                harvest_date_29
-harvest_amnt_29 byte    %10.0g                harvest_amnt_29
-harvest_unit_29 byte    %10.0g                harvest_unit_29
-harvest_date_30 byte    %10.0g                harvest_date_30
-harvest_amnt_30 byte    %10.0g                harvest_amnt_30
-harvest_unit_30 byte    %10.0g                harvest_unit_30
+crop            str35   %35s                  crop type
+sow_type        str12   %12s                  seed sowing type
+sow_date        str10   %10s                  seed sowing date
+sow_med         str18   %18s                  seed sowing medium
+sow_cell        double  %10.0g                seed sowing cell type
+sow_no_cellro~l byte    %10.0g                number of cells/rows/hills sown
+sow_no_seed_per byte    %10.0g                number of seeds sown per cell/row/hill
+sow_to_germ50~s byte    %10.0g                number of days to germination (50%)
+sow_no_germ_per byte    %10.0g                number of seeds germinated per cell/row/hill
+sow_no_thin_per byte    %10.0g                number of seedlings per cell/row/hill after thinning
+sow_heatmat     str3    %9s                   heat mat used to germinate seedlings
+sow_heatmat_t~p byte    %10.0g                temperature (F) of heat mat used to germinate seedlings
+sow_light_hrs   byte    %10.0g                number of hours of lighting
+sow_light_type  str7    %9s                   lighting type
+sow_fert_date_1 str10   %10s                  date of fertilizer applied to indoor seedlings: round 1
+sow_fert_ty~k_1 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 1
+sow_fert_ty~e_1 str21   %21s                  name of fertilizer applied to indoor seedlings: round 1
+sow_fert_dose_1 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 1
+sow_fert_date_2 str10   %10s                  date of fertilizer applied to indoor seedlings: round 2
+sow_fert_ty~k_2 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 2
+sow_fert_ty~e_2 str21   %21s                  name of fertilizer applied to indoor seedlings: round 2
+sow_fert_dose_2 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 2
+sow_fert_date_3 str10   %10s                  date of fertilizer applied to indoor seedlings: round 3
+sow_fert_ty~k_3 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 3
+sow_fert_ty~e_3 str21   %21s                  name of fertilizer applied to indoor seedlings: round 3
+sow_fert_dose_3 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 3
+sow_fert_date_4 str10   %10s                  date of fertilizer applied to indoor seedlings: round 4
+sow_fert_ty~k_4 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 4
+sow_fert_ty~e_4 str21   %21s                  name of fertilizer applied to indoor seedlings: round 4
+sow_fert_dose_4 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 4
+sow_fert_date_5 str10   %10s                  date of fertilizer applied to indoor seedlings: round 5
+sow_fert_ty~k_5 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 5
+sow_fert_ty~e_5 str21   %21s                  name of fertilizer applied to indoor seedlings: round 5
+sow_fert_dose_5 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 5
+transp_harden~t str10   %10s                  transplant harden off start date
+transp_harden~d str10   %10s                  transplant harden off end date
+transp_date_1   str10   %10s                  transplant date: round 1
+transp_med_1    str17   %17s                  transplant medium: round 1
+transp_no_srt_1 byte    %10.0g                starting number of transplants: round 1
+transp_no_end_1 byte    %10.0g                ending number of transplants: round 1
+transp_date_2   str10   %10s                  transplant date: round 2
+transp_med_2    str18   %18s                  transplant medium: round 2
+transp_no_srt_2 byte    %10.0g                starting number of transplants: round 2
+transp_no_end_2 byte    %10.0g                ending number of transplants: round 2
+fert_type_npk_1 str1    %9s                   npk of fertilizer applied to indoor seedlings: round 1
+fert_type_nam~1 str1    %9s                   name of fertilizer applied to indoor seedlings: round 1
+fert_date_1     byte    %10.0g                date of fertilizer applied to crop: round 1
+fert_amnt_per_1 byte    %10.0g                amount of fertilizer applied per plant: round 1
+fert_unit_1     byte    %10.0g                unit of fertilizer applied to crop: round 1
+fert_type_npk_2 str1    %9s                   npk of fertilizer applied to indoor seedlings: round 2
+fert_type_nam~2 str1    %9s                   name of fertilizer applied to indoor seedlings: round 2
+fert_date_2     byte    %10.0g                date of fertilizer applied to crop: round 2
+fert_amnt_per_2 byte    %10.0g                amount of fertilizer applied per plant: round 2
+fert_unit_2     byte    %10.0g                unit of fertilizer applied to crop: round 2
+fert_type_npk_3 str1    %9s                   npk of fertilizer applied to indoor seedlings: round 3
+fert_type_nam~3 str1    %9s                   name of fertilizer applied to indoor seedlings: round 3
+fert_date_3     byte    %10.0g                date of fertilizer applied to crop: round 3
+fert_amnt_per_3 byte    %10.0g                amount of fertilizer applied per plant: round 3
+fert_unit_3     byte    %10.0g                unit of fertilizer applied to crop: round 3
+path_type_1     str1    %9s                   pathogen type: pathogen 1
+path_date_1     byte    %10.0g                pathogen date: pathogen 1
+path_ipm_ty~1_1 str1    %9s                   ipm type, type 1: pathogen 1
+path_ipm_da~1_1 byte    %10.0g                ipm date, type 1: pathogen 1
+path_ipm_ty~1_2 str1    %9s                   ipm type, type 2: pathogen 1
+path_ipm_da~1_2 byte    %10.0g                ipm date, type 2: pathogen 1
+path_ipm_ty~1_3 str1    %9s                   ipm type, type 3: pathogen 1
+path_ipm_da~1_3 byte    %10.0g                ipm date, type 3: pathogen 1
+path_type_2     str1    %9s                   pathogen type: pathogen 2
+path_date_2     byte    %10.0g                pathogen date: pathogen 2
+path_ipm_ty~2_1 str1    %9s                   ipm type, type 1: pathogen 2
+path_ipm_da~2_1 byte    %10.0g                ipm date, type 1: pathogen 2
+path_ipm_ty~2_2 str1    %9s                   ipm type, type 2: pathogen 2
+path_ipm_da~2_2 byte    %10.0g                ipm date, type 2: pathogen 2
+path_ipm_ty~2_3 str1    %9s                   ipm type, type 3: pathogen 2
+path_ipm_da~2_3 byte    %10.0g                ipm date, type 3: pathogen 2
+path_type_3     str1    %9s                   pathogen type: pathogen 3
+path_date_3     byte    %10.0g                pathogen date: pathogen 3
+path_ipm_ty~3_1 str1    %9s                   ipm type, type 1: pathogen 3
+path_ipm_da~3_1 byte    %10.0g                ipm date, type 1: pathogen 3
+path_ipm_ty~3_2 str1    %9s                   ipm type, type 2: pathogen 3
+path_ipm_da~3_2 byte    %10.0g                ipm date, type 2: pathogen 3
+path_ipm_ty~3_3 str1    %9s                   ipm type, type 3: pathogen 3
+path_ipm_da~3_3 byte    %10.0g                ipm date, type 3: pathogen 3
+harvest_date_1  byte    %10.0g                date of harvest: round 1
+harvest_amnt_1  byte    %10.0g                harvested amount (wet): round 1
+harvest_unit_1  byte    %10.0g                unit of harvest: round 1
+harvest_date_2  byte    %10.0g                date of harvest: round 2
+harvest_amnt_2  byte    %10.0g                harvested amount (wet): round 2
+harvest_unit_2  byte    %10.0g                unit of harvest: round 2
+harvest_date_3  byte    %10.0g                date of harvest: round 3
+harvest_amnt_3  byte    %10.0g                harvested amount (wet): round 3
+harvest_unit_3  byte    %10.0g                unit of harvest: round 3
+harvest_date_4  byte    %10.0g                date of harvest: round 4
+harvest_amnt_4  byte    %10.0g                harvested amount (wet): round 4
+harvest_unit_4  byte    %10.0g                unit of harvest: round 4
+harvest_date_5  byte    %10.0g                date of harvest: round 5
+harvest_amnt_5  byte    %10.0g                harvested amount (wet): round 5
+harvest_unit_5  byte    %10.0g                unit of harvest: round 5
+harvest_date_6  byte    %10.0g                date of harvest: round 6
+harvest_amnt_6  byte    %10.0g                harvested amount (wet): round 6
+harvest_unit_6  byte    %10.0g                unit of harvest: round 6
+harvest_date_7  byte    %10.0g                date of harvest: round 7
+harvest_amnt_7  byte    %10.0g                harvested amount (wet): round 7
+harvest_unit_7  byte    %10.0g                unit of harvest: round 7
+harvest_date_8  byte    %10.0g                date of harvest: round 8
+harvest_amnt_8  byte    %10.0g                harvested amount (wet): round 8
+harvest_unit_8  byte    %10.0g                unit of harvest: round 8
+harvest_date_9  byte    %10.0g                date of harvest: round 9
+harvest_amnt_9  byte    %10.0g                harvested amount (wet): round 9
+harvest_unit_9  byte    %10.0g                unit of harvest: round 9
+harvest_date_10 byte    %10.0g                date of harvest: round 10
+harvest_amnt_10 byte    %10.0g                harvested amount (wet): round 10
+harvest_unit_10 byte    %10.0g                unit of harvest: round 10
+harvest_date_11 byte    %10.0g                date of harvest: round 11
+harvest_amnt_11 byte    %10.0g                harvested amount (wet): round 11
+harvest_unit_11 byte    %10.0g                unit of harvest: round 11
+harvest_date_12 byte    %10.0g                date of harvest: round 12
+harvest_amnt_12 byte    %10.0g                harvested amount (wet): round 12
+harvest_unit_12 byte    %10.0g                unit of harvest: round 12
+harvest_date_13 byte    %10.0g                date of harvest: round 13
+harvest_amnt_13 byte    %10.0g                harvested amount (wet): round 13
+harvest_unit_13 byte    %10.0g                unit of harvest: round 13
+harvest_date_14 byte    %10.0g                date of harvest: round 14
+harvest_amnt_14 byte    %10.0g                harvested amount (wet): round 14
+harvest_unit_14 byte    %10.0g                unit of harvest: round 14
+harvest_date_15 byte    %10.0g                date of harvest: round 15
+harvest_amnt_15 byte    %10.0g                harvested amount (wet): round 15
+harvest_unit_15 byte    %10.0g                unit of harvest: round 15
+harvest_date_16 byte    %10.0g                date of harvest: round 16
+harvest_amnt_16 byte    %10.0g                harvested amount (wet): round 16
+harvest_unit_16 byte    %10.0g                unit of harvest: round 16
+harvest_date_17 byte    %10.0g                date of harvest: round 17
+harvest_amnt_17 byte    %10.0g                harvested amount (wet): round 17
+harvest_unit_17 byte    %10.0g                unit of harvest: round 17
+harvest_date_18 byte    %10.0g                date of harvest: round 18
+harvest_amnt_18 byte    %10.0g                harvested amount (wet): round 18
+harvest_unit_18 byte    %10.0g                unit of harvest: round 18
+harvest_date_19 byte    %10.0g                date of harvest: round 19
+harvest_amnt_19 byte    %10.0g                harvested amount (wet): round 19
+harvest_unit_19 byte    %10.0g                unit of harvest: round 19
+harvest_date_20 byte    %10.0g                date of harvest: round 20
+harvest_amnt_20 byte    %10.0g                harvested amount (wet): round 20
+harvest_unit_20 byte    %10.0g                unit of harvest: round 20
+harvest_date_21 byte    %10.0g                date of harvest: round 21
+harvest_amnt_21 byte    %10.0g                harvested amount (wet): round 21
+harvest_unit_21 byte    %10.0g                unit of harvest: round 21
+harvest_date_22 byte    %10.0g                date of harvest: round 22
+harvest_amnt_22 byte    %10.0g                harvested amount (wet): round 22
+harvest_unit_22 byte    %10.0g                unit of harvest: round 22
+harvest_date_23 byte    %10.0g                date of harvest: round 23
+harvest_amnt_23 byte    %10.0g                harvested amount (wet): round 23
+harvest_unit_23 byte    %10.0g                unit of harvest: round 23
+harvest_date_24 byte    %10.0g                date of harvest: round 24
+harvest_amnt_24 byte    %10.0g                harvested amount (wet): round 24
+harvest_unit_24 byte    %10.0g                unit of harvest: round 24
+harvest_date_25 byte    %10.0g                date of harvest: round 25
+harvest_amnt_25 byte    %10.0g                harvested amount (wet): round 25
+harvest_unit_25 byte    %10.0g                unit of harvest: round 25
+harvest_date_26 byte    %10.0g                date of harvest: round 26
+harvest_amnt_26 byte    %10.0g                harvested amount (wet): round 26
+harvest_unit_26 byte    %10.0g                unit of harvest: round 26
+harvest_date_27 byte    %10.0g                date of harvest: round 27
+harvest_amnt_27 byte    %10.0g                harvested amount (wet): round 27
+harvest_unit_27 byte    %10.0g                unit of harvest: round 27
+harvest_date_28 byte    %10.0g                date of harvest: round 28
+harvest_amnt_28 byte    %10.0g                harvested amount (wet): round 28
+harvest_unit_28 byte    %10.0g                unit of harvest: round 28
+harvest_date_29 byte    %10.0g                date of harvest: round 29
+harvest_amnt_29 byte    %10.0g                harvested amount (wet): round 29
+harvest_unit_29 byte    %10.0g                unit of harvest: round 29
+harvest_date_30 byte    %10.0g                date of harvest: round 30
+harvest_amnt_30 byte    %10.0g                harvested amount (wet): round 30
+harvest_unit_30 byte    %10.0g                unit of harvest: round 30
 notes           str102  %102s                 notes
 
 . 
@@ -462,5 +625,5 @@ notes           str102  %102s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  17 May 2024, 10:47:51
+ closed on:  21 May 2024, 14:53:15
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

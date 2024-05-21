@@ -4,7 +4,7 @@
 * of The Brosey Farm 
 *******************************************************************************/
 
-capture log close clean_21
+capture log close _all
 log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log", replace name(clean_21)
 
 
@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: February 29, 2024 	   					 	     			                  ***
-*** Last date modified: May 17, 2024                                                          ***
+*** Last date modified: May 21, 2024                                                          ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -65,17 +65,17 @@ pause off
 	save "$root\raw_data\tbf_market_garden_data_2024_raw.dta", replace
 	export excel "$root\raw_data\tbf_market_garden_data_2024_raw.xlsx", firstrow(variables) replace
 	
-/*   
+  
 *=========================================================================================
 * II) MANAGE VARIABLES
 *=========================================================================================  
 
 	/* Add variable labels */
-	include "$root\Stata_programs\02_tbf_data_2024_labels.do" // This program creates the variable labels.
+	include "$root\Stata_programs\22_tbf_data_2024_labels.do" // This program creates the variable labels.
 	
 	/* Manage variable type */
 	tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
-	
+/* 	
 	/* Manage date variables */
 	foreach var of varlist *date* {
 		display as input "Variable: `var'"

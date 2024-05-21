@@ -26,7 +26,7 @@
 
 
 capture log close labels_22
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_02)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_22)
 
 
 *=========================================================================================
@@ -41,7 +41,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	label variable sow_no_cellrowhill "number of cells/rows/hills sown"
 	label variable sow_no_seed_per "number of seeds sown per cell/row/hill" 
 	label variable sow_no_germ_per "number of seeds germinated per cell/row/hill" 
-	label variable sow_to_germ25_days "number of days to germination (25%)" 
+	label variable sow_to_germ50_days "number of days to germination (50%)" 
 	label variable sow_no_thin_per "number of seedlings per cell/row/hill after thinning" 
 	label variable sow_heatmat "heat mat used to germinate seedlings" 
 	label variable sow_heatmat_temp "temperature (F) of heat mat used to germinate seedlings" 
