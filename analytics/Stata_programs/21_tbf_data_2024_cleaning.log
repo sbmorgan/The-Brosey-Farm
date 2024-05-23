@@ -1,8 +1,8 @@
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  21 May 2024, 14:53:15
+ opened on:  23 May 2024, 19:38:11
 
 . 
 . 
@@ -11,7 +11,8 @@
 . *** Program name: 01_tbf_data_2024_cleaning.do                                                ***
 . *** Project: TBF Market Garden 2024                                                                       ***
 . *** Purpose: Clean TBF Market Garden 2024 data                                                ***    
-. ***                                                                                                                                                                               ***
+. ***                                                                                                                                                                            
+>    ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
 . ***    I) LOAD RAW DATA                                                                       ***
@@ -21,7 +22,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: May 21, 2024                                                          ***
+. *** Last date modified: May 23, 2024                                                          ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -70,7 +71,7 @@
 . 
 .         /* Load raw data */
 .         import excel "$root\raw_data\Brosey Farming.xlsx", sheet("data_2024") firstrow clear
-(184 vars, 1,003 obs)
+(188 vars, 1,003 obs)
 
 .         keep crop-notes
 
@@ -78,18 +79,21 @@
 (958 observations deleted)
 
 .         ds 
-crop          sow_light_~s  sow_fer~me_3  transp_dat~1  fert_unit_1   path_date_1   path_~te_2_2  harvest_a~_1  harvest_a~_5  harvest_a~_9  harvest_a~13  harvest_a~17  harvest_a~21  harvest_a~25  harvest_a~29
-sow_type      sow_light_~e  sow_fer~se_3  transp_med_1  fert_typ~k_2  path_~pe_1_1  path_~pe_2_3  harvest_u~_1  harvest_u~_5  harvest_u~_9  harvest_u~13  harvest_u~17  harvest_u~21  harvest_u~25  harvest_u~29
-sow_date      sow_fer~te_1  sow_fer~te_4  transp_n~t_1  fert_typ~e_2  path_~te_1_1  path_~te_2_3  harvest_d~_2  harvest_d~_6  harvest_d~10  harvest_d~14  harvest_d~18  harvest_d~22  harvest_d~26  harvest_d~30
-sow_med       sow_fert~k_1  sow_fert~k_4  transp_n~d_1  fert_date_2   path_~pe_1_2  path_type_3   harvest_a~_2  harvest_a~_6  harvest_a~10  harvest_a~14  harvest_a~18  harvest_a~22  harvest_a~26  harvest_a~30
-sow_cell      sow_fer~me_1  sow_fer~me_4  transp_dat~2  fert_amnt_~2  path_~te_1_2  path_date_3   harvest_u~_2  harvest_u~_6  harvest_u~10  harvest_u~14  harvest_u~18  harvest_u~22  harvest_u~26  harvest_u~30
-sow_no_cel~l  sow_fer~se_1  sow_fer~se_4  transp_med_2  fert_unit_2   path_~pe_1_3  path_~pe_3_1  harvest_d~_3  harvest_d~_7  harvest_d~11  harvest_d~15  harvest_d~19  harvest_d~23  harvest_d~27  notes
-sow_no_see~r  sow_fer~te_2  sow_fer~te_5  transp_n~t_2  fert_typ~k_3  path_~te_1_3  path_~te_3_1  harvest_a~_3  harvest_a~_7  harvest_a~11  harvest_a~15  harvest_a~19  harvest_a~23  harvest_a~27
-sow_to_ger~s  sow_fert~k_2  sow_fert~k_5  transp_n~d_2  fert_typ~e_3  path_type_2   path_~pe_3_2  harvest_u~_3  harvest_u~_7  harvest_u~11  harvest_u~15  harvest_u~19  harvest_u~23  harvest_u~27
-sow_no_ger~r  sow_fer~me_2  sow_fer~me_5  fert_typ~k_1  fert_date_3   path_date_2   path_~te_3_2  harvest_d~_4  harvest_d~_8  harvest_d~12  harvest_d~16  harvest_d~20  harvest_d~24  harvest_d~28
-sow_no_thi~r  sow_fer~se_2  sow_fer~se_5  fert_typ~e_1  fert_amnt_~3  path_~pe_2_1  path_~pe_3_3  harvest_a~_4  harvest_a~_8  harvest_a~12  harvest_a~16  harvest_a~20  harvest_a~24  harvest_a~28
-sow_heatmat   sow_fer~te_3  transp_har~t  fert_date_1   fert_unit_3   path_~te_2_1  path_~te_3_3  harvest_u~_4  harvest_u~_8  harvest_u~12  harvest_u~16  harvest_u~20  harvest_u~24  harvest_u~28
-sow_heatma~p  sow_fert~k_3  transp_har~d  fert_amnt_~1  path_type_1   path_~pe_2_2  harvest_d~_1  harvest_d~_5  harvest_d~_9  harvest_d~13  harvest_d~17  harvest_d~21  harvest_d~25  harvest_d~29
+crop          sow_fert~k_1  sow_fer~te_5  transp_med_2  fert_date_3   path_~pe_2_2  harvest_d~_2  harvest_d~_7  harvest_d~12  harvest_d~17  harvest_d~22  harvest_d~27
+sow_type      sow_fer~me_1  sow_fert~k_5  transp_n~t_2  fert_amnt_~3  path_~te_2_2  harvest_a~_2  harvest_a~_7  harvest_a~12  harvest_a~17  harvest_a~22  harvest_a~27
+sow_date      sow_fer~se_1  sow_fer~me_5  transp_n~d_2  fert_unit_3   path_~pe_2_3  harvest_u~_2  harvest_u~_7  harvest_u~12  harvest_u~17  harvest_u~22  harvest_u~27
+sow_med       sow_fer~te_2  sow_fer~se_5  fert_typ~k_1  path_type_1   path_~te_2_3  harvest_d~_3  harvest_d~_8  harvest_d~13  harvest_d~18  harvest_d~23  harvest_d~28
+sow_cell      sow_fert~k_2  sow_fer~te_6  fert_typ~e_1  path_date_1   path_type_3   harvest_a~_3  harvest_a~_8  harvest_a~13  harvest_a~18  harvest_a~23  harvest_a~28
+sow_no_cel~l  sow_fer~me_2  sow_fert~k_6  fert_date_1   path_~pe_1_1  path_date_3   harvest_u~_3  harvest_u~_8  harvest_u~13  harvest_u~18  harvest_u~23  harvest_u~28
+sow_no_see~r  sow_fer~se_2  sow_fer~me_6  fert_amnt_~1  path_~te_1_1  path_~pe_3_1  harvest_d~_4  harvest_d~_9  harvest_d~14  harvest_d~19  harvest_d~24  harvest_d~29
+sow_to_ger~s  sow_fer~te_3  sow_fer~se_6  fert_unit_1   path_~pe_1_2  path_~te_3_1  harvest_a~_4  harvest_a~_9  harvest_a~14  harvest_a~19  harvest_a~24  harvest_a~29
+sow_no_ger~r  sow_fert~k_3  transp_har~t  fert_typ~k_2  path_~te_1_2  path_~pe_3_2  harvest_u~_4  harvest_u~_9  harvest_u~14  harvest_u~19  harvest_u~24  harvest_u~29
+sow_no_thi~r  sow_fer~me_3  transp_har~d  fert_typ~e_2  path_~pe_1_3  path_~te_3_2  harvest_d~_5  harvest_d~10  harvest_d~15  harvest_d~20  harvest_d~25  harvest_d~30
+sow_heatmat   sow_fer~se_3  transp_dat~1  fert_date_2   path_~te_1_3  path_~pe_3_3  harvest_a~_5  harvest_a~10  harvest_a~15  harvest_a~20  harvest_a~25  harvest_a~30
+sow_heatma~p  sow_fer~te_4  transp_med_1  fert_amnt_~2  path_type_2   path_~te_3_3  harvest_u~_5  harvest_u~10  harvest_u~15  harvest_u~20  harvest_u~25  harvest_u~30
+sow_light_~s  sow_fert~k_4  transp_n~t_1  fert_unit_2   path_date_2   harvest_d~_1  harvest_d~_6  harvest_d~11  harvest_d~16  harvest_d~21  harvest_d~26  notes
+sow_light_~e  sow_fer~me_4  transp_n~d_1  fert_typ~k_3  path_~pe_2_1  harvest_a~_1  harvest_a~_6  harvest_a~11  harvest_a~16  harvest_a~21  harvest_a~26
+sow_fer~te_1  sow_fer~se_4  transp_dat~2  fert_typ~e_3  path_~te_2_1  harvest_u~_1  harvest_u~_6  harvest_u~11  harvest_u~16  harvest_u~21  harvest_u~26
 
 .         
 .         /* Save raw TBF Market Garden 2024 data */
@@ -120,14 +124,15 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . *** Program name: 22_tbf_data_2024_labels.do                                                  ***
 . *** Project: TBF Market Garden 2023                                                                       ***
 . *** Purpose: Create variable labels for TBF Market Garden 2024 data                           ***    
-. ***                                                                                                                                                                               ***
+. ***                                                                                                                                                                            
+>    ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
 . ***    I) CREATE VARIABLE LABELS                                                              ***
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: May 11, 2024                                                                                                  ***
-. *** Last date modified: February 29, 2024                                                     ***
+. *** Last date modified: May 23, 2024                                                          ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
@@ -138,11 +143,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . capture log close labels_22
 
 . log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_22)
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:  21 May 2024, 14:53:15
+ opened on:  23 May 2024, 19:38:12
 
 . 
 . 
@@ -180,7 +185,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 .         
 .         /* Indoor fertilizing */
-.         forval x=1/5 {
+.         forval x=1/6 {
   2.                 label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings: round `x'"
   3.                 label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
   4.                 label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
@@ -235,13 +240,14 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:  21 May 2024, 14:53:15
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  23 May 2024, 19:38:12
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
 .         /* Manage variable type */
-.         tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
+.         tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character s
+> trings.
 sow_type already string; no replace
 sow_light_type already string; no replace
 sow_fert_type_npk_1 already string; no replace
@@ -254,6 +260,8 @@ sow_fert_type_npk_4 already string; no replace
 sow_fert_type_name_4 already string; no replace
 sow_fert_type_npk_5 already string; no replace
 sow_fert_type_name_5 already string; no replace
+sow_fert_type_npk_6 already string; no replace
+sow_fert_type_name_6 already string; no replace
 fert_type_npk_1 was byte now str1
 fert_type_name_1 was byte now str1
 fert_type_npk_2 was byte now str1
@@ -358,7 +366,8 @@ path_ipm_type_3_3 was byte now str1
 >                 }
 >                 
 >                 *-> Seedlings variables: *sow* transp*
->                 foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoor seeding.
+>                 foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoor se
+> eding.
 >                         tablist sow_med_code `var', sort(v) ab(32) nolabel
 >                         assert missing(`var') if inlist(sow_med_code, 1, 2)
 >                         capture confirm numeric variable `var'
@@ -386,9 +395,10 @@ path_ipm_type_3_3 was byte now str1
 >                         capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
 >                         if _rc==0 {
 >                                 capture confirm numeric variable `var'
->                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted
-> .
->                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
+>                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants 
+> that have not yet been transplanted.
+>                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants tha
+> t have not yet been transplanted.
 >                                 // All plants have now been transplanted but saving this loop for next season;s iteration of this crop data cleaning program
 >                         }
 >                 }
@@ -443,7 +453,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 crop            str35   %35s                  crop type
 sow_type        str12   %12s                  seed sowing type
 sow_date        str10   %10s                  seed sowing date
@@ -478,6 +488,10 @@ sow_fert_date_5 str10   %10s                  date of fertilizer applied to indo
 sow_fert_ty~k_5 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 5
 sow_fert_ty~e_5 str21   %21s                  name of fertilizer applied to indoor seedlings: round 5
 sow_fert_dose_5 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 5
+sow_fert_date_6 str10   %10s                  date of fertilizer applied to indoor seedlings: round 6
+sow_fert_ty~k_6 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 6
+sow_fert_ty~e_6 str21   %21s                  name of fertilizer applied to indoor seedlings: round 6
+sow_fert_dose_6 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 6
 transp_harden~t str10   %10s                  transplant harden off start date
 transp_harden~d str10   %10s                  transplant harden off end date
 transp_date_1   str10   %10s                  transplant date: round 1
@@ -625,5 +639,5 @@ notes           str102  %102s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  21 May 2024, 14:53:15
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  23 May 2024, 19:38:12
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
