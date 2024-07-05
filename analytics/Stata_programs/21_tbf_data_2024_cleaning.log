@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  23 Jun 2024, 16:11:17
+ opened on:   5 Jul 2024, 13:44:26
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: June 23, 2024                                                          ***
+. *** Last date modified: July 5, 2024                                                          ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -75,7 +75,7 @@
 .         keep crop-notes
 
 .         drop if missing(crop)
-(943 observations deleted)
+(933 observations deleted)
 
 .         ds 
 crop          sow_light_~e  sow_fer~te_4  transp_har~d  fert_unit_1   path_~pe_1_1  path_~te_2_3  harvest_a~_2  harvest_u~_6  harvest_d~11  harvest_a~15  harvest_u~19  harvest_d~24  harvest_a~28
@@ -139,11 +139,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . capture log close labels_22
 
 . log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_22)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:  23 Jun 2024, 16:11:17
+ opened on:   5 Jul 2024, 13:44:27
 
 . 
 . 
@@ -236,8 +236,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:  23 Jun 2024, 16:11:17
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   5 Jul 2024, 13:44:27
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
@@ -257,18 +257,18 @@ sow_fert_type_npk_5 already string; no replace
 sow_fert_type_name_5 already string; no replace
 sow_fert_type_npk_6 already string; no replace
 sow_fert_type_name_6 already string; no replace
-fert_type_npk_1 was byte now str1
-fert_type_name_1 was byte now str1
+fert_type_npk_1 already string; no replace
+fert_type_name_1 already string; no replace
 fert_type_npk_2 was byte now str1
 fert_type_name_2 was byte now str1
 fert_type_npk_3 was byte now str1
 fert_type_name_3 was byte now str1
-path_type_1 was byte now str1
-path_ipm_type_1_1 was byte now str1
+path_type_1 already string; no replace
+path_ipm_type_1_1 already string; no replace
 path_ipm_type_1_2 was byte now str1
 path_ipm_type_1_3 was byte now str1
-path_type_2 was byte now str1
-path_ipm_type_2_1 was byte now str1
+path_type_2 already string; no replace
+path_ipm_type_2_1 already string; no replace
 path_ipm_type_2_2 was byte now str1
 path_ipm_type_2_3 was byte now str1
 path_type_3 was byte now str1
@@ -389,10 +389,10 @@ path_ipm_type_3_3 was byte now str1
 >                         capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
 >                         if _rc==0 {
 >                                 capture confirm numeric variable `var'
->                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet be
-> en transplanted.
->                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been 
-> transplanted.
+>                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been tra
+> nsplanted.
+>                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transp
+> lanted.
 >                                 // All plants have now been transplanted but saving this loop for next season;s iteration of this crop data cleaning program
 >                         }
 >                 }
@@ -447,7 +447,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 crop            str35   %35s                  crop type
 sow_type        str12   %12s                  seed sowing type
 sow_date        str10   %10s                  seed sowing date
@@ -496,11 +496,11 @@ transp_date_2   str10   %10s                  transplant date: round 2
 transp_med_2    str18   %18s                  transplant medium: round 2
 transp_no_srt_2 byte    %10.0g                starting number of transplants: round 2
 transp_no_end_2 byte    %10.0g                ending number of transplants: round 2
-fert_type_npk_1 str1    %9s                   npk of fertilizer applied to indoor seedlings: round 1
-fert_type_nam~1 str1    %9s                   name of fertilizer applied to indoor seedlings: round 1
-fert_date_1     byte    %10.0g                date of fertilizer applied to crop: round 1
-fert_amnt_per_1 byte    %10.0g                amount of fertilizer applied per plant: round 1
-fert_unit_1     byte    %10.0g                unit of fertilizer applied to crop: round 1
+fert_type_npk_1 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 1
+fert_type_nam~1 str27   %27s                  name of fertilizer applied to indoor seedlings: round 1
+fert_date_1     str10   %10s                  date of fertilizer applied to crop: round 1
+fert_amnt_per_1 str1    %9s                   amount of fertilizer applied per plant: round 1
+fert_unit_1     str3    %9s                   unit of fertilizer applied to crop: round 1
 fert_type_npk_2 str1    %9s                   npk of fertilizer applied to indoor seedlings: round 2
 fert_type_nam~2 str1    %9s                   name of fertilizer applied to indoor seedlings: round 2
 fert_date_2     byte    %10.0g                date of fertilizer applied to crop: round 2
@@ -511,17 +511,17 @@ fert_type_nam~3 str1    %9s                   name of fertilizer applied to indo
 fert_date_3     byte    %10.0g                date of fertilizer applied to crop: round 3
 fert_amnt_per_3 byte    %10.0g                amount of fertilizer applied per plant: round 3
 fert_unit_3     byte    %10.0g                unit of fertilizer applied to crop: round 3
-path_type_1     str1    %9s                   pathogen type: pathogen 1
-path_date_1     byte    %10.0g                pathogen date: pathogen 1
-path_ipm_ty~1_1 str1    %9s                   ipm type, type 1: pathogen 1
-path_ipm_da~1_1 byte    %10.0g                ipm date, type 1: pathogen 1
+path_type_1     str16   %16s                  pathogen type: pathogen 1
+path_date_1     str10   %10s                  pathogen date: pathogen 1
+path_ipm_ty~1_1 str9    %9s                   ipm type, type 1: pathogen 1
+path_ipm_da~1_1 int     %td                   ipm date, type 1: pathogen 1
 path_ipm_ty~1_2 str1    %9s                   ipm type, type 2: pathogen 1
 path_ipm_da~1_2 byte    %10.0g                ipm date, type 2: pathogen 1
 path_ipm_ty~1_3 str1    %9s                   ipm type, type 3: pathogen 1
 path_ipm_da~1_3 byte    %10.0g                ipm date, type 3: pathogen 1
-path_type_2     str1    %9s                   pathogen type: pathogen 2
-path_date_2     byte    %10.0g                pathogen date: pathogen 2
-path_ipm_ty~2_1 str1    %9s                   ipm type, type 1: pathogen 2
+path_type_2     str16   %16s                  pathogen type: pathogen 2
+path_date_2     str10   %10s                  pathogen date: pathogen 2
+path_ipm_ty~2_1 str6    %9s                   ipm type, type 1: pathogen 2
 path_ipm_da~2_1 byte    %10.0g                ipm date, type 1: pathogen 2
 path_ipm_ty~2_2 str1    %9s                   ipm type, type 2: pathogen 2
 path_ipm_da~2_2 byte    %10.0g                ipm date, type 2: pathogen 2
@@ -535,15 +535,15 @@ path_ipm_ty~3_2 str1    %9s                   ipm type, type 2: pathogen 3
 path_ipm_da~3_2 byte    %10.0g                ipm date, type 2: pathogen 3
 path_ipm_ty~3_3 str1    %9s                   ipm type, type 3: pathogen 3
 path_ipm_da~3_3 byte    %10.0g                ipm date, type 3: pathogen 3
-harvest_date_1  byte    %10.0g                date of harvest: round 1
+harvest_date_1  str10   %10s                  date of harvest: round 1
 harvest_amnt_1  byte    %10.0g                harvested amount (wet): round 1
-harvest_unit_1  byte    %10.0g                unit of harvest: round 1
-harvest_date_2  byte    %10.0g                date of harvest: round 2
+harvest_unit_1  str4    %9s                   unit of harvest: round 1
+harvest_date_2  str10   %10s                  date of harvest: round 2
 harvest_amnt_2  byte    %10.0g                harvested amount (wet): round 2
-harvest_unit_2  byte    %10.0g                unit of harvest: round 2
-harvest_date_3  byte    %10.0g                date of harvest: round 3
+harvest_unit_2  str4    %9s                   unit of harvest: round 2
+harvest_date_3  str10   %10s                  date of harvest: round 3
 harvest_amnt_3  byte    %10.0g                harvested amount (wet): round 3
-harvest_unit_3  byte    %10.0g                unit of harvest: round 3
+harvest_unit_3  str4    %9s                   unit of harvest: round 3
 harvest_date_4  byte    %10.0g                date of harvest: round 4
 harvest_amnt_4  byte    %10.0g                harvested amount (wet): round 4
 harvest_unit_4  byte    %10.0g                unit of harvest: round 4
@@ -633,5 +633,5 @@ notes           str196  %196s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  23 Jun 2024, 16:11:17
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   5 Jul 2024, 13:44:27
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
