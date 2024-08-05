@@ -17,7 +17,7 @@
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: May 11, 2024  	   					 	     			                      ***
-*** Last date modified: May 23, 2024                                                          ***
+*** Last date modified: August 4, 2024                                                        ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
@@ -68,7 +68,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	}
 	
 	/* Outdoor fertilizing */
-	forval x=1/3 {
+	forval x=1/4 {
 		label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
 		label variable fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
 		label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"

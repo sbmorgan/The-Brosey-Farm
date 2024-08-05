@@ -2,7 +2,7 @@
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  29 Jul 2024, 12:30:46
+ opened on:   4 Aug 2024, 22:28:23
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: July 29, 2024                                                          ***
+. *** Last date modified: August 4, 2024                                                        ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -70,7 +70,7 @@
 . 
 .         /* Load raw data */
 .         import excel "$root\raw_data\Brosey Farming.xlsx", sheet("data_2024") firstrow clear
-(188 vars, 1,003 obs)
+(193 vars, 1,003 obs)
 
 .         keep crop-notes
 
@@ -78,18 +78,18 @@
 (929 observations deleted)
 
 .         ds 
-crop          sow_light_~s  sow_fer~me_3  sow_fer~me_6  fert_typ~k_1  fert_date_3   path_date_2   path_~te_3_2  harvest_d~_4  harvest_d~_8  harvest_d~12  harvest_d~16  harvest_d~20  harvest_d~24  harvest_d~28
-sow_type      sow_light_~e  sow_fer~se_3  sow_fer~se_6  fert_typ~e_1  fert_amnt_~3  path_~pe_2_1  path_~pe_3_3  harvest_a~_4  harvest_a~_8  harvest_a~12  harvest_a~16  harvest_a~20  harvest_a~24  harvest_a~28
-sow_date      sow_fer~te_1  sow_fer~te_4  transp_har~t  fert_date_1   fert_unit_3   path_~te_2_1  path_~te_3_3  harvest_u~_4  harvest_u~_8  harvest_u~12  harvest_u~16  harvest_u~20  harvest_u~24  harvest_u~28
-sow_med       sow_fert~k_1  sow_fert~k_4  transp_har~d  fert_amnt_~1  path_type_1   path_~pe_2_2  harvest_d~_1  harvest_d~_5  harvest_d~_9  harvest_d~13  harvest_d~17  harvest_d~21  harvest_d~25  harvest_d~29
-sow_cell      sow_fer~me_1  sow_fer~me_4  transp_dat~1  fert_unit_1   path_date_1   path_~te_2_2  harvest_a~_1  harvest_a~_5  harvest_a~_9  harvest_a~13  harvest_a~17  harvest_a~21  harvest_a~25  harvest_a~29
-sow_no_cel~l  sow_fer~se_1  sow_fer~se_4  transp_med_1  fert_typ~k_2  path_~pe_1_1  path_~pe_2_3  harvest_u~_1  harvest_u~_5  harvest_u~_9  harvest_u~13  harvest_u~17  harvest_u~21  harvest_u~25  harvest_u~29
-sow_no_see~r  sow_fer~te_2  sow_fer~te_5  transp_n~t_1  fert_typ~e_2  path_~te_1_1  path_~te_2_3  harvest_d~_2  harvest_d~_6  harvest_d~10  harvest_d~14  harvest_d~18  harvest_d~22  harvest_d~26  harvest_d~30
-sow_to_ger~s  sow_fert~k_2  sow_fert~k_5  transp_n~d_1  fert_date_2   path_~pe_1_2  path_type_3   harvest_a~_2  harvest_a~_6  harvest_a~10  harvest_a~14  harvest_a~18  harvest_a~22  harvest_a~26  harvest_a~30
-sow_no_ger~r  sow_fer~me_2  sow_fer~me_5  transp_dat~2  fert_amnt_~2  path_~te_1_2  path_date_3   harvest_u~_2  harvest_u~_6  harvest_u~10  harvest_u~14  harvest_u~18  harvest_u~22  harvest_u~26  harvest_u~30
-sow_no_thi~r  sow_fer~se_2  sow_fer~se_5  transp_med_2  fert_unit_2   path_~pe_1_3  path_~pe_3_1  harvest_d~_3  harvest_d~_7  harvest_d~11  harvest_d~15  harvest_d~19  harvest_d~23  harvest_d~27  notes
-sow_heatmat   sow_fer~te_3  sow_fer~te_6  transp_n~t_2  fert_typ~k_3  path_~te_1_3  path_~te_3_1  harvest_a~_3  harvest_a~_7  harvest_a~11  harvest_a~15  harvest_a~19  harvest_a~23  harvest_a~27
-sow_heatma~p  sow_fert~k_3  sow_fert~k_6  transp_n~d_2  fert_typ~e_3  path_type_2   path_~pe_3_2  harvest_u~_3  harvest_u~_7  harvest_u~11  harvest_u~15  harvest_u~19  harvest_u~23  harvest_u~27
+crop          sow_light_~s  sow_fer~me_3  sow_fer~me_6  fert_typ~k_1  fert_date_3   path_~pe_1_2  path_type_3   harvest_a~_2  harvest_a~_6  harvest_a~10  harvest_a~14  harvest_a~18  harvest_a~22  harvest_a~26  harvest_a~30
+sow_type      sow_light_~e  sow_fer~se_3  sow_fer~se_6  fert_typ~e_1  fert_amnt_~3  path_~te_1_2  path_date_3   harvest_u~_2  harvest_u~_6  harvest_u~10  harvest_u~14  harvest_u~18  harvest_u~22  harvest_u~26  harvest_u~30
+sow_date      sow_fer~te_1  sow_fer~te_4  transp_har~t  fert_date_1   fert_unit_3   path_~pe_1_3  path_~pe_3_1  harvest_d~_3  harvest_d~_7  harvest_d~11  harvest_d~15  harvest_d~19  harvest_d~23  harvest_d~27  notes
+sow_med       sow_fert~k_1  sow_fert~k_4  transp_har~d  fert_amnt_~1  fert_typ~k_4  path_~te_1_3  path_~te_3_1  harvest_a~_3  harvest_a~_7  harvest_a~11  harvest_a~15  harvest_a~19  harvest_a~23  harvest_a~27
+sow_cell      sow_fer~me_1  sow_fer~me_4  transp_dat~1  fert_unit_1   fert_typ~e_4  path_type_2   path_~pe_3_2  harvest_u~_3  harvest_u~_7  harvest_u~11  harvest_u~15  harvest_u~19  harvest_u~23  harvest_u~27
+sow_no_cel~l  sow_fer~se_1  sow_fer~se_4  transp_med_1  fert_typ~k_2  fert_date_4   path_date_2   path_~te_3_2  harvest_d~_4  harvest_d~_8  harvest_d~12  harvest_d~16  harvest_d~20  harvest_d~24  harvest_d~28
+sow_no_see~r  sow_fer~te_2  sow_fer~te_5  transp_n~t_1  fert_typ~e_2  fert_amnt_~4  path_~pe_2_1  path_~pe_3_3  harvest_a~_4  harvest_a~_8  harvest_a~12  harvest_a~16  harvest_a~20  harvest_a~24  harvest_a~28
+sow_to_ger~s  sow_fert~k_2  sow_fert~k_5  transp_n~d_1  fert_date_2   fert_unit_4   path_~te_2_1  path_~te_3_3  harvest_u~_4  harvest_u~_8  harvest_u~12  harvest_u~16  harvest_u~20  harvest_u~24  harvest_u~28
+sow_no_ger~r  sow_fer~me_2  sow_fer~me_5  transp_dat~2  fert_amnt_~2  path_type_1   path_~pe_2_2  harvest_d~_1  harvest_d~_5  harvest_d~_9  harvest_d~13  harvest_d~17  harvest_d~21  harvest_d~25  harvest_d~29
+sow_no_thi~r  sow_fer~se_2  sow_fer~se_5  transp_med_2  fert_unit_2   path_date_1   path_~te_2_2  harvest_a~_1  harvest_a~_5  harvest_a~_9  harvest_a~13  harvest_a~17  harvest_a~21  harvest_a~25  harvest_a~29
+sow_heatmat   sow_fer~te_3  sow_fer~te_6  transp_n~t_2  fert_typ~k_3  path_~pe_1_1  path_~pe_2_3  harvest_u~_1  harvest_u~_5  harvest_u~_9  harvest_u~13  harvest_u~17  harvest_u~21  harvest_u~25  harvest_u~29
+sow_heatma~p  sow_fert~k_3  sow_fert~k_6  transp_n~d_2  fert_typ~e_3  path_~te_1_1  path_~te_2_3  harvest_d~_2  harvest_d~_6  harvest_d~10  harvest_d~14  harvest_d~18  harvest_d~22  harvest_d~26  harvest_d~30
 
 .         
 .         /* Save raw TBF Market Garden 2024 data */
@@ -127,7 +127,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: May 11, 2024                                                                                                  ***
-. *** Last date modified: May 23, 2024                                                          ***
+. *** Last date modified: August 4, 2024                                                        ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
@@ -142,7 +142,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:  29 Jul 2024, 12:30:47
+ opened on:   4 Aug 2024, 22:28:24
 
 . 
 . 
@@ -203,7 +203,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 .         
 .         /* Outdoor fertilizing */
-.         forval x=1/3 {
+.         forval x=1/4 {
   2.                 label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
   3.                 label variable fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
   4.                 label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
@@ -235,7 +235,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:  29 Jul 2024, 12:30:47
+ closed on:   4 Aug 2024, 22:28:24
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -262,6 +262,8 @@ fert_type_npk_2 already string; no replace
 fert_type_name_2 already string; no replace
 fert_type_npk_3 already string; no replace
 fert_type_name_3 already string; no replace
+fert_type_npk_4 already string; no replace
+fert_type_name_4 already string; no replace
 path_type_1 already string; no replace
 path_ipm_type_1_1 already string; no replace
 path_ipm_type_1_2 was byte now str1
@@ -508,6 +510,11 @@ fert_type_nam~3 str32   %32s                  name of fertilizer applied to indo
 fert_date_3     int     %td                   date of fertilizer applied to crop: round 3
 fert_amnt_per_3 byte    %10.0g                amount of fertilizer applied per plant: round 3
 fert_unit_3     str5    %9s                   unit of fertilizer applied to crop: round 3
+fert_type_npk_4 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 4
+fert_type_nam~4 str32   %32s                  name of fertilizer applied to indoor seedlings: round 4
+fert_date_4     int     %td                   date of fertilizer applied to crop: round 4
+fert_amnt_per_4 double  %10.0g                amount of fertilizer applied per plant: round 4
+fert_unit_4     str5    %9s                   unit of fertilizer applied to crop: round 4
 path_type_1     str28   %28s                  pathogen type: pathogen 1
 path_date_1     str10   %10s                  pathogen date: pathogen 1
 path_ipm_ty~1_1 str9    %9s                   ipm type, type 1: pathogen 1
@@ -630,5 +637,5 @@ notes           str196  %196s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  29 Jul 2024, 12:30:47
+ closed on:   4 Aug 2024, 22:28:24
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:  29 Jul 2024, 12:30:47
+ opened on:   4 Aug 2024, 22:28:24
 
 . 
 . 
@@ -63,7 +63,7 @@
 
 .         
 .         /* Outdoor fertilizing */
-.         forval x=1/3 {
+.         forval x=1/4 {
   2.                 label variable fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
   3.                 label variable fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
   4.                 label variable fert_date_`x' "date of fertilizer applied to crop: round `x'"
@@ -95,5 +95,5 @@
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:  29 Jul 2024, 12:30:47
+ closed on:   4 Aug 2024, 22:28:24
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
