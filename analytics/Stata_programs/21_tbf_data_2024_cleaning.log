@@ -1,8 +1,8 @@
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:   4 Aug 2024, 22:28:23
+ opened on:  20 Sep 2024, 14:26:40
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: August 4, 2024                                                        ***
+. *** Last date modified: September 20, 2024                                                    ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -138,11 +138,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . capture log close labels_22
 
 . log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_22)
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:   4 Aug 2024, 22:28:24
+ opened on:  20 Sep 2024, 14:26:41
 
 . 
 . 
@@ -235,8 +235,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:   4 Aug 2024, 22:28:24
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  20 Sep 2024, 14:26:41
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
@@ -266,14 +266,14 @@ fert_type_npk_4 already string; no replace
 fert_type_name_4 already string; no replace
 path_type_1 already string; no replace
 path_ipm_type_1_1 already string; no replace
-path_ipm_type_1_2 was byte now str1
+path_ipm_type_1_2 already string; no replace
 path_ipm_type_1_3 was byte now str1
 path_type_2 already string; no replace
 path_ipm_type_2_1 already string; no replace
 path_ipm_type_2_2 was byte now str1
 path_ipm_type_2_3 was byte now str1
-path_type_3 was byte now str1
-path_ipm_type_3_1 was byte now str1
+path_type_3 already string; no replace
+path_ipm_type_3_1 already string; no replace
 path_ipm_type_3_2 was byte now str1
 path_ipm_type_3_3 was byte now str1
 
@@ -376,7 +376,6 @@ path_ipm_type_3_3 was byte now str1
 >                 replace sow_heatmat_temp=.s if sow_heatmat=="no"
 >                 tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 >                 
-> **# Bookmark #1
 >                 tablist crop crop_code, sort(v) nolabel
 >                 foreach var of varlist sow_no_germ_per sow_to_germ25_days sow_no_thin_per {     
 >                         replace `var'=.s if `var'==. & crop_code==9 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
@@ -446,7 +445,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 crop            str35   %35s                  crop type
 sow_type        str12   %12s                  seed sowing type
 sow_date        str10   %10s                  seed sowing date
@@ -507,8 +506,8 @@ fert_amnt_per_2 byte    %10.0g                amount of fertilizer applied per p
 fert_unit_2     str6    %9s                   unit of fertilizer applied to crop: round 2
 fert_type_npk_3 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 3
 fert_type_nam~3 str32   %32s                  name of fertilizer applied to indoor seedlings: round 3
-fert_date_3     int     %td                   date of fertilizer applied to crop: round 3
-fert_amnt_per_3 byte    %10.0g                amount of fertilizer applied per plant: round 3
+fert_date_3     str10   %10s                  date of fertilizer applied to crop: round 3
+fert_amnt_per_3 double  %10.0g                amount of fertilizer applied per plant: round 3
 fert_unit_3     str5    %9s                   unit of fertilizer applied to crop: round 3
 fert_type_npk_4 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 4
 fert_type_nam~4 str32   %32s                  name of fertilizer applied to indoor seedlings: round 4
@@ -517,9 +516,9 @@ fert_amnt_per_4 double  %10.0g                amount of fertilizer applied per p
 fert_unit_4     str5    %9s                   unit of fertilizer applied to crop: round 4
 path_type_1     str28   %28s                  pathogen type: pathogen 1
 path_date_1     str10   %10s                  pathogen date: pathogen 1
-path_ipm_ty~1_1 str9    %9s                   ipm type, type 1: pathogen 1
+path_ipm_ty~1_1 str10   %10s                  ipm type, type 1: pathogen 1
 path_ipm_da~1_1 int     %td                   ipm date, type 1: pathogen 1
-path_ipm_ty~1_2 str1    %9s                   ipm type, type 2: pathogen 1
+path_ipm_ty~1_2 str2    %9s                   ipm type, type 2: pathogen 1
 path_ipm_da~1_2 byte    %10.0g                ipm date, type 2: pathogen 1
 path_ipm_ty~1_3 str1    %9s                   ipm type, type 3: pathogen 1
 path_ipm_da~1_3 byte    %10.0g                ipm date, type 3: pathogen 1
@@ -531,10 +530,10 @@ path_ipm_ty~2_2 str1    %9s                   ipm type, type 2: pathogen 2
 path_ipm_da~2_2 byte    %10.0g                ipm date, type 2: pathogen 2
 path_ipm_ty~2_3 str1    %9s                   ipm type, type 3: pathogen 2
 path_ipm_da~2_3 byte    %10.0g                ipm date, type 3: pathogen 2
-path_type_3     str1    %9s                   pathogen type: pathogen 3
-path_date_3     byte    %10.0g                pathogen date: pathogen 3
-path_ipm_ty~3_1 str1    %9s                   ipm type, type 1: pathogen 3
-path_ipm_da~3_1 byte    %10.0g                ipm date, type 1: pathogen 3
+path_type_3     str6    %9s                   pathogen type: pathogen 3
+path_date_3     int     %td                   pathogen date: pathogen 3
+path_ipm_ty~3_1 str8    %9s                   ipm type, type 1: pathogen 3
+path_ipm_da~3_1 int     %td                   ipm date, type 1: pathogen 3
 path_ipm_ty~3_2 str1    %9s                   ipm type, type 2: pathogen 3
 path_ipm_da~3_2 byte    %10.0g                ipm date, type 2: pathogen 3
 path_ipm_ty~3_3 str1    %9s                   ipm type, type 3: pathogen 3
@@ -555,44 +554,44 @@ harvest_date_5  str10   %10s                  date of harvest: round 5
 harvest_amnt_5  byte    %10.0g                harvested amount (wet): round 5
 harvest_unit_5  str5    %9s                   unit of harvest: round 5
 harvest_date_6  str10   %10s                  date of harvest: round 6
-harvest_amnt_6  byte    %10.0g                harvested amount (wet): round 6
+harvest_amnt_6  double  %10.0g                harvested amount (wet): round 6
 harvest_unit_6  str5    %9s                   unit of harvest: round 6
 harvest_date_7  str10   %10s                  date of harvest: round 7
-harvest_amnt_7  byte    %10.0g                harvested amount (wet): round 7
+harvest_amnt_7  double  %10.0g                harvested amount (wet): round 7
 harvest_unit_7  str5    %9s                   unit of harvest: round 7
-harvest_date_8  byte    %10.0g                date of harvest: round 8
-harvest_amnt_8  byte    %10.0g                harvested amount (wet): round 8
-harvest_unit_8  byte    %10.0g                unit of harvest: round 8
-harvest_date_9  byte    %10.0g                date of harvest: round 9
-harvest_amnt_9  byte    %10.0g                harvested amount (wet): round 9
-harvest_unit_9  byte    %10.0g                unit of harvest: round 9
-harvest_date_10 byte    %10.0g                date of harvest: round 10
+harvest_date_8  str10   %10s                  date of harvest: round 8
+harvest_amnt_8  int     %10.0g                harvested amount (wet): round 8
+harvest_unit_8  str5    %9s                   unit of harvest: round 8
+harvest_date_9  str10   %10s                  date of harvest: round 9
+harvest_amnt_9  double  %10.0g                harvested amount (wet): round 9
+harvest_unit_9  str5    %9s                   unit of harvest: round 9
+harvest_date_10 str10   %10s                  date of harvest: round 10
 harvest_amnt_10 byte    %10.0g                harvested amount (wet): round 10
-harvest_unit_10 byte    %10.0g                unit of harvest: round 10
-harvest_date_11 byte    %10.0g                date of harvest: round 11
-harvest_amnt_11 byte    %10.0g                harvested amount (wet): round 11
-harvest_unit_11 byte    %10.0g                unit of harvest: round 11
-harvest_date_12 byte    %10.0g                date of harvest: round 12
-harvest_amnt_12 byte    %10.0g                harvested amount (wet): round 12
-harvest_unit_12 byte    %10.0g                unit of harvest: round 12
-harvest_date_13 byte    %10.0g                date of harvest: round 13
+harvest_unit_10 str5    %9s                   unit of harvest: round 10
+harvest_date_11 str10   %10s                  date of harvest: round 11
+harvest_amnt_11 int     %10.0g                harvested amount (wet): round 11
+harvest_unit_11 str5    %9s                   unit of harvest: round 11
+harvest_date_12 str10   %10s                  date of harvest: round 12
+harvest_amnt_12 int     %10.0g                harvested amount (wet): round 12
+harvest_unit_12 str5    %9s                   unit of harvest: round 12
+harvest_date_13 str10   %10s                  date of harvest: round 13
 harvest_amnt_13 byte    %10.0g                harvested amount (wet): round 13
-harvest_unit_13 byte    %10.0g                unit of harvest: round 13
-harvest_date_14 byte    %10.0g                date of harvest: round 14
+harvest_unit_13 str5    %9s                   unit of harvest: round 13
+harvest_date_14 str10   %10s                  date of harvest: round 14
 harvest_amnt_14 byte    %10.0g                harvested amount (wet): round 14
-harvest_unit_14 byte    %10.0g                unit of harvest: round 14
-harvest_date_15 byte    %10.0g                date of harvest: round 15
-harvest_amnt_15 byte    %10.0g                harvested amount (wet): round 15
-harvest_unit_15 byte    %10.0g                unit of harvest: round 15
-harvest_date_16 byte    %10.0g                date of harvest: round 16
+harvest_unit_14 str5    %9s                   unit of harvest: round 14
+harvest_date_15 str10   %10s                  date of harvest: round 15
+harvest_amnt_15 double  %10.0g                harvested amount (wet): round 15
+harvest_unit_15 str5    %9s                   unit of harvest: round 15
+harvest_date_16 str10   %10s                  date of harvest: round 16
 harvest_amnt_16 byte    %10.0g                harvested amount (wet): round 16
-harvest_unit_16 byte    %10.0g                unit of harvest: round 16
-harvest_date_17 byte    %10.0g                date of harvest: round 17
+harvest_unit_16 str5    %9s                   unit of harvest: round 16
+harvest_date_17 str10   %10s                  date of harvest: round 17
 harvest_amnt_17 byte    %10.0g                harvested amount (wet): round 17
-harvest_unit_17 byte    %10.0g                unit of harvest: round 17
-harvest_date_18 byte    %10.0g                date of harvest: round 18
+harvest_unit_17 str5    %9s                   unit of harvest: round 17
+harvest_date_18 str10   %10s                  date of harvest: round 18
 harvest_amnt_18 byte    %10.0g                harvested amount (wet): round 18
-harvest_unit_18 byte    %10.0g                unit of harvest: round 18
+harvest_unit_18 str5    %9s                   unit of harvest: round 18
 harvest_date_19 byte    %10.0g                date of harvest: round 19
 harvest_amnt_19 byte    %10.0g                harvested amount (wet): round 19
 harvest_unit_19 byte    %10.0g                unit of harvest: round 19
@@ -637,5 +636,5 @@ notes           str196  %196s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:   4 Aug 2024, 22:28:24
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  20 Sep 2024, 14:26:41
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
