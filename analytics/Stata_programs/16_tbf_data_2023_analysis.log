@@ -1,8 +1,8 @@
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\06_tbf_data_2023_analysis.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\16_tbf_data_2023_analysis.log
   log type:  text
- opened on:  22 Feb 2024, 11:51:07
+ opened on:   2 Oct 2024, 10:53:59
 
 . 
 . 
@@ -19,7 +19,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 20, 2023                                                                                            ***
-. *** Last date modified: January 30, 2023                                                      ***
+. *** Last date modified: October 2, 2024                                                       ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -142,7 +142,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . 
 . log close _all
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\06_tbf_data_2023_analysis.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\16_tbf_data_2023_analysis.log
   log type:  text
- closed on:  22 Feb 2024, 11:51:07
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   2 Oct 2024, 10:53:59
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

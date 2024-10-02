@@ -1,14 +1,14 @@
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\14_tbf_data_2023_indicators.log
   log type:  text
- opened on:  22 Feb 2024, 11:51:00
+ opened on:   2 Oct 2024, 10:53:53
 
 . 
 . 
 . *************************************************************************************************
 . ***                                                                                           ***
-. *** Program name: 04_tbf_data_2023_indicators.do                                              ***
+. *** Program name: 14_tbf_data_2023_indicators.do                                              ***
 . *** Project: TBF Market Garden 2023                                                                       ***
 . *** Purpose: Create Analysis Indicators for TBF Market Garden 2023 data                       ***    
 . ***                                                                                                                                                                               ***
@@ -18,7 +18,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 26, 2023                                                                                            ***
-. *** Last date modified: January 30, 2024                                                      ***
+. *** Last date modified: October 2, 2024                                                       ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -84,7 +84,8 @@
 .         replace c_harvest_no_plant=transp_no_end_2 if sow_type=="indoor seed" & transp_no_end_2!=.s // Use final transplant number if multiple transplantings (e.g., from seed tray to small container (1), then to garden plot (2))
 (9 real changes made)
 
-.         replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & crop_code!=8 // "& crop_code!=8" to exclude a calculation for the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
+.         replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & crop_code!=8 // "& crop_code!=8" to exclude a calculation for the garlic that has not germinated yet. Planted in FA23 for harv
+> est SU24.
 (18 real changes made, 1 to missing)
 
 .         replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant" // These are starts purchased outside the farm.
@@ -5845,7 +5846,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 c_harvest_no_~t byte    %9.0g                 number of plants harvested
 c_harvest_tot~z float   %9.0g                 total harvest- weight, ounces
 c_harvest_tot~b float   %9.0g                 total harvest- weight, pounds
@@ -5965,7 +5966,7 @@ c_harvest_tot~g byte    %9.0g                 total harvest- units large
 .    
 . log close _all
       name:  clean_01
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\14_tbf_data_2023_indicators.log
   log type:  text
- closed on:  22 Feb 2024, 11:51:01
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   2 Oct 2024, 10:53:54
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

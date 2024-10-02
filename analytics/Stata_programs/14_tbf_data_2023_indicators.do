@@ -5,12 +5,12 @@
 *******************************************************************************/
 
 capture log close clean_01
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\04_tbf_data_2023_indicators.log", replace name(clean_01)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\14_tbf_data_2023_indicators.log", replace name(clean_01)
 
 
 *************************************************************************************************
 ***                                                                                           ***
-*** Program name: 04_tbf_data_2023_indicators.do                                              ***
+*** Program name: 14_tbf_data_2023_indicators.do                                              ***
 *** Project: TBF Market Garden 2023                                 				          ***
 *** Purpose: Create Analysis Indicators for TBF Market Garden 2023 data                       ***    
 ***																	 				          ***
@@ -20,7 +20,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: September 26, 2023   	   					 	     			              ***
-*** Last date modified: January 30, 2024                                                      ***
+*** Last date modified: October 2, 2024                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***

@@ -2,7 +2,7 @@
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\23_tbf_sales_2024_cleaning.log
   log type:  text
- opened on:   2 Oct 2024, 10:43:13
+ opened on:   2 Oct 2024, 10:54:07
 
 . 
 . 
@@ -279,29 +279,29 @@ sale amount |
   |-------------------------------------------------------------------------------------------------------------|
   |                      tomato- roma                        tomato- roma        9     3.21       210     75.00 |
   |              pepper- sweet banana                pepper- sweet banana        8     2.86       218     77.86 |
-  | bean- stringless green pod (bush)   bean- stringless green pod (bush)        7     2.50       225     80.36 |
-  |                                                                     .        7     2.50       232     82.86 |
-  |      sweet corn- sweetness hybrid        sweet corn- sweetness hybrid        6     2.14       238     85.00 |
+  |                                                                     .        7     2.50       225     80.36 |
+  | bean- stringless green pod (bush)   bean- stringless green pod (bush)        7     2.50       232     82.86 |
+  |           pepper- poblano (ancho)             pepper- poblano (ancho)        6     2.14       238     85.00 |
   |-------------------------------------------------------------------------------------------------------------|
   |                 beet- detroit red                   beet- detroit red        6     2.14       244     87.14 |
-  |           pepper- poblano (ancho)             pepper- poblano (ancho)        6     2.14       250     89.29 |
+  |      sweet corn- sweetness hybrid        sweet corn- sweetness hybrid        6     2.14       250     89.29 |
   |             pepper- serrano chili               pepper- serrano chili        5     1.79       255     91.07 |
   |   sweet corn- silver queen hybrid     sweet corn- silver queen hybrid        4     1.43       259     92.50 |
   |                   pepper- anaheim                     pepper- anaheim        4     1.43       263     93.93 |
   |-------------------------------------------------------------------------------------------------------------|
-  |    pumpkin- early sweet sugar pie      pumpkin- early sweet sugar pie        3     1.07       266     95.00 |
-  |                    kale- lacinato                      kale- lacinato        3     1.07       269     96.07 |
+  |                    kale- lacinato                      kale- lacinato        3     1.07       266     95.00 |
+  |    pumpkin- early sweet sugar pie      pumpkin- early sweet sugar pie        3     1.07       269     96.07 |
   |                     miscellaneous                       miscellaneous        2     0.71       271     96.79 |
-  |               broccoli- calabrese                 broccoli- calabrese        1     0.36       272     97.14 |
-  |  coleus- chocolate covered cherry    coleus- chocolate covered cherry        1     0.36       273     97.50 |
+  |                           celosia                             celosia        1     0.36       272     97.14 |
+  |                 cilantro- calypse                   cilantro- calypse        1     0.36       273     97.50 |
   |-------------------------------------------------------------------------------------------------------------|
   |          zinnia- california giant            zinnia- california giant        1     0.36       274     97.86 |
-  |            marigold- queen sophia              marigold- queen sophia        1     0.36       275     98.21 |
-  |               black raspberry jam                 black raspberry jam        1     0.36       276     98.57 |
-  |                 cilantro- calypse                   cilantro- calypse        1     0.36       277     98.93 |
-  |                           celosia                             celosia        1     0.36       278     99.29 |
+  |               black raspberry jam                 black raspberry jam        1     0.36       275     98.21 |
+  |            marigold- queen sophia              marigold- queen sophia        1     0.36       276     98.57 |
+  |               broccoli- calabrese                 broccoli- calabrese        1     0.36       277     98.93 |
+  |                     tomato- amish                       tomato- amish        1     0.36       278     99.29 |
   |-------------------------------------------------------------------------------------------------------------|
-  |                     tomato- amish                       tomato- amish        1     0.36       279     99.64 |
+  |  coleus- chocolate covered cherry    coleus- chocolate covered cherry        1     0.36       279     99.64 |
   |           lettuce- red salad bowl             lettuce- red salad bowl        1     0.36       280    100.00 |
   +-------------------------------------------------------------------------------------------------------------+
 
@@ -311,8 +311,8 @@ sale amount |
   |             tomato jalapeno salsa               26       40    14.29        40     14.29 |
   |             carrot- short n sweet                8       28    10.00        68     24.29 |
   |            eggplant- black beauty               12       23     8.21        91     32.50 |
-  |                      tomato sauce               27       20     7.14       111     39.64 |
-  |        carrot- kaleidoscope blend                7       20     7.14       131     46.79 |
+  |        carrot- kaleidoscope blend                7       20     7.14       111     39.64 |
+  |                      tomato sauce               27       20     7.14       131     46.79 |
   |------------------------------------------------------------------------------------------|
   |       pepper- bull nosed lrg bell               18       18     6.43       149     53.21 |
   |           pepper- jalapeno, early               19       18     6.43       167     59.64 |
@@ -322,12 +322,12 @@ sale amount |
   |------------------------------------------------------------------------------------------|
   |                      tomato- roma               30        9     3.21       210     75.00 |
   |              pepper- sweet banana               22        8     2.86       218     77.86 |
-  |                                                  .        7     2.50       225     80.36 |
-  | bean- stringless green pod (bush)                2        7     2.50       232     82.86 |
-  |           pepper- poblano (ancho)               20        6     2.14       238     85.00 |
+  | bean- stringless green pod (bush)                2        7     2.50       225     80.36 |
+  |                                                  .        7     2.50       232     82.86 |
+  |                 beet- detroit red                3        6     2.14       238     85.00 |
   |------------------------------------------------------------------------------------------|
-  |      sweet corn- sweetness hybrid               25        6     2.14       244     87.14 |
-  |                 beet- detroit red                3        6     2.14       250     89.29 |
+  |           pepper- poblano (ancho)               20        6     2.14       244     87.14 |
+  |      sweet corn- sweetness hybrid               25        6     2.14       250     89.29 |
   |             pepper- serrano chili               21        5     1.79       255     91.07 |
   |   sweet corn- silver queen hybrid               24        4     1.43       259     92.50 |
   |                   pepper- anaheim               17        4     1.43       263     93.93 |
@@ -335,17 +335,17 @@ sale amount |
   |                    kale- lacinato               13        3     1.07       266     95.00 |
   |    pumpkin- early sweet sugar pie               23        3     1.07       269     96.07 |
   |                     miscellaneous               16        2     0.71       271     96.79 |
-  |                           celosia                9        1     0.36       272     97.14 |
-  |            marigold- queen sophia               15        1     0.36       273     97.50 |
+  |               broccoli- calabrese                6        1     0.36       272     97.14 |
+  |  coleus- chocolate covered cherry               11        1     0.36       273     97.50 |
   |------------------------------------------------------------------------------------------|
-  |               broccoli- calabrese                6        1     0.36       274     97.86 |
-  |                     tomato- amish               28        1     0.36       275     98.21 |
-  |               black raspberry jam                5        1     0.36       276     98.57 |
-  |          zinnia- california giant               31        1     0.36       277     98.93 |
-  |           lettuce- red salad bowl               14        1     0.36       278     99.29 |
+  |                     tomato- amish               28        1     0.36       274     97.86 |
+  |                           celosia                9        1     0.36       275     98.21 |
+  |                 cilantro- calypse               10        1     0.36       276     98.57 |
+  |           lettuce- red salad bowl               14        1     0.36       277     98.93 |
+  |            marigold- queen sophia               15        1     0.36       278     99.29 |
   |------------------------------------------------------------------------------------------|
-  |  coleus- chocolate covered cherry               11        1     0.36       279     99.64 |
-  |                 cilantro- calypse               10        1     0.36       280    100.00 |
+  |               black raspberry jam                5        1     0.36       279     99.64 |
+  |          zinnia- california giant               31        1     0.36       280    100.00 |
   +------------------------------------------------------------------------------------------+
 
   +------------------------------------------------------------------+
@@ -358,8 +358,8 @@ sale amount |
   |     pound            pound        8     2.86       276     98.57 |
   |------------------------------------------------------------------|
   |     units            units        2     0.71       278     99.29 |
-  |     bunch            bunch        1     0.36       279     99.64 |
-  |     quart            quart        1     0.36       280    100.00 |
+  |     quart            quart        1     0.36       279     99.64 |
+  |     bunch            bunch        1     0.36       280    100.00 |
   +------------------------------------------------------------------+
 
   +------------------------------------------------------------------+
@@ -372,8 +372,8 @@ sale amount |
   |     pound                4        8     2.86       276     98.57 |
   |------------------------------------------------------------------|
   |     units                7        2     0.71       278     99.29 |
-  |     bunch                1        1     0.36       279     99.64 |
-  |     quart                5        1     0.36       280    100.00 |
+  |     quart                5        1     0.36       279     99.64 |
+  |     bunch                1        1     0.36       280    100.00 |
   +------------------------------------------------------------------+
 
 . 
@@ -1077,5 +1077,5 @@ sale_code       byte    %9.0g                 sale number (within each sale date
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\23_tbf_sales_2024_cleaning.log
   log type:  text
- closed on:   2 Oct 2024, 10:43:14
+ closed on:   2 Oct 2024, 10:54:07
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

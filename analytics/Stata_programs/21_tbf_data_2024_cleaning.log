@@ -2,7 +2,7 @@
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:   2 Oct 2024, 10:27:52
+ opened on:   2 Oct 2024, 10:54:01
 
 . 
 . 
@@ -142,7 +142,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:   2 Oct 2024, 10:27:53
+ opened on:   2 Oct 2024, 10:54:02
 
 . 
 . 
@@ -235,7 +235,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:   2 Oct 2024, 10:27:53
+ closed on:   2 Oct 2024, 10:54:02
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -636,5 +636,5 @@ notes           str196  %196s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:   2 Oct 2024, 10:27:53
+ closed on:   2 Oct 2024, 10:54:02
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

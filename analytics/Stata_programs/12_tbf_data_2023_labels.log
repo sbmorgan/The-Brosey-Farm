@@ -1,8 +1,8 @@
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-      name:  labels_02
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  labels_12
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\12_tbf_data_2023_labels.log
   log type:  text
- opened on:  22 Feb 2024, 11:50:51
+ opened on:   2 Oct 2024, 10:53:48
 
 . 
 . 
@@ -91,9 +91,9 @@
   5.         }
 
 .         
-. log close labels_02
-      name:  labels_02
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log
+. log close labels_12
+      name:  labels_12
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\12_tbf_data_2023_labels.log
   log type:  text
- closed on:  22 Feb 2024, 11:50:51
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   2 Oct 2024, 10:53:48
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

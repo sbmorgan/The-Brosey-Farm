@@ -7,7 +7,7 @@
 
 *************************************************************************************************
 ***                                                                                           ***
-*** Program name: 02_tbf_data_2023_labels.do                                                  ***
+*** Program name: 12_tbf_data_2023_labels.do                                                  ***
 *** Project: TBF Market Garden 2023                                 				          ***
 *** Purpose: Create variable labels for TBF Market Garden 2023 data                           ***    
 ***																	 				          ***
@@ -17,16 +17,16 @@
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 13, 2023   	   					 	     			                  ***
-*** Last date modified: October 12, 2023                                                    ***
+*** Last date modified: October 2, 2024                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
-***   This program will be used as an include file in 01_tbf_data_2023_cleaning.do            ***
+***   This program will be used as an include file in 11_tbf_data_2023_cleaning.do            ***
 ***                                                                                           ***
 *************************************************************************************************
 
 
-capture log close labels_02
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\02_tbf_data_2023_labels.log", replace name(labels_02)
+capture log close labels_12
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\12_tbf_data_2023_labels.log", replace name(labels_12)
 
 
 *=========================================================================================
@@ -93,4 +93,4 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 		label variable harvest_unit_`x' "unit of harvest: round `x'"
 	}
 	
-log close labels_02
+log close labels_12

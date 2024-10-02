@@ -4,13 +4,13 @@
 * of The Brosey Farm 
 *******************************************************************************/
 
-capture log close clean_01
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\01_tbf_data_2023_cleaning.log", replace name(clean_01)
+capture log close clean_11
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\11_tbf_data_2023_cleaning.log", replace name(clean_11)
 
 
 *************************************************************************************************
 ***                                                                                           ***
-*** Program name: 01_tbf_data_2023_cleaning.do                                                ***
+*** Program name: 11_tbf_data_2023_cleaning.do                                                ***
 *** Project: TBF Market Garden 2023                                 				          ***
 *** Purpose: Clean TBF Market Garden 2023 data                                                ***    
 ***																	 				          ***
@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: February 10, 2024                                                     ***
+*** Last date modified: October 2, 2024                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -71,7 +71,7 @@ pause off
 *=========================================================================================  
 
 	/* Add variable labels */
-	include "$root\Stata_programs\02_tbf_data_2023_labels.do" // This program creates the variable labels.
+	include "$root\Stata_programs\12_tbf_data_2023_labels.do" // This program creates the variable labels.
 	
 	/* Manage variable type */
 	tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
