@@ -2,7 +2,7 @@
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:   2 Oct 2024, 10:54:01
+ opened on:  17 Nov 2024, 13:05:45
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: October 2, 2024                                                       ***
+. *** Last date modified: November 17, 2024                                                       ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -75,7 +75,7 @@
 .         keep crop-notes
 
 .         drop if missing(crop)
-(929 observations deleted)
+(928 observations deleted)
 
 .         ds 
 crop          sow_light_~s  sow_fer~me_3  sow_fer~me_6  fert_typ~k_1  fert_date_3   path_~pe_1_2  path_type_3   harvest_a~_2  harvest_a~_6  harvest_a~10  harvest_a~14  harvest_a~18  harvest_a~22  harvest_a~26  harvest_a~30
@@ -142,7 +142,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:   2 Oct 2024, 10:54:02
+ opened on:  17 Nov 2024, 13:05:46
 
 . 
 . 
@@ -235,7 +235,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:   2 Oct 2024, 10:54:02
+ closed on:  17 Nov 2024, 13:05:46
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -636,5 +636,5 @@ notes           str196  %196s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:   2 Oct 2024, 10:54:02
+ closed on:  17 Nov 2024, 13:05:46
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
