@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: February 29, 2024 	   					 	     			                  ***
-*** Last date modified: November 17, 2024                                                       ***
+*** Last date modified: November 25, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -75,7 +75,7 @@ pause off
 	
 	/* Manage variable type */
 	tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
-/* 	
+
 	/* Manage date variables */
 	foreach var of varlist *date* {
 		display as input "Variable: `var'"
@@ -96,7 +96,7 @@ pause off
 		format `var'_stata %td
 		order `var'_stata, after(`var')
 	}
-	
+/* 		
 	/* Convert categorical strings into categorical numerics */
 	local cat_str_list crop sow_med *type*
 	tab1 `cat_str_list', missing
