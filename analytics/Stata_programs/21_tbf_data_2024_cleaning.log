@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:  17 Nov 2024, 13:05:45
+ opened on:   2 Dec 2024, 21:33:03
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: February 29, 2024                                                                                                 ***
-. *** Last date modified: November 17, 2024                                                       ***
+. *** Last date modified: December 2, 2024                                                     ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -78,18 +78,20 @@
 (928 observations deleted)
 
 .         ds 
-crop          sow_light_~s  sow_fer~me_3  sow_fer~me_6  fert_typ~k_1  fert_date_3   path_~pe_1_2  path_type_3   harvest_a~_2  harvest_a~_6  harvest_a~10  harvest_a~14  harvest_a~18  harvest_a~22  harvest_a~26  harvest_a~30
-sow_type      sow_light_~e  sow_fer~se_3  sow_fer~se_6  fert_typ~e_1  fert_amnt_~3  path_~te_1_2  path_date_3   harvest_u~_2  harvest_u~_6  harvest_u~10  harvest_u~14  harvest_u~18  harvest_u~22  harvest_u~26  harvest_u~30
-sow_date      sow_fer~te_1  sow_fer~te_4  transp_har~t  fert_date_1   fert_unit_3   path_~pe_1_3  path_~pe_3_1  harvest_d~_3  harvest_d~_7  harvest_d~11  harvest_d~15  harvest_d~19  harvest_d~23  harvest_d~27  notes
-sow_med       sow_fert~k_1  sow_fert~k_4  transp_har~d  fert_amnt_~1  fert_typ~k_4  path_~te_1_3  path_~te_3_1  harvest_a~_3  harvest_a~_7  harvest_a~11  harvest_a~15  harvest_a~19  harvest_a~23  harvest_a~27
-sow_cell      sow_fer~me_1  sow_fer~me_4  transp_dat~1  fert_unit_1   fert_typ~e_4  path_type_2   path_~pe_3_2  harvest_u~_3  harvest_u~_7  harvest_u~11  harvest_u~15  harvest_u~19  harvest_u~23  harvest_u~27
-sow_no_cel~l  sow_fer~se_1  sow_fer~se_4  transp_med_1  fert_typ~k_2  fert_date_4   path_date_2   path_~te_3_2  harvest_d~_4  harvest_d~_8  harvest_d~12  harvest_d~16  harvest_d~20  harvest_d~24  harvest_d~28
-sow_no_see~r  sow_fer~te_2  sow_fer~te_5  transp_n~t_1  fert_typ~e_2  fert_amnt_~4  path_~pe_2_1  path_~pe_3_3  harvest_a~_4  harvest_a~_8  harvest_a~12  harvest_a~16  harvest_a~20  harvest_a~24  harvest_a~28
-sow_to_ger~s  sow_fert~k_2  sow_fert~k_5  transp_n~d_1  fert_date_2   fert_unit_4   path_~te_2_1  path_~te_3_3  harvest_u~_4  harvest_u~_8  harvest_u~12  harvest_u~16  harvest_u~20  harvest_u~24  harvest_u~28
-sow_no_ger~r  sow_fer~me_2  sow_fer~me_5  transp_dat~2  fert_amnt_~2  path_type_1   path_~pe_2_2  harvest_d~_1  harvest_d~_5  harvest_d~_9  harvest_d~13  harvest_d~17  harvest_d~21  harvest_d~25  harvest_d~29
-sow_no_thi~r  sow_fer~se_2  sow_fer~se_5  transp_med_2  fert_unit_2   path_date_1   path_~te_2_2  harvest_a~_1  harvest_a~_5  harvest_a~_9  harvest_a~13  harvest_a~17  harvest_a~21  harvest_a~25  harvest_a~29
-sow_heatmat   sow_fer~te_3  sow_fer~te_6  transp_n~t_2  fert_typ~k_3  path_~pe_1_1  path_~pe_2_3  harvest_u~_1  harvest_u~_5  harvest_u~_9  harvest_u~13  harvest_u~17  harvest_u~21  harvest_u~25  harvest_u~29
-sow_heatma~p  sow_fert~k_3  sow_fert~k_6  transp_n~d_2  fert_typ~e_3  path_~te_1_1  path_~te_2_3  harvest_d~_2  harvest_d~_6  harvest_d~10  harvest_d~14  harvest_d~18  harvest_d~22  harvest_d~26  harvest_d~30
+crop          sow_fer~te_1  sow_fer~me_4  transp_n~t_1  fert_amnt_~2  path_~pe_1_1  path_type_3   harvest_d~_3  harvest_u~_7  harvest_a~12  harvest_d~17  harvest_u~21  harvest_a~26  notes
+sow_type      sow_fert~k_1  sow_fer~se_4  transp_n~d_1  fert_unit_2   path_~te_1_1  path_date_3   harvest_a~_3  harvest_d~_8  harvest_u~12  harvest_a~17  harvest_d~22  harvest_u~26
+sow_date      sow_fer~me_1  sow_fer~te_5  transp_dat~2  fert_typ~k_3  path_~pe_1_2  path_~pe_3_1  harvest_u~_3  harvest_a~_8  harvest_d~13  harvest_u~17  harvest_a~22  harvest_d~27
+sow_med       sow_fer~se_1  sow_fert~k_5  transp_med_2  fert_typ~e_3  path_~te_1_2  path_~te_3_1  harvest_d~_4  harvest_u~_8  harvest_a~13  harvest_d~18  harvest_u~22  harvest_a~27
+sow_cell      sow_fer~te_2  sow_fer~me_5  transp_n~t_2  fert_date_3   path_~pe_1_3  path_~pe_3_2  harvest_a~_4  harvest_d~_9  harvest_u~13  harvest_a~18  harvest_d~23  harvest_u~27
+sow_no_cel~l  sow_fert~k_2  sow_fer~se_5  transp_n~d_2  fert_amnt_~3  path_~te_1_3  path_~te_3_2  harvest_u~_4  harvest_a~_9  harvest_d~14  harvest_u~18  harvest_a~23  harvest_d~28
+sow_no_see~r  sow_fer~me_2  sow_fer~te_6  fert_typ~k_1  fert_unit_3   path_type_2   path_~pe_3_3  harvest_d~_5  harvest_u~_9  harvest_a~14  harvest_d~19  harvest_u~23  harvest_a~28
+sow_to_ger~s  sow_fer~se_2  sow_fert~k_6  fert_typ~e_1  fert_typ~k_4  path_date_2   path_~te_3_3  harvest_a~_5  harvest_d~10  harvest_u~14  harvest_a~19  harvest_d~24  harvest_u~28
+sow_no_ger~r  sow_fer~te_3  sow_fer~me_6  fert_date_1   fert_typ~e_4  path_~pe_2_1  harvest_d~_1  harvest_u~_5  harvest_a~10  harvest_d~15  harvest_u~19  harvest_a~24  harvest_d~29
+sow_no_thi~r  sow_fert~k_3  sow_fer~se_6  fert_amnt_~1  fert_date_4   path_~te_2_1  harvest_a~_1  harvest_d~_6  harvest_u~10  harvest_a~15  harvest_d~20  harvest_u~24  harvest_a~29
+sow_heatmat   sow_fer~me_3  transp_har~t  fert_unit_1   fert_amnt_~4  path_~pe_2_2  harvest_u~_1  harvest_a~_6  harvest_d~11  harvest_u~15  harvest_a~20  harvest_d~25  harvest_u~29
+sow_heatma~p  sow_fer~se_3  transp_har~d  fert_typ~k_2  fert_unit_4   path_~te_2_2  harvest_d~_2  harvest_u~_6  harvest_a~11  harvest_d~16  harvest_u~20  harvest_a~25  harvest_d~30
+sow_light_~s  sow_fer~te_4  transp_dat~1  fert_typ~e_2  path_type_1   path_~pe_2_3  harvest_a~_2  harvest_d~_7  harvest_u~11  harvest_a~16  harvest_d~21  harvest_u~25  harvest_a~30
+sow_light_~e  sow_fert~k_4  transp_med_1  fert_date_2   path_date_1   path_~te_2_3  harvest_u~_2  harvest_a~_7  harvest_d~12  harvest_u~16  harvest_a~21  harvest_d~26  harvest_u~30
 
 .         
 .         /* Save raw TBF Market Garden 2024 data */
@@ -138,11 +140,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . capture log close labels_22
 
 . log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_22)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:  17 Nov 2024, 13:05:46
+ opened on:   2 Dec 2024, 21:33:04
 
 . 
 . 
@@ -235,8 +237,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:  17 Nov 2024, 13:05:46
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   2 Dec 2024, 21:33:04
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
@@ -277,28 +279,1332 @@ path_ipm_type_3_1 already string; no replace
 path_ipm_type_3_2 was byte now str1
 path_ipm_type_3_3 was byte now str1
 
-. /*      
->         /* Manage date variables */
->         foreach var of varlist *date* {
->                 display as input "Variable: `var'"
->                 tabulate `var', missing
->                 capture confirm string var `var'
->                 if _rc!=0 tostring `var', replace
->                 generate `var'_year= substr(`var',1,4)
->                 generate `var'_month= substr(`var',6,2)
->                 generate `var'_day= substr(`var',9,2)
->                 foreach var2 of varlist `var'_year `var'_month `var'_day {
->                         confirm string var `var2'
->                         destring `var2', replace
->                 }
->                 generate `var'_stata= mdy(`var'_month, `var'_day, `var'_year)
->                 drop `var'_year `var'_month `var'_day
->                 local varlab : variable label `var'
->                 label variable `var'_stata "`varlab'- stata"            
->                 format `var'_stata %td
->                 order `var'_stata, after(`var')
->         }
->         
+. 
+.         /* Manage date variables */
+.         foreach var of varlist *date* {
+  2.                 display as input "Variable: `var'"
+  3.                 tabulate `var', missing
+  4.                 capture confirm string var `var'
+  5.                 if _rc!=0 tostring `var', replace
+  6.                 generate `var'_year= substr(`var',1,4)
+  7.                 generate `var'_month= substr(`var',6,2)
+  8.                 generate `var'_day= substr(`var',9,2)
+  9.                 foreach var2 of varlist `var'_year `var'_month `var'_day {
+ 10.                         confirm string var `var2'
+ 11.                         destring `var2', replace
+ 12.                 }
+ 13.                 generate `var'_stata= mdy(`var'_month, `var'_day, `var'_year)
+ 14.                 drop `var'_year `var'_month `var'_day
+ 15.                 local varlab : variable label `var'
+ 16.                 label variable `var'_stata "`varlab'- stata"            
+ 17.                 format `var'_stata %td
+ 18.                 order `var'_stata, after(`var')
+ 19.         }
+Variable: sow_date
+
+seed sowing |
+       date |      Freq.     Percent        Cum.
+------------+-----------------------------------
+ 2023-02-25 |          1        1.33        1.33
+ 2023-11-04 |          1        1.33        2.67
+ 2024-02-25 |         17       22.67       25.33
+ 2024-03-11 |         13       17.33       42.67
+ 2024-04-25 |          5        6.67       49.33
+ 2024-04-28 |          5        6.67       56.00
+ 2024-05-04 |          3        4.00       60.00
+ 2024-05-28 |          8       10.67       70.67
+ 2024-06-03 |          7        9.33       80.00
+ 2024-06-24 |         10       13.33       93.33
+ 2024-07-07 |          4        5.33       98.67
+ 2024-11-16 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+sow_date_year: all characters numeric; replaced as int
+sow_date_month: all characters numeric; replaced as byte
+sow_date_day: all characters numeric; replaced as byte
+Variable: sow_fert_date_1
+
+    date of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         34       45.33       45.33
+ 2024-03-22 |         18       24.00       69.33
+ 2024-04-04 |         13       17.33       86.67
+ 2024-04-09 |          1        1.33       88.00
+ 2024-05-11 |          5        6.67       94.67
+ 2024-07-28 |          4        5.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(34 missing values generated)
+(34 missing values generated)
+(34 missing values generated)
+sow_fert_date_1_year: all characters numeric; replaced as int
+(34 missing values generated)
+sow_fert_date_1_month: all characters numeric; replaced as byte
+(34 missing values generated)
+sow_fert_date_1_day: all characters numeric; replaced as byte
+(34 missing values generated)
+(34 missing values generated)
+Variable: sow_fert_date_2
+
+    date of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         35       46.67       46.67
+ 2024-04-04 |         18       24.00       70.67
+ 2024-04-15 |         13       17.33       88.00
+ 2024-05-23 |          5        6.67       94.67
+ 2024-08-05 |          4        5.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(35 missing values generated)
+(35 missing values generated)
+(35 missing values generated)
+sow_fert_date_2_year: all characters numeric; replaced as int
+(35 missing values generated)
+sow_fert_date_2_month: all characters numeric; replaced as byte
+(35 missing values generated)
+sow_fert_date_2_day: all characters numeric; replaced as byte
+(35 missing values generated)
+(35 missing values generated)
+Variable: sow_fert_date_3
+
+    date of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         39       52.00       52.00
+ 2024-04-15 |         12       16.00       68.00
+ 2024-04-23 |         13       17.33       85.33
+ 2024-05-05 |          2        2.67       88.00
+ 2024-05-30 |          5        6.67       94.67
+ 2024-08-15 |          4        5.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(39 missing values generated)
+(39 missing values generated)
+(39 missing values generated)
+sow_fert_date_3_year: all characters numeric; replaced as int
+(39 missing values generated)
+sow_fert_date_3_month: all characters numeric; replaced as byte
+(39 missing values generated)
+sow_fert_date_3_day: all characters numeric; replaced as byte
+(39 missing values generated)
+(39 missing values generated)
+Variable: sow_fert_date_4
+
+    date of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 4 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         54       72.00       72.00
+ 2024-04-23 |         12       16.00       88.00
+ 2024-05-05 |          1        1.33       89.33
+ 2024-05-11 |          4        5.33       94.67
+ 2024-08-25 |          4        5.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(54 missing values generated)
+(54 missing values generated)
+(54 missing values generated)
+sow_fert_date_4_year: all characters numeric; replaced as int
+(54 missing values generated)
+sow_fert_date_4_month: all characters numeric; replaced as byte
+(54 missing values generated)
+sow_fert_date_4_day: all characters numeric; replaced as byte
+(54 missing values generated)
+(54 missing values generated)
+Variable: sow_fert_date_5
+
+    date of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 5 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         59       78.67       78.67
+ 2024-05-10 |         11       14.67       93.33
+ 2024-05-11 |          5        6.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(59 missing values generated)
+(59 missing values generated)
+(59 missing values generated)
+sow_fert_date_5_year: all characters numeric; replaced as int
+(59 missing values generated)
+sow_fert_date_5_month: all characters numeric; replaced as byte
+(59 missing values generated)
+sow_fert_date_5_day: all characters numeric; replaced as byte
+(59 missing values generated)
+(59 missing values generated)
+Variable: sow_fert_date_6
+
+    date of |
+ fertilizer |
+ applied to |
+     indoor |
+ seedlings: |
+    round 6 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         63       84.00       84.00
+ 2024-05-23 |         12       16.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(63 missing values generated)
+(63 missing values generated)
+(63 missing values generated)
+sow_fert_date_6_year: all characters numeric; replaced as int
+(63 missing values generated)
+sow_fert_date_6_month: all characters numeric; replaced as byte
+(63 missing values generated)
+sow_fert_date_6_day: all characters numeric; replaced as byte
+(63 missing values generated)
+(63 missing values generated)
+Variable: transp_harden_date_srt
+
+ transplant |
+ harden off |
+ start date |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         48       64.00       64.00
+ 2024-04-24 |         11       14.67       78.67
+ 2024-04-25 |          4        5.33       84.00
+ 2024-05-11 |         12       16.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(48 missing values generated)
+(48 missing values generated)
+(48 missing values generated)
+transp_harden_date_srt_year: all characters numeric; replaced as int
+(48 missing values generated)
+transp_harden_date_srt_month: all characters numeric; replaced as byte
+(48 missing values generated)
+transp_harden_date_srt_day: all characters numeric; replaced as byte
+(48 missing values generated)
+(48 missing values generated)
+Variable: transp_harden_date_end
+
+ transplant |
+ harden off |
+   end date |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         48       64.00       64.00
+ 2024-04-30 |          3        4.00       68.00
+ 2024-05-03 |          1        1.33       69.33
+ 2024-05-08 |          1        1.33       70.67
+ 2024-05-11 |          2        2.67       73.33
+ 2024-05-13 |          4        5.33       78.67
+ 2024-05-25 |          3        4.00       82.67
+ 2024-05-26 |          1        1.33       84.00
+ 2024-05-27 |         12       16.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(48 missing values generated)
+(48 missing values generated)
+(48 missing values generated)
+transp_harden_date_end_year: all characters numeric; replaced as int
+(48 missing values generated)
+transp_harden_date_end_month: all characters numeric; replaced as byte
+(48 missing values generated)
+transp_harden_date_end_day: all characters numeric; replaced as byte
+(48 missing values generated)
+(48 missing values generated)
+Variable: transp_date_1
+
+ transplant |
+date: round |
+          1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         40       53.33       53.33
+ 2024-04-12 |          6        8.00       61.33
+ 2024-04-24 |         14       18.67       80.00
+ 2024-04-27 |         11       14.67       94.67
+ 2024-08-17 |          2        2.67       97.33
+ 2024-08-30 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(40 missing values generated)
+(40 missing values generated)
+(40 missing values generated)
+transp_date_1_year: all characters numeric; replaced as int
+(40 missing values generated)
+transp_date_1_month: all characters numeric; replaced as byte
+(40 missing values generated)
+transp_date_1_day: all characters numeric; replaced as byte
+(40 missing values generated)
+(40 missing values generated)
+Variable: transp_date_2
+
+ transplant |
+date: round |
+          2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         48       64.00       64.00
+ 2024-04-12 |          2        2.67       66.67
+ 2024-05-03 |          2        2.67       69.33
+ 2024-05-08 |          1        1.33       70.67
+ 2024-05-11 |          2        2.67       73.33
+ 2024-05-13 |          4        5.33       78.67
+ 2024-05-25 |          3        4.00       82.67
+ 2024-05-26 |          1        1.33       84.00
+ 2024-05-27 |         12       16.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(48 missing values generated)
+(48 missing values generated)
+(48 missing values generated)
+transp_date_2_year: all characters numeric; replaced as int
+(48 missing values generated)
+transp_date_2_month: all characters numeric; replaced as byte
+(48 missing values generated)
+transp_date_2_day: all characters numeric; replaced as byte
+(48 missing values generated)
+(48 missing values generated)
+Variable: fert_date_1
+
+    date of |
+ fertilizer |
+ applied to |
+crop: round |
+          1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         50       66.67       66.67
+ 2024-06-20 |          1        1.33       68.00
+ 2024-07-01 |         18       24.00       92.00
+ 2024-07-16 |          4        5.33       97.33
+ 2024-07-22 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(50 missing values generated)
+(50 missing values generated)
+(50 missing values generated)
+fert_date_1_year: all characters numeric; replaced as int
+(50 missing values generated)
+fert_date_1_month: all characters numeric; replaced as byte
+(50 missing values generated)
+fert_date_1_day: all characters numeric; replaced as byte
+(50 missing values generated)
+(50 missing values generated)
+Variable: fert_date_2
+
+    date of |
+ fertilizer |
+ applied to |
+crop: round |
+          2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         54       72.00       72.00
+ 2024-07-09 |          4        5.33       77.33
+ 2024-07-16 |          2        2.67       80.00
+ 2024-07-24 |         13       17.33       97.33
+ 2024-07-28 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(54 missing values generated)
+(54 missing values generated)
+(54 missing values generated)
+fert_date_2_year: all characters numeric; replaced as int
+(54 missing values generated)
+fert_date_2_month: all characters numeric; replaced as byte
+(54 missing values generated)
+fert_date_2_day: all characters numeric; replaced as byte
+(54 missing values generated)
+(54 missing values generated)
+Variable: fert_date_3
+
+    date of |
+ fertilizer |
+ applied to |
+crop: round |
+          3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         69       92.00       92.00
+ 2024-07-18 |          2        2.67       94.67
+ 2024-07-24 |          2        2.67       97.33
+ 2024-08-05 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(69 missing values generated)
+(69 missing values generated)
+(69 missing values generated)
+fert_date_3_year: all characters numeric; replaced as int
+(69 missing values generated)
+fert_date_3_month: all characters numeric; replaced as byte
+(69 missing values generated)
+fert_date_3_day: all characters numeric; replaced as byte
+(69 missing values generated)
+(69 missing values generated)
+Variable: fert_date_4
+
+    date of |
+ fertilizer |
+ applied to |
+crop: round |
+          4 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+  02aug2024 |          2        2.67        2.67
+          . |         73       97.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+fert_date_4 was int now str5
+(75 missing values generated)
+(75 missing values generated)
+fert_date_4_year: all characters numeric; replaced as int
+(73 missing values generated)
+fert_date_4_month: all characters numeric; replaced as byte
+(75 missing values generated)
+fert_date_4_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: path_date_1
+
+   pathogen |
+      date: |
+ pathogen 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         70       93.33       93.33
+ 2024-06-01 |          2        2.67       96.00
+ 2024-07-15 |          2        2.67       98.67
+ 2024-08-18 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(70 missing values generated)
+(70 missing values generated)
+(70 missing values generated)
+path_date_1_year: all characters numeric; replaced as int
+(70 missing values generated)
+path_date_1_month: all characters numeric; replaced as byte
+(70 missing values generated)
+path_date_1_day: all characters numeric; replaced as byte
+(70 missing values generated)
+(70 missing values generated)
+Variable: path_ipm_date_1_1
+
+  ipm date, |
+    type 1: |
+ pathogen 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         71       94.67       94.67
+ 2024-07-01 |          1        1.33       96.00
+ 2024-07-24 |          2        2.67       98.67
+ 2024-08-18 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(71 missing values generated)
+(71 missing values generated)
+(71 missing values generated)
+path_ipm_date_1_1_year: all characters numeric; replaced as int
+(71 missing values generated)
+path_ipm_date_1_1_month: all characters numeric; replaced as byte
+(71 missing values generated)
+path_ipm_date_1_1_day: all characters numeric; replaced as byte
+(71 missing values generated)
+(71 missing values generated)
+Variable: path_ipm_date_1_2
+
+  ipm date, |
+    type 2: |
+ pathogen 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+path_ipm_date_1_2 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+path_ipm_date_1_2_year: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_1_2_month: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_1_2_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: path_ipm_date_1_3
+
+  ipm date, |
+    type 3: |
+ pathogen 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+path_ipm_date_1_3 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+path_ipm_date_1_3_year: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_1_3_month: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_1_3_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: path_date_2
+
+   pathogen |
+      date: |
+ pathogen 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         71       94.67       94.67
+ 2024-06-01 |          1        1.33       96.00
+ 2024-07-25 |          1        1.33       97.33
+ 2024-08-24 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(71 missing values generated)
+(71 missing values generated)
+(71 missing values generated)
+path_date_2_year: all characters numeric; replaced as int
+(71 missing values generated)
+path_date_2_month: all characters numeric; replaced as byte
+(71 missing values generated)
+path_date_2_day: all characters numeric; replaced as byte
+(71 missing values generated)
+(71 missing values generated)
+Variable: path_ipm_date_2_1
+
+  ipm date, |
+    type 1: |
+ pathogen 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         74       98.67       98.67
+ 2024-07-25 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(74 missing values generated)
+(74 missing values generated)
+(74 missing values generated)
+path_ipm_date_2_1_year: all characters numeric; replaced as int
+(74 missing values generated)
+path_ipm_date_2_1_month: all characters numeric; replaced as byte
+(74 missing values generated)
+path_ipm_date_2_1_day: all characters numeric; replaced as byte
+(74 missing values generated)
+(74 missing values generated)
+Variable: path_ipm_date_2_2
+
+  ipm date, |
+    type 2: |
+ pathogen 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+path_ipm_date_2_2 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+path_ipm_date_2_2_year: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_2_2_month: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_2_2_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: path_ipm_date_2_3
+
+  ipm date, |
+    type 3: |
+ pathogen 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+path_ipm_date_2_3 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+path_ipm_date_2_3_year: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_2_3_month: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_2_3_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: path_date_3
+
+   pathogen |
+      date: |
+ pathogen 3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         74       98.67       98.67
+ 2024-08-14 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(74 missing values generated)
+(74 missing values generated)
+(74 missing values generated)
+path_date_3_year: all characters numeric; replaced as int
+(74 missing values generated)
+path_date_3_month: all characters numeric; replaced as byte
+(74 missing values generated)
+path_date_3_day: all characters numeric; replaced as byte
+(74 missing values generated)
+(74 missing values generated)
+Variable: path_ipm_date_3_1
+
+  ipm date, |
+    type 1: |
+ pathogen 3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         74       98.67       98.67
+ 2024-08-18 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(74 missing values generated)
+(74 missing values generated)
+(74 missing values generated)
+path_ipm_date_3_1_year: all characters numeric; replaced as int
+(74 missing values generated)
+path_ipm_date_3_1_month: all characters numeric; replaced as byte
+(74 missing values generated)
+path_ipm_date_3_1_day: all characters numeric; replaced as byte
+(74 missing values generated)
+(74 missing values generated)
+Variable: path_ipm_date_3_2
+
+  ipm date, |
+    type 2: |
+ pathogen 3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+path_ipm_date_3_2 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+path_ipm_date_3_2_year: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_3_2_month: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_3_2_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: path_ipm_date_3_3
+
+  ipm date, |
+    type 3: |
+ pathogen 3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+path_ipm_date_3_3 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+path_ipm_date_3_3_year: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_3_3_month: all characters numeric; replaced as byte
+(75 missing values generated)
+path_ipm_date_3_3_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_1
+
+    date of |
+   harvest: |
+    round 1 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         42       56.00       56.00
+ 2024-06-15 |          1        1.33       57.33
+ 2024-06-20 |          1        1.33       58.67
+ 2024-06-29 |          2        2.67       61.33
+ 2024-07-06 |          3        4.00       65.33
+ 2024-07-13 |          4        5.33       70.67
+ 2024-07-16 |          2        2.67       73.33
+ 2024-07-22 |          1        1.33       74.67
+ 2024-07-23 |          2        2.67       77.33
+ 2024-07-27 |          2        2.67       80.00
+ 2024-07-28 |          1        1.33       81.33
+ 2024-07-31 |          1        1.33       82.67
+ 2024-08-02 |          1        1.33       84.00
+ 2024-08-14 |          6        8.00       92.00
+ 2024-08-17 |          3        4.00       96.00
+ 2024-08-21 |          2        2.67       98.67
+ 2024-08-24 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(42 missing values generated)
+(42 missing values generated)
+(42 missing values generated)
+harvest_date_1_year: all characters numeric; replaced as int
+(42 missing values generated)
+harvest_date_1_month: all characters numeric; replaced as byte
+(42 missing values generated)
+harvest_date_1_day: all characters numeric; replaced as byte
+(42 missing values generated)
+(42 missing values generated)
+Variable: harvest_date_2
+
+    date of |
+   harvest: |
+    round 2 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         44       58.67       58.67
+ 2024-06-22 |          1        1.33       60.00
+ 2024-06-24 |          1        1.33       61.33
+ 2024-07-13 |          5        6.67       68.00
+ 2024-07-16 |          4        5.33       73.33
+ 2024-07-20 |          2        2.67       76.00
+ 2024-07-25 |          1        1.33       77.33
+ 2024-07-27 |          2        2.67       80.00
+ 2024-07-28 |          2        2.67       82.67
+ 2024-07-31 |          1        1.33       84.00
+ 2024-08-02 |          1        1.33       85.33
+ 2024-08-10 |          1        1.33       86.67
+ 2024-08-17 |          2        2.67       89.33
+ 2024-08-24 |          3        4.00       93.33
+ 2024-08-28 |          2        2.67       96.00
+ 2024-10-12 |          3        4.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(44 missing values generated)
+(44 missing values generated)
+(44 missing values generated)
+harvest_date_2_year: all characters numeric; replaced as int
+(44 missing values generated)
+harvest_date_2_month: all characters numeric; replaced as byte
+(44 missing values generated)
+harvest_date_2_day: all characters numeric; replaced as byte
+(44 missing values generated)
+(44 missing values generated)
+Variable: harvest_date_3
+
+    date of |
+   harvest: |
+    round 3 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         50       66.67       66.67
+ 2024-06-29 |          1        1.33       68.00
+ 2024-07-20 |          5        6.67       74.67
+ 2024-07-22 |          2        2.67       77.33
+ 2024-07-23 |          1        1.33       78.67
+ 2024-07-27 |          3        4.00       82.67
+ 2024-07-28 |          1        1.33       84.00
+ 2024-07-31 |          3        4.00       88.00
+ 2024-08-02 |          2        2.67       90.67
+ 2024-08-14 |          1        1.33       92.00
+ 2024-08-17 |          1        1.33       93.33
+ 2024-08-24 |          1        1.33       94.67
+ 2024-08-28 |          1        1.33       96.00
+ 2024-09-04 |          1        1.33       97.33
+ 2024-09-07 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(50 missing values generated)
+(50 missing values generated)
+(50 missing values generated)
+harvest_date_3_year: all characters numeric; replaced as int
+(50 missing values generated)
+harvest_date_3_month: all characters numeric; replaced as byte
+(50 missing values generated)
+harvest_date_3_day: all characters numeric; replaced as byte
+(50 missing values generated)
+(50 missing values generated)
+Variable: harvest_date_4
+
+    date of |
+   harvest: |
+    round 4 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         56       74.67       74.67
+ 2024-07-23 |          1        1.33       76.00
+ 2024-07-27 |          1        1.33       77.33
+ 2024-07-31 |          4        5.33       82.67
+ 2024-08-02 |          7        9.33       92.00
+ 2024-08-05 |          1        1.33       93.33
+ 2024-08-10 |          1        1.33       94.67
+ 2024-08-17 |          1        1.33       96.00
+ 2024-08-24 |          1        1.33       97.33
+ 2024-09-14 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(56 missing values generated)
+(56 missing values generated)
+(56 missing values generated)
+harvest_date_4_year: all characters numeric; replaced as int
+(56 missing values generated)
+harvest_date_4_month: all characters numeric; replaced as byte
+(56 missing values generated)
+harvest_date_4_day: all characters numeric; replaced as byte
+(56 missing values generated)
+(56 missing values generated)
+Variable: harvest_date_5
+
+    date of |
+   harvest: |
+    round 5 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         59       78.67       78.67
+ 2024-07-25 |          1        1.33       80.00
+ 2024-07-31 |          1        1.33       81.33
+ 2024-08-02 |          3        4.00       85.33
+ 2024-08-05 |          5        6.67       92.00
+ 2024-08-10 |          2        2.67       94.67
+ 2024-08-14 |          1        1.33       96.00
+ 2024-08-17 |          1        1.33       97.33
+ 2024-08-24 |          1        1.33       98.67
+ 2024-09-07 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(59 missing values generated)
+(59 missing values generated)
+(59 missing values generated)
+harvest_date_5_year: all characters numeric; replaced as int
+(59 missing values generated)
+harvest_date_5_month: all characters numeric; replaced as byte
+(59 missing values generated)
+harvest_date_5_day: all characters numeric; replaced as byte
+(59 missing values generated)
+(59 missing values generated)
+Variable: harvest_date_6
+
+    date of |
+   harvest: |
+    round 6 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         62       82.67       82.67
+ 2024-07-27 |          1        1.33       84.00
+ 2024-08-02 |          1        1.33       85.33
+ 2024-08-05 |          4        5.33       90.67
+ 2024-08-10 |          3        4.00       94.67
+ 2024-08-14 |          1        1.33       96.00
+ 2024-08-24 |          1        1.33       97.33
+ 2024-08-28 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(62 missing values generated)
+(62 missing values generated)
+(62 missing values generated)
+harvest_date_6_year: all characters numeric; replaced as int
+(62 missing values generated)
+harvest_date_6_month: all characters numeric; replaced as byte
+(62 missing values generated)
+harvest_date_6_day: all characters numeric; replaced as byte
+(62 missing values generated)
+(62 missing values generated)
+Variable: harvest_date_7
+
+    date of |
+   harvest: |
+    round 7 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         64       85.33       85.33
+ 2024-07-28 |          1        1.33       86.67
+ 2024-08-07 |          1        1.33       88.00
+ 2024-08-10 |          3        4.00       92.00
+ 2024-08-14 |          2        2.67       94.67
+ 2024-08-17 |          1        1.33       96.00
+ 2024-09-04 |          3        4.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(64 missing values generated)
+(64 missing values generated)
+(64 missing values generated)
+harvest_date_7_year: all characters numeric; replaced as int
+(64 missing values generated)
+harvest_date_7_month: all characters numeric; replaced as byte
+(64 missing values generated)
+harvest_date_7_day: all characters numeric; replaced as byte
+(64 missing values generated)
+(64 missing values generated)
+Variable: harvest_date_8
+
+    date of |
+   harvest: |
+    round 8 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         64       85.33       85.33
+ 2024-08-05 |          1        1.33       86.67
+ 2024-08-10 |          1        1.33       88.00
+ 2024-08-14 |          3        4.00       92.00
+ 2024-08-17 |          2        2.67       94.67
+ 2024-08-24 |          1        1.33       96.00
+ 2024-09-07 |          2        2.67       98.67
+ 2024-09-10 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(64 missing values generated)
+(64 missing values generated)
+(64 missing values generated)
+harvest_date_8_year: all characters numeric; replaced as int
+(64 missing values generated)
+harvest_date_8_month: all characters numeric; replaced as byte
+(64 missing values generated)
+harvest_date_8_day: all characters numeric; replaced as byte
+(64 missing values generated)
+(64 missing values generated)
+Variable: harvest_date_9
+
+    date of |
+   harvest: |
+    round 9 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         64       85.33       85.33
+ 2024-08-07 |          1        1.33       86.67
+ 2024-08-14 |          1        1.33       88.00
+ 2024-08-17 |          3        4.00       92.00
+ 2024-08-21 |          1        1.33       93.33
+ 2024-08-24 |          1        1.33       94.67
+ 2024-09-07 |          1        1.33       96.00
+ 2024-09-11 |          1        1.33       97.33
+ 2024-10-12 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(64 missing values generated)
+(64 missing values generated)
+(64 missing values generated)
+harvest_date_9_year: all characters numeric; replaced as int
+(64 missing values generated)
+harvest_date_9_month: all characters numeric; replaced as byte
+(64 missing values generated)
+harvest_date_9_day: all characters numeric; replaced as byte
+(64 missing values generated)
+(64 missing values generated)
+Variable: harvest_date_10
+
+    date of |
+   harvest: |
+   round 10 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         66       88.00       88.00
+ 2024-08-10 |          1        1.33       89.33
+ 2024-08-17 |          1        1.33       90.67
+ 2024-08-21 |          1        1.33       92.00
+ 2024-08-24 |          3        4.00       96.00
+ 2024-08-28 |          1        1.33       97.33
+ 2024-09-14 |          1        1.33       98.67
+ 2024-10-12 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(66 missing values generated)
+(66 missing values generated)
+(66 missing values generated)
+harvest_date_10_year: all characters numeric; replaced as int
+(66 missing values generated)
+harvest_date_10_month: all characters numeric; replaced as byte
+(66 missing values generated)
+harvest_date_10_day: all characters numeric; replaced as byte
+(66 missing values generated)
+(66 missing values generated)
+Variable: harvest_date_11
+
+    date of |
+   harvest: |
+   round 11 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         67       89.33       89.33
+ 2024-08-14 |          1        1.33       90.67
+ 2024-08-24 |          2        2.67       93.33
+ 2024-08-28 |          3        4.00       97.33
+ 2024-09-07 |          1        1.33       98.67
+ 2024-09-18 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(67 missing values generated)
+(67 missing values generated)
+(67 missing values generated)
+harvest_date_11_year: all characters numeric; replaced as int
+(67 missing values generated)
+harvest_date_11_month: all characters numeric; replaced as byte
+(67 missing values generated)
+harvest_date_11_day: all characters numeric; replaced as byte
+(67 missing values generated)
+(67 missing values generated)
+Variable: harvest_date_12
+
+    date of |
+   harvest: |
+   round 12 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         67       89.33       89.33
+ 2024-08-14 |          1        1.33       90.67
+ 2024-08-28 |          2        2.67       93.33
+ 2024-09-04 |          3        4.00       97.33
+ 2024-09-14 |          1        1.33       98.67
+ 2024-10-02 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(67 missing values generated)
+(67 missing values generated)
+(67 missing values generated)
+harvest_date_12_year: all characters numeric; replaced as int
+(67 missing values generated)
+harvest_date_12_month: all characters numeric; replaced as byte
+(67 missing values generated)
+harvest_date_12_day: all characters numeric; replaced as byte
+(67 missing values generated)
+(67 missing values generated)
+Variable: harvest_date_13
+
+    date of |
+   harvest: |
+   round 13 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         68       90.67       90.67
+ 2024-08-28 |          1        1.33       92.00
+ 2024-09-04 |          2        2.67       94.67
+ 2024-09-07 |          3        4.00       98.67
+ 2024-10-12 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(68 missing values generated)
+(68 missing values generated)
+(68 missing values generated)
+harvest_date_13_year: all characters numeric; replaced as int
+(68 missing values generated)
+harvest_date_13_month: all characters numeric; replaced as byte
+(68 missing values generated)
+harvest_date_13_day: all characters numeric; replaced as byte
+(68 missing values generated)
+(68 missing values generated)
+Variable: harvest_date_14
+
+    date of |
+   harvest: |
+   round 14 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         70       93.33       93.33
+ 2024-09-04 |          1        1.33       94.67
+ 2024-09-07 |          2        2.67       97.33
+ 2024-10-12 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(70 missing values generated)
+(70 missing values generated)
+(70 missing values generated)
+harvest_date_14_year: all characters numeric; replaced as int
+(70 missing values generated)
+harvest_date_14_month: all characters numeric; replaced as byte
+(70 missing values generated)
+harvest_date_14_day: all characters numeric; replaced as byte
+(70 missing values generated)
+(70 missing values generated)
+Variable: harvest_date_15
+
+    date of |
+   harvest: |
+   round 15 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         72       96.00       96.00
+ 2024-09-07 |          1        1.33       97.33
+ 2024-09-11 |          1        1.33       98.67
+ 2024-10-12 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(72 missing values generated)
+(72 missing values generated)
+(72 missing values generated)
+harvest_date_15_year: all characters numeric; replaced as int
+(72 missing values generated)
+harvest_date_15_month: all characters numeric; replaced as byte
+(72 missing values generated)
+harvest_date_15_day: all characters numeric; replaced as byte
+(72 missing values generated)
+(72 missing values generated)
+Variable: harvest_date_16
+
+    date of |
+   harvest: |
+   round 16 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         74       98.67       98.67
+ 2024-09-11 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(74 missing values generated)
+(74 missing values generated)
+(74 missing values generated)
+harvest_date_16_year: all characters numeric; replaced as int
+(74 missing values generated)
+harvest_date_16_month: all characters numeric; replaced as byte
+(74 missing values generated)
+harvest_date_16_day: all characters numeric; replaced as byte
+(74 missing values generated)
+(74 missing values generated)
+Variable: harvest_date_17
+
+    date of |
+   harvest: |
+   round 17 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         73       97.33       97.33
+ 2024-09-14 |          2        2.67      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(73 missing values generated)
+(73 missing values generated)
+(73 missing values generated)
+harvest_date_17_year: all characters numeric; replaced as int
+(73 missing values generated)
+harvest_date_17_month: all characters numeric; replaced as byte
+(73 missing values generated)
+harvest_date_17_day: all characters numeric; replaced as byte
+(73 missing values generated)
+(73 missing values generated)
+Variable: harvest_date_18
+
+    date of |
+   harvest: |
+   round 18 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         74       98.67       98.67
+ 2024-09-18 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(74 missing values generated)
+(74 missing values generated)
+(74 missing values generated)
+harvest_date_18_year: all characters numeric; replaced as int
+(74 missing values generated)
+harvest_date_18_month: all characters numeric; replaced as byte
+(74 missing values generated)
+harvest_date_18_day: all characters numeric; replaced as byte
+(74 missing values generated)
+(74 missing values generated)
+Variable: harvest_date_19
+
+    date of |
+   harvest: |
+   round 19 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |         74       98.67       98.67
+ 2024-10-02 |          1        1.33      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+(74 missing values generated)
+(74 missing values generated)
+(74 missing values generated)
+harvest_date_19_year: all characters numeric; replaced as int
+(74 missing values generated)
+harvest_date_19_month: all characters numeric; replaced as byte
+(74 missing values generated)
+harvest_date_19_day: all characters numeric; replaced as byte
+(74 missing values generated)
+(74 missing values generated)
+Variable: harvest_date_20
+
+    date of |
+   harvest: |
+   round 20 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_20 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_20_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_20_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_20_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_21
+
+    date of |
+   harvest: |
+   round 21 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_21 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_21_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_21_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_21_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_22
+
+    date of |
+   harvest: |
+   round 22 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_22 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_22_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_22_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_22_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_23
+
+    date of |
+   harvest: |
+   round 23 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_23 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_23_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_23_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_23_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_24
+
+    date of |
+   harvest: |
+   round 24 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_24 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_24_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_24_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_24_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_25
+
+    date of |
+   harvest: |
+   round 25 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_25 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_25_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_25_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_25_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_26
+
+    date of |
+   harvest: |
+   round 26 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_26 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_26_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_26_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_26_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_27
+
+    date of |
+   harvest: |
+   round 27 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_27 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_27_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_27_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_27_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_28
+
+    date of |
+   harvest: |
+   round 28 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_28 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_28_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_28_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_28_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_29
+
+    date of |
+   harvest: |
+   round 29 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_29 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_29_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_29_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_29_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+Variable: harvest_date_30
+
+    date of |
+   harvest: |
+   round 30 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          . |         75      100.00      100.00
+------------+-----------------------------------
+      Total |         75      100.00
+harvest_date_30 was byte now str1
+(75 missing values generated)
+(75 missing values generated)
+harvest_date_30_year: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_30_month: all characters numeric; replaced as byte
+(75 missing values generated)
+harvest_date_30_day: all characters numeric; replaced as byte
+(75 missing values generated)
+(75 missing values generated)
+
+. /*              
 >         /* Convert categorical strings into categorical numerics */
 >         local cat_str_list crop sow_med *type*
 >         tab1 `cat_str_list', missing
@@ -389,8 +1695,10 @@ path_ipm_type_3_3 was byte now str1
 >                         capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
 >                         if _rc==0 {
 >                                 capture confirm numeric variable `var'
->                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
->                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
+>                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet be
+> en transplanted.
+>                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been 
+> transplanted.
 >                                 // All plants have now been transplanted but saving this loop for next season;s iteration of this crop data cleaning program
 >                         }
 >                 }
@@ -445,10 +1753,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 crop            str35   %35s                  crop type
 sow_type        str12   %12s                  seed sowing type
 sow_date        str10   %10s                  seed sowing date
+sow_date_stata  int     %td                   seed sowing date- stata
 sow_med         str18   %18s                  seed sowing medium
 sow_cell        byte    %10.0g                seed sowing cell type
 sow_no_cellro~l byte    %10.0g                number of cells/rows/hills sown
@@ -461,171 +1770,227 @@ sow_heatmat_t~p byte    %10.0g                temperature (F) of heat mat used t
 sow_light_hrs   byte    %10.0g                number of hours of lighting
 sow_light_type  str7    %9s                   lighting type
 sow_fert_date_1 str10   %10s                  date of fertilizer applied to indoor seedlings: round 1
+sow_fer~1_stata int     %td                   date of fertilizer applied to indoor seedlings: round 1- stata
 sow_fert_ty~k_1 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 1
 sow_fert_ty~e_1 str21   %21s                  name of fertilizer applied to indoor seedlings: round 1
 sow_fert_dose_1 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 1
 sow_fert_date_2 str10   %10s                  date of fertilizer applied to indoor seedlings: round 2
+sow_fer~2_stata int     %td                   date of fertilizer applied to indoor seedlings: round 2- stata
 sow_fert_ty~k_2 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 2
 sow_fert_ty~e_2 str21   %21s                  name of fertilizer applied to indoor seedlings: round 2
 sow_fert_dose_2 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 2
 sow_fert_date_3 str10   %10s                  date of fertilizer applied to indoor seedlings: round 3
+sow_fer~3_stata int     %td                   date of fertilizer applied to indoor seedlings: round 3- stata
 sow_fert_ty~k_3 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 3
 sow_fert_ty~e_3 str21   %21s                  name of fertilizer applied to indoor seedlings: round 3
 sow_fert_dose_3 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 3
 sow_fert_date_4 str10   %10s                  date of fertilizer applied to indoor seedlings: round 4
+sow_fer~4_stata int     %td                   date of fertilizer applied to indoor seedlings: round 4- stata
 sow_fert_ty~k_4 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 4
 sow_fert_ty~e_4 str21   %21s                  name of fertilizer applied to indoor seedlings: round 4
 sow_fert_dose_4 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 4
 sow_fert_date_5 str10   %10s                  date of fertilizer applied to indoor seedlings: round 5
+sow_fer~5_stata int     %td                   date of fertilizer applied to indoor seedlings: round 5- stata
 sow_fert_ty~k_5 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 5
 sow_fert_ty~e_5 str21   %21s                  name of fertilizer applied to indoor seedlings: round 5
 sow_fert_dose_5 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 5
 sow_fert_date_6 str10   %10s                  date of fertilizer applied to indoor seedlings: round 6
+sow_fer~6_stata int     %td                   date of fertilizer applied to indoor seedlings: round 6- stata
 sow_fert_ty~k_6 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 6
 sow_fert_ty~e_6 str21   %21s                  name of fertilizer applied to indoor seedlings: round 6
 sow_fert_dose_6 str4    %9s                   dose of fertilizer applied to indoor seedlings: round 6
 transp_harden~t str10   %10s                  transplant harden off start date
+transp_~t_stata int     %td                   transplant harden off start date- stata
 transp_harden~d str10   %10s                  transplant harden off end date
+transp_~d_stata int     %td                   transplant harden off end date- stata
 transp_date_1   str10   %10s                  transplant date: round 1
+transp_date_1~a int     %td                   transplant date: round 1- stata
 transp_med_1    str17   %17s                  transplant medium: round 1
 transp_no_srt_1 byte    %10.0g                starting number of transplants: round 1
 transp_no_end_1 byte    %10.0g                ending number of transplants: round 1
 transp_date_2   str10   %10s                  transplant date: round 2
+transp_date_2~a int     %td                   transplant date: round 2- stata
 transp_med_2    str18   %18s                  transplant medium: round 2
 transp_no_srt_2 byte    %10.0g                starting number of transplants: round 2
 transp_no_end_2 byte    %10.0g                ending number of transplants: round 2
 fert_type_npk_1 str6    %9s                   npk of fertilizer applied to indoor seedlings: round 1
 fert_type_nam~1 str43   %43s                  name of fertilizer applied to indoor seedlings: round 1
 fert_date_1     str10   %10s                  date of fertilizer applied to crop: round 1
+fert_date_1_s~a int     %td                   date of fertilizer applied to crop: round 1- stata
 fert_amnt_per_1 str4    %9s                   amount of fertilizer applied per plant: round 1
 fert_unit_1     str5    %9s                   unit of fertilizer applied to crop: round 1
 fert_type_npk_2 str6    %9s                   npk of fertilizer applied to indoor seedlings: round 2
 fert_type_nam~2 str43   %43s                  name of fertilizer applied to indoor seedlings: round 2
 fert_date_2     str10   %10s                  date of fertilizer applied to crop: round 2
+fert_date_2_s~a int     %td                   date of fertilizer applied to crop: round 2- stata
 fert_amnt_per_2 byte    %10.0g                amount of fertilizer applied per plant: round 2
 fert_unit_2     str6    %9s                   unit of fertilizer applied to crop: round 2
 fert_type_npk_3 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 3
 fert_type_nam~3 str32   %32s                  name of fertilizer applied to indoor seedlings: round 3
 fert_date_3     str10   %10s                  date of fertilizer applied to crop: round 3
+fert_date_3_s~a int     %td                   date of fertilizer applied to crop: round 3- stata
 fert_amnt_per_3 double  %10.0g                amount of fertilizer applied per plant: round 3
 fert_unit_3     str5    %9s                   unit of fertilizer applied to crop: round 3
 fert_type_npk_4 str5    %9s                   npk of fertilizer applied to indoor seedlings: round 4
 fert_type_nam~4 str32   %32s                  name of fertilizer applied to indoor seedlings: round 4
-fert_date_4     int     %td                   date of fertilizer applied to crop: round 4
+fert_date_4     str5    %9s                   date of fertilizer applied to crop: round 4
+fert_date_4_s~a byte    %td                   date of fertilizer applied to crop: round 4- stata
 fert_amnt_per_4 double  %10.0g                amount of fertilizer applied per plant: round 4
 fert_unit_4     str5    %9s                   unit of fertilizer applied to crop: round 4
 path_type_1     str28   %28s                  pathogen type: pathogen 1
 path_date_1     str10   %10s                  pathogen date: pathogen 1
+path_date_1_s~a int     %td                   pathogen date: pathogen 1- stata
 path_ipm_ty~1_1 str10   %10s                  ipm type, type 1: pathogen 1
-path_ipm_da~1_1 int     %td                   ipm date, type 1: pathogen 1
+path_ipm_da~1_1 str10   %10s                  ipm date, type 1: pathogen 1
+path_~1_1_stata int     %td                   ipm date, type 1: pathogen 1- stata
 path_ipm_ty~1_2 str2    %9s                   ipm type, type 2: pathogen 1
-path_ipm_da~1_2 byte    %10.0g                ipm date, type 2: pathogen 1
+path_ipm_da~1_2 str1    %9s                   ipm date, type 2: pathogen 1
+path_~1_2_stata byte    %td                   ipm date, type 2: pathogen 1- stata
 path_ipm_ty~1_3 str1    %9s                   ipm type, type 3: pathogen 1
-path_ipm_da~1_3 byte    %10.0g                ipm date, type 3: pathogen 1
+path_ipm_da~1_3 str1    %9s                   ipm date, type 3: pathogen 1
+path_~1_3_stata byte    %td                   ipm date, type 3: pathogen 1- stata
 path_type_2     str16   %16s                  pathogen type: pathogen 2
 path_date_2     str10   %10s                  pathogen date: pathogen 2
+path_date_2_s~a int     %td                   pathogen date: pathogen 2- stata
 path_ipm_ty~2_1 str6    %9s                   ipm type, type 1: pathogen 2
-path_ipm_da~2_1 int     %td                   ipm date, type 1: pathogen 2
+path_ipm_da~2_1 str10   %10s                  ipm date, type 1: pathogen 2
+path_~2_1_stata int     %td                   ipm date, type 1: pathogen 2- stata
 path_ipm_ty~2_2 str1    %9s                   ipm type, type 2: pathogen 2
-path_ipm_da~2_2 byte    %10.0g                ipm date, type 2: pathogen 2
+path_ipm_da~2_2 str1    %9s                   ipm date, type 2: pathogen 2
+path_~2_2_stata byte    %td                   ipm date, type 2: pathogen 2- stata
 path_ipm_ty~2_3 str1    %9s                   ipm type, type 3: pathogen 2
-path_ipm_da~2_3 byte    %10.0g                ipm date, type 3: pathogen 2
+path_ipm_da~2_3 str1    %9s                   ipm date, type 3: pathogen 2
+path_~2_3_stata byte    %td                   ipm date, type 3: pathogen 2- stata
 path_type_3     str6    %9s                   pathogen type: pathogen 3
-path_date_3     int     %td                   pathogen date: pathogen 3
+path_date_3     str10   %10s                  pathogen date: pathogen 3
+path_date_3_s~a int     %td                   pathogen date: pathogen 3- stata
 path_ipm_ty~3_1 str8    %9s                   ipm type, type 1: pathogen 3
-path_ipm_da~3_1 int     %td                   ipm date, type 1: pathogen 3
+path_ipm_da~3_1 str10   %10s                  ipm date, type 1: pathogen 3
+path_~3_1_stata int     %td                   ipm date, type 1: pathogen 3- stata
 path_ipm_ty~3_2 str1    %9s                   ipm type, type 2: pathogen 3
-path_ipm_da~3_2 byte    %10.0g                ipm date, type 2: pathogen 3
+path_ipm_da~3_2 str1    %9s                   ipm date, type 2: pathogen 3
+path_~3_2_stata byte    %td                   ipm date, type 2: pathogen 3- stata
 path_ipm_ty~3_3 str1    %9s                   ipm type, type 3: pathogen 3
-path_ipm_da~3_3 byte    %10.0g                ipm date, type 3: pathogen 3
+path_ipm_da~3_3 str1    %9s                   ipm date, type 3: pathogen 3
+path_~3_3_stata byte    %td                   ipm date, type 3: pathogen 3- stata
 harvest_date_1  str10   %10s                  date of harvest: round 1
+harves~_1_stata int     %td                   date of harvest: round 1- stata
 harvest_amnt_1  int     %10.0g                harvested amount (wet): round 1
 harvest_unit_1  str5    %9s                   unit of harvest: round 1
 harvest_date_2  str10   %10s                  date of harvest: round 2
+harves~_2_stata int     %td                   date of harvest: round 2- stata
 harvest_amnt_2  byte    %10.0g                harvested amount (wet): round 2
 harvest_unit_2  str5    %9s                   unit of harvest: round 2
 harvest_date_3  str10   %10s                  date of harvest: round 3
+harves~_3_stata int     %td                   date of harvest: round 3- stata
 harvest_amnt_3  byte    %10.0g                harvested amount (wet): round 3
 harvest_unit_3  str5    %9s                   unit of harvest: round 3
 harvest_date_4  str10   %10s                  date of harvest: round 4
+harves~_4_stata int     %td                   date of harvest: round 4- stata
 harvest_amnt_4  byte    %10.0g                harvested amount (wet): round 4
 harvest_unit_4  str5    %9s                   unit of harvest: round 4
 harvest_date_5  str10   %10s                  date of harvest: round 5
+harves~_5_stata int     %td                   date of harvest: round 5- stata
 harvest_amnt_5  byte    %10.0g                harvested amount (wet): round 5
 harvest_unit_5  str5    %9s                   unit of harvest: round 5
 harvest_date_6  str10   %10s                  date of harvest: round 6
+harves~_6_stata int     %td                   date of harvest: round 6- stata
 harvest_amnt_6  double  %10.0g                harvested amount (wet): round 6
 harvest_unit_6  str5    %9s                   unit of harvest: round 6
 harvest_date_7  str10   %10s                  date of harvest: round 7
+harves~_7_stata int     %td                   date of harvest: round 7- stata
 harvest_amnt_7  double  %10.0g                harvested amount (wet): round 7
 harvest_unit_7  str5    %9s                   unit of harvest: round 7
 harvest_date_8  str10   %10s                  date of harvest: round 8
+harves~_8_stata int     %td                   date of harvest: round 8- stata
 harvest_amnt_8  int     %10.0g                harvested amount (wet): round 8
 harvest_unit_8  str5    %9s                   unit of harvest: round 8
 harvest_date_9  str10   %10s                  date of harvest: round 9
+harves~_9_stata int     %td                   date of harvest: round 9- stata
 harvest_amnt_9  double  %10.0g                harvested amount (wet): round 9
 harvest_unit_9  str5    %9s                   unit of harvest: round 9
 harvest_date_10 str10   %10s                  date of harvest: round 10
+harves~10_stata int     %td                   date of harvest: round 10- stata
 harvest_amnt_10 byte    %10.0g                harvested amount (wet): round 10
 harvest_unit_10 str5    %9s                   unit of harvest: round 10
 harvest_date_11 str10   %10s                  date of harvest: round 11
+harves~11_stata int     %td                   date of harvest: round 11- stata
 harvest_amnt_11 int     %10.0g                harvested amount (wet): round 11
 harvest_unit_11 str5    %9s                   unit of harvest: round 11
 harvest_date_12 str10   %10s                  date of harvest: round 12
+harves~12_stata int     %td                   date of harvest: round 12- stata
 harvest_amnt_12 int     %10.0g                harvested amount (wet): round 12
 harvest_unit_12 str5    %9s                   unit of harvest: round 12
 harvest_date_13 str10   %10s                  date of harvest: round 13
+harves~13_stata int     %td                   date of harvest: round 13- stata
 harvest_amnt_13 byte    %10.0g                harvested amount (wet): round 13
 harvest_unit_13 str5    %9s                   unit of harvest: round 13
 harvest_date_14 str10   %10s                  date of harvest: round 14
+harves~14_stata int     %td                   date of harvest: round 14- stata
 harvest_amnt_14 byte    %10.0g                harvested amount (wet): round 14
 harvest_unit_14 str5    %9s                   unit of harvest: round 14
 harvest_date_15 str10   %10s                  date of harvest: round 15
+harves~15_stata int     %td                   date of harvest: round 15- stata
 harvest_amnt_15 double  %10.0g                harvested amount (wet): round 15
 harvest_unit_15 str5    %9s                   unit of harvest: round 15
 harvest_date_16 str10   %10s                  date of harvest: round 16
+harves~16_stata int     %td                   date of harvest: round 16- stata
 harvest_amnt_16 byte    %10.0g                harvested amount (wet): round 16
 harvest_unit_16 str5    %9s                   unit of harvest: round 16
 harvest_date_17 str10   %10s                  date of harvest: round 17
+harves~17_stata int     %td                   date of harvest: round 17- stata
 harvest_amnt_17 byte    %10.0g                harvested amount (wet): round 17
 harvest_unit_17 str5    %9s                   unit of harvest: round 17
 harvest_date_18 str10   %10s                  date of harvest: round 18
+harves~18_stata int     %td                   date of harvest: round 18- stata
 harvest_amnt_18 byte    %10.0g                harvested amount (wet): round 18
 harvest_unit_18 str5    %9s                   unit of harvest: round 18
 harvest_date_19 str10   %10s                  date of harvest: round 19
+harves~19_stata int     %td                   date of harvest: round 19- stata
 harvest_amnt_19 byte    %10.0g                harvested amount (wet): round 19
 harvest_unit_19 str5    %9s                   unit of harvest: round 19
-harvest_date_20 byte    %10.0g                date of harvest: round 20
+harvest_date_20 str1    %9s                   date of harvest: round 20
+harves~20_stata byte    %td                   date of harvest: round 20- stata
 harvest_amnt_20 byte    %10.0g                harvested amount (wet): round 20
 harvest_unit_20 byte    %10.0g                unit of harvest: round 20
-harvest_date_21 byte    %10.0g                date of harvest: round 21
+harvest_date_21 str1    %9s                   date of harvest: round 21
+harves~21_stata byte    %td                   date of harvest: round 21- stata
 harvest_amnt_21 byte    %10.0g                harvested amount (wet): round 21
 harvest_unit_21 byte    %10.0g                unit of harvest: round 21
-harvest_date_22 byte    %10.0g                date of harvest: round 22
+harvest_date_22 str1    %9s                   date of harvest: round 22
+harves~22_stata byte    %td                   date of harvest: round 22- stata
 harvest_amnt_22 byte    %10.0g                harvested amount (wet): round 22
 harvest_unit_22 byte    %10.0g                unit of harvest: round 22
-harvest_date_23 byte    %10.0g                date of harvest: round 23
+harvest_date_23 str1    %9s                   date of harvest: round 23
+harves~23_stata byte    %td                   date of harvest: round 23- stata
 harvest_amnt_23 byte    %10.0g                harvested amount (wet): round 23
 harvest_unit_23 byte    %10.0g                unit of harvest: round 23
-harvest_date_24 byte    %10.0g                date of harvest: round 24
+harvest_date_24 str1    %9s                   date of harvest: round 24
+harves~24_stata byte    %td                   date of harvest: round 24- stata
 harvest_amnt_24 byte    %10.0g                harvested amount (wet): round 24
 harvest_unit_24 byte    %10.0g                unit of harvest: round 24
-harvest_date_25 byte    %10.0g                date of harvest: round 25
+harvest_date_25 str1    %9s                   date of harvest: round 25
+harves~25_stata byte    %td                   date of harvest: round 25- stata
 harvest_amnt_25 byte    %10.0g                harvested amount (wet): round 25
 harvest_unit_25 byte    %10.0g                unit of harvest: round 25
-harvest_date_26 byte    %10.0g                date of harvest: round 26
+harvest_date_26 str1    %9s                   date of harvest: round 26
+harves~26_stata byte    %td                   date of harvest: round 26- stata
 harvest_amnt_26 byte    %10.0g                harvested amount (wet): round 26
 harvest_unit_26 byte    %10.0g                unit of harvest: round 26
-harvest_date_27 byte    %10.0g                date of harvest: round 27
+harvest_date_27 str1    %9s                   date of harvest: round 27
+harves~27_stata byte    %td                   date of harvest: round 27- stata
 harvest_amnt_27 byte    %10.0g                harvested amount (wet): round 27
 harvest_unit_27 byte    %10.0g                unit of harvest: round 27
-harvest_date_28 byte    %10.0g                date of harvest: round 28
+harvest_date_28 str1    %9s                   date of harvest: round 28
+harves~28_stata byte    %td                   date of harvest: round 28- stata
 harvest_amnt_28 byte    %10.0g                harvested amount (wet): round 28
 harvest_unit_28 byte    %10.0g                unit of harvest: round 28
-harvest_date_29 byte    %10.0g                date of harvest: round 29
+harvest_date_29 str1    %9s                   date of harvest: round 29
+harves~29_stata byte    %td                   date of harvest: round 29- stata
 harvest_amnt_29 byte    %10.0g                harvested amount (wet): round 29
 harvest_unit_29 byte    %10.0g                unit of harvest: round 29
-harvest_date_30 byte    %10.0g                date of harvest: round 30
+harvest_date_30 str1    %9s                   date of harvest: round 30
+harves~30_stata byte    %td                   date of harvest: round 30- stata
 harvest_amnt_30 byte    %10.0g                harvested amount (wet): round 30
 harvest_unit_30 byte    %10.0g                unit of harvest: round 30
 notes           str196  %196s                 notes
@@ -636,5 +2001,5 @@ notes           str196  %196s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:  17 Nov 2024, 13:05:46
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   2 Dec 2024, 21:33:04
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

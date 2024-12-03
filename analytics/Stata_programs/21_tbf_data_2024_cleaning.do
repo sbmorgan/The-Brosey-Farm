@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: February 29, 2024 	   					 	     			                  ***
-*** Last date modified: November 25, 2024                                                     ***
+*** Last date modified: December 2, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -96,7 +96,7 @@ pause off
 		format `var'_stata %td
 		order `var'_stata, after(`var')
 	}
-/* 		
+		
 	/* Convert categorical strings into categorical numerics */
 	local cat_str_list crop sow_med *type*
 	tab1 `cat_str_list', missing
@@ -142,7 +142,7 @@ pause off
 *=========================================================================================
 * III) CLEAN DATA
 *=========================================================================================     
-
+/* 
 	/* Clean missing values */
 		
 		*-> Crop
