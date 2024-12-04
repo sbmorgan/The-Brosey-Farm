@@ -142,26 +142,32 @@ pause off
 *=========================================================================================
 * III) CLEAN DATA
 *=========================================================================================     
-/* 
+
 	/* Clean missing values */
+**# Bookmark #2 Incorporate .m throughout?
 		
 		*-> Crop
 		assert !missing(crop)
 		assert !missing(sow_type)
-		
+ 		
 		*-> Non-seeded transplants (externally sourced transplants)
-		foreach var of varlist sow_date-transp_harden_date_end_stata {
-			tablist sow_type `var', sort(v) ab(32) nolabel
-			assert missing(`var') if sow_type=="external transplant"
-			capture confirm numeric variable `var'
-			if _rc==0 replace `var'= .s if sow_type=="external transplant"
-			else replace `var'= ".s" if sow_type=="external transplant"
-			tablist sow_type `var', sort(v) ab(32) nolabel
+		count if sow_type=="external transplant"
+		if `r(N)' != 0 {
+			foreach var of varlist sow_date-transp_harden_date_end_stata {
+				tablist sow_type `var', sort(v) ab(32) nolabel
+				assert missing(`var') if sow_type=="external transplant"
+				capture confirm numeric variable `var'
+				if _rc==0 replace `var'= .s if sow_type=="external transplant"
+				else replace `var'= ".s" if sow_type=="external transplant"
+				tablist sow_type `var', sort(v) ab(32) nolabel
+			}			
 		}
+
 		
 		*-> Seedlings variables: *sow* transp*
-		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was direct seeded in the garden versus indoor seeding.
-			tablist sow_med_code `var', sort(v) ab(32) nolabel
+		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was directly seeded in the garden versus indoor seeding.
+			display as input _n "Variable: `var'"
+			tablist sow_med sow_med_code `var', sort(v) ab(32) nolabel
 			assert missing(`var') if inlist(sow_med_code, 1, 2)
 			capture confirm numeric variable `var'
 			if _rc==0 replace `var'= .s if inlist(sow_med_code, 1, 2)
@@ -173,14 +179,15 @@ pause off
 		assert sow_heatmat_temp==. if sow_heatmat=="no"
 		replace sow_heatmat_temp=.s if sow_heatmat=="no"
 		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
-		
+	
 		tablist crop crop_code, sort(v) nolabel
-		foreach var of varlist sow_no_germ_per sow_to_germ25_days sow_no_thin_per {	
-			replace `var'=.s if `var'==. & crop_code==9 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
+		tablist crop crop_code sow_date if crop_code==18, sort(v) ab(32) nolabel
+		assert sow_to_germ50_days==. if crop_code==18 // Garlic doesn't bulb/produce leaves above ground until the following season.
+		replace sow_to_germ50_days=.s if crop_code==18
+		foreach var of varlist sow_no_germ_per sow_no_thin_per {	
+			assert `var'==. if crop_code==18 & sow_date=="2024-11-16"
+			replace `var'=.s if crop_code==18 & sow_date=="2024-11-16" // For the 2024-planted garlic that has not germinated yet. Planted in FA24 for harvest SU25.
 		}
-		
-		tablist crop sow_date if sow_no_thin_per==., sort(v) ab(32) // These are true missing data. Should have been filled out but were not.
-		replace sow_no_thin_per=.m if sow_no_thin_per==.
 		
 		/*
 		foreach var of varlist transp_* {
@@ -189,21 +196,25 @@ pause off
 				capture confirm numeric variable `var'
 				*if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
 				*else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
-				// All plants have now been transplanted but saving this loop for next season;s iteration of this crop data cleaning program
+				// All plants have now been transplanted but saving this loop for next season's iteration of this crop data cleaning program
 			}
 		}
 		*/
 		
 		foreach var of varlist transp*_2* {
-			tablist crop sow_date if missing(`var'), sort(v) ab(32)
+			display as input "Variable: `var'"
+			tablist transp_date_1_stata `var', sort(v) ab(32)
 			capture confirm numeric variable `var'
-			if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
-			else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
+			if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were transplanted only once.
+			else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were transplanted only once.
+			tablist transp_date_1_stata `var', sort(v) ab(32)
 		}
 		
 		*-> Fertilizing, pathogen, and harvesting variables: *fert_* path_* harvest_*
+**# Bookmark #1 Expand this to replace as .m if not .s for other variables in same number/date group
 		foreach var of varlist *fert_* path_* harvest_* {
 			display as input "Variable: `var'"
+			tablist sow_type `var', sort(v) ab(32) nolabel
 			capture confirm numeric variable `var'
 			if _rc==0 replace `var'= .s if missing(`var')
 			else replace `var'= ".s" if missing(`var') | `var'=="."
@@ -212,7 +223,7 @@ pause off
 		
 		*-> Notes
 		replace notes=".s" if missing(notes)
-		
+/*		
 		*-> Check all missing values have been cleaned
 		foreach var of varlist _all {
 			display as input "Variable: `var'"

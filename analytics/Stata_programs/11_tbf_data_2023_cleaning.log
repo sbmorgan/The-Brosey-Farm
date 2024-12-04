@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_11
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\11_tbf_data_2023_cleaning.log
   log type:  text
- opened on:   2 Oct 2024, 10:53:45
+ opened on:   3 Dec 2024, 20:59:45
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: July 12, 2023                                                                                                     ***
-. *** Last date modified: October 2, 2024                                                       ***
+. *** Last date modified: December 3, 2024                                                       ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -78,17 +78,19 @@
 (968 observations deleted)
 
 .         ds 
-crop          sow_heatma~p  sow_fer~te_3  transp_med_1  fert_unit_1   path_type_1   path_~te_2_1  path_~pe_3_3  harvest_d~_4  harvest_u~_7  harvest_a~11  harvest_d~15  harvest_u~18  harvest_a~22  harvest_d~26  harvest_u~29
-sow_type      sow_light_~s  sow_fert~k_3  transp_n~t_1  fert_typ~k_2  path_date_1   path_~pe_2_2  path_~te_3_3  harvest_a~_4  harvest_d~_8  harvest_u~11  harvest_a~15  harvest_d~19  harvest_u~22  harvest_a~26  harvest_d~30
-sow_date      sow_light_~e  sow_fer~me_3  transp_n~d_1  fert_typ~e_2  path_~pe_1_1  path_~te_2_2  harvest_d~_1  harvest_u~_4  harvest_a~_8  harvest_d~12  harvest_u~15  harvest_a~19  harvest_d~23  harvest_u~26  harvest_a~30
-sow_med       sow_fer~te_1  sow_fer~se_3  transp_dat~2  fert_date_2   path_~te_1_1  path_~pe_2_3  harvest_a~_1  harvest_d~_5  harvest_u~_8  harvest_a~12  harvest_d~16  harvest_u~19  harvest_a~23  harvest_d~27  harvest_u~30
-sow_cell      sow_fert~k_1  sow_fer~te_4  transp_med_2  fert_amnt_~2  path_~pe_1_2  path_~te_2_3  harvest_u~_1  harvest_a~_5  harvest_d~_9  harvest_u~12  harvest_a~16  harvest_d~20  harvest_u~23  harvest_a~27  notes
-sow_no_cel~l  sow_fer~me_1  sow_fert~k_4  transp_n~t_2  fert_unit_2   path_~te_1_2  path_type_3   harvest_d~_2  harvest_u~_5  harvest_a~_9  harvest_d~13  harvest_u~16  harvest_a~20  harvest_d~24  harvest_u~27
-sow_no_see~r  sow_fer~se_1  sow_fer~me_4  transp_n~d_2  fert_typ~k_3  path_~pe_1_3  path_date_3   harvest_a~_2  harvest_d~_6  harvest_u~_9  harvest_a~13  harvest_d~17  harvest_u~20  harvest_a~24  harvest_d~28
-sow_no_ger~r  sow_fer~te_2  sow_fer~se_4  fert_typ~k_1  fert_typ~e_3  path_~te_1_3  path_~pe_3_1  harvest_u~_2  harvest_a~_6  harvest_d~10  harvest_u~13  harvest_a~17  harvest_d~21  harvest_u~24  harvest_a~28
-sow_to_ger~s  sow_fert~k_2  transp_har~t  fert_typ~e_1  fert_date_3   path_type_2   path_~te_3_1  harvest_d~_3  harvest_u~_6  harvest_a~10  harvest_d~14  harvest_u~17  harvest_a~21  harvest_d~25  harvest_u~28
-sow_no_thi~r  sow_fer~me_2  transp_har~d  fert_date_1   fert_amnt_~3  path_date_2   path_~pe_3_2  harvest_a~_3  harvest_d~_7  harvest_u~10  harvest_a~14  harvest_d~18  harvest_u~21  harvest_a~25  harvest_d~29
-sow_heatmat   sow_fer~se_2  transp_dat~1  fert_amnt_~1  fert_unit_3   path_~pe_2_1  path_~te_3_2  harvest_u~_3  harvest_a~_7  harvest_d~11  harvest_u~14  harvest_a~18  harvest_d~22  harvest_u~25  harvest_a~29
+crop          sow_light_~e  sow_fer~te_4  transp_n~d_2  fert_date_3   path_~pe_2_1  path_~te_3_3  harvest_d~_5  harvest_a~_9  harvest_u~13  harvest_d~18  harvest_a~22  harvest_u~26  notes
+sow_type      sow_fer~te_1  sow_fert~k_4  fert_typ~k_1  fert_amnt_~3  path_~te_2_1  harvest_d~_1  harvest_a~_5  harvest_u~_9  harvest_d~14  harvest_a~18  harvest_u~22  harvest_d~27
+sow_date      sow_fert~k_1  sow_fer~me_4  fert_typ~e_1  fert_unit_3   path_~pe_2_2  harvest_a~_1  harvest_u~_5  harvest_d~10  harvest_a~14  harvest_u~18  harvest_d~23  harvest_a~27
+sow_med       sow_fer~me_1  sow_fer~se_4  fert_date_1   path_type_1   path_~te_2_2  harvest_u~_1  harvest_d~_6  harvest_a~10  harvest_u~14  harvest_d~19  harvest_a~23  harvest_u~27
+sow_cell      sow_fer~se_1  transp_har~t  fert_amnt_~1  path_date_1   path_~pe_2_3  harvest_d~_2  harvest_a~_6  harvest_u~10  harvest_d~15  harvest_a~19  harvest_u~23  harvest_d~28
+sow_no_cel~l  sow_fer~te_2  transp_har~d  fert_unit_1   path_~pe_1_1  path_~te_2_3  harvest_a~_2  harvest_u~_6  harvest_d~11  harvest_a~15  harvest_u~19  harvest_d~24  harvest_a~28
+sow_no_see~r  sow_fert~k_2  transp_dat~1  fert_typ~k_2  path_~te_1_1  path_type_3   harvest_u~_2  harvest_d~_7  harvest_a~11  harvest_u~15  harvest_d~20  harvest_a~24  harvest_u~28
+sow_no_ger~r  sow_fer~me_2  transp_med_1  fert_typ~e_2  path_~pe_1_2  path_date_3   harvest_d~_3  harvest_a~_7  harvest_u~11  harvest_d~16  harvest_a~20  harvest_u~24  harvest_d~29
+sow_to_ger~s  sow_fer~se_2  transp_n~t_1  fert_date_2   path_~te_1_2  path_~pe_3_1  harvest_a~_3  harvest_u~_7  harvest_d~12  harvest_a~16  harvest_u~20  harvest_d~25  harvest_a~29
+sow_no_thi~r  sow_fer~te_3  transp_n~d_1  fert_amnt_~2  path_~pe_1_3  path_~te_3_1  harvest_u~_3  harvest_d~_8  harvest_a~12  harvest_u~16  harvest_d~21  harvest_a~25  harvest_u~29
+sow_heatmat   sow_fert~k_3  transp_dat~2  fert_unit_2   path_~te_1_3  path_~pe_3_2  harvest_d~_4  harvest_a~_8  harvest_u~12  harvest_d~17  harvest_a~21  harvest_u~25  harvest_d~30
+sow_heatma~p  sow_fer~me_3  transp_med_2  fert_typ~k_3  path_type_2   path_~te_3_2  harvest_a~_4  harvest_u~_8  harvest_d~13  harvest_a~17  harvest_u~21  harvest_d~26  harvest_a~30
+sow_light_~s  sow_fer~se_3  transp_n~t_2  fert_typ~e_3  path_date_2   path_~pe_3_3  harvest_u~_4  harvest_d~_9  harvest_a~13  harvest_u~17  harvest_d~22  harvest_a~26  harvest_u~30
 
 .         
 .         /* Save raw TBF Market Garden 2023 data */
@@ -137,11 +139,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . capture log close labels_12
 
 . log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\12_tbf_data_2023_labels.log", replace name(labels_12)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_12
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\12_tbf_data_2023_labels.log
   log type:  text
- opened on:   2 Oct 2024, 10:53:45
+ opened on:   3 Dec 2024, 20:59:46
 
 . 
 . 
@@ -234,8 +236,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_12
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\12_tbf_data_2023_labels.log
   log type:  text
- closed on:   2 Oct 2024, 10:53:45
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   3 Dec 2024, 20:59:46
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
@@ -2308,7 +2310,7 @@ cut/horn worms |          1        3.03       96.97
 .         tempfile pre_code_export
 
 .         save `pre_code_export'
-file C:\Users\sethb\AppData\Local\Temp\ST_1104_000001.tmp saved as .dta format
+file C:\Users\sethb\AppData\Local\Temp\ST_46d8_000004.tmp saved as .dta format
 
 .         
 .         tablist crop crop_code, sort(v) nolabel
@@ -4754,7 +4756,6 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
   +----------------------------------------------------------------------+
 
 .                 
-. **# Bookmark #1
 .                 tablist crop crop_code, sort(v) nolabel
 
   +--------------------------------------------------------------------------------------+
@@ -4824,147 +4825,191 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 >                         capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
 >                         if _rc==0 {
 >                                 capture confirm numeric variable `var'
->                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
->                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
->                                 // All plants have now been transplanted but saving this loop for next season;s iteration of this crop data cleaning program
+>                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet be
+> en transplanted.
+>                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been 
+> transplanted.
+>                                 // All plants have now been transplanted but saving this loop for next season's iteration of this crop data cleaning program
 >                         }
 >                 }
 >                 */
 .                 
 .                 foreach var of varlist transp*_2* {
-  2.                         tablist crop sow_date if missing(`var'), sort(v) ab(32)
-  3.                         capture confirm numeric variable `var'
-  4.                         if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
-  5.                         else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
-  6.                 }
+  2.                         display as input "Variable: `var'"
+  3.                         tablist transp_date_1_stata `var', sort(v) ab(32)
+  4.                         capture confirm numeric variable `var'
+  5.                         if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were transplanted only once.
+  6.                         else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were transplanted only once.
+  7.                         tablist transp_date_1_stata `var', sort(v) ab(32)
+  8.                 }               
+Variable: transp_date_2
 
   +---------------------------------------------------------------------------+
-  |                   crop     sow_date   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  | transp_date_1_stata   transp_date_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |---------------------------------------------------------------------------|
-  |         kale- lacinato   2023-08-13        1    16.67         1     16.67 |
-  | lettuce- gourmet blend   2023-03-12        1    16.67         2     33.33 |
-  | lettuce- gourmet blend   2023-08-13        1    16.67         3     50.00 |
-  |         pepper- ghost            .s        1    16.67         4     66.67 |
-  |       pepper- habanero           .s        1    16.67         5     83.33 |
+  |           22apr2023                        1     3.03         1      3.03 |
+  |           22apr2023      2023-06-10        1     3.03         2      6.06 |
+  |           22apr2023      2023-06-14        1     3.03         3      9.09 |
+  |           07may2023      2023-05-31        2     6.06         5     15.15 |
+  |           07may2023      2023-06-10        5    15.15        10     30.30 |
   |---------------------------------------------------------------------------|
-  |   pepper- sweet banana           .s        1    16.67         6    100.00 |
-  +---------------------------------------------------------------------------+
-(6 real changes made)
-
-  +----------------------------------------------------------------------------------------+
-  |                                crop     sow_date   _Freq_   _Perc_   _CFreq_   _CPerc_ |
-  |----------------------------------------------------------------------------------------|
-  |              arrugula- garden tangy   2023-04-22        1     4.17         1      4.17 |
-  |              arrugula- garden tangy   2023-05-20        1     4.17         2      8.33 |
-  |                 bean- fin de bagnol   2023-06-01        1     4.17         3     12.50 |
-  |                 bean- fin de bagnol   2023-06-10        1     4.17         4     16.67 |
-  |                     carrot- touchon   2023-05-20        1     4.17         5     20.83 |
-  |----------------------------------------------------------------------------------------|
-  |                     carrot- touchon   2023-06-01        1     4.17         6     25.00 |
-  |                            cilantro   2023-05-20        1     4.17         7     29.17 |
-  |         corn- ornamental, glass gem   2023-05-31        1     4.17         8     33.33 |
-  |         corn- ornamental, glass gem   2023-06-10        1     4.17         9     37.50 |
-  |                          dill- hera   2023-04-22        1     4.17        10     41.67 |
-  |----------------------------------------------------------------------------------------|
-  |                          dill- hera   2023-05-20        1     4.17        11     45.83 |
-  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        12     50.00 |
-  |                      kale- lacinato   2023-08-13        1     4.17        13     54.17 |
-  |              lettuce- gourmet blend   2023-03-12        1     4.17        14     58.33 |
-  |              lettuce- gourmet blend   2023-08-13        1     4.17        15     62.50 |
-  |----------------------------------------------------------------------------------------|
-  |                      pepper- ghost            .s        1     4.17        16     66.67 |
-  |                    pepper- habanero           .s        1     4.17        17     70.83 |
-  |                pepper- sweet banana           .s        1     4.17        18     75.00 |
-  |          pumpkin- connecticut field   2023-06-01        1     4.17        19     79.17 |
-  |          pumpkin- connecticut field   2023-06-10        1     4.17        20     83.33 |
-  |----------------------------------------------------------------------------------------|
-  |                  sunflower- mammoth   2023-05-31        1     4.17        21     87.50 |
-  |                  sunflower- mammoth   2023-06-15        1     4.17        22     91.67 |
-  |       sweet corn- country gentleman   2023-05-31        1     4.17        23     95.83 |
-  |       sweet corn- country gentleman   2023-06-10        1     4.17        24    100.00 |
-  +----------------------------------------------------------------------------------------+
-(6 real changes made, 6 to missing)
-
-  +---------------------------------------------------------------------------+
-  |                   crop     sow_date   _Freq_   _Perc_   _CFreq_   _CPerc_ |
-  |---------------------------------------------------------------------------|
-  |         kale- lacinato   2023-08-13        1    16.67         1     16.67 |
-  | lettuce- gourmet blend   2023-03-12        1    16.67         2     33.33 |
-  | lettuce- gourmet blend   2023-08-13        1    16.67         3     50.00 |
-  |         pepper- ghost            .s        1    16.67         4     66.67 |
-  |       pepper- habanero           .s        1    16.67         5     83.33 |
-  |---------------------------------------------------------------------------|
-  |   pepper- sweet banana           .s        1    16.67         6    100.00 |
+  |           10jun2023                        3     9.09        13     39.39 |
+  |           28sep2023                        2     6.06        15     45.45 |
+  |                  .s              .s       18    54.55        33    100.00 |
   +---------------------------------------------------------------------------+
 (6 real changes made)
 
-  +----------------------------------------------------------------------------------------+
-  |                                crop     sow_date   _Freq_   _Perc_   _CFreq_   _CPerc_ |
-  |----------------------------------------------------------------------------------------|
-  |              arrugula- garden tangy   2023-04-22        1     4.17         1      4.17 |
-  |              arrugula- garden tangy   2023-05-20        1     4.17         2      8.33 |
-  |                 bean- fin de bagnol   2023-06-01        1     4.17         3     12.50 |
-  |                 bean- fin de bagnol   2023-06-10        1     4.17         4     16.67 |
-  |                     carrot- touchon   2023-05-20        1     4.17         5     20.83 |
-  |----------------------------------------------------------------------------------------|
-  |                     carrot- touchon   2023-06-01        1     4.17         6     25.00 |
-  |                            cilantro   2023-05-20        1     4.17         7     29.17 |
-  |         corn- ornamental, glass gem   2023-05-31        1     4.17         8     33.33 |
-  |         corn- ornamental, glass gem   2023-06-10        1     4.17         9     37.50 |
-  |                          dill- hera   2023-04-22        1     4.17        10     41.67 |
-  |----------------------------------------------------------------------------------------|
-  |                          dill- hera   2023-05-20        1     4.17        11     45.83 |
-  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        12     50.00 |
-  |                      kale- lacinato   2023-08-13        1     4.17        13     54.17 |
-  |              lettuce- gourmet blend   2023-03-12        1     4.17        14     58.33 |
-  |              lettuce- gourmet blend   2023-08-13        1     4.17        15     62.50 |
-  |----------------------------------------------------------------------------------------|
-  |                      pepper- ghost            .s        1     4.17        16     66.67 |
-  |                    pepper- habanero           .s        1     4.17        17     70.83 |
-  |                pepper- sweet banana           .s        1     4.17        18     75.00 |
-  |          pumpkin- connecticut field   2023-06-01        1     4.17        19     79.17 |
-  |          pumpkin- connecticut field   2023-06-10        1     4.17        20     83.33 |
-  |----------------------------------------------------------------------------------------|
-  |                  sunflower- mammoth   2023-05-31        1     4.17        21     87.50 |
-  |                  sunflower- mammoth   2023-06-15        1     4.17        22     91.67 |
-  |       sweet corn- country gentleman   2023-05-31        1     4.17        23     95.83 |
-  |       sweet corn- country gentleman   2023-06-10        1     4.17        24    100.00 |
-  +----------------------------------------------------------------------------------------+
+  +---------------------------------------------------------------------------+
+  | transp_date_1_stata   transp_date_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------------|
+  |           22apr2023              .f        1     3.03         1      3.03 |
+  |           22apr2023      2023-06-10        1     3.03         2      6.06 |
+  |           22apr2023      2023-06-14        1     3.03         3      9.09 |
+  |           07may2023      2023-05-31        2     6.06         5     15.15 |
+  |           07may2023      2023-06-10        5    15.15        10     30.30 |
+  |---------------------------------------------------------------------------|
+  |           10jun2023              .f        3     9.09        13     39.39 |
+  |           28sep2023              .f        2     6.06        15     45.45 |
+  |                  .s              .s       18    54.55        33    100.00 |
+  +---------------------------------------------------------------------------+
+Variable: transp_date_2_stata
+
+  +---------------------------------------------------------------------------------+
+  | transp_date_1_stata   transp_date_2_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------------------|
+  |           22apr2023             10jun2023        1     3.03         1      3.03 |
+  |           22apr2023             14jun2023        1     3.03         2      6.06 |
+  |           22apr2023                     .        1     3.03         3      9.09 |
+  |           07may2023             31may2023        2     6.06         5     15.15 |
+  |           07may2023             10jun2023        5    15.15        10     30.30 |
+  |---------------------------------------------------------------------------------|
+  |           10jun2023                     .        3     9.09        13     39.39 |
+  |           28sep2023                     .        2     6.06        15     45.45 |
+  |                  .s                    .s       18    54.55        33    100.00 |
+  +---------------------------------------------------------------------------------+
 (6 real changes made, 6 to missing)
 
-  +----------------------------------------------------------------------------------------+
-  |                                crop     sow_date   _Freq_   _Perc_   _CFreq_   _CPerc_ |
-  |----------------------------------------------------------------------------------------|
-  |              arrugula- garden tangy   2023-04-22        1     4.17         1      4.17 |
-  |              arrugula- garden tangy   2023-05-20        1     4.17         2      8.33 |
-  |                 bean- fin de bagnol   2023-06-01        1     4.17         3     12.50 |
-  |                 bean- fin de bagnol   2023-06-10        1     4.17         4     16.67 |
-  |                     carrot- touchon   2023-05-20        1     4.17         5     20.83 |
-  |----------------------------------------------------------------------------------------|
-  |                     carrot- touchon   2023-06-01        1     4.17         6     25.00 |
-  |                            cilantro   2023-05-20        1     4.17         7     29.17 |
-  |         corn- ornamental, glass gem   2023-05-31        1     4.17         8     33.33 |
-  |         corn- ornamental, glass gem   2023-06-10        1     4.17         9     37.50 |
-  |                          dill- hera   2023-04-22        1     4.17        10     41.67 |
-  |----------------------------------------------------------------------------------------|
-  |                          dill- hera   2023-05-20        1     4.17        11     45.83 |
-  | garlic- german extra hardy hardneck   2023-11-04        1     4.17        12     50.00 |
-  |                      kale- lacinato   2023-08-13        1     4.17        13     54.17 |
-  |              lettuce- gourmet blend   2023-03-12        1     4.17        14     58.33 |
-  |              lettuce- gourmet blend   2023-08-13        1     4.17        15     62.50 |
-  |----------------------------------------------------------------------------------------|
-  |                      pepper- ghost            .s        1     4.17        16     66.67 |
-  |                    pepper- habanero           .s        1     4.17        17     70.83 |
-  |                pepper- sweet banana           .s        1     4.17        18     75.00 |
-  |          pumpkin- connecticut field   2023-06-01        1     4.17        19     79.17 |
-  |          pumpkin- connecticut field   2023-06-10        1     4.17        20     83.33 |
-  |----------------------------------------------------------------------------------------|
-  |                  sunflower- mammoth   2023-05-31        1     4.17        21     87.50 |
-  |                  sunflower- mammoth   2023-06-15        1     4.17        22     91.67 |
-  |       sweet corn- country gentleman   2023-05-31        1     4.17        23     95.83 |
-  |       sweet corn- country gentleman   2023-06-10        1     4.17        24    100.00 |
-  +----------------------------------------------------------------------------------------+
+  +---------------------------------------------------------------------------------+
+  | transp_date_1_stata   transp_date_2_stata   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------------------|
+  |           22apr2023             10jun2023        1     3.03         1      3.03 |
+  |           22apr2023             14jun2023        1     3.03         2      6.06 |
+  |           22apr2023                    .s        1     3.03         3      9.09 |
+  |           07may2023             31may2023        2     6.06         5     15.15 |
+  |           07may2023             10jun2023        5    15.15        10     30.30 |
+  |---------------------------------------------------------------------------------|
+  |           10jun2023                    .s        3     9.09        13     39.39 |
+  |           28sep2023                    .s        2     6.06        15     45.45 |
+  |                  .s                    .s       18    54.55        33    100.00 |
+  +---------------------------------------------------------------------------------+
+Variable: transp_med_2
+
+  +--------------------------------------------------------------------------------+
+  | transp_date_1_stata         transp_med_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |           22apr2023                             1     3.03         1      3.03 |
+  |           22apr2023    raised bed- frame        2     6.06         3      9.09 |
+  |           07may2023    raised bed- frame        1     3.03         4     12.12 |
+  |           07may2023   raised bed- ground        6    18.18        10     30.30 |
+  |           10jun2023                             3     9.09        13     39.39 |
+  |--------------------------------------------------------------------------------|
+  |           28sep2023                             2     6.06        15     45.45 |
+  |                  .s                   .s       18    54.55        33    100.00 |
+  +--------------------------------------------------------------------------------+
+(6 real changes made)
+
+  +--------------------------------------------------------------------------------+
+  | transp_date_1_stata         transp_med_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |--------------------------------------------------------------------------------|
+  |           22apr2023                   .f        1     3.03         1      3.03 |
+  |           22apr2023    raised bed- frame        2     6.06         3      9.09 |
+  |           07may2023    raised bed- frame        1     3.03         4     12.12 |
+  |           07may2023   raised bed- ground        6    18.18        10     30.30 |
+  |           10jun2023                   .f        3     9.09        13     39.39 |
+  |--------------------------------------------------------------------------------|
+  |           28sep2023                   .f        2     6.06        15     45.45 |
+  |                  .s                   .s       18    54.55        33    100.00 |
+  +--------------------------------------------------------------------------------+
+Variable: transp_no_srt_2
+
+  +-----------------------------------------------------------------------------+
+  | transp_date_1_stata   transp_no_srt_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  |           22apr2023                 3        1     3.03         1      3.03 |
+  |           22apr2023                 6        1     3.03         2      6.06 |
+  |           22apr2023                 .        1     3.03         3      9.09 |
+  |           07may2023                 6        1     3.03         4     12.12 |
+  |           07may2023                 8        1     3.03         5     15.15 |
+  |-----------------------------------------------------------------------------|
+  |           07may2023                 9        1     3.03         6     18.18 |
+  |           07may2023                10        1     3.03         7     21.21 |
+  |           07may2023                12        1     3.03         8     24.24 |
+  |           07may2023                18        2     6.06        10     30.30 |
+  |           10jun2023                 .        3     9.09        13     39.39 |
+  |-----------------------------------------------------------------------------|
+  |           28sep2023                 .        2     6.06        15     45.45 |
+  |                  .s                .s       18    54.55        33    100.00 |
+  +-----------------------------------------------------------------------------+
 (6 real changes made, 6 to missing)
+
+  +-----------------------------------------------------------------------------+
+  | transp_date_1_stata   transp_no_srt_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  |           22apr2023                 3        1     3.03         1      3.03 |
+  |           22apr2023                 6        1     3.03         2      6.06 |
+  |           22apr2023                .s        1     3.03         3      9.09 |
+  |           07may2023                 6        1     3.03         4     12.12 |
+  |           07may2023                 8        1     3.03         5     15.15 |
+  |-----------------------------------------------------------------------------|
+  |           07may2023                 9        1     3.03         6     18.18 |
+  |           07may2023                10        1     3.03         7     21.21 |
+  |           07may2023                12        1     3.03         8     24.24 |
+  |           07may2023                18        2     6.06        10     30.30 |
+  |           10jun2023                .s        3     9.09        13     39.39 |
+  |-----------------------------------------------------------------------------|
+  |           28sep2023                .s        2     6.06        15     45.45 |
+  |                  .s                .s       18    54.55        33    100.00 |
+  +-----------------------------------------------------------------------------+
+Variable: transp_no_end_2
+
+  +-----------------------------------------------------------------------------+
+  | transp_date_1_stata   transp_no_end_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  |           22apr2023                 3        1     3.03         1      3.03 |
+  |           22apr2023                 6        1     3.03         2      6.06 |
+  |           22apr2023                 .        1     3.03         3      9.09 |
+  |           07may2023                 6        1     3.03         4     12.12 |
+  |           07may2023                 8        1     3.03         5     15.15 |
+  |-----------------------------------------------------------------------------|
+  |           07may2023                 9        1     3.03         6     18.18 |
+  |           07may2023                10        1     3.03         7     21.21 |
+  |           07may2023                12        1     3.03         8     24.24 |
+  |           07may2023                18        2     6.06        10     30.30 |
+  |           10jun2023                 .        3     9.09        13     39.39 |
+  |-----------------------------------------------------------------------------|
+  |           28sep2023                 .        2     6.06        15     45.45 |
+  |                  .s                .s       18    54.55        33    100.00 |
+  +-----------------------------------------------------------------------------+
+(6 real changes made, 6 to missing)
+
+  +-----------------------------------------------------------------------------+
+  | transp_date_1_stata   transp_no_end_2   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------|
+  |           22apr2023                 3        1     3.03         1      3.03 |
+  |           22apr2023                 6        1     3.03         2      6.06 |
+  |           22apr2023                .s        1     3.03         3      9.09 |
+  |           07may2023                 6        1     3.03         4     12.12 |
+  |           07may2023                 8        1     3.03         5     15.15 |
+  |-----------------------------------------------------------------------------|
+  |           07may2023                 9        1     3.03         6     18.18 |
+  |           07may2023                10        1     3.03         7     21.21 |
+  |           07may2023                12        1     3.03         8     24.24 |
+  |           07may2023                18        2     6.06        10     30.30 |
+  |           10jun2023                .s        3     9.09        13     39.39 |
+  |-----------------------------------------------------------------------------|
+  |           28sep2023                .s        2     6.06        15     45.45 |
+  |                  .s                .s       18    54.55        33    100.00 |
+  +-----------------------------------------------------------------------------+
 
 .                 
 .                 *-> Fertilizing, pathogen, and harvesting variables: *fert_* path_* harvest_*
@@ -11117,7 +11162,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 crop            str35   %35s                  crop type
 crop_code       byte    %35.0g     crop_code
                                               crop type- code
@@ -11396,5 +11441,5 @@ notes           str306  %306s                 notes
       name:  clean_11
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\11_tbf_data_2023_cleaning.log
   log type:  text
- closed on:   2 Oct 2024, 10:53:47
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   3 Dec 2024, 20:59:47
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

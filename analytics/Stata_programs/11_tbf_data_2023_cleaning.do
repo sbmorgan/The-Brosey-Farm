@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: October 2, 2024                                                       ***
+*** Last date modified: December 3, 2024                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -174,7 +174,6 @@ pause off
 		replace sow_heatmat_temp=.s if sow_heatmat=="no"
 		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 		
-**# Bookmark #1
 		tablist crop crop_code, sort(v) nolabel
 		foreach var of varlist sow_no_germ_per sow_to_germ25_days sow_no_thin_per {	
 			replace `var'=.s if `var'==. & crop_code==9 // For the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
@@ -190,17 +189,19 @@ pause off
 				capture confirm numeric variable `var'
 				*if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
 				*else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2023-08-13" // These are plants that have not yet been transplanted.
-				// All plants have now been transplanted but saving this loop for next season;s iteration of this crop data cleaning program
+				// All plants have now been transplanted but saving this loop for next season's iteration of this crop data cleaning program
 			}
 		}
 		*/
 		
 		foreach var of varlist transp*_2* {
-			tablist crop sow_date if missing(`var'), sort(v) ab(32)
+			display as input "Variable: `var'"
+			tablist transp_date_1_stata `var', sort(v) ab(32)
 			capture confirm numeric variable `var'
-			if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
-			else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were trnasplanted only once.
-		}
+			if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were transplanted only once.
+			else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were transplanted only once.
+			tablist transp_date_1_stata `var', sort(v) ab(32)
+		}		
 		
 		*-> Fertilizing, pathogen, and harvesting variables: *fert_* path_* harvest_*
 		foreach var of varlist *fert_* path_* harvest_* {
