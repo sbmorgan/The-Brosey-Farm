@@ -144,7 +144,7 @@ pause off
 *=========================================================================================     
 
 	/* Clean missing values */
-**# Bookmark #2 Incorporate .m throughout?
+**# Bookmark #2 Incorporate .m throughout
 		
 		*-> Crop
 		assert !missing(crop)
@@ -178,8 +178,17 @@ pause off
 		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 		assert sow_heatmat_temp==. if sow_heatmat=="no"
 		replace sow_heatmat_temp=.s if sow_heatmat=="no"
+		replace sow_heatmat_temp=.m if sow_heatmat_temp==. & sow_heatmat=="yes"
 		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
-	
+		
+		foreach var of varlist sow_light_hrs sow_light_type sow_light_type_code {
+			tablist sow_date crop sow_med `var', sort(v) ab(32)
+			capture confirm numeric variable `var'
+			if _rc==0 replace `var'=.m if `var'==. & sow_med=="soilless"
+			else replace `var'=".m" if `var'=="" & sow_med=="soilless"
+			tablist sow_date crop sow_med `var', sort(v) ab(32)
+		}
+		
 		tablist crop crop_code, sort(v) nolabel
 		tablist crop crop_code sow_date if crop_code==18, sort(v) ab(32) nolabel
 		assert sow_to_germ50_days==. if crop_code==18 // Garlic doesn't bulb/produce leaves above ground until the following season.

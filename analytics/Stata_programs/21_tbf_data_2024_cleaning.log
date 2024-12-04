@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:   3 Dec 2024, 20:59:52
+ opened on:   3 Dec 2024, 21:44:34
 
 . 
 . 
@@ -78,20 +78,17 @@
 (928 observations deleted)
 
 .         ds 
-crop          sow_fer~te_1  sow_fer~me_4  transp_n~t_1  fert_amnt_~2  path_~pe_1_1  path_type_3   harvest_d~_3  harvest_u~_7  harvest_a~12  harvest_d~17  harvest_u~21  harvest_a~26  notes
-sow_type      sow_fert~k_1  sow_fer~se_4  transp_n~d_1  fert_unit_2   path_~te_1_1  path_date_3   harvest_a~_3  harvest_d~_8  harvest_u~12  harvest_a~17  harvest_d~22  harvest_u~26
-sow_date      sow_fer~me_1  sow_fer~te_5  transp_dat~2  fert_typ~k_3  path_~pe_1_2  path_~pe_3_1  harvest_u~_3  harvest_a~_8  harvest_d~13  harvest_u~17  harvest_a~22  harvest_d~27
-sow_med       sow_fer~se_1  sow_fert~k_5  transp_med_2  fert_typ~e_3  path_~te_1_2  path_~te_3_1  harvest_d~_4  harvest_u~_8  harvest_a~13  harvest_d~18  harvest_u~22  harvest_a~27
-sow_cell      sow_fer~te_2  sow_fer~me_5  transp_n~t_2  fert_date_3   path_~pe_1_3  path_~pe_3_2  harvest_a~_4  harvest_d~_9  harvest_u~13  harvest_a~18  harvest_d~23  harvest_u~27
-sow_no_cel~l  sow_fert~k_2  sow_fer~se_5  transp_n~d_2  fert_amnt_~3  path_~te_1_3  path_~te_3_2  harvest_u~_4  harvest_a~_9  harvest_d~14  harvest_u~18  harvest_a~23  harvest_d~28
-sow_no_see~r  sow_fer~me_2  sow_fer~te_6  fert_typ~k_1  fert_unit_3   path_type_2   path_~pe_3_3  harvest_d~_5  harvest_u~_9  harvest_a~14  harvest_d~19  harvest_u~23  harvest_a~28
-sow_to_ger~s  sow_fer~se_2  sow_fert~k_6  fert_typ~e_1  fert_typ~k_4  path_date_2   path_~te_3_3  harvest_a~_5  harvest_d~10  harvest_u~14  harvest_a~19  harvest_d~24  harvest_u~28
-sow_no_ger~r  sow_fer~te_3  sow_fer~me_6  fert_date_1   fert_typ~e_4  path_~pe_2_1  harvest_d~_1  harvest_u~_5  harvest_a~10  harvest_d~15  harvest_u~19  harvest_a~24  harvest_d~29
-sow_no_thi~r  sow_fert~k_3  sow_fer~se_6  fert_amnt_~1  fert_date_4   path_~te_2_1  harvest_a~_1  harvest_d~_6  harvest_u~10  harvest_a~15  harvest_d~20  harvest_u~24  harvest_a~29
-sow_heatmat   sow_fer~me_3  transp_har~t  fert_unit_1   fert_amnt_~4  path_~pe_2_2  harvest_u~_1  harvest_a~_6  harvest_d~11  harvest_u~15  harvest_a~20  harvest_d~25  harvest_u~29
-sow_heatma~p  sow_fer~se_3  transp_har~d  fert_typ~k_2  fert_unit_4   path_~te_2_2  harvest_d~_2  harvest_u~_6  harvest_a~11  harvest_d~16  harvest_u~20  harvest_a~25  harvest_d~30
-sow_light_~s  sow_fer~te_4  transp_dat~1  fert_typ~e_2  path_type_1   path_~pe_2_3  harvest_a~_2  harvest_d~_7  harvest_u~11  harvest_a~16  harvest_d~21  harvest_u~25  harvest_a~30
-sow_light_~e  sow_fert~k_4  transp_med_1  fert_date_2   path_date_1   path_~te_2_3  harvest_u~_2  harvest_a~_7  harvest_d~12  harvest_u~16  harvest_a~21  harvest_d~26  harvest_u~30
+crop          sow_heatma~p  sow_fer~te_3  sow_fer~se_5  transp_dat~2  fert_date_2   fert_amnt_~4  path_date_2   path_~pe_3_2  harvest_a~_3  harvest_d~_7  harvest_u~10  harvest_a~14  harvest_d~18  harvest_u~21  harvest_a~25  harvest_d~29
+sow_type      sow_light_~s  sow_fert~k_3  sow_fer~te_6  transp_med_2  fert_amnt_~2  fert_unit_4   path_~pe_2_1  path_~te_3_2  harvest_u~_3  harvest_a~_7  harvest_d~11  harvest_u~14  harvest_a~18  harvest_d~22  harvest_u~25  harvest_a~29
+sow_date      sow_light_~e  sow_fer~me_3  sow_fert~k_6  transp_n~t_2  fert_unit_2   path_type_1   path_~te_2_1  path_~pe_3_3  harvest_d~_4  harvest_u~_7  harvest_a~11  harvest_d~15  harvest_u~18  harvest_a~22  harvest_d~26  harvest_u~29
+sow_med       sow_fer~te_1  sow_fer~se_3  sow_fer~me_6  transp_n~d_2  fert_typ~k_3  path_date_1   path_~pe_2_2  path_~te_3_3  harvest_a~_4  harvest_d~_8  harvest_u~11  harvest_a~15  harvest_d~19  harvest_u~22  harvest_a~26  harvest_d~30
+sow_cell      sow_fert~k_1  sow_fer~te_4  sow_fer~se_6  fert_typ~k_1  fert_typ~e_3  path_~pe_1_1  path_~te_2_2  harvest_d~_1  harvest_u~_4  harvest_a~_8  harvest_d~12  harvest_u~15  harvest_a~19  harvest_d~23  harvest_u~26  harvest_a~30
+sow_no_cel~l  sow_fer~me_1  sow_fert~k_4  transp_har~t  fert_typ~e_1  fert_date_3   path_~te_1_1  path_~pe_2_3  harvest_a~_1  harvest_d~_5  harvest_u~_8  harvest_a~12  harvest_d~16  harvest_u~19  harvest_a~23  harvest_d~27  harvest_u~30
+sow_no_see~r  sow_fer~se_1  sow_fer~me_4  transp_har~d  fert_date_1   fert_amnt_~3  path_~pe_1_2  path_~te_2_3  harvest_u~_1  harvest_a~_5  harvest_d~_9  harvest_u~12  harvest_a~16  harvest_d~20  harvest_u~23  harvest_a~27  notes
+sow_to_ger~s  sow_fer~te_2  sow_fer~se_4  transp_dat~1  fert_amnt_~1  fert_unit_3   path_~te_1_2  path_type_3   harvest_d~_2  harvest_u~_5  harvest_a~_9  harvest_d~13  harvest_u~16  harvest_a~20  harvest_d~24  harvest_u~27
+sow_no_ger~r  sow_fert~k_2  sow_fer~te_5  transp_med_1  fert_unit_1   fert_typ~k_4  path_~pe_1_3  path_date_3   harvest_a~_2  harvest_d~_6  harvest_u~_9  harvest_a~13  harvest_d~17  harvest_u~20  harvest_a~24  harvest_d~28
+sow_no_thi~r  sow_fer~me_2  sow_fert~k_5  transp_n~t_1  fert_typ~k_2  fert_typ~e_4  path_~te_1_3  path_~pe_3_1  harvest_u~_2  harvest_a~_6  harvest_d~10  harvest_u~13  harvest_a~17  harvest_d~21  harvest_u~24  harvest_a~28
+sow_heatmat   sow_fer~se_2  sow_fer~me_5  transp_n~d_1  fert_typ~e_2  fert_date_4   path_type_2   path_~te_3_1  harvest_d~_3  harvest_u~_6  harvest_a~10  harvest_d~14  harvest_u~17  harvest_a~21  harvest_d~25  harvest_u~28
 
 .         
 .         /* Save raw TBF Market Garden 2024 data */
@@ -140,11 +137,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . capture log close labels_22
 
 . log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_22)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:   3 Dec 2024, 20:59:52
+ opened on:   3 Dec 2024, 21:44:35
 
 . 
 . 
@@ -237,8 +234,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:   3 Dec 2024, 20:59:52
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   3 Dec 2024, 21:44:35
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
 .         
@@ -2910,6 +2907,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . *=========================================================================================     
 . 
 .         /* Clean missing values */
+. **# Bookmark #2 Incorporate .m throughout?
 .                 
 .                 *-> Crop
 .                 assert !missing(crop)
@@ -4598,6 +4596,9 @@ Variable: transp_no_end_2
 .                 replace sow_heatmat_temp=.s if sow_heatmat=="no"
 (10 real changes made, 10 to missing)
 
+.                 replace sow_heatmat_temp=.m if sow_heatmat_temp==. & sow_heatmat=="yes"
+(5 real changes made, 5 to missing)
+
 .                 tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 
   +----------------------------------------------------------------------+
@@ -4609,10 +4610,586 @@ Variable: transp_no_end_2
   |         yes                 73       12    16.00        65     86.67 |
   |         yes                 75        5     6.67        70     93.33 |
   |----------------------------------------------------------------------|
-  |         yes                  .        5     6.67        75    100.00 |
+  |         yes                 .m        5     6.67        75    100.00 |
   +----------------------------------------------------------------------+
 
-.         
+.                 
+.                 foreach var of varlist sow_light_hrs sow_light_type sow_light_type_code {
+  2.                         tablist sow_date crop sow_med `var', sort(v) ab(32)
+  3.                         capture confirm numeric variable `var'
+  4.                         if _rc==0 replace `var'=.m if `var'==. & sow_med=="soilless"
+  5.                         else replace `var'=".m" if `var'=="" & sow_med=="soilless"
+  6.                         tablist sow_date crop sow_med `var', sort(v) ab(32)
+  7.                 }
+
+  +-----------------------------------------------------------------------------------------------------------------------------+
+  |   sow_date                                  crop              sow_med   sow_light_hrs   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2023-02-25     spinach- bloomsdale long standing             soilless              16        1     1.33         1      1.33 |
+  | 2023-11-04   garlic- german extra hardy hardneck   raised bed- ground              .s        1     1.33         2      2.67 |
+  | 2024-02-25                eggplant- black beauty             soilless              16        1     1.33         3      4.00 |
+  | 2024-02-25                        kale- lacinato             soilless              16        1     1.33         4      5.33 |
+  | 2024-02-25                 lettuce- buttercrunch             soilless              16        1     1.33         5      6.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 lettuce- four seasons             soilless              16        1     1.33         6      8.00 |
+  | 2024-02-25                lettuce- gourmet blend             soilless              16        1     1.33         7      9.33 |
+  | 2024-02-25               lettuce- red salad bowl             soilless              16        1     1.33         8     10.67 |
+  | 2024-02-25                       pepper- anaheim             soilless              16        1     1.33         9     12.00 |
+  | 2024-02-25           pepper- bull nosed lrg bell             soilless              16        1     1.33        10     13.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25              pepper- califonia wonder             soilless              16        1     1.33        11     14.67 |
+  | 2024-02-25        pepper- chocolate scotch bonet             soilless              16        1     1.33        12     16.00 |
+  | 2024-02-25               pepper- jalapeno, early             soilless              16        1     1.33        13     17.33 |
+  | 2024-02-25                  pepper- pimenta puma             soilless              16        1     1.33        14     18.67 |
+  | 2024-02-25               pepper- poblano (ancho)             soilless              16        1     1.33        15     20.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 pepper- serrano chili             soilless              16        1     1.33        16     21.33 |
+  | 2024-02-25            pepper- sugar rush stripey             soilless              16        1     1.33        17     22.67 |
+  | 2024-02-25                  pepper- sweet banana             soilless              16        1     1.33        18     24.00 |
+  | 2024-02-25                pepper- tiger jalapeno             soilless              16        1     1.33        19     25.33 |
+  | 2024-03-11                          basil- sweet             soilless              16        1     1.33        20     26.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                   broccoli- calabrese             soilless              16        1     1.33        21     28.00 |
+  | 2024-03-11                                catnip             soilless              16        1     1.33        22     29.33 |
+  | 2024-03-11                              cilantro             soilless              16        1     1.33        23     30.67 |
+  | 2024-03-11                     cilantro- calypse             soilless              16        1     1.33        24     32.00 |
+  | 2024-03-11      coleus- chocolate covered cherry             soilless              16        1     1.33        25     33.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                  coreopsis- ruby kiss             soilless              16        1     1.33        26     34.67 |
+  | 2024-03-11                marigold- queen sophia             soilless              16        1     1.33        27     36.00 |
+  | 2024-03-11                      salvia- victoria             soilless              16        1     1.33        28     37.33 |
+  | 2024-03-11                         tomato- amish             soilless              16        1     1.33        29     38.67 |
+  | 2024-03-11                   tomato- cherry roma             soilless              16        1     1.33        30     40.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11            tomato- fresh salsa hybrid             soilless              16        1     1.33        31     41.33 |
+  | 2024-03-11                          tomato- roma             soilless              16        1     1.33        32     42.67 |
+  | 2024-04-25                      arrugula- rocket    rasied bed- frame              .s        1     1.33        33     44.00 |
+  | 2024-04-25                              cilantro    rasied bed- frame              .s        1     1.33        34     45.33 |
+  | 2024-04-25                     cilantro- calypse    rasied bed- frame              .s        1     1.33        35     46.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-25                        dill- elephant    rasied bed- frame              .s        1     1.33        36     48.00 |
+  | 2024-04-25     spinach- bloomsdale long standing    rasied bed- frame              .s        1     1.33        37     49.33 |
+  | 2024-04-28                  coreopsis- ruby kiss             soilless               .        1     1.33        38     50.67 |
+  | 2024-04-28                marigold- queen sophia             soilless               .        1     1.33        39     52.00 |
+  | 2024-04-28                      salvia- victoria             soilless               .        1     1.33        40     53.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-28              zinnia- california giant             soilless               .        1     1.33        41     54.67 |
+  | 2024-04-28                       zinnia- classic             soilless               .        1     1.33        42     56.00 |
+  | 2024-05-04                     beet- detroit red   raised bed- ground              .s        1     1.33        43     57.33 |
+  | 2024-05-04            carrot- kaleidoscope blend   raised bed- ground              .s        1     1.33        44     58.67 |
+  | 2024-05-04                 carrot- short n sweet   raised bed- ground              .s        1     1.33        45     60.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28                      arrugula- rocket    rasied bed- frame              .s        1     1.33        46     61.33 |
+  | 2024-05-28                              cilantro    rasied bed- frame              .s        1     1.33        47     62.67 |
+  | 2024-05-28                     cilantro- calypse    rasied bed- frame              .s        1     1.33        48     64.00 |
+  | 2024-05-28           corn- ornamental, glass gem   raised bed- ground              .s        1     1.33        49     65.33 |
+  | 2024-05-28                        dill- elephant    rasied bed- frame              .s        1     1.33        50     66.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28     spinach- bloomsdale long standing    rasied bed- frame              .s        1     1.33        51     68.00 |
+  | 2024-05-28                    sunflower- mammoth   raised bed- ground              .s        1     1.33        52     69.33 |
+  | 2024-05-28          sweet corn- sweetness hybrid   raised bed- ground              .s        1     1.33        53     70.67 |
+  | 2024-06-03             bean- purple queen (bush)   raised bed- ground              .s        1     1.33        54     72.00 |
+  | 2024-06-03     bean- stringless green pod (bush)   raised bed- ground              .s        1     1.33        55     73.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-03            carrot- kaleidoscope blend   raised bed- ground              .s        1     1.33        56     74.67 |
+  | 2024-06-03                 carrot- short n sweet   raised bed- ground              .s        1     1.33        57     76.00 |
+  | 2024-06-03            pumpkin- connecticut field   raised bed- ground              .s        1     1.33        58     77.33 |
+  | 2024-06-03        pumpkin- early sweet sugar pie   raised bed- ground              .s        1     1.33        59     78.67 |
+  | 2024-06-03       sweet corn- silver queen hybrid   raised bed- ground              .s        1     1.33        60     80.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24             bean- purple queen (bush)   raised bed- ground              .s        1     1.33        61     81.33 |
+  | 2024-06-24     bean- stringless green pod (bush)   raised bed- ground              .s        1     1.33        62     82.67 |
+  | 2024-06-24           beet- tall top early wonder   raised bed- ground              .s        1     1.33        63     84.00 |
+  | 2024-06-24            carrot- kaleidoscope blend   raised bed- ground              .s        1     1.33        64     85.33 |
+  | 2024-06-24                 carrot- short n sweet   raised bed- ground              .s        1     1.33        65     86.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24                              cilantro    rasied bed- frame              .s        1     1.33        66     88.00 |
+  | 2024-06-24                     cilantro- calypse    rasied bed- frame              .s        1     1.33        67     89.33 |
+  | 2024-06-24                        dill- elephant    rasied bed- frame              .s        1     1.33        68     90.67 |
+  | 2024-06-24       sweet corn- silver queen hybrid   raised bed- ground              .s        1     1.33        69     92.00 |
+  | 2024-06-24          sweet corn- sweetness hybrid   raised bed- ground              .s        1     1.33        70     93.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-07-07                   broccoli- calabrese             soilless               .        1     1.33        71     94.67 |
+  | 2024-07-07                        kale- lacinato             soilless               .        1     1.33        72     96.00 |
+  | 2024-07-07                lettuce- gourmet blend             soilless               .        1     1.33        73     97.33 |
+  | 2024-07-07               lettuce- red salad bowl             soilless               .        1     1.33        74     98.67 |
+  | 2024-11-16   garlic- german extra hardy hardneck    rasied bed- frame              .s        1     1.33        75    100.00 |
+  +-----------------------------------------------------------------------------------------------------------------------------+
+(9 real changes made, 9 to missing)
+
+  +-----------------------------------------------------------------------------------------------------------------------------+
+  |   sow_date                                  crop              sow_med   sow_light_hrs   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2023-02-25     spinach- bloomsdale long standing             soilless              16        1     1.33         1      1.33 |
+  | 2023-11-04   garlic- german extra hardy hardneck   raised bed- ground              .s        1     1.33         2      2.67 |
+  | 2024-02-25                eggplant- black beauty             soilless              16        1     1.33         3      4.00 |
+  | 2024-02-25                        kale- lacinato             soilless              16        1     1.33         4      5.33 |
+  | 2024-02-25                 lettuce- buttercrunch             soilless              16        1     1.33         5      6.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 lettuce- four seasons             soilless              16        1     1.33         6      8.00 |
+  | 2024-02-25                lettuce- gourmet blend             soilless              16        1     1.33         7      9.33 |
+  | 2024-02-25               lettuce- red salad bowl             soilless              16        1     1.33         8     10.67 |
+  | 2024-02-25                       pepper- anaheim             soilless              16        1     1.33         9     12.00 |
+  | 2024-02-25           pepper- bull nosed lrg bell             soilless              16        1     1.33        10     13.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25              pepper- califonia wonder             soilless              16        1     1.33        11     14.67 |
+  | 2024-02-25        pepper- chocolate scotch bonet             soilless              16        1     1.33        12     16.00 |
+  | 2024-02-25               pepper- jalapeno, early             soilless              16        1     1.33        13     17.33 |
+  | 2024-02-25                  pepper- pimenta puma             soilless              16        1     1.33        14     18.67 |
+  | 2024-02-25               pepper- poblano (ancho)             soilless              16        1     1.33        15     20.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 pepper- serrano chili             soilless              16        1     1.33        16     21.33 |
+  | 2024-02-25            pepper- sugar rush stripey             soilless              16        1     1.33        17     22.67 |
+  | 2024-02-25                  pepper- sweet banana             soilless              16        1     1.33        18     24.00 |
+  | 2024-02-25                pepper- tiger jalapeno             soilless              16        1     1.33        19     25.33 |
+  | 2024-03-11                          basil- sweet             soilless              16        1     1.33        20     26.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                   broccoli- calabrese             soilless              16        1     1.33        21     28.00 |
+  | 2024-03-11                                catnip             soilless              16        1     1.33        22     29.33 |
+  | 2024-03-11                              cilantro             soilless              16        1     1.33        23     30.67 |
+  | 2024-03-11                     cilantro- calypse             soilless              16        1     1.33        24     32.00 |
+  | 2024-03-11      coleus- chocolate covered cherry             soilless              16        1     1.33        25     33.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                  coreopsis- ruby kiss             soilless              16        1     1.33        26     34.67 |
+  | 2024-03-11                marigold- queen sophia             soilless              16        1     1.33        27     36.00 |
+  | 2024-03-11                      salvia- victoria             soilless              16        1     1.33        28     37.33 |
+  | 2024-03-11                         tomato- amish             soilless              16        1     1.33        29     38.67 |
+  | 2024-03-11                   tomato- cherry roma             soilless              16        1     1.33        30     40.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11            tomato- fresh salsa hybrid             soilless              16        1     1.33        31     41.33 |
+  | 2024-03-11                          tomato- roma             soilless              16        1     1.33        32     42.67 |
+  | 2024-04-25                      arrugula- rocket    rasied bed- frame              .s        1     1.33        33     44.00 |
+  | 2024-04-25                              cilantro    rasied bed- frame              .s        1     1.33        34     45.33 |
+  | 2024-04-25                     cilantro- calypse    rasied bed- frame              .s        1     1.33        35     46.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-25                        dill- elephant    rasied bed- frame              .s        1     1.33        36     48.00 |
+  | 2024-04-25     spinach- bloomsdale long standing    rasied bed- frame              .s        1     1.33        37     49.33 |
+  | 2024-04-28                  coreopsis- ruby kiss             soilless              .m        1     1.33        38     50.67 |
+  | 2024-04-28                marigold- queen sophia             soilless              .m        1     1.33        39     52.00 |
+  | 2024-04-28                      salvia- victoria             soilless              .m        1     1.33        40     53.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-28              zinnia- california giant             soilless              .m        1     1.33        41     54.67 |
+  | 2024-04-28                       zinnia- classic             soilless              .m        1     1.33        42     56.00 |
+  | 2024-05-04                     beet- detroit red   raised bed- ground              .s        1     1.33        43     57.33 |
+  | 2024-05-04            carrot- kaleidoscope blend   raised bed- ground              .s        1     1.33        44     58.67 |
+  | 2024-05-04                 carrot- short n sweet   raised bed- ground              .s        1     1.33        45     60.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28                      arrugula- rocket    rasied bed- frame              .s        1     1.33        46     61.33 |
+  | 2024-05-28                              cilantro    rasied bed- frame              .s        1     1.33        47     62.67 |
+  | 2024-05-28                     cilantro- calypse    rasied bed- frame              .s        1     1.33        48     64.00 |
+  | 2024-05-28           corn- ornamental, glass gem   raised bed- ground              .s        1     1.33        49     65.33 |
+  | 2024-05-28                        dill- elephant    rasied bed- frame              .s        1     1.33        50     66.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28     spinach- bloomsdale long standing    rasied bed- frame              .s        1     1.33        51     68.00 |
+  | 2024-05-28                    sunflower- mammoth   raised bed- ground              .s        1     1.33        52     69.33 |
+  | 2024-05-28          sweet corn- sweetness hybrid   raised bed- ground              .s        1     1.33        53     70.67 |
+  | 2024-06-03             bean- purple queen (bush)   raised bed- ground              .s        1     1.33        54     72.00 |
+  | 2024-06-03     bean- stringless green pod (bush)   raised bed- ground              .s        1     1.33        55     73.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-03            carrot- kaleidoscope blend   raised bed- ground              .s        1     1.33        56     74.67 |
+  | 2024-06-03                 carrot- short n sweet   raised bed- ground              .s        1     1.33        57     76.00 |
+  | 2024-06-03            pumpkin- connecticut field   raised bed- ground              .s        1     1.33        58     77.33 |
+  | 2024-06-03        pumpkin- early sweet sugar pie   raised bed- ground              .s        1     1.33        59     78.67 |
+  | 2024-06-03       sweet corn- silver queen hybrid   raised bed- ground              .s        1     1.33        60     80.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24             bean- purple queen (bush)   raised bed- ground              .s        1     1.33        61     81.33 |
+  | 2024-06-24     bean- stringless green pod (bush)   raised bed- ground              .s        1     1.33        62     82.67 |
+  | 2024-06-24           beet- tall top early wonder   raised bed- ground              .s        1     1.33        63     84.00 |
+  | 2024-06-24            carrot- kaleidoscope blend   raised bed- ground              .s        1     1.33        64     85.33 |
+  | 2024-06-24                 carrot- short n sweet   raised bed- ground              .s        1     1.33        65     86.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24                              cilantro    rasied bed- frame              .s        1     1.33        66     88.00 |
+  | 2024-06-24                     cilantro- calypse    rasied bed- frame              .s        1     1.33        67     89.33 |
+  | 2024-06-24                        dill- elephant    rasied bed- frame              .s        1     1.33        68     90.67 |
+  | 2024-06-24       sweet corn- silver queen hybrid   raised bed- ground              .s        1     1.33        69     92.00 |
+  | 2024-06-24          sweet corn- sweetness hybrid   raised bed- ground              .s        1     1.33        70     93.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------|
+  | 2024-07-07                   broccoli- calabrese             soilless              .m        1     1.33        71     94.67 |
+  | 2024-07-07                        kale- lacinato             soilless              .m        1     1.33        72     96.00 |
+  | 2024-07-07                lettuce- gourmet blend             soilless              .m        1     1.33        73     97.33 |
+  | 2024-07-07               lettuce- red salad bowl             soilless              .m        1     1.33        74     98.67 |
+  | 2024-11-16   garlic- german extra hardy hardneck    rasied bed- frame              .s        1     1.33        75    100.00 |
+  +-----------------------------------------------------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------------------------------------------------------------------+
+  |   sow_date                                  crop              sow_med   sow_light_type   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2023-02-25     spinach- bloomsdale long standing             soilless          45w led        1     1.33         1      1.33 |
+  | 2023-11-04   garlic- german extra hardy hardneck   raised bed- ground               .s        1     1.33         2      2.67 |
+  | 2024-02-25                eggplant- black beauty             soilless          45w led        1     1.33         3      4.00 |
+  | 2024-02-25                        kale- lacinato             soilless          45w led        1     1.33         4      5.33 |
+  | 2024-02-25                 lettuce- buttercrunch             soilless          45w led        1     1.33         5      6.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 lettuce- four seasons             soilless          45w led        1     1.33         6      8.00 |
+  | 2024-02-25                lettuce- gourmet blend             soilless          45w led        1     1.33         7      9.33 |
+  | 2024-02-25               lettuce- red salad bowl             soilless          45w led        1     1.33         8     10.67 |
+  | 2024-02-25                       pepper- anaheim             soilless          45w led        1     1.33         9     12.00 |
+  | 2024-02-25           pepper- bull nosed lrg bell             soilless          45w led        1     1.33        10     13.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25              pepper- califonia wonder             soilless          45w led        1     1.33        11     14.67 |
+  | 2024-02-25        pepper- chocolate scotch bonet             soilless          45w led        1     1.33        12     16.00 |
+  | 2024-02-25               pepper- jalapeno, early             soilless          45w led        1     1.33        13     17.33 |
+  | 2024-02-25                  pepper- pimenta puma             soilless          45w led        1     1.33        14     18.67 |
+  | 2024-02-25               pepper- poblano (ancho)             soilless          45w led        1     1.33        15     20.00 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 pepper- serrano chili             soilless          45w led        1     1.33        16     21.33 |
+  | 2024-02-25            pepper- sugar rush stripey             soilless          45w led        1     1.33        17     22.67 |
+  | 2024-02-25                  pepper- sweet banana             soilless          45w led        1     1.33        18     24.00 |
+  | 2024-02-25                pepper- tiger jalapeno             soilless          45w led        1     1.33        19     25.33 |
+  | 2024-03-11                          basil- sweet             soilless          45w led        1     1.33        20     26.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                   broccoli- calabrese             soilless          45w led        1     1.33        21     28.00 |
+  | 2024-03-11                                catnip             soilless          45w led        1     1.33        22     29.33 |
+  | 2024-03-11                              cilantro             soilless          45w led        1     1.33        23     30.67 |
+  | 2024-03-11                     cilantro- calypse             soilless          45w led        1     1.33        24     32.00 |
+  | 2024-03-11      coleus- chocolate covered cherry             soilless          45w led        1     1.33        25     33.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                  coreopsis- ruby kiss             soilless          45w led        1     1.33        26     34.67 |
+  | 2024-03-11                marigold- queen sophia             soilless          45w led        1     1.33        27     36.00 |
+  | 2024-03-11                      salvia- victoria             soilless          45w led        1     1.33        28     37.33 |
+  | 2024-03-11                         tomato- amish             soilless          45w led        1     1.33        29     38.67 |
+  | 2024-03-11                   tomato- cherry roma             soilless          45w led        1     1.33        30     40.00 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11            tomato- fresh salsa hybrid             soilless          45w led        1     1.33        31     41.33 |
+  | 2024-03-11                          tomato- roma             soilless          45w led        1     1.33        32     42.67 |
+  | 2024-04-25                      arrugula- rocket    rasied bed- frame               .s        1     1.33        33     44.00 |
+  | 2024-04-25                              cilantro    rasied bed- frame               .s        1     1.33        34     45.33 |
+  | 2024-04-25                     cilantro- calypse    rasied bed- frame               .s        1     1.33        35     46.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-25                        dill- elephant    rasied bed- frame               .s        1     1.33        36     48.00 |
+  | 2024-04-25     spinach- bloomsdale long standing    rasied bed- frame               .s        1     1.33        37     49.33 |
+  | 2024-04-28                  coreopsis- ruby kiss             soilless          45w led        1     1.33        38     50.67 |
+  | 2024-04-28                marigold- queen sophia             soilless          45w led        1     1.33        39     52.00 |
+  | 2024-04-28                      salvia- victoria             soilless          45w led        1     1.33        40     53.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-28              zinnia- california giant             soilless          45w led        1     1.33        41     54.67 |
+  | 2024-04-28                       zinnia- classic             soilless          45w led        1     1.33        42     56.00 |
+  | 2024-05-04                     beet- detroit red   raised bed- ground               .s        1     1.33        43     57.33 |
+  | 2024-05-04            carrot- kaleidoscope blend   raised bed- ground               .s        1     1.33        44     58.67 |
+  | 2024-05-04                 carrot- short n sweet   raised bed- ground               .s        1     1.33        45     60.00 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28                      arrugula- rocket    rasied bed- frame               .s        1     1.33        46     61.33 |
+  | 2024-05-28                              cilantro    rasied bed- frame               .s        1     1.33        47     62.67 |
+  | 2024-05-28                     cilantro- calypse    rasied bed- frame               .s        1     1.33        48     64.00 |
+  | 2024-05-28           corn- ornamental, glass gem   raised bed- ground               .s        1     1.33        49     65.33 |
+  | 2024-05-28                        dill- elephant    rasied bed- frame               .s        1     1.33        50     66.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28     spinach- bloomsdale long standing    rasied bed- frame               .s        1     1.33        51     68.00 |
+  | 2024-05-28                    sunflower- mammoth   raised bed- ground               .s        1     1.33        52     69.33 |
+  | 2024-05-28          sweet corn- sweetness hybrid   raised bed- ground               .s        1     1.33        53     70.67 |
+  | 2024-06-03             bean- purple queen (bush)   raised bed- ground               .s        1     1.33        54     72.00 |
+  | 2024-06-03     bean- stringless green pod (bush)   raised bed- ground               .s        1     1.33        55     73.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-03            carrot- kaleidoscope blend   raised bed- ground               .s        1     1.33        56     74.67 |
+  | 2024-06-03                 carrot- short n sweet   raised bed- ground               .s        1     1.33        57     76.00 |
+  | 2024-06-03            pumpkin- connecticut field   raised bed- ground               .s        1     1.33        58     77.33 |
+  | 2024-06-03        pumpkin- early sweet sugar pie   raised bed- ground               .s        1     1.33        59     78.67 |
+  | 2024-06-03       sweet corn- silver queen hybrid   raised bed- ground               .s        1     1.33        60     80.00 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24             bean- purple queen (bush)   raised bed- ground               .s        1     1.33        61     81.33 |
+  | 2024-06-24     bean- stringless green pod (bush)   raised bed- ground               .s        1     1.33        62     82.67 |
+  | 2024-06-24           beet- tall top early wonder   raised bed- ground               .s        1     1.33        63     84.00 |
+  | 2024-06-24            carrot- kaleidoscope blend   raised bed- ground               .s        1     1.33        64     85.33 |
+  | 2024-06-24                 carrot- short n sweet   raised bed- ground               .s        1     1.33        65     86.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24                              cilantro    rasied bed- frame               .s        1     1.33        66     88.00 |
+  | 2024-06-24                     cilantro- calypse    rasied bed- frame               .s        1     1.33        67     89.33 |
+  | 2024-06-24                        dill- elephant    rasied bed- frame               .s        1     1.33        68     90.67 |
+  | 2024-06-24       sweet corn- silver queen hybrid   raised bed- ground               .s        1     1.33        69     92.00 |
+  | 2024-06-24          sweet corn- sweetness hybrid   raised bed- ground               .s        1     1.33        70     93.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-07-07                   broccoli- calabrese             soilless                         1     1.33        71     94.67 |
+  | 2024-07-07                        kale- lacinato             soilless                         1     1.33        72     96.00 |
+  | 2024-07-07                lettuce- gourmet blend             soilless                         1     1.33        73     97.33 |
+  | 2024-07-07               lettuce- red salad bowl             soilless                         1     1.33        74     98.67 |
+  | 2024-11-16   garlic- german extra hardy hardneck    rasied bed- frame               .s        1     1.33        75    100.00 |
+  +------------------------------------------------------------------------------------------------------------------------------+
+(4 real changes made)
+
+  +------------------------------------------------------------------------------------------------------------------------------+
+  |   sow_date                                  crop              sow_med   sow_light_type   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2023-02-25     spinach- bloomsdale long standing             soilless          45w led        1     1.33         1      1.33 |
+  | 2023-11-04   garlic- german extra hardy hardneck   raised bed- ground               .s        1     1.33         2      2.67 |
+  | 2024-02-25                eggplant- black beauty             soilless          45w led        1     1.33         3      4.00 |
+  | 2024-02-25                        kale- lacinato             soilless          45w led        1     1.33         4      5.33 |
+  | 2024-02-25                 lettuce- buttercrunch             soilless          45w led        1     1.33         5      6.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 lettuce- four seasons             soilless          45w led        1     1.33         6      8.00 |
+  | 2024-02-25                lettuce- gourmet blend             soilless          45w led        1     1.33         7      9.33 |
+  | 2024-02-25               lettuce- red salad bowl             soilless          45w led        1     1.33         8     10.67 |
+  | 2024-02-25                       pepper- anaheim             soilless          45w led        1     1.33         9     12.00 |
+  | 2024-02-25           pepper- bull nosed lrg bell             soilless          45w led        1     1.33        10     13.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25              pepper- califonia wonder             soilless          45w led        1     1.33        11     14.67 |
+  | 2024-02-25        pepper- chocolate scotch bonet             soilless          45w led        1     1.33        12     16.00 |
+  | 2024-02-25               pepper- jalapeno, early             soilless          45w led        1     1.33        13     17.33 |
+  | 2024-02-25                  pepper- pimenta puma             soilless          45w led        1     1.33        14     18.67 |
+  | 2024-02-25               pepper- poblano (ancho)             soilless          45w led        1     1.33        15     20.00 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 pepper- serrano chili             soilless          45w led        1     1.33        16     21.33 |
+  | 2024-02-25            pepper- sugar rush stripey             soilless          45w led        1     1.33        17     22.67 |
+  | 2024-02-25                  pepper- sweet banana             soilless          45w led        1     1.33        18     24.00 |
+  | 2024-02-25                pepper- tiger jalapeno             soilless          45w led        1     1.33        19     25.33 |
+  | 2024-03-11                          basil- sweet             soilless          45w led        1     1.33        20     26.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                   broccoli- calabrese             soilless          45w led        1     1.33        21     28.00 |
+  | 2024-03-11                                catnip             soilless          45w led        1     1.33        22     29.33 |
+  | 2024-03-11                              cilantro             soilless          45w led        1     1.33        23     30.67 |
+  | 2024-03-11                     cilantro- calypse             soilless          45w led        1     1.33        24     32.00 |
+  | 2024-03-11      coleus- chocolate covered cherry             soilless          45w led        1     1.33        25     33.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                  coreopsis- ruby kiss             soilless          45w led        1     1.33        26     34.67 |
+  | 2024-03-11                marigold- queen sophia             soilless          45w led        1     1.33        27     36.00 |
+  | 2024-03-11                      salvia- victoria             soilless          45w led        1     1.33        28     37.33 |
+  | 2024-03-11                         tomato- amish             soilless          45w led        1     1.33        29     38.67 |
+  | 2024-03-11                   tomato- cherry roma             soilless          45w led        1     1.33        30     40.00 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11            tomato- fresh salsa hybrid             soilless          45w led        1     1.33        31     41.33 |
+  | 2024-03-11                          tomato- roma             soilless          45w led        1     1.33        32     42.67 |
+  | 2024-04-25                      arrugula- rocket    rasied bed- frame               .s        1     1.33        33     44.00 |
+  | 2024-04-25                              cilantro    rasied bed- frame               .s        1     1.33        34     45.33 |
+  | 2024-04-25                     cilantro- calypse    rasied bed- frame               .s        1     1.33        35     46.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-25                        dill- elephant    rasied bed- frame               .s        1     1.33        36     48.00 |
+  | 2024-04-25     spinach- bloomsdale long standing    rasied bed- frame               .s        1     1.33        37     49.33 |
+  | 2024-04-28                  coreopsis- ruby kiss             soilless          45w led        1     1.33        38     50.67 |
+  | 2024-04-28                marigold- queen sophia             soilless          45w led        1     1.33        39     52.00 |
+  | 2024-04-28                      salvia- victoria             soilless          45w led        1     1.33        40     53.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-28              zinnia- california giant             soilless          45w led        1     1.33        41     54.67 |
+  | 2024-04-28                       zinnia- classic             soilless          45w led        1     1.33        42     56.00 |
+  | 2024-05-04                     beet- detroit red   raised bed- ground               .s        1     1.33        43     57.33 |
+  | 2024-05-04            carrot- kaleidoscope blend   raised bed- ground               .s        1     1.33        44     58.67 |
+  | 2024-05-04                 carrot- short n sweet   raised bed- ground               .s        1     1.33        45     60.00 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28                      arrugula- rocket    rasied bed- frame               .s        1     1.33        46     61.33 |
+  | 2024-05-28                              cilantro    rasied bed- frame               .s        1     1.33        47     62.67 |
+  | 2024-05-28                     cilantro- calypse    rasied bed- frame               .s        1     1.33        48     64.00 |
+  | 2024-05-28           corn- ornamental, glass gem   raised bed- ground               .s        1     1.33        49     65.33 |
+  | 2024-05-28                        dill- elephant    rasied bed- frame               .s        1     1.33        50     66.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28     spinach- bloomsdale long standing    rasied bed- frame               .s        1     1.33        51     68.00 |
+  | 2024-05-28                    sunflower- mammoth   raised bed- ground               .s        1     1.33        52     69.33 |
+  | 2024-05-28          sweet corn- sweetness hybrid   raised bed- ground               .s        1     1.33        53     70.67 |
+  | 2024-06-03             bean- purple queen (bush)   raised bed- ground               .s        1     1.33        54     72.00 |
+  | 2024-06-03     bean- stringless green pod (bush)   raised bed- ground               .s        1     1.33        55     73.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-03            carrot- kaleidoscope blend   raised bed- ground               .s        1     1.33        56     74.67 |
+  | 2024-06-03                 carrot- short n sweet   raised bed- ground               .s        1     1.33        57     76.00 |
+  | 2024-06-03            pumpkin- connecticut field   raised bed- ground               .s        1     1.33        58     77.33 |
+  | 2024-06-03        pumpkin- early sweet sugar pie   raised bed- ground               .s        1     1.33        59     78.67 |
+  | 2024-06-03       sweet corn- silver queen hybrid   raised bed- ground               .s        1     1.33        60     80.00 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24             bean- purple queen (bush)   raised bed- ground               .s        1     1.33        61     81.33 |
+  | 2024-06-24     bean- stringless green pod (bush)   raised bed- ground               .s        1     1.33        62     82.67 |
+  | 2024-06-24           beet- tall top early wonder   raised bed- ground               .s        1     1.33        63     84.00 |
+  | 2024-06-24            carrot- kaleidoscope blend   raised bed- ground               .s        1     1.33        64     85.33 |
+  | 2024-06-24                 carrot- short n sweet   raised bed- ground               .s        1     1.33        65     86.67 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24                              cilantro    rasied bed- frame               .s        1     1.33        66     88.00 |
+  | 2024-06-24                     cilantro- calypse    rasied bed- frame               .s        1     1.33        67     89.33 |
+  | 2024-06-24                        dill- elephant    rasied bed- frame               .s        1     1.33        68     90.67 |
+  | 2024-06-24       sweet corn- silver queen hybrid   raised bed- ground               .s        1     1.33        69     92.00 |
+  | 2024-06-24          sweet corn- sweetness hybrid   raised bed- ground               .s        1     1.33        70     93.33 |
+  |------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-07-07                   broccoli- calabrese             soilless               .m        1     1.33        71     94.67 |
+  | 2024-07-07                        kale- lacinato             soilless               .m        1     1.33        72     96.00 |
+  | 2024-07-07                lettuce- gourmet blend             soilless               .m        1     1.33        73     97.33 |
+  | 2024-07-07               lettuce- red salad bowl             soilless               .m        1     1.33        74     98.67 |
+  | 2024-11-16   garlic- german extra hardy hardneck    rasied bed- frame               .s        1     1.33        75    100.00 |
+  +------------------------------------------------------------------------------------------------------------------------------+
+
+  +-----------------------------------------------------------------------------------------------------------------------------------+
+  |   sow_date                                  crop              sow_med   sow_light_type_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2023-02-25     spinach- bloomsdale long standing             soilless               45w led        1     1.33         1      1.33 |
+  | 2023-11-04   garlic- german extra hardy hardneck   raised bed- ground                    .s        1     1.33         2      2.67 |
+  | 2024-02-25                eggplant- black beauty             soilless               45w led        1     1.33         3      4.00 |
+  | 2024-02-25                        kale- lacinato             soilless               45w led        1     1.33         4      5.33 |
+  | 2024-02-25                 lettuce- buttercrunch             soilless               45w led        1     1.33         5      6.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 lettuce- four seasons             soilless               45w led        1     1.33         6      8.00 |
+  | 2024-02-25                lettuce- gourmet blend             soilless               45w led        1     1.33         7      9.33 |
+  | 2024-02-25               lettuce- red salad bowl             soilless               45w led        1     1.33         8     10.67 |
+  | 2024-02-25                       pepper- anaheim             soilless               45w led        1     1.33         9     12.00 |
+  | 2024-02-25           pepper- bull nosed lrg bell             soilless               45w led        1     1.33        10     13.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25              pepper- califonia wonder             soilless               45w led        1     1.33        11     14.67 |
+  | 2024-02-25        pepper- chocolate scotch bonet             soilless               45w led        1     1.33        12     16.00 |
+  | 2024-02-25               pepper- jalapeno, early             soilless               45w led        1     1.33        13     17.33 |
+  | 2024-02-25                  pepper- pimenta puma             soilless               45w led        1     1.33        14     18.67 |
+  | 2024-02-25               pepper- poblano (ancho)             soilless               45w led        1     1.33        15     20.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 pepper- serrano chili             soilless               45w led        1     1.33        16     21.33 |
+  | 2024-02-25            pepper- sugar rush stripey             soilless               45w led        1     1.33        17     22.67 |
+  | 2024-02-25                  pepper- sweet banana             soilless               45w led        1     1.33        18     24.00 |
+  | 2024-02-25                pepper- tiger jalapeno             soilless               45w led        1     1.33        19     25.33 |
+  | 2024-03-11                          basil- sweet             soilless               45w led        1     1.33        20     26.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                   broccoli- calabrese             soilless               45w led        1     1.33        21     28.00 |
+  | 2024-03-11                                catnip             soilless               45w led        1     1.33        22     29.33 |
+  | 2024-03-11                              cilantro             soilless               45w led        1     1.33        23     30.67 |
+  | 2024-03-11                     cilantro- calypse             soilless               45w led        1     1.33        24     32.00 |
+  | 2024-03-11      coleus- chocolate covered cherry             soilless               45w led        1     1.33        25     33.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                  coreopsis- ruby kiss             soilless               45w led        1     1.33        26     34.67 |
+  | 2024-03-11                marigold- queen sophia             soilless               45w led        1     1.33        27     36.00 |
+  | 2024-03-11                      salvia- victoria             soilless               45w led        1     1.33        28     37.33 |
+  | 2024-03-11                         tomato- amish             soilless               45w led        1     1.33        29     38.67 |
+  | 2024-03-11                   tomato- cherry roma             soilless               45w led        1     1.33        30     40.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11            tomato- fresh salsa hybrid             soilless               45w led        1     1.33        31     41.33 |
+  | 2024-03-11                          tomato- roma             soilless               45w led        1     1.33        32     42.67 |
+  | 2024-04-25                      arrugula- rocket    rasied bed- frame                    .s        1     1.33        33     44.00 |
+  | 2024-04-25                              cilantro    rasied bed- frame                    .s        1     1.33        34     45.33 |
+  | 2024-04-25                     cilantro- calypse    rasied bed- frame                    .s        1     1.33        35     46.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-25                        dill- elephant    rasied bed- frame                    .s        1     1.33        36     48.00 |
+  | 2024-04-25     spinach- bloomsdale long standing    rasied bed- frame                    .s        1     1.33        37     49.33 |
+  | 2024-04-28                  coreopsis- ruby kiss             soilless               45w led        1     1.33        38     50.67 |
+  | 2024-04-28                marigold- queen sophia             soilless               45w led        1     1.33        39     52.00 |
+  | 2024-04-28                      salvia- victoria             soilless               45w led        1     1.33        40     53.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-28              zinnia- california giant             soilless               45w led        1     1.33        41     54.67 |
+  | 2024-04-28                       zinnia- classic             soilless               45w led        1     1.33        42     56.00 |
+  | 2024-05-04                     beet- detroit red   raised bed- ground                    .s        1     1.33        43     57.33 |
+  | 2024-05-04            carrot- kaleidoscope blend   raised bed- ground                    .s        1     1.33        44     58.67 |
+  | 2024-05-04                 carrot- short n sweet   raised bed- ground                    .s        1     1.33        45     60.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28                      arrugula- rocket    rasied bed- frame                    .s        1     1.33        46     61.33 |
+  | 2024-05-28                              cilantro    rasied bed- frame                    .s        1     1.33        47     62.67 |
+  | 2024-05-28                     cilantro- calypse    rasied bed- frame                    .s        1     1.33        48     64.00 |
+  | 2024-05-28           corn- ornamental, glass gem   raised bed- ground                    .s        1     1.33        49     65.33 |
+  | 2024-05-28                        dill- elephant    rasied bed- frame                    .s        1     1.33        50     66.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28     spinach- bloomsdale long standing    rasied bed- frame                    .s        1     1.33        51     68.00 |
+  | 2024-05-28                    sunflower- mammoth   raised bed- ground                    .s        1     1.33        52     69.33 |
+  | 2024-05-28          sweet corn- sweetness hybrid   raised bed- ground                    .s        1     1.33        53     70.67 |
+  | 2024-06-03             bean- purple queen (bush)   raised bed- ground                    .s        1     1.33        54     72.00 |
+  | 2024-06-03     bean- stringless green pod (bush)   raised bed- ground                    .s        1     1.33        55     73.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-03            carrot- kaleidoscope blend   raised bed- ground                    .s        1     1.33        56     74.67 |
+  | 2024-06-03                 carrot- short n sweet   raised bed- ground                    .s        1     1.33        57     76.00 |
+  | 2024-06-03            pumpkin- connecticut field   raised bed- ground                    .s        1     1.33        58     77.33 |
+  | 2024-06-03        pumpkin- early sweet sugar pie   raised bed- ground                    .s        1     1.33        59     78.67 |
+  | 2024-06-03       sweet corn- silver queen hybrid   raised bed- ground                    .s        1     1.33        60     80.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24             bean- purple queen (bush)   raised bed- ground                    .s        1     1.33        61     81.33 |
+  | 2024-06-24     bean- stringless green pod (bush)   raised bed- ground                    .s        1     1.33        62     82.67 |
+  | 2024-06-24           beet- tall top early wonder   raised bed- ground                    .s        1     1.33        63     84.00 |
+  | 2024-06-24            carrot- kaleidoscope blend   raised bed- ground                    .s        1     1.33        64     85.33 |
+  | 2024-06-24                 carrot- short n sweet   raised bed- ground                    .s        1     1.33        65     86.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24                              cilantro    rasied bed- frame                    .s        1     1.33        66     88.00 |
+  | 2024-06-24                     cilantro- calypse    rasied bed- frame                    .s        1     1.33        67     89.33 |
+  | 2024-06-24                        dill- elephant    rasied bed- frame                    .s        1     1.33        68     90.67 |
+  | 2024-06-24       sweet corn- silver queen hybrid   raised bed- ground                    .s        1     1.33        69     92.00 |
+  | 2024-06-24          sweet corn- sweetness hybrid   raised bed- ground                    .s        1     1.33        70     93.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-07-07                   broccoli- calabrese             soilless                     .        1     1.33        71     94.67 |
+  | 2024-07-07                        kale- lacinato             soilless                     .        1     1.33        72     96.00 |
+  | 2024-07-07                lettuce- gourmet blend             soilless                     .        1     1.33        73     97.33 |
+  | 2024-07-07               lettuce- red salad bowl             soilless                     .        1     1.33        74     98.67 |
+  | 2024-11-16   garlic- german extra hardy hardneck    rasied bed- frame                    .s        1     1.33        75    100.00 |
+  +-----------------------------------------------------------------------------------------------------------------------------------+
+(4 real changes made, 4 to missing)
+
+  +-----------------------------------------------------------------------------------------------------------------------------------+
+  |   sow_date                                  crop              sow_med   sow_light_type_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2023-02-25     spinach- bloomsdale long standing             soilless               45w led        1     1.33         1      1.33 |
+  | 2023-11-04   garlic- german extra hardy hardneck   raised bed- ground                    .s        1     1.33         2      2.67 |
+  | 2024-02-25                eggplant- black beauty             soilless               45w led        1     1.33         3      4.00 |
+  | 2024-02-25                        kale- lacinato             soilless               45w led        1     1.33         4      5.33 |
+  | 2024-02-25                 lettuce- buttercrunch             soilless               45w led        1     1.33         5      6.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 lettuce- four seasons             soilless               45w led        1     1.33         6      8.00 |
+  | 2024-02-25                lettuce- gourmet blend             soilless               45w led        1     1.33         7      9.33 |
+  | 2024-02-25               lettuce- red salad bowl             soilless               45w led        1     1.33         8     10.67 |
+  | 2024-02-25                       pepper- anaheim             soilless               45w led        1     1.33         9     12.00 |
+  | 2024-02-25           pepper- bull nosed lrg bell             soilless               45w led        1     1.33        10     13.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25              pepper- califonia wonder             soilless               45w led        1     1.33        11     14.67 |
+  | 2024-02-25        pepper- chocolate scotch bonet             soilless               45w led        1     1.33        12     16.00 |
+  | 2024-02-25               pepper- jalapeno, early             soilless               45w led        1     1.33        13     17.33 |
+  | 2024-02-25                  pepper- pimenta puma             soilless               45w led        1     1.33        14     18.67 |
+  | 2024-02-25               pepper- poblano (ancho)             soilless               45w led        1     1.33        15     20.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-02-25                 pepper- serrano chili             soilless               45w led        1     1.33        16     21.33 |
+  | 2024-02-25            pepper- sugar rush stripey             soilless               45w led        1     1.33        17     22.67 |
+  | 2024-02-25                  pepper- sweet banana             soilless               45w led        1     1.33        18     24.00 |
+  | 2024-02-25                pepper- tiger jalapeno             soilless               45w led        1     1.33        19     25.33 |
+  | 2024-03-11                          basil- sweet             soilless               45w led        1     1.33        20     26.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                   broccoli- calabrese             soilless               45w led        1     1.33        21     28.00 |
+  | 2024-03-11                                catnip             soilless               45w led        1     1.33        22     29.33 |
+  | 2024-03-11                              cilantro             soilless               45w led        1     1.33        23     30.67 |
+  | 2024-03-11                     cilantro- calypse             soilless               45w led        1     1.33        24     32.00 |
+  | 2024-03-11      coleus- chocolate covered cherry             soilless               45w led        1     1.33        25     33.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11                  coreopsis- ruby kiss             soilless               45w led        1     1.33        26     34.67 |
+  | 2024-03-11                marigold- queen sophia             soilless               45w led        1     1.33        27     36.00 |
+  | 2024-03-11                      salvia- victoria             soilless               45w led        1     1.33        28     37.33 |
+  | 2024-03-11                         tomato- amish             soilless               45w led        1     1.33        29     38.67 |
+  | 2024-03-11                   tomato- cherry roma             soilless               45w led        1     1.33        30     40.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-03-11            tomato- fresh salsa hybrid             soilless               45w led        1     1.33        31     41.33 |
+  | 2024-03-11                          tomato- roma             soilless               45w led        1     1.33        32     42.67 |
+  | 2024-04-25                      arrugula- rocket    rasied bed- frame                    .s        1     1.33        33     44.00 |
+  | 2024-04-25                              cilantro    rasied bed- frame                    .s        1     1.33        34     45.33 |
+  | 2024-04-25                     cilantro- calypse    rasied bed- frame                    .s        1     1.33        35     46.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-25                        dill- elephant    rasied bed- frame                    .s        1     1.33        36     48.00 |
+  | 2024-04-25     spinach- bloomsdale long standing    rasied bed- frame                    .s        1     1.33        37     49.33 |
+  | 2024-04-28                  coreopsis- ruby kiss             soilless               45w led        1     1.33        38     50.67 |
+  | 2024-04-28                marigold- queen sophia             soilless               45w led        1     1.33        39     52.00 |
+  | 2024-04-28                      salvia- victoria             soilless               45w led        1     1.33        40     53.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-04-28              zinnia- california giant             soilless               45w led        1     1.33        41     54.67 |
+  | 2024-04-28                       zinnia- classic             soilless               45w led        1     1.33        42     56.00 |
+  | 2024-05-04                     beet- detroit red   raised bed- ground                    .s        1     1.33        43     57.33 |
+  | 2024-05-04            carrot- kaleidoscope blend   raised bed- ground                    .s        1     1.33        44     58.67 |
+  | 2024-05-04                 carrot- short n sweet   raised bed- ground                    .s        1     1.33        45     60.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28                      arrugula- rocket    rasied bed- frame                    .s        1     1.33        46     61.33 |
+  | 2024-05-28                              cilantro    rasied bed- frame                    .s        1     1.33        47     62.67 |
+  | 2024-05-28                     cilantro- calypse    rasied bed- frame                    .s        1     1.33        48     64.00 |
+  | 2024-05-28           corn- ornamental, glass gem   raised bed- ground                    .s        1     1.33        49     65.33 |
+  | 2024-05-28                        dill- elephant    rasied bed- frame                    .s        1     1.33        50     66.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-05-28     spinach- bloomsdale long standing    rasied bed- frame                    .s        1     1.33        51     68.00 |
+  | 2024-05-28                    sunflower- mammoth   raised bed- ground                    .s        1     1.33        52     69.33 |
+  | 2024-05-28          sweet corn- sweetness hybrid   raised bed- ground                    .s        1     1.33        53     70.67 |
+  | 2024-06-03             bean- purple queen (bush)   raised bed- ground                    .s        1     1.33        54     72.00 |
+  | 2024-06-03     bean- stringless green pod (bush)   raised bed- ground                    .s        1     1.33        55     73.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-03            carrot- kaleidoscope blend   raised bed- ground                    .s        1     1.33        56     74.67 |
+  | 2024-06-03                 carrot- short n sweet   raised bed- ground                    .s        1     1.33        57     76.00 |
+  | 2024-06-03            pumpkin- connecticut field   raised bed- ground                    .s        1     1.33        58     77.33 |
+  | 2024-06-03        pumpkin- early sweet sugar pie   raised bed- ground                    .s        1     1.33        59     78.67 |
+  | 2024-06-03       sweet corn- silver queen hybrid   raised bed- ground                    .s        1     1.33        60     80.00 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24             bean- purple queen (bush)   raised bed- ground                    .s        1     1.33        61     81.33 |
+  | 2024-06-24     bean- stringless green pod (bush)   raised bed- ground                    .s        1     1.33        62     82.67 |
+  | 2024-06-24           beet- tall top early wonder   raised bed- ground                    .s        1     1.33        63     84.00 |
+  | 2024-06-24            carrot- kaleidoscope blend   raised bed- ground                    .s        1     1.33        64     85.33 |
+  | 2024-06-24                 carrot- short n sweet   raised bed- ground                    .s        1     1.33        65     86.67 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-06-24                              cilantro    rasied bed- frame                    .s        1     1.33        66     88.00 |
+  | 2024-06-24                     cilantro- calypse    rasied bed- frame                    .s        1     1.33        67     89.33 |
+  | 2024-06-24                        dill- elephant    rasied bed- frame                    .s        1     1.33        68     90.67 |
+  | 2024-06-24       sweet corn- silver queen hybrid   raised bed- ground                    .s        1     1.33        69     92.00 |
+  | 2024-06-24          sweet corn- sweetness hybrid   raised bed- ground                    .s        1     1.33        70     93.33 |
+  |-----------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-07-07                   broccoli- calabrese             soilless                    .m        1     1.33        71     94.67 |
+  | 2024-07-07                        kale- lacinato             soilless                    .m        1     1.33        72     96.00 |
+  | 2024-07-07                lettuce- gourmet blend             soilless                    .m        1     1.33        73     97.33 |
+  | 2024-07-07               lettuce- red salad bowl             soilless                    .m        1     1.33        74     98.67 |
+  | 2024-11-16   garlic- german extra hardy hardneck    rasied bed- frame                    .s        1     1.33        75    100.00 |
+  +-----------------------------------------------------------------------------------------------------------------------------------+
+
+.                 
 .                 tablist crop crop_code, sort(v) nolabel
 
   +--------------------------------------------------------------------------------------+
@@ -4704,10 +5281,8 @@ Variable: transp_no_end_2
 >                         capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
 >                         if _rc==0 {
 >                                 capture confirm numeric variable `var'
->                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet be
-> en transplanted.
->                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been 
-> transplanted.
+>                                 *if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
+>                                 *else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
 >                                 // All plants have now been transplanted but saving this loop for next season's iteration of this crop data cleaning program
 >                         }
 >                 }
@@ -5002,6 +5577,7 @@ Variable: transp_no_end_2
 
 .                 
 .                 *-> Fertilizing, pathogen, and harvesting variables: *fert_* path_* harvest_*
+. **# Bookmark #1 Expand this to replace as .m if not .s for other variables in same number/date group
 .                 foreach var of varlist *fert_* path_* harvest_* {
   2.                         display as input "Variable: `var'"
   3.                         tablist sow_type `var', sort(v) ab(32) nolabel
@@ -10493,7 +11069,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 crop            str35   %35s                  crop type
 crop_code       byte    %35.0g     crop_code
                                               crop type- code
@@ -10804,5 +11380,5 @@ notes           str196  %196s                 notes
       name:  clean_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:   3 Dec 2024, 20:59:54
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   3 Dec 2024, 21:44:37
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

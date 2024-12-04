@@ -2,7 +2,7 @@
       name:  clean_11
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\11_tbf_data_2023_cleaning.log
   log type:  text
- opened on:   3 Dec 2024, 20:59:45
+ opened on:   3 Dec 2024, 21:11:35
 
 . 
 . 
@@ -143,7 +143,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_12
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\12_tbf_data_2023_labels.log
   log type:  text
- opened on:   3 Dec 2024, 20:59:46
+ opened on:   3 Dec 2024, 21:11:36
 
 . 
 . 
@@ -236,7 +236,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_12
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\12_tbf_data_2023_labels.log
   log type:  text
- closed on:   3 Dec 2024, 20:59:46
+ closed on:   3 Dec 2024, 21:11:36
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -11441,5 +11441,5 @@ notes           str306  %306s                 notes
       name:  clean_11
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\11_tbf_data_2023_cleaning.log
   log type:  text
- closed on:   3 Dec 2024, 20:59:47
+ closed on:   3 Dec 2024, 21:11:37
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
