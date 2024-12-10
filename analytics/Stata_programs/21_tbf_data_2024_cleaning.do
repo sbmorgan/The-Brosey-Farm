@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: February 29, 2024 	   					 	     			                  ***
-*** Last date modified: December 2, 2024                                                     ***
+*** Last date modified: December 9, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -144,16 +144,16 @@ pause off
 *=========================================================================================     
 
 	/* Clean missing values */
-**# Bookmark #2 Incorporate .m throughout
 		
 		*-> Crop
-		assert !missing(crop)
-		assert !missing(sow_type)
+		foreach var of varlist crop-sow_type_code {
+			assert !missing(`var')
+		}
  		
 		*-> Non-seeded transplants (externally sourced transplants)
 		count if sow_type=="external transplant"
 		if `r(N)' != 0 {
-			foreach var of varlist sow_date-transp_harden_date_end_stata {
+			foreach var of varlist sow_date-transp_harden_date_end_stata { // These variables are for crops sown on the farm and thus should be missing if the crop was sourced externally (purchase, gift, etc.).
 				tablist sow_type `var', sort(v) ab(32) nolabel
 				assert missing(`var') if sow_type=="external transplant"
 				capture confirm numeric variable `var'
@@ -163,32 +163,17 @@ pause off
 			}			
 		}
 
-		
 		*-> Seedlings variables: *sow* transp*
-		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables should be missing if the crop was directly seeded in the garden versus indoor seeding.
+		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables are for crops sown indoors and thus should be missing if the crop was directly seeded in the garden.
 			display as input _n "Variable: `var'"
 			tablist sow_med sow_med_code `var', sort(v) ab(32) nolabel
-			assert missing(`var') if inlist(sow_med_code, 1, 2)
+			assert missing(`var') if inlist(sow_med, "raised bed- ground", "rasied bed- frame")
 			capture confirm numeric variable `var'
-			if _rc==0 replace `var'= .s if inlist(sow_med_code, 1, 2)
-			else replace `var'= ".s" if inlist(sow_med_code, 1, 2)
-			tablist sow_med_code `var', sort(v) ab(32) nolabel
+			if _rc==0 replace `var'= .s if inlist(sow_med, "raised bed- ground", "rasied bed- frame")
+			else replace `var'= ".s" if inlist(sow_med, "raised bed- ground", "rasied bed- frame")
+			tablist sow_med sow_med_code `var', sort(v) ab(32) nolabel
 		}
 
-		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
-		assert sow_heatmat_temp==. if sow_heatmat=="no"
-		replace sow_heatmat_temp=.s if sow_heatmat=="no"
-		replace sow_heatmat_temp=.m if sow_heatmat_temp==. & sow_heatmat=="yes"
-		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
-		
-		foreach var of varlist sow_light_hrs sow_light_type sow_light_type_code {
-			tablist sow_date crop sow_med `var', sort(v) ab(32)
-			capture confirm numeric variable `var'
-			if _rc==0 replace `var'=.m if `var'==. & sow_med=="soilless"
-			else replace `var'=".m" if `var'=="" & sow_med=="soilless"
-			tablist sow_date crop sow_med `var', sort(v) ab(32)
-		}
-		
 		tablist crop crop_code, sort(v) nolabel
 		tablist crop crop_code sow_date if crop_code==18, sort(v) ab(32) nolabel
 		assert sow_to_germ50_days==. if crop_code==18 // Garlic doesn't bulb/produce leaves above ground until the following season.
@@ -197,49 +182,76 @@ pause off
 			assert `var'==. if crop_code==18 & sow_date=="2024-11-16"
 			replace `var'=.s if crop_code==18 & sow_date=="2024-11-16" // For the 2024-planted garlic that has not germinated yet. Planted in FA24 for harvest SU25.
 		}
+		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32) // Heat temperature of heat mat should be missing if heat mat not used. 
+		assert sow_heatmat_temp==. if sow_heatmat=="no"
+		replace sow_heatmat_temp=.s if sow_heatmat=="no"
+		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 		
-		/*
-		foreach var of varlist transp_* {
-			capture tablist crop sow_date if missing(`var'), sort(v) ab(32)
-			if _rc==0 {
+		forval x= 2/6 {
+			egen misscount_`x'= rowmiss(sow_fert_date_`x'-sow_fert_dose_`x')
+			foreach var of varlist sow_fert_date_`x'-sow_fert_dose_`x' {
 				capture confirm numeric variable `var'
-				*if _rc==0 replace  `var'=.f if `var'==. & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
-				*else replace `var'=".f" if `var'=="" & inlist(crop,"lettuce- gourmet blend","kale- lacinato") & sow_date=="2024-08-13" // These are plants that have not yet been transplanted.
-				// All plants have now been transplanted but saving this loop for next season's iteration of this crop data cleaning program
+				if _rc==0 replace `var'=.s if misscount_`x'==7
+				else replace `var'=".s" if misscount_`x'==7
 			}
+			drop misscount_`x'
 		}
-		*/
 		
-		foreach var of varlist transp*_2* {
-			display as input "Variable: `var'"
-			tablist transp_date_1_stata `var', sort(v) ab(32)
+		egen misscount= rowmiss(transp_date_2-transp_no_end_2)
+		foreach var of varlist transp_date_2-transp_no_end_2 {
 			capture confirm numeric variable `var'
-			if _rc==0 replace  `var'=.s if `var'==.  & transp_date_1_stata!=.m // These are crops that were transplanted only once.
-			else replace `var'=".f" if `var'=="" & transp_date_1_stata!=.m // These are crops that were transplanted only once.
-			tablist transp_date_1_stata `var', sort(v) ab(32)
+			if _rc==0 replace `var'=.s if misscount==5
+			else replace `var'=".s" if misscount==5
+		}
+		drop misscount
+		
+**# Bookmark #1 // Something bigger is going on here. Variable fert_date_4 is not formatted correctly.
+		foreach var of varlist fert_type_npk_4 fert_type_name_4 fert_date_4 fert_unit_4 {
+			replace `var'="" if `var'=="."
+		}
+		forval x= 2/4 {
+			egen misscount_`x'= rowmiss(fert_type_npk_`x'-fert_unit_`x')
+			foreach var of varlist fert_type_npk_`x'-fert_unit_`x' {
+				capture confirm numeric variable `var'
+				if _rc==0 replace `var'=.s if misscount_`x'==8
+				else replace `var'=".s" if misscount_`x'==8
+			}
+			drop misscount_`x'
+		}
+/*		
+		forval x= 1/3 {
+			egen misscount_`x'= rowmiss(path_type_`x'-path_ipm_date_`x'_3_stata)
+			foreach var of varlist path_type_`x'-path_ipm_date_`x'_3_stata {
+				capture confirm numeric variable `var'
+				if _rc==0 replace `var'=.s if misscount_`x'==14
+				else replace `var'=".s" if misscount_`x'==14
+			}
+			order misscount_`x', after(path_ipm_date_`x'_3_stata)
+			*drop misscount_`x'
 		}
 		
-		*-> Fertilizing, pathogen, and harvesting variables: *fert_* path_* harvest_*
-**# Bookmark #1 Expand this to replace as .m if not .s for other variables in same number/date group
-		foreach var of varlist *fert_* path_* harvest_* {
-			display as input "Variable: `var'"
-			tablist sow_type `var', sort(v) ab(32) nolabel
-			capture confirm numeric variable `var'
-			if _rc==0 replace `var'= .s if missing(`var')
-			else replace `var'= ".s" if missing(`var') | `var'=="."
-			tablist sow_type `var', sort(v) ab(32) nolabel
+
+		forval x= 1/30 {
+			egen misscount_`x'= rowmiss(harvest_date_`x'-harvest_unit_`x')
+			foreach var of varlist harvest_date_`x'-harvest_unit_`x' {
+				capture confirm numeric variable `var'
+				if _rc==0 replace `var'=.s if misscount_`x'==4
+				else replace `var'=".s" if misscount_`x'==4
+			}
+			order misscount_`x', after(harvest_unit_`x')
+			*drop misscount_`x'
 		}
-		
+*/				
 		*-> Notes
 		replace notes=".s" if missing(notes)
-/*		
+
 		*-> Check all missing values have been cleaned
 		foreach var of varlist _all {
 			display as input "Variable: `var'"
 			tabulate `var', missing
 			capture confirm numeric variable `var'
-			if _rc==0 assert `var' !=. 
-			else assert `var' !=""
+			if _rc==0 replace `var'= .m if `var'==.
+			else replace `var'=".m" if `var'==""
 		}
 */		
 	/* Save clean TBF Market Garden 2024 data */
