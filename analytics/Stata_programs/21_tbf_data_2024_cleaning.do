@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: February 29, 2024 	   					 	     			                  ***
-*** Last date modified: December 9, 2024                                                     ***
+*** Last date modified: December 15, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -79,9 +79,15 @@ pause off
 	/* Manage date variables */
 	foreach var of varlist *date* {
 		display as input "Variable: `var'"
-		tabulate `var', missing
 		capture confirm string var `var'
 		if _rc!=0 tostring `var', replace
+**# Bookmark #2
+		
+		tabulate `var', missing
+		replace `var'="" if `var'=="."
+		tabulate `var', missing
+		*pause
+		
 		generate `var'_year= substr(`var',1,4)
 		generate `var'_month= substr(`var',6,2)
 		generate `var'_day= substr(`var',9,2)
@@ -101,7 +107,9 @@ pause off
 	local cat_str_list crop sow_med *type*
 	tab1 `cat_str_list', missing
 	foreach var of varlist `cat_str_list' {
-		if `var'=="." continue
+**# Bookmark #1
+		*if `var'=="." continue
+		replace `var'="" if `var'=="."
 		encode (`var'), generate(`var'_code)
 		tablist `var' `var'_code, sort(v) ab(32)
 		tablist `var' `var'_code, sort(v) nolabel ab(32)
@@ -205,11 +213,7 @@ pause off
 		}
 		drop misscount
 		
-**# Bookmark #1 // Something bigger is going on here. Variable fert_date_4 is not formatted correctly.
-		foreach var of varlist fert_type_npk_4 fert_type_name_4 fert_date_4 fert_unit_4 {
-			replace `var'="" if `var'=="."
-		}
-		forval x= 2/4 {
+		forval x= 1/4 {
 			egen misscount_`x'= rowmiss(fert_type_npk_`x'-fert_unit_`x')
 			foreach var of varlist fert_type_npk_`x'-fert_unit_`x' {
 				capture confirm numeric variable `var'
@@ -218,19 +222,31 @@ pause off
 			}
 			drop misscount_`x'
 		}
-/*		
+		
 		forval x= 1/3 {
 			egen misscount_`x'= rowmiss(path_type_`x'-path_ipm_date_`x'_3_stata)
 			foreach var of varlist path_type_`x'-path_ipm_date_`x'_3_stata {
 				capture confirm numeric variable `var'
-				if _rc==0 replace `var'=.s if misscount_`x'==14
-				else replace `var'=".s" if misscount_`x'==14
+				if _rc==0 replace `var'=.s if misscount_`x'==16
+				else replace `var'=".s" if misscount_`x'==16
 			}
 			order misscount_`x', after(path_ipm_date_`x'_3_stata)
-			*drop misscount_`x'
+			drop misscount_`x'
 		}
-		
-
+	
+		forval x= 1/3 {
+			forval y= 1/3 {
+				egen misscount_`x'_`y'= rowmiss(path_ipm_type_`x'_`y'-path_ipm_date_`x'_`y'_stata)
+				foreach var of varlist path_ipm_type_`x'_`y'-path_ipm_date_`x'_`y'_stata {
+					capture confirm numeric variable `var'
+					if _rc==0 replace `var'=.s if misscount_`x'_`y'==4
+					else replace `var'=".s" if misscount_`x'_`y'==4
+				}
+				order misscount_`x'_`y', after(path_ipm_date_`x'_`y'_stata)
+				drop misscount_`x'_`y'
+			}
+		}
+	
 		forval x= 1/30 {
 			egen misscount_`x'= rowmiss(harvest_date_`x'-harvest_unit_`x')
 			foreach var of varlist harvest_date_`x'-harvest_unit_`x' {
@@ -239,9 +255,9 @@ pause off
 				else replace `var'=".s" if misscount_`x'==4
 			}
 			order misscount_`x', after(harvest_unit_`x')
-			*drop misscount_`x'
+			drop misscount_`x'
 		}
-*/				
+				
 		*-> Notes
 		replace notes=".s" if missing(notes)
 
@@ -250,10 +266,20 @@ pause off
 			display as input "Variable: `var'"
 			tabulate `var', missing
 			capture confirm numeric variable `var'
-			if _rc==0 replace `var'= .m if `var'==.
-			else replace `var'=".m" if `var'==""
+			if _rc==0 {
+				replace `var'= .m if `var'==.
+				count if `var'==.m
+				if r(N)>0 tablist crop sow_type sow_date sow_med `var' if `var'==.m, sort(v) ab(32)
+			}
+			else {
+				replace `var'=".m" if `var'==""
+				count if `var'==".m"
+				if r(N)>0 tablist crop sow_type sow_date sow_med `var' if `var'==".m", sort(v) ab(32)
+			}
+			tabulate `var', missing
+			*pause
 		}
-*/		
+	
 	/* Save clean TBF Market Garden 2024 data */
 	isid crop sow_date
 	quietly compress
