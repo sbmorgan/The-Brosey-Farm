@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: October 2, 2024   	   					 	     			                  ***
-*** Last date modified: October 2, 2024                                                       ***
+*** Last date modified: December 16, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -72,6 +72,9 @@ pause off
 	/* Add variable labels */
 	label variable sale_date "sale date"
 	label variable sale_location "sale location" 
+	label variable sale_location_stall_no "sale location- stall number" 
+	rename sale_location_stall_spec sale_location_stall_area
+	label variable sale_location_stall_area "sale location- area" 
 	label variable sale_item "sale item" 
 	label variable sale_amnt "sale amount" 
 	label variable sale_unit "sale amount unit" 
@@ -133,14 +136,20 @@ pause off
 		}
 	}
 	
-	tablist sale_location sale_location_stall_no sale_location_stall_spec, sort(variable) ab(32)
+	tablist sale_location sale_location_stall_no sale_location_stall_area, sort(variable) ab(32)
 	replace sale_location_stall_no= .m if sale_location_stall_no==.
-	replace sale_location_stall_spec= ".m" if sale_location_stall_spec==""
+	replace sale_location_stall_area= ".m" if sale_location_stall_area==""
 	
 	foreach var of varlist sale_amnt sale_unit sale_unit_code {
 		capture confirm numeric variable `var'
-		if _rc==0 replace `var' = .m if sale_item=="miscellaneous"
-		else replace `var' = ".m" if sale_item=="miscellaneous"
+		if _rc==0 {
+			assert `var'== . if sale_item=="miscellaneous"
+			replace `var' = .m if sale_item=="miscellaneous"
+		}
+		else {
+			assert `var'== "" if sale_item=="miscellaneous"
+			replace `var' = ".m" if sale_item=="miscellaneous"
+		}
 	}
 	replace sale_amnt=.m if sale_amnt==.
 	
@@ -159,8 +168,8 @@ pause off
 	/* Save clean TBF Market Garden 2023 data */
 	isid sale_date sale_location sale_code
 	quietly compress
-	save "$root\modified_data\tbf_market_garden_sales_2023_clean.dta", replace
-	export excel "$root\modified_data\tbf_market_garden_sales_2023_clean.xlsx", firstrow(variables) replace
+	save "$root\modified_data\tbf_market_garden_sales_2024_clean.dta", replace
+	export excel "$root\modified_data\tbf_market_garden_sales_2024_clean.xlsx", firstrow(variables) replace
 	
  
 *=========================================================================================

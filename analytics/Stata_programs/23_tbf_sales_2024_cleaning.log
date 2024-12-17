@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\23_tbf_sales_2024_cleaning.log
   log type:  text
- opened on:   2 Oct 2024, 10:54:07
+ opened on:  16 Dec 2024, 22:38:02
 
 . 
 . 
@@ -21,7 +21,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: October 2, 2024                                                                                                   ***
-. *** Last date modified: October 2, 2024                                                       ***
+. *** Last date modified: December 16, 2024                                                     ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -70,7 +70,7 @@
 . 
 .         /* Load raw data */
 .         import excel "$root\raw_data\Brosey Farming.xlsx", sheet("sales_2024") firstrow clear
-(13 vars, 280 obs)
+(13 vars, 313 obs)
 
 .         keep sale_date-sale_value_usd
 
@@ -96,6 +96,12 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 .         label variable sale_location "sale location" 
 
+.         label variable sale_location_stall_no "sale location- stall number" 
+
+.         rename sale_location_stall_spec sale_location_stall_area
+
+.         label variable sale_location_stall_area "sale location- area" 
+
 .         label variable sale_item "sale item" 
 
 .         label variable sale_amnt "sale amount" 
@@ -110,11 +116,11 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 sale_date       str10   %10s                  sale date
 sale_location   str27   %27s                  sale location
-sale_location~o byte    %10.0g                sale_location_stall_no
-sale_location~c str13   %13s                  sale_location_stall_spec
+sale_location~o byte    %10.0g                sale location- stall number
+sale_location~a str13   %13s                  sale location- area
 sale_item       str33   %33s                  sale item
 sale_amnt       double  %10.0g                sale amount
 sale_unit       str9    %9s                   sale amount unit
@@ -145,25 +151,26 @@ Variable: sale_date
 
   sale date |      Freq.     Percent        Cum.
 ------------+-----------------------------------
- 2024-06-15 |         15        5.36        5.36
- 2024-06-22 |          9        3.21        8.57
- 2024-06-29 |         12        4.29       12.86
- 2024-07-06 |         14        5.00       17.86
- 2024-07-13 |         17        6.07       23.93
- 2024-07-20 |         13        4.64       28.57
- 2024-07-27 |         23        8.21       36.79
- 2024-07-31 |          2        0.71       37.50
- 2024-08-02 |         29       10.36       47.86
- 2024-08-10 |         37       13.21       61.07
- 2024-08-15 |          1        0.36       61.43
- 2024-08-17 |         29       10.36       71.79
- 2024-08-24 |         31       11.07       82.86
- 2024-08-28 |          1        0.36       83.21
- 2024-09-04 |          1        0.36       83.57
- 2024-09-07 |         27        9.64       93.21
- 2024-09-14 |         19        6.79      100.00
+ 2024-06-15 |         15        4.79        4.79
+ 2024-06-22 |          9        2.88        7.67
+ 2024-06-29 |         12        3.83       11.50
+ 2024-07-06 |         14        4.47       15.97
+ 2024-07-13 |         17        5.43       21.41
+ 2024-07-20 |         13        4.15       25.56
+ 2024-07-27 |         23        7.35       32.91
+ 2024-07-31 |          2        0.64       33.55
+ 2024-08-02 |         29        9.27       42.81
+ 2024-08-10 |         37       11.82       54.63
+ 2024-08-15 |          1        0.32       54.95
+ 2024-08-17 |         29        9.27       64.22
+ 2024-08-24 |         31        9.90       74.12
+ 2024-08-28 |          1        0.32       74.44
+ 2024-09-04 |          1        0.32       74.76
+ 2024-09-07 |         27        8.63       83.39
+ 2024-09-14 |         19        6.07       89.46
+ 2024-10-12 |         33       10.54      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 sale_date_year: all characters numeric; replaced as int
 sale_date_month: all characters numeric; replaced as byte
 sale_date_day: all characters numeric; replaced as byte
@@ -178,65 +185,70 @@ sale_date_day: all characters numeric; replaced as byte
 
               sale location |      Freq.     Percent        Cum.
 ----------------------------+-----------------------------------
-New Carlisle Farmers Market |        273       97.50       97.50
-The Brosey Farm: farm stand |          7        2.50      100.00
+New Carlisle Farmers Market |        306       97.76       97.76
+The Brosey Farm: farm stand |          7        2.24      100.00
 ----------------------------+-----------------------------------
-                      Total |        280      100.00
+                      Total |        313      100.00
 
 -> tabulation of sale_item  
 
                         sale item |      Freq.     Percent        Cum.
 ----------------------------------+-----------------------------------
-                                  |          7        2.50        2.50
-        bean- purple queen (bush) |         11        3.93        6.43
-bean- stringless green pod (bush) |          7        2.50        8.93
-                beet- detroit red |          6        2.14       11.07
-      beet- tall top early wonder |         10        3.57       14.64
-              black raspberry jam |          1        0.36       15.00
-              broccoli- calabrese |          1        0.36       15.36
-       carrot- kaleidoscope blend |         20        7.14       22.50
-            carrot- short n sweet |         28       10.00       32.50
-                          celosia |          1        0.36       32.86
-                cilantro- calypse |          1        0.36       33.21
- coleus- chocolate covered cherry |          1        0.36       33.57
-           eggplant- black beauty |         23        8.21       41.79
-                   kale- lacinato |          3        1.07       42.86
-          lettuce- red salad bowl |          1        0.36       43.21
-           marigold- queen sophia |          1        0.36       43.57
-                    miscellaneous |          2        0.71       44.29
-                  pepper- anaheim |          4        1.43       45.71
-      pepper- bull nosed lrg bell |         18        6.43       52.14
-          pepper- jalapeno, early |         18        6.43       58.57
-          pepper- poblano (ancho) |          6        2.14       60.71
-            pepper- serrano chili |          5        1.79       62.50
-             pepper- sweet banana |          8        2.86       65.36
-   pumpkin- early sweet sugar pie |          3        1.07       66.43
-  sweet corn- silver queen hybrid |          4        1.43       67.86
-     sweet corn- sweetness hybrid |          6        2.14       70.00
-            tomato jalapeno salsa |         40       14.29       84.29
-                     tomato sauce |         20        7.14       91.43
-                    tomato- amish |          1        0.36       91.79
-              tomato- cherry roma |         13        4.64       96.43
-                     tomato- roma |          9        3.21       99.64
-         zinnia- california giant |          1        0.36      100.00
+                                  |          7        2.24        2.24
+        bean- purple queen (bush) |         11        3.51        5.75
+bean- stringless green pod (bush) |          7        2.24        7.99
+                beet- detroit red |          6        1.92        9.90
+      beet- tall top early wonder |         10        3.19       13.10
+              black raspberry jam |          1        0.32       13.42
+              broccoli- calabrese |          2        0.64       14.06
+       carrot- kaleidoscope blend |         20        6.39       20.45
+            carrot- short n sweet |         28        8.95       29.39
+                          celosia |          1        0.32       29.71
+                cilantro- calypse |          1        0.32       30.03
+ coleus- chocolate covered cherry |          1        0.32       30.35
+      corn- ornamental, glass gem |          1        0.32       30.67
+           eggplant- black beauty |         24        7.67       38.34
+                   kale- lacinato |          3        0.96       39.30
+          lettuce- red salad bowl |          1        0.32       39.62
+           marigold- queen sophia |          1        0.32       39.94
+                    miscellaneous |          2        0.64       40.58
+                  pepper- anaheim |          4        1.28       41.85
+      pepper- bull nosed lrg bell |         19        6.07       47.92
+   pepper- chocolate scotch bonet |          4        1.28       49.20
+          pepper- jalapeno, early |         23        7.35       56.55
+             pepper- pimenta puma |          5        1.60       58.15
+          pepper- poblano (ancho) |          8        2.56       60.70
+            pepper- serrano chili |          6        1.92       62.62
+       pepper- sugar rush stripey |          3        0.96       63.58
+             pepper- sweet banana |         10        3.19       66.77
+   pumpkin- early sweet sugar pie |          6        1.92       68.69
+  sweet corn- silver queen hybrid |          4        1.28       69.97
+     sweet corn- sweetness hybrid |          6        1.92       71.88
+            tomato jalapeno salsa |         43       13.74       85.62
+                     tomato sauce |         21        6.71       92.33
+                    tomato- amish |          1        0.32       92.65
+              tomato- cherry roma |         13        4.15       96.81
+                     tomato- roma |          9        2.88       99.68
+         zinnia- california giant |          1        0.32      100.00
 ----------------------------------+-----------------------------------
-                            Total |        280      100.00
+                            Total |        313      100.00
 
 -> tabulation of sale_unit  
 
 sale amount |
        unit |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-            |          9        3.21        3.21
-      bunch |          1        0.36        3.57
-  container |         13        4.64        8.21
-       pint |         92       32.86       41.07
-      pound |          8        2.86       43.93
-      quart |          1        0.36       44.29
-       unit |        154       55.00       99.29
-      units |          2        0.71      100.00
+            |          9        2.88        2.88
+      bunch |          1        0.32        3.19
+  container |         14        4.47        7.67
+       pint |         96       30.67       38.34
+      pound |          8        2.56       40.89
+      quart |          1        0.32       41.21
+       unit |        181       57.83       99.04
+      units |          2        0.64       99.68
+       unti |          1        0.32      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 
 .         foreach var of varlist `cat_str_list' {
   2.                 encode (`var'), generate(`var'_code)
@@ -251,129 +263,141 @@ sale amount |
   +-------------------------------------------------------------------------------------------------+
   |               sale_location            sale_location_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market   New Carlisle Farmers Market      273    97.50       273     97.50 |
-  | The Brosey Farm: farm stand   The Brosey Farm: farm stand        7     2.50       280    100.00 |
+  | New Carlisle Farmers Market   New Carlisle Farmers Market      306    97.76       306     97.76 |
+  | The Brosey Farm: farm stand   The Brosey Farm: farm stand        7     2.24       313    100.00 |
   +-------------------------------------------------------------------------------------------------+
 
   +----------------------------------------------------------------------------------------+
   |               sale_location   sale_location_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |----------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market                    1      273    97.50       273     97.50 |
-  | The Brosey Farm: farm stand                    2        7     2.50       280    100.00 |
+  | New Carlisle Farmers Market                    1      306    97.76       306     97.76 |
+  | The Brosey Farm: farm stand                    2        7     2.24       313    100.00 |
   +----------------------------------------------------------------------------------------+
 
   +-------------------------------------------------------------------------------------------------------------+
   |                         sale_item                      sale_item_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-------------------------------------------------------------------------------------------------------------|
-  |             tomato jalapeno salsa               tomato jalapeno salsa       40    14.29        40     14.29 |
-  |             carrot- short n sweet               carrot- short n sweet       28    10.00        68     24.29 |
-  |            eggplant- black beauty              eggplant- black beauty       23     8.21        91     32.50 |
-  |        carrot- kaleidoscope blend          carrot- kaleidoscope blend       20     7.14       111     39.64 |
-  |                      tomato sauce                        tomato sauce       20     7.14       131     46.79 |
+  |             tomato jalapeno salsa               tomato jalapeno salsa       43    13.74        43     13.74 |
+  |             carrot- short n sweet               carrot- short n sweet       28     8.95        71     22.68 |
+  |            eggplant- black beauty              eggplant- black beauty       24     7.67        95     30.35 |
+  |           pepper- jalapeno, early             pepper- jalapeno, early       23     7.35       118     37.70 |
+  |                      tomato sauce                        tomato sauce       21     6.71       139     44.41 |
   |-------------------------------------------------------------------------------------------------------------|
-  |           pepper- jalapeno, early             pepper- jalapeno, early       18     6.43       149     53.21 |
-  |       pepper- bull nosed lrg bell         pepper- bull nosed lrg bell       18     6.43       167     59.64 |
-  |               tomato- cherry roma                 tomato- cherry roma       13     4.64       180     64.29 |
-  |         bean- purple queen (bush)           bean- purple queen (bush)       11     3.93       191     68.21 |
-  |       beet- tall top early wonder         beet- tall top early wonder       10     3.57       201     71.79 |
+  |        carrot- kaleidoscope blend          carrot- kaleidoscope blend       20     6.39       159     50.80 |
+  |       pepper- bull nosed lrg bell         pepper- bull nosed lrg bell       19     6.07       178     56.87 |
+  |               tomato- cherry roma                 tomato- cherry roma       13     4.15       191     61.02 |
+  |         bean- purple queen (bush)           bean- purple queen (bush)       11     3.51       202     64.54 |
+  |              pepper- sweet banana                pepper- sweet banana       10     3.19       212     67.73 |
   |-------------------------------------------------------------------------------------------------------------|
-  |                      tomato- roma                        tomato- roma        9     3.21       210     75.00 |
-  |              pepper- sweet banana                pepper- sweet banana        8     2.86       218     77.86 |
-  |                                                                     .        7     2.50       225     80.36 |
-  | bean- stringless green pod (bush)   bean- stringless green pod (bush)        7     2.50       232     82.86 |
-  |           pepper- poblano (ancho)             pepper- poblano (ancho)        6     2.14       238     85.00 |
+  |       beet- tall top early wonder         beet- tall top early wonder       10     3.19       222     70.93 |
+  |                      tomato- roma                        tomato- roma        9     2.88       231     73.80 |
+  |           pepper- poblano (ancho)             pepper- poblano (ancho)        8     2.56       239     76.36 |
+  |                                                                     .        7     2.24       246     78.59 |
+  | bean- stringless green pod (bush)   bean- stringless green pod (bush)        7     2.24       253     80.83 |
   |-------------------------------------------------------------------------------------------------------------|
-  |                 beet- detroit red                   beet- detroit red        6     2.14       244     87.14 |
-  |      sweet corn- sweetness hybrid        sweet corn- sweetness hybrid        6     2.14       250     89.29 |
-  |             pepper- serrano chili               pepper- serrano chili        5     1.79       255     91.07 |
-  |   sweet corn- silver queen hybrid     sweet corn- silver queen hybrid        4     1.43       259     92.50 |
-  |                   pepper- anaheim                     pepper- anaheim        4     1.43       263     93.93 |
+  |             pepper- serrano chili               pepper- serrano chili        6     1.92       259     82.75 |
+  |    pumpkin- early sweet sugar pie      pumpkin- early sweet sugar pie        6     1.92       265     84.66 |
+  |                 beet- detroit red                   beet- detroit red        6     1.92       271     86.58 |
+  |      sweet corn- sweetness hybrid        sweet corn- sweetness hybrid        6     1.92       277     88.50 |
+  |              pepper- pimenta puma                pepper- pimenta puma        5     1.60       282     90.10 |
   |-------------------------------------------------------------------------------------------------------------|
-  |                    kale- lacinato                      kale- lacinato        3     1.07       266     95.00 |
-  |    pumpkin- early sweet sugar pie      pumpkin- early sweet sugar pie        3     1.07       269     96.07 |
-  |                     miscellaneous                       miscellaneous        2     0.71       271     96.79 |
-  |                           celosia                             celosia        1     0.36       272     97.14 |
-  |                 cilantro- calypse                   cilantro- calypse        1     0.36       273     97.50 |
+  |   sweet corn- silver queen hybrid     sweet corn- silver queen hybrid        4     1.28       286     91.37 |
+  |                   pepper- anaheim                     pepper- anaheim        4     1.28       290     92.65 |
+  |    pepper- chocolate scotch bonet      pepper- chocolate scotch bonet        4     1.28       294     93.93 |
+  |        pepper- sugar rush stripey          pepper- sugar rush stripey        3     0.96       297     94.89 |
+  |                    kale- lacinato                      kale- lacinato        3     0.96       300     95.85 |
   |-------------------------------------------------------------------------------------------------------------|
-  |          zinnia- california giant            zinnia- california giant        1     0.36       274     97.86 |
-  |               black raspberry jam                 black raspberry jam        1     0.36       275     98.21 |
-  |            marigold- queen sophia              marigold- queen sophia        1     0.36       276     98.57 |
-  |               broccoli- calabrese                 broccoli- calabrese        1     0.36       277     98.93 |
-  |                     tomato- amish                       tomato- amish        1     0.36       278     99.29 |
+  |               broccoli- calabrese                 broccoli- calabrese        2     0.64       302     96.49 |
+  |                     miscellaneous                       miscellaneous        2     0.64       304     97.12 |
+  |       corn- ornamental, glass gem         corn- ornamental, glass gem        1     0.32       305     97.44 |
+  |  coleus- chocolate covered cherry    coleus- chocolate covered cherry        1     0.32       306     97.76 |
+  |                           celosia                             celosia        1     0.32       307     98.08 |
   |-------------------------------------------------------------------------------------------------------------|
-  |  coleus- chocolate covered cherry    coleus- chocolate covered cherry        1     0.36       279     99.64 |
-  |           lettuce- red salad bowl             lettuce- red salad bowl        1     0.36       280    100.00 |
+  |                 cilantro- calypse                   cilantro- calypse        1     0.32       308     98.40 |
+  |               black raspberry jam                 black raspberry jam        1     0.32       309     98.72 |
+  |                     tomato- amish                       tomato- amish        1     0.32       310     99.04 |
+  |            marigold- queen sophia              marigold- queen sophia        1     0.32       311     99.36 |
+  |           lettuce- red salad bowl             lettuce- red salad bowl        1     0.32       312     99.68 |
+  |-------------------------------------------------------------------------------------------------------------|
+  |          zinnia- california giant            zinnia- california giant        1     0.32       313    100.00 |
   +-------------------------------------------------------------------------------------------------------------+
 
   +------------------------------------------------------------------------------------------+
   |                         sale_item   sale_item_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |------------------------------------------------------------------------------------------|
-  |             tomato jalapeno salsa               26       40    14.29        40     14.29 |
-  |             carrot- short n sweet                8       28    10.00        68     24.29 |
-  |            eggplant- black beauty               12       23     8.21        91     32.50 |
-  |        carrot- kaleidoscope blend                7       20     7.14       111     39.64 |
-  |                      tomato sauce               27       20     7.14       131     46.79 |
+  |             tomato jalapeno salsa               30       43    13.74        43     13.74 |
+  |             carrot- short n sweet                8       28     8.95        71     22.68 |
+  |            eggplant- black beauty               13       24     7.67        95     30.35 |
+  |           pepper- jalapeno, early               21       23     7.35       118     37.70 |
+  |                      tomato sauce               31       21     6.71       139     44.41 |
   |------------------------------------------------------------------------------------------|
-  |       pepper- bull nosed lrg bell               18       18     6.43       149     53.21 |
-  |           pepper- jalapeno, early               19       18     6.43       167     59.64 |
-  |               tomato- cherry roma               29       13     4.64       180     64.29 |
-  |         bean- purple queen (bush)                1       11     3.93       191     68.21 |
-  |       beet- tall top early wonder                4       10     3.57       201     71.79 |
+  |        carrot- kaleidoscope blend                7       20     6.39       159     50.80 |
+  |       pepper- bull nosed lrg bell               19       19     6.07       178     56.87 |
+  |               tomato- cherry roma               33       13     4.15       191     61.02 |
+  |         bean- purple queen (bush)                1       11     3.51       202     64.54 |
+  |       beet- tall top early wonder                4       10     3.19       212     67.73 |
   |------------------------------------------------------------------------------------------|
-  |                      tomato- roma               30        9     3.21       210     75.00 |
-  |              pepper- sweet banana               22        8     2.86       218     77.86 |
-  | bean- stringless green pod (bush)                2        7     2.50       225     80.36 |
-  |                                                  .        7     2.50       232     82.86 |
-  |                 beet- detroit red                3        6     2.14       238     85.00 |
+  |              pepper- sweet banana               26       10     3.19       222     70.93 |
+  |                      tomato- roma               34        9     2.88       231     73.80 |
+  |           pepper- poblano (ancho)               23        8     2.56       239     76.36 |
+  | bean- stringless green pod (bush)                2        7     2.24       246     78.59 |
+  |                                                  .        7     2.24       253     80.83 |
   |------------------------------------------------------------------------------------------|
-  |           pepper- poblano (ancho)               20        6     2.14       244     87.14 |
-  |      sweet corn- sweetness hybrid               25        6     2.14       250     89.29 |
-  |             pepper- serrano chili               21        5     1.79       255     91.07 |
-  |   sweet corn- silver queen hybrid               24        4     1.43       259     92.50 |
-  |                   pepper- anaheim               17        4     1.43       263     93.93 |
+  |                 beet- detroit red                3        6     1.92       259     82.75 |
+  |    pumpkin- early sweet sugar pie               27        6     1.92       265     84.66 |
+  |             pepper- serrano chili               24        6     1.92       271     86.58 |
+  |      sweet corn- sweetness hybrid               29        6     1.92       277     88.50 |
+  |              pepper- pimenta puma               22        5     1.60       282     90.10 |
   |------------------------------------------------------------------------------------------|
-  |                    kale- lacinato               13        3     1.07       266     95.00 |
-  |    pumpkin- early sweet sugar pie               23        3     1.07       269     96.07 |
-  |                     miscellaneous               16        2     0.71       271     96.79 |
-  |               broccoli- calabrese                6        1     0.36       272     97.14 |
-  |  coleus- chocolate covered cherry               11        1     0.36       273     97.50 |
+  |    pepper- chocolate scotch bonet               20        4     1.28       286     91.37 |
+  |   sweet corn- silver queen hybrid               28        4     1.28       290     92.65 |
+  |                   pepper- anaheim               18        4     1.28       294     93.93 |
+  |                    kale- lacinato               14        3     0.96       297     94.89 |
+  |        pepper- sugar rush stripey               25        3     0.96       300     95.85 |
   |------------------------------------------------------------------------------------------|
-  |                     tomato- amish               28        1     0.36       274     97.86 |
-  |                           celosia                9        1     0.36       275     98.21 |
-  |                 cilantro- calypse               10        1     0.36       276     98.57 |
-  |           lettuce- red salad bowl               14        1     0.36       277     98.93 |
-  |            marigold- queen sophia               15        1     0.36       278     99.29 |
+  |               broccoli- calabrese                6        2     0.64       302     96.49 |
+  |                     miscellaneous               17        2     0.64       304     97.12 |
+  |                 cilantro- calypse               10        1     0.32       305     97.44 |
+  |               black raspberry jam                5        1     0.32       306     97.76 |
+  |            marigold- queen sophia               16        1     0.32       307     98.08 |
   |------------------------------------------------------------------------------------------|
-  |               black raspberry jam                5        1     0.36       279     99.64 |
-  |          zinnia- california giant               31        1     0.36       280    100.00 |
+  |  coleus- chocolate covered cherry               11        1     0.32       308     98.40 |
+  |          zinnia- california giant               35        1     0.32       309     98.72 |
+  |       corn- ornamental, glass gem               12        1     0.32       310     99.04 |
+  |                     tomato- amish               32        1     0.32       311     99.36 |
+  |           lettuce- red salad bowl               15        1     0.32       312     99.68 |
+  |------------------------------------------------------------------------------------------|
+  |                           celosia                9        1     0.32       313    100.00 |
   +------------------------------------------------------------------------------------------+
 
   +------------------------------------------------------------------+
   | sale_unit   sale_unit_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |------------------------------------------------------------------|
-  |      unit             unit      154    55.00       154     55.00 |
-  |      pint             pint       92    32.86       246     87.86 |
-  | container        container       13     4.64       259     92.50 |
-  |                          .        9     3.21       268     95.71 |
-  |     pound            pound        8     2.86       276     98.57 |
+  |      unit             unit      181    57.83       181     57.83 |
+  |      pint             pint       96    30.67       277     88.50 |
+  | container        container       14     4.47       291     92.97 |
+  |                          .        9     2.88       300     95.85 |
+  |     pound            pound        8     2.56       308     98.40 |
   |------------------------------------------------------------------|
-  |     units            units        2     0.71       278     99.29 |
-  |     quart            quart        1     0.36       279     99.64 |
-  |     bunch            bunch        1     0.36       280    100.00 |
+  |     units            units        2     0.64       310     99.04 |
+  |     bunch            bunch        1     0.32       311     99.36 |
+  |      unti             unti        1     0.32       312     99.68 |
+  |     quart            quart        1     0.32       313    100.00 |
   +------------------------------------------------------------------+
 
   +------------------------------------------------------------------+
   | sale_unit   sale_unit_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |------------------------------------------------------------------|
-  |      unit                6      154    55.00       154     55.00 |
-  |      pint                3       92    32.86       246     87.86 |
-  | container                2       13     4.64       259     92.50 |
-  |                          .        9     3.21       268     95.71 |
-  |     pound                4        8     2.86       276     98.57 |
+  |      unit                6      181    57.83       181     57.83 |
+  |      pint                3       96    30.67       277     88.50 |
+  | container                2       14     4.47       291     92.97 |
+  |                          .        9     2.88       300     95.85 |
+  |     pound                4        8     2.56       308     98.40 |
   |------------------------------------------------------------------|
-  |     units                7        2     0.71       278     99.29 |
-  |     quart                5        1     0.36       279     99.64 |
-  |     bunch                1        1     0.36       280    100.00 |
+  |     units                7        2     0.64       310     99.04 |
+  |     bunch                1        1     0.32       311     99.36 |
+  |     quart                5        1     0.32       312     99.68 |
+  |      unti                8        1     0.32       313    100.00 |
   +------------------------------------------------------------------+
 
 . 
@@ -409,30 +433,36 @@ Variable: sale_unit_code
 (7 real changes made, 7 to missing)
 
 .         
-.         tablist sale_location sale_location_stall_no sale_location_stall_spec, sort(variable) ab(32)
+.         tablist sale_location sale_location_stall_no sale_location_stall_area, sort(variable) ab(32)
 
   +-----------------------------------------------------------------------------------------------------------------------+
-  |               sale_location   sale_location_stall_no   sale_location_stall_spec   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |               sale_location   sale_location_stall_no   sale_location_stall_area   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market                        5              north, middle      224    80.00       224     80.00 |
-  | New Carlisle Farmers Market                        .               east, middle       28    10.00       252     90.00 |
-  | New Carlisle Farmers Market                        6              north, middle       12     4.29       264     94.29 |
-  | New Carlisle Farmers Market                        .              north, middle        9     3.21       273     97.50 |
-  | The Brosey Farm: farm stand                       .s                   roadside        7     2.50       280    100.00 |
+  | New Carlisle Farmers Market                        5              north, middle      224    71.57       224     71.57 |
+  | New Carlisle Farmers Market                        .               east, middle       61    19.49       285     91.05 |
+  | New Carlisle Farmers Market                        6              north, middle       12     3.83       297     94.89 |
+  | New Carlisle Farmers Market                        .              north, middle        9     2.88       306     97.76 |
+  | The Brosey Farm: farm stand                       .s                   roadside        7     2.24       313    100.00 |
   +-----------------------------------------------------------------------------------------------------------------------+
 
 .         replace sale_location_stall_no= .m if sale_location_stall_no==.
-(37 real changes made, 37 to missing)
+(70 real changes made, 70 to missing)
 
-.         replace sale_location_stall_spec= ".m" if sale_location_stall_spec==""
+.         replace sale_location_stall_area= ".m" if sale_location_stall_area==""
 (0 real changes made)
 
 .         
 .         foreach var of varlist sale_amnt sale_unit sale_unit_code {
   2.                 capture confirm numeric variable `var'
-  3.                 if _rc==0 replace `var' = .m if sale_item=="miscellaneous"
-  4.                 else replace `var' = ".m" if sale_item=="miscellaneous"
-  5.         }
+  3.                 if _rc==0 {
+  4.                         assert `var'== . if sale_item=="miscellaneous"
+  5.                         replace `var' = .m if sale_item=="miscellaneous"
+  6.                 }
+  7.                 else {
+  8.                         assert `var'== "" if sale_item=="miscellaneous"
+  9.                         replace `var' = ".m" if sale_item=="miscellaneous"
+ 10.                 }
+ 11.         }
 (2 real changes made, 2 to missing)
 (2 real changes made)
 (2 real changes made, 2 to missing)
@@ -450,237 +480,254 @@ Variable: sale_unit_code
 
   sale date |      Freq.     Percent        Cum.
 ------------+-----------------------------------
- 2024-06-15 |         15        5.36        5.36
- 2024-06-22 |          9        3.21        8.57
- 2024-06-29 |         12        4.29       12.86
- 2024-07-06 |         14        5.00       17.86
- 2024-07-13 |         17        6.07       23.93
- 2024-07-20 |         13        4.64       28.57
- 2024-07-27 |         23        8.21       36.79
- 2024-07-31 |          2        0.71       37.50
- 2024-08-02 |         29       10.36       47.86
- 2024-08-10 |         37       13.21       61.07
- 2024-08-15 |          1        0.36       61.43
- 2024-08-17 |         29       10.36       71.79
- 2024-08-24 |         31       11.07       82.86
- 2024-08-28 |          1        0.36       83.21
- 2024-09-04 |          1        0.36       83.57
- 2024-09-07 |         27        9.64       93.21
- 2024-09-14 |         19        6.79      100.00
+ 2024-06-15 |         15        4.79        4.79
+ 2024-06-22 |          9        2.88        7.67
+ 2024-06-29 |         12        3.83       11.50
+ 2024-07-06 |         14        4.47       15.97
+ 2024-07-13 |         17        5.43       21.41
+ 2024-07-20 |         13        4.15       25.56
+ 2024-07-27 |         23        7.35       32.91
+ 2024-07-31 |          2        0.64       33.55
+ 2024-08-02 |         29        9.27       42.81
+ 2024-08-10 |         37       11.82       54.63
+ 2024-08-15 |          1        0.32       54.95
+ 2024-08-17 |         29        9.27       64.22
+ 2024-08-24 |         31        9.90       74.12
+ 2024-08-28 |          1        0.32       74.44
+ 2024-09-04 |          1        0.32       74.76
+ 2024-09-07 |         27        8.63       83.39
+ 2024-09-14 |         19        6.07       89.46
+ 2024-10-12 |         33       10.54      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 
  sale date- |
       stata |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-  15jun2024 |         15        5.36        5.36
-  22jun2024 |          9        3.21        8.57
-  29jun2024 |         12        4.29       12.86
-  06jul2024 |         14        5.00       17.86
-  13jul2024 |         17        6.07       23.93
-  20jul2024 |         13        4.64       28.57
-  27jul2024 |         23        8.21       36.79
-  31jul2024 |          2        0.71       37.50
-  02aug2024 |         29       10.36       47.86
-  10aug2024 |         37       13.21       61.07
-  15aug2024 |          1        0.36       61.43
-  17aug2024 |         29       10.36       71.79
-  24aug2024 |         31       11.07       82.86
-  28aug2024 |          1        0.36       83.21
-  04sep2024 |          1        0.36       83.57
-  07sep2024 |         27        9.64       93.21
-  14sep2024 |         19        6.79      100.00
+  15jun2024 |         15        4.79        4.79
+  22jun2024 |          9        2.88        7.67
+  29jun2024 |         12        3.83       11.50
+  06jul2024 |         14        4.47       15.97
+  13jul2024 |         17        5.43       21.41
+  20jul2024 |         13        4.15       25.56
+  27jul2024 |         23        7.35       32.91
+  31jul2024 |          2        0.64       33.55
+  02aug2024 |         29        9.27       42.81
+  10aug2024 |         37       11.82       54.63
+  15aug2024 |          1        0.32       54.95
+  17aug2024 |         29        9.27       64.22
+  24aug2024 |         31        9.90       74.12
+  28aug2024 |          1        0.32       74.44
+  04sep2024 |          1        0.32       74.76
+  07sep2024 |         27        8.63       83.39
+  14sep2024 |         19        6.07       89.46
+  12oct2024 |         33       10.54      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 
               sale location |      Freq.     Percent        Cum.
 ----------------------------+-----------------------------------
-New Carlisle Farmers Market |        273       97.50       97.50
-The Brosey Farm: farm stand |          7        2.50      100.00
+New Carlisle Farmers Market |        306       97.76       97.76
+The Brosey Farm: farm stand |          7        2.24      100.00
 ----------------------------+-----------------------------------
-                      Total |        280      100.00
+                      Total |        313      100.00
 
         sale location- code |      Freq.     Percent        Cum.
 ----------------------------+-----------------------------------
-New Carlisle Farmers Market |        273       97.50       97.50
-The Brosey Farm: farm stand |          7        2.50      100.00
+New Carlisle Farmers Market |        306       97.76       97.76
+The Brosey Farm: farm stand |          7        2.24      100.00
 ----------------------------+-----------------------------------
-                      Total |        280      100.00
+                      Total |        313      100.00
 
-sale_locati |
-on_stall_no |      Freq.     Percent        Cum.
+       sale |
+  location- |
+      stall |
+     number |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          5 |        224       80.00       80.00
-          6 |         12        4.29       84.29
-         .m |         37       13.21       97.50
-         .s |          7        2.50      100.00
+          5 |        224       71.57       71.57
+          6 |         12        3.83       75.40
+         .m |         70       22.36       97.76
+         .s |          7        2.24      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 
-sale_location |
-  _stall_spec |      Freq.     Percent        Cum.
+         sale |
+    location- |
+         area |      Freq.     Percent        Cum.
 --------------+-----------------------------------
- east, middle |         28       10.00       10.00
-north, middle |        245       87.50       97.50
-     roadside |          7        2.50      100.00
+ east, middle |         61       19.49       19.49
+north, middle |        245       78.27       97.76
+     roadside |          7        2.24      100.00
 --------------+-----------------------------------
-        Total |        280      100.00
+        Total |        313      100.00
 
                         sale item |      Freq.     Percent        Cum.
 ----------------------------------+-----------------------------------
-                               .s |          7        2.50        2.50
-        bean- purple queen (bush) |         11        3.93        6.43
-bean- stringless green pod (bush) |          7        2.50        8.93
-                beet- detroit red |          6        2.14       11.07
-      beet- tall top early wonder |         10        3.57       14.64
-              black raspberry jam |          1        0.36       15.00
-              broccoli- calabrese |          1        0.36       15.36
-       carrot- kaleidoscope blend |         20        7.14       22.50
-            carrot- short n sweet |         28       10.00       32.50
-                          celosia |          1        0.36       32.86
-                cilantro- calypse |          1        0.36       33.21
- coleus- chocolate covered cherry |          1        0.36       33.57
-           eggplant- black beauty |         23        8.21       41.79
-                   kale- lacinato |          3        1.07       42.86
-          lettuce- red salad bowl |          1        0.36       43.21
-           marigold- queen sophia |          1        0.36       43.57
-                    miscellaneous |          2        0.71       44.29
-                  pepper- anaheim |          4        1.43       45.71
-      pepper- bull nosed lrg bell |         18        6.43       52.14
-          pepper- jalapeno, early |         18        6.43       58.57
-          pepper- poblano (ancho) |          6        2.14       60.71
-            pepper- serrano chili |          5        1.79       62.50
-             pepper- sweet banana |          8        2.86       65.36
-   pumpkin- early sweet sugar pie |          3        1.07       66.43
-  sweet corn- silver queen hybrid |          4        1.43       67.86
-     sweet corn- sweetness hybrid |          6        2.14       70.00
-            tomato jalapeno salsa |         40       14.29       84.29
-                     tomato sauce |         20        7.14       91.43
-                    tomato- amish |          1        0.36       91.79
-              tomato- cherry roma |         13        4.64       96.43
-                     tomato- roma |          9        3.21       99.64
-         zinnia- california giant |          1        0.36      100.00
+                               .s |          7        2.24        2.24
+        bean- purple queen (bush) |         11        3.51        5.75
+bean- stringless green pod (bush) |          7        2.24        7.99
+                beet- detroit red |          6        1.92        9.90
+      beet- tall top early wonder |         10        3.19       13.10
+              black raspberry jam |          1        0.32       13.42
+              broccoli- calabrese |          2        0.64       14.06
+       carrot- kaleidoscope blend |         20        6.39       20.45
+            carrot- short n sweet |         28        8.95       29.39
+                          celosia |          1        0.32       29.71
+                cilantro- calypse |          1        0.32       30.03
+ coleus- chocolate covered cherry |          1        0.32       30.35
+      corn- ornamental, glass gem |          1        0.32       30.67
+           eggplant- black beauty |         24        7.67       38.34
+                   kale- lacinato |          3        0.96       39.30
+          lettuce- red salad bowl |          1        0.32       39.62
+           marigold- queen sophia |          1        0.32       39.94
+                    miscellaneous |          2        0.64       40.58
+                  pepper- anaheim |          4        1.28       41.85
+      pepper- bull nosed lrg bell |         19        6.07       47.92
+   pepper- chocolate scotch bonet |          4        1.28       49.20
+          pepper- jalapeno, early |         23        7.35       56.55
+             pepper- pimenta puma |          5        1.60       58.15
+          pepper- poblano (ancho) |          8        2.56       60.70
+            pepper- serrano chili |          6        1.92       62.62
+       pepper- sugar rush stripey |          3        0.96       63.58
+             pepper- sweet banana |         10        3.19       66.77
+   pumpkin- early sweet sugar pie |          6        1.92       68.69
+  sweet corn- silver queen hybrid |          4        1.28       69.97
+     sweet corn- sweetness hybrid |          6        1.92       71.88
+            tomato jalapeno salsa |         43       13.74       85.62
+                     tomato sauce |         21        6.71       92.33
+                    tomato- amish |          1        0.32       92.65
+              tomato- cherry roma |         13        4.15       96.81
+                     tomato- roma |          9        2.88       99.68
+         zinnia- california giant |          1        0.32      100.00
 ----------------------------------+-----------------------------------
-                            Total |        280      100.00
+                            Total |        313      100.00
 
                   sale item- code |      Freq.     Percent        Cum.
 ----------------------------------+-----------------------------------
-        bean- purple queen (bush) |         11        3.93        3.93
-bean- stringless green pod (bush) |          7        2.50        6.43
-                beet- detroit red |          6        2.14        8.57
-      beet- tall top early wonder |         10        3.57       12.14
-              black raspberry jam |          1        0.36       12.50
-              broccoli- calabrese |          1        0.36       12.86
-       carrot- kaleidoscope blend |         20        7.14       20.00
-            carrot- short n sweet |         28       10.00       30.00
-                          celosia |          1        0.36       30.36
-                cilantro- calypse |          1        0.36       30.71
- coleus- chocolate covered cherry |          1        0.36       31.07
-           eggplant- black beauty |         23        8.21       39.29
-                   kale- lacinato |          3        1.07       40.36
-          lettuce- red salad bowl |          1        0.36       40.71
-           marigold- queen sophia |          1        0.36       41.07
-                    miscellaneous |          2        0.71       41.79
-                  pepper- anaheim |          4        1.43       43.21
-      pepper- bull nosed lrg bell |         18        6.43       49.64
-          pepper- jalapeno, early |         18        6.43       56.07
-          pepper- poblano (ancho) |          6        2.14       58.21
-            pepper- serrano chili |          5        1.79       60.00
-             pepper- sweet banana |          8        2.86       62.86
-   pumpkin- early sweet sugar pie |          3        1.07       63.93
-  sweet corn- silver queen hybrid |          4        1.43       65.36
-     sweet corn- sweetness hybrid |          6        2.14       67.50
-            tomato jalapeno salsa |         40       14.29       81.79
-                     tomato sauce |         20        7.14       88.93
-                    tomato- amish |          1        0.36       89.29
-              tomato- cherry roma |         13        4.64       93.93
-                     tomato- roma |          9        3.21       97.14
-         zinnia- california giant |          1        0.36       97.50
-                               .s |          7        2.50      100.00
+        bean- purple queen (bush) |         11        3.51        3.51
+bean- stringless green pod (bush) |          7        2.24        5.75
+                beet- detroit red |          6        1.92        7.67
+      beet- tall top early wonder |         10        3.19       10.86
+              black raspberry jam |          1        0.32       11.18
+              broccoli- calabrese |          2        0.64       11.82
+       carrot- kaleidoscope blend |         20        6.39       18.21
+            carrot- short n sweet |         28        8.95       27.16
+                          celosia |          1        0.32       27.48
+                cilantro- calypse |          1        0.32       27.80
+ coleus- chocolate covered cherry |          1        0.32       28.12
+      corn- ornamental, glass gem |          1        0.32       28.43
+           eggplant- black beauty |         24        7.67       36.10
+                   kale- lacinato |          3        0.96       37.06
+          lettuce- red salad bowl |          1        0.32       37.38
+           marigold- queen sophia |          1        0.32       37.70
+                    miscellaneous |          2        0.64       38.34
+                  pepper- anaheim |          4        1.28       39.62
+      pepper- bull nosed lrg bell |         19        6.07       45.69
+   pepper- chocolate scotch bonet |          4        1.28       46.96
+          pepper- jalapeno, early |         23        7.35       54.31
+             pepper- pimenta puma |          5        1.60       55.91
+          pepper- poblano (ancho) |          8        2.56       58.47
+            pepper- serrano chili |          6        1.92       60.38
+       pepper- sugar rush stripey |          3        0.96       61.34
+             pepper- sweet banana |         10        3.19       64.54
+   pumpkin- early sweet sugar pie |          6        1.92       66.45
+  sweet corn- silver queen hybrid |          4        1.28       67.73
+     sweet corn- sweetness hybrid |          6        1.92       69.65
+            tomato jalapeno salsa |         43       13.74       83.39
+                     tomato sauce |         21        6.71       90.10
+                    tomato- amish |          1        0.32       90.42
+              tomato- cherry roma |         13        4.15       94.57
+                     tomato- roma |          9        2.88       97.44
+         zinnia- california giant |          1        0.32       97.76
+                               .s |          7        2.24      100.00
 ----------------------------------+-----------------------------------
-                            Total |        280      100.00
+                            Total |        313      100.00
 
 sale amount |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .5 |         12        4.29        4.29
-          1 |        107       38.21       42.50
-          2 |         37       13.21       55.71
-          3 |         44       15.71       71.43
-          4 |         26        9.29       80.71
-          5 |          1        0.36       81.07
-          6 |         15        5.36       86.43
-          7 |          1        0.36       86.79
-          8 |          7        2.50       89.29
-          9 |          4        1.43       90.71
-         10 |          2        0.71       91.43
-         12 |          3        1.07       92.50
-         15 |          1        0.36       92.86
-         16 |          2        0.71       93.57
-         20 |          1        0.36       93.93
-         21 |          1        0.36       94.29
-         24 |          2        0.71       95.00
-         36 |          1        0.36       95.36
-         40 |          2        0.71       96.07
-         56 |          1        0.36       96.43
-         .m |          3        1.07       97.50
-         .s |          7        2.50      100.00
+         .5 |         12        3.83        3.83
+          1 |        113       36.10       39.94
+          2 |         40       12.78       52.72
+          3 |         50       15.97       68.69
+          4 |         32       10.22       78.91
+          5 |          2        0.64       79.55
+          6 |         16        5.11       84.66
+          7 |          1        0.32       84.98
+          8 |          8        2.56       87.54
+          9 |          4        1.28       88.82
+         10 |          7        2.24       91.05
+         12 |          3        0.96       92.01
+         15 |          1        0.32       92.33
+         16 |          2        0.64       92.97
+         20 |          2        0.64       93.61
+         21 |          1        0.32       93.93
+         24 |          2        0.64       94.57
+         25 |          1        0.32       94.89
+         36 |          1        0.32       95.21
+         40 |          2        0.64       95.85
+         50 |          2        0.64       96.49
+         56 |          1        0.32       96.81
+         .m |          3        0.96       97.76
+         .s |          7        2.24      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 
 sale amount |
        unit |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .m |          2        0.71        0.71
-         .s |          7        2.50        3.21
-      bunch |          1        0.36        3.57
-  container |         13        4.64        8.21
-       pint |         92       32.86       41.07
-      pound |          8        2.86       43.93
-      quart |          1        0.36       44.29
-       unit |        154       55.00       99.29
-      units |          2        0.71      100.00
+         .m |          2        0.64        0.64
+         .s |          7        2.24        2.88
+      bunch |          1        0.32        3.19
+  container |         14        4.47        7.67
+       pint |         96       30.67       38.34
+      pound |          8        2.56       40.89
+      quart |          1        0.32       41.21
+       unit |        181       57.83       99.04
+      units |          2        0.64       99.68
+       unti |          1        0.32      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 
 sale amount |
  unit- code |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-      bunch |          1        0.36        0.36
-  container |         13        4.64        5.00
-       pint |         92       32.86       37.86
-      pound |          8        2.86       40.71
-      quart |          1        0.36       41.07
-       unit |        154       55.00       96.07
-      units |          2        0.71       96.79
-         .m |          2        0.71       97.50
-         .s |          7        2.50      100.00
+      bunch |          1        0.32        0.32
+  container |         14        4.47        4.79
+       pint |         96       30.67       35.46
+      pound |          8        2.56       38.02
+      quart |          1        0.32       38.34
+       unit |        181       57.83       96.17
+      units |          2        0.64       96.81
+       unti |          1        0.32       97.12
+         .m |          2        0.64       97.76
+         .s |          7        2.24      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 
  sale value |
   (dollars) |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         .5 |          8        2.86        2.86
-          1 |         73       26.07       28.93
-          2 |         36       12.86       41.79
-          3 |         41       14.64       56.43
-          4 |         10        3.57       60.00
-          5 |         23        8.21       68.21
-          6 |          8        2.86       71.07
-          7 |          1        0.36       71.43
-          9 |          6        2.14       73.57
-         10 |         51       18.21       91.79
-         12 |          2        0.71       92.50
-         14 |          3        1.07       93.57
-         15 |          1        0.36       93.93
-         16 |          2        0.71       94.64
-         18 |          7        2.50       97.14
-         20 |          5        1.79       98.93
-         30 |          1        0.36       99.29
-         48 |          1        0.36       99.64
-         90 |          1        0.36      100.00
+         .5 |         14        4.47        4.47
+          1 |         85       27.16       31.63
+          2 |         36       11.50       43.13
+          3 |         43       13.74       56.87
+          4 |         12        3.83       60.70
+          5 |         27        8.63       69.33
+          6 |          9        2.88       72.20
+          7 |          1        0.32       72.52
+          9 |          6        1.92       74.44
+         10 |         55       17.57       92.01
+         12 |          2        0.64       92.65
+         14 |          3        0.96       93.61
+         15 |          1        0.32       93.93
+         16 |          2        0.64       94.57
+         18 |          9        2.88       97.44
+         20 |          5        1.60       99.04
+         30 |          1        0.32       99.36
+         48 |          1        0.32       99.68
+         90 |          1        0.32      100.00
 ------------+-----------------------------------
-      Total |        280      100.00
+      Total |        313      100.00
 
 .                 
 .         sort sale_date sale_location sale_item sale_amnt sale_unit sale_value_usd       
@@ -692,341 +739,381 @@ sale amount |
   +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
   |  sale_date                 sale_location                           sale_item   sale_amnt   sale_unit   sale_value_usd   sale_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-06-15   New Carlisle Farmers Market                   beet- detroit red           6        unit                2           1        1     0.36         1      0.36 |
-  | 2024-06-15   New Carlisle Farmers Market                      kale- lacinato           1   container               10           2        1     0.36         2      0.71 |
-  | 2024-06-15   New Carlisle Farmers Market             lettuce- red salad bowl           1   container                3           3        1     0.36         3      1.07 |
-  | 2024-06-15   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           4        1     0.36         4      1.43 |
-  | 2024-06-15   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           5        1     0.36         5      1.79 |
+  | 2024-06-15   New Carlisle Farmers Market                   beet- detroit red           6        unit                2           1        1     0.32         1      0.32 |
+  | 2024-06-15   New Carlisle Farmers Market                      kale- lacinato           1   container               10           2        1     0.32         2      0.64 |
+  | 2024-06-15   New Carlisle Farmers Market             lettuce- red salad bowl           1   container                3           3        1     0.32         3      0.96 |
+  | 2024-06-15   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           4        1     0.32         4      1.28 |
+  | 2024-06-15   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           5        1     0.32         5      1.60 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-06-15   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           6        1     0.36         6      2.14 |
-  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           7        1     0.36         7      2.50 |
-  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           8        1     0.36         8      2.86 |
-  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           9        1     0.36         9      3.21 |
-  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          10        1     0.36        10      3.57 |
+  | 2024-06-15   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           6        1     0.32         6      1.92 |
+  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           7        1     0.32         7      2.24 |
+  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           8        1     0.32         8      2.56 |
+  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           9        1     0.32         9      2.88 |
+  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          10        1     0.32        10      3.19 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          11        1     0.36        11      3.93 |
-  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          12        1     0.36        12      4.29 |
-  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          13        1     0.36        13      4.64 |
-  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          14        1     0.36        14      5.00 |
-  | 2024-06-15   New Carlisle Farmers Market                        tomato sauce           1        pint               10          15        1     0.36        15      5.36 |
+  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          11        1     0.32        11      3.51 |
+  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          12        1     0.32        12      3.83 |
+  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          13        1     0.32        13      4.15 |
+  | 2024-06-15   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          14        1     0.32        14      4.47 |
+  | 2024-06-15   New Carlisle Farmers Market                        tomato sauce           1        pint               10          15        1     0.32        15      4.79 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-06-22   New Carlisle Farmers Market                   beet- detroit red           3        unit                1           1        1     0.36        16      5.71 |
-  | 2024-06-22   New Carlisle Farmers Market                   beet- detroit red           6        unit                5           2        1     0.36        17      6.07 |
-  | 2024-06-22   New Carlisle Farmers Market                   beet- detroit red           8        unit                2           3        1     0.36        18      6.43 |
-  | 2024-06-22   New Carlisle Farmers Market    coleus- chocolate covered cherry           1   container                3           4        1     0.36        19      6.79 |
-  | 2024-06-22   New Carlisle Farmers Market              marigold- queen sophia           1   container                5           5        1     0.36        20      7.14 |
+  | 2024-06-22   New Carlisle Farmers Market                   beet- detroit red           3        unit                1           1        1     0.32        16      5.11 |
+  | 2024-06-22   New Carlisle Farmers Market                   beet- detroit red           6        unit                5           2        1     0.32        17      5.43 |
+  | 2024-06-22   New Carlisle Farmers Market                   beet- detroit red           8        unit                2           3        1     0.32        18      5.75 |
+  | 2024-06-22   New Carlisle Farmers Market    coleus- chocolate covered cherry           1   container                3           4        1     0.32        19      6.07 |
+  | 2024-06-22   New Carlisle Farmers Market              marigold- queen sophia           1   container                5           5        1     0.32        20      6.39 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-06-22   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           6        1     0.36        21      7.50 |
-  | 2024-06-22   New Carlisle Farmers Market               tomato jalapeno salsa           9        pint               90           7        1     0.36        22      7.86 |
-  | 2024-06-22   New Carlisle Farmers Market                        tomato sauce           1        pint               10           8        1     0.36        23      8.21 |
-  | 2024-06-22   New Carlisle Farmers Market            zinnia- california giant           1   container                5           9        1     0.36        24      8.57 |
-  | 2024-06-29   New Carlisle Farmers Market                   beet- detroit red           3        unit                1           1        1     0.36        25      8.93 |
+  | 2024-06-22   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           6        1     0.32        21      6.71 |
+  | 2024-06-22   New Carlisle Farmers Market               tomato jalapeno salsa           9        pint               90           7        1     0.32        22      7.03 |
+  | 2024-06-22   New Carlisle Farmers Market                        tomato sauce           1        pint               10           8        1     0.32        23      7.35 |
+  | 2024-06-22   New Carlisle Farmers Market            zinnia- california giant           1   container                5           9        1     0.32        24      7.67 |
+  | 2024-06-29   New Carlisle Farmers Market                   beet- detroit red           3        unit                1           1        1     0.32        25      7.99 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-06-29   New Carlisle Farmers Market                   beet- detroit red           9        unit                3           2        1     0.36        26      9.29 |
-  | 2024-06-29   New Carlisle Farmers Market          carrot- kaleidoscope blend           2        unit                1           3        1     0.36        27      9.64 |
-  | 2024-06-29   New Carlisle Farmers Market          carrot- kaleidoscope blend           2        unit                1           4        1     0.36        28     10.00 |
-  | 2024-06-29   New Carlisle Farmers Market               carrot- short n sweet           4        unit                2           5        1     0.36        29     10.36 |
-  | 2024-06-29   New Carlisle Farmers Market                      kale- lacinato           1   container                5           6        1     0.36        30     10.71 |
+  | 2024-06-29   New Carlisle Farmers Market                   beet- detroit red           9        unit                3           2        1     0.32        26      8.31 |
+  | 2024-06-29   New Carlisle Farmers Market          carrot- kaleidoscope blend           2        unit                1           3        1     0.32        27      8.63 |
+  | 2024-06-29   New Carlisle Farmers Market          carrot- kaleidoscope blend           2        unit                1           4        1     0.32        28      8.95 |
+  | 2024-06-29   New Carlisle Farmers Market               carrot- short n sweet           4        unit                2           5        1     0.32        29      9.27 |
+  | 2024-06-29   New Carlisle Farmers Market                      kale- lacinato           1   container                5           6        1     0.32        30      9.58 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-06-29   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           7        1     0.36        31     11.07 |
-  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           8        1     0.36        32     11.43 |
-  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           9        1     0.36        33     11.79 |
-  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          10        1     0.36        34     12.14 |
-  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          11        1     0.36        35     12.50 |
+  | 2024-06-29   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1   container                5           7        1     0.32        31      9.90 |
+  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           8        1     0.32        32     10.22 |
+  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10           9        1     0.32        33     10.54 |
+  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          10        1     0.32        34     10.86 |
+  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          11        1     0.32        35     11.18 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          12        1     0.36        36     12.86 |
-  | 2024-07-06   New Carlisle Farmers Market          carrot- kaleidoscope blend           2        unit                1           1        1     0.36        37     13.21 |
-  | 2024-07-06   New Carlisle Farmers Market          carrot- kaleidoscope blend           2        unit                1           2        1     0.36        38     13.57 |
-  | 2024-07-06   New Carlisle Farmers Market               carrot- short n sweet           2        unit                1           3        1     0.36        39     13.93 |
-  | 2024-07-06   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           4        1     0.36        40     14.29 |
+  | 2024-06-29   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          12        1     0.32        36     11.50 |
+  | 2024-07-06   New Carlisle Farmers Market          carrot- kaleidoscope blend           2        unit                1           1        1     0.32        37     11.82 |
+  | 2024-07-06   New Carlisle Farmers Market          carrot- kaleidoscope blend           2        unit                1           2        1     0.32        38     12.14 |
+  | 2024-07-06   New Carlisle Farmers Market               carrot- short n sweet           2        unit                1           3        1     0.32        39     12.46 |
+  | 2024-07-06   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           4        1     0.32        40     12.78 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-06   New Carlisle Farmers Market               carrot- short n sweet           6        unit                5           5        1     0.36        41     14.64 |
-  | 2024-07-06   New Carlisle Farmers Market                             celosia           2   container                5           6        1     0.36        42     15.00 |
-  | 2024-07-06   New Carlisle Farmers Market                      kale- lacinato           3   container               30           7        1     0.36        43     15.36 |
-  | 2024-07-06   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1           8        1     0.36        44     15.71 |
-  | 2024-07-06   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1           9        1     0.36        45     16.07 |
+  | 2024-07-06   New Carlisle Farmers Market               carrot- short n sweet           6        unit                5           5        1     0.32        41     13.10 |
+  | 2024-07-06   New Carlisle Farmers Market                             celosia           2   container                5           6        1     0.32        42     13.42 |
+  | 2024-07-06   New Carlisle Farmers Market                      kale- lacinato           3   container               30           7        1     0.32        43     13.74 |
+  | 2024-07-06   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1           8        1     0.32        44     14.06 |
+  | 2024-07-06   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1           9        1     0.32        45     14.38 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-06   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint                9          10        1     0.36        46     16.43 |
-  | 2024-07-06   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          11        1     0.36        47     16.79 |
-  | 2024-07-06   New Carlisle Farmers Market                        tomato sauce           1        pint                9          12        1     0.36        48     17.14 |
-  | 2024-07-06   New Carlisle Farmers Market                        tomato sauce           1        pint               10          13        1     0.36        49     17.50 |
-  | 2024-07-06   New Carlisle Farmers Market                        tomato sauce           1        pint               10          14        1     0.36        50     17.86 |
+  | 2024-07-06   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint                9          10        1     0.32        46     14.70 |
+  | 2024-07-06   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          11        1     0.32        47     15.02 |
+  | 2024-07-06   New Carlisle Farmers Market                        tomato sauce           1        pint                9          12        1     0.32        48     15.34 |
+  | 2024-07-06   New Carlisle Farmers Market                        tomato sauce           1        pint               10          13        1     0.32        49     15.65 |
+  | 2024-07-06   New Carlisle Farmers Market                        tomato sauce           1        pint               10          14        1     0.32        50     15.97 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-13   New Carlisle Farmers Market                 black raspberry jam           2        pint               20           1        1     0.36        51     18.21 |
-  | 2024-07-13   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           2        1     0.36        52     18.57 |
-  | 2024-07-13   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           3        1     0.36        53     18.93 |
-  | 2024-07-13   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           4        1     0.36        54     19.29 |
-  | 2024-07-13   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           5        1     0.36        55     19.64 |
+  | 2024-07-13   New Carlisle Farmers Market                 black raspberry jam           2        pint               20           1        1     0.32        51     16.29 |
+  | 2024-07-13   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           2        1     0.32        52     16.61 |
+  | 2024-07-13   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           3        1     0.32        53     16.93 |
+  | 2024-07-13   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           4        1     0.32        54     17.25 |
+  | 2024-07-13   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           5        1     0.32        55     17.57 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-13   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           6        1     0.36        56     20.00 |
-  | 2024-07-13   New Carlisle Farmers Market               carrot- short n sweet           9        unit                3           7        1     0.36        57     20.36 |
-  | 2024-07-13   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1           8        1     0.36        58     20.71 |
-  | 2024-07-13   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1           9        1     0.36        59     21.07 |
-  | 2024-07-13   New Carlisle Farmers Market                pepper- sweet banana           4        unit                1          10        1     0.36        60     21.43 |
+  | 2024-07-13   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           6        1     0.32        56     17.89 |
+  | 2024-07-13   New Carlisle Farmers Market               carrot- short n sweet           9        unit                3           7        1     0.32        57     18.21 |
+  | 2024-07-13   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1           8        1     0.32        58     18.53 |
+  | 2024-07-13   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1           9        1     0.32        59     18.85 |
+  | 2024-07-13   New Carlisle Farmers Market                pepper- sweet banana           4        unit                1          10        1     0.32        60     19.17 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-13   New Carlisle Farmers Market                        tomato sauce           1        pint               10          11        1     0.36        61     21.79 |
-  | 2024-07-13   New Carlisle Farmers Market                        tomato sauce           1        pint               10          12        1     0.36        62     22.14 |
-  | 2024-07-13   New Carlisle Farmers Market                        tomato sauce           1        pint               20          13        1     0.36        63     22.50 |
-  | 2024-07-13   New Carlisle Farmers Market                        tomato sauce           2        pint               18          14        1     0.36        64     22.86 |
-  | 2024-07-13   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          15        1     0.36        65     23.21 |
+  | 2024-07-13   New Carlisle Farmers Market                        tomato sauce           1        pint               10          11        1     0.32        61     19.49 |
+  | 2024-07-13   New Carlisle Farmers Market                        tomato sauce           1        pint               10          12        1     0.32        62     19.81 |
+  | 2024-07-13   New Carlisle Farmers Market                        tomato sauce           1        pint               20          13        1     0.32        63     20.13 |
+  | 2024-07-13   New Carlisle Farmers Market                        tomato sauce           2        pint               18          14        1     0.32        64     20.45 |
+  | 2024-07-13   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          15        1     0.32        65     20.77 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-13   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          16        1     0.36        66     23.57 |
-  | 2024-07-13   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          17        1     0.36        67     23.93 |
-  | 2024-07-20   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           1        1     0.36        68     24.29 |
-  | 2024-07-20   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           2        1     0.36        69     24.64 |
-  | 2024-07-20   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           3        1     0.36        70     25.00 |
+  | 2024-07-13   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          16        1     0.32        66     21.09 |
+  | 2024-07-13   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          17        1     0.32        67     21.41 |
+  | 2024-07-20   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           1        1     0.32        68     21.73 |
+  | 2024-07-20   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           2        1     0.32        69     22.04 |
+  | 2024-07-20   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           3        1     0.32        70     22.36 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-20   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           4        1     0.36        71     25.36 |
-  | 2024-07-20   New Carlisle Farmers Market              eggplant- black beauty           1        unit                6           5        1     0.36        72     25.71 |
-  | 2024-07-20   New Carlisle Farmers Market              eggplant- black beauty           1        unit                6           6        1     0.36        73     26.07 |
-  | 2024-07-20   New Carlisle Farmers Market         pepper- bull nosed lrg bell           4        unit                2           7        1     0.36        74     26.43 |
-  | 2024-07-20   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1           8        1     0.36        75     26.79 |
+  | 2024-07-20   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           4        1     0.32        71     22.68 |
+  | 2024-07-20   New Carlisle Farmers Market              eggplant- black beauty           1        unit                6           5        1     0.32        72     23.00 |
+  | 2024-07-20   New Carlisle Farmers Market              eggplant- black beauty           1        unit                6           6        1     0.32        73     23.32 |
+  | 2024-07-20   New Carlisle Farmers Market         pepper- bull nosed lrg bell           4        unit                2           7        1     0.32        74     23.64 |
+  | 2024-07-20   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1           8        1     0.32        75     23.96 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-20   New Carlisle Farmers Market             pepper- jalapeno, early           8        unit                2           9        1     0.36        76     27.14 |
-  | 2024-07-20   New Carlisle Farmers Market                        tomato sauce           1        pint               10          10        1     0.36        77     27.50 |
-  | 2024-07-20   New Carlisle Farmers Market                        tomato sauce           1        pint               10          11        1     0.36        78     27.86 |
-  | 2024-07-20   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          12        1     0.36        79     28.21 |
-  | 2024-07-20   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          13        1     0.36        80     28.57 |
+  | 2024-07-20   New Carlisle Farmers Market             pepper- jalapeno, early           8        unit                2           9        1     0.32        76     24.28 |
+  | 2024-07-20   New Carlisle Farmers Market                        tomato sauce           1        pint               10          10        1     0.32        77     24.60 |
+  | 2024-07-20   New Carlisle Farmers Market                        tomato sauce           1        pint               10          11        1     0.32        78     24.92 |
+  | 2024-07-20   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          12        1     0.32        79     25.24 |
+  | 2024-07-20   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          13        1     0.32        80     25.56 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-27   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           1        1     0.36        81     28.93 |
-  | 2024-07-27   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           2        1     0.36        82     29.29 |
-  | 2024-07-27   New Carlisle Farmers Market           bean- purple queen (bush)           2        pint                6           3        1     0.36        83     29.64 |
-  | 2024-07-27   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                3           4        1     0.36        84     30.00 |
-  | 2024-07-27   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           5        1     0.36        85     30.36 |
+  | 2024-07-27   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           1        1     0.32        81     25.88 |
+  | 2024-07-27   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           2        1     0.32        82     26.20 |
+  | 2024-07-27   New Carlisle Farmers Market           bean- purple queen (bush)           2        pint                6           3        1     0.32        83     26.52 |
+  | 2024-07-27   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                3           4        1     0.32        84     26.84 |
+  | 2024-07-27   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           5        1     0.32        85     27.16 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-27   New Carlisle Farmers Market          carrot- kaleidoscope blend           3       units                1           6        1     0.36        86     30.71 |
-  | 2024-07-27   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           7        1     0.36        87     31.07 |
-  | 2024-07-27   New Carlisle Farmers Market               carrot- short n sweet           3       units                1           8        1     0.36        88     31.43 |
-  | 2024-07-27   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           9        1     0.36        89     31.79 |
-  | 2024-07-27   New Carlisle Farmers Market              eggplant- black beauty           1        unit                4          10        1     0.36        90     32.14 |
+  | 2024-07-27   New Carlisle Farmers Market          carrot- kaleidoscope blend           3       units                1           6        1     0.32        86     27.48 |
+  | 2024-07-27   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           7        1     0.32        87     27.80 |
+  | 2024-07-27   New Carlisle Farmers Market               carrot- short n sweet           3       units                1           8        1     0.32        88     28.12 |
+  | 2024-07-27   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           9        1     0.32        89     28.43 |
+  | 2024-07-27   New Carlisle Farmers Market              eggplant- black beauty           1        unit                4          10        1     0.32        90     28.75 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-27   New Carlisle Farmers Market              eggplant- black beauty           1        unit                4          11        1     0.36        91     32.50 |
-  | 2024-07-27   New Carlisle Farmers Market                pepper- sweet banana           6        unit                2          12        1     0.36        92     32.86 |
-  | 2024-07-27   New Carlisle Farmers Market        sweet corn- sweetness hybrid           2        unit                3          13        1     0.36        93     33.21 |
-  | 2024-07-27   New Carlisle Farmers Market        sweet corn- sweetness hybrid           4        unit                5          14        1     0.36        94     33.57 |
-  | 2024-07-27   New Carlisle Farmers Market        sweet corn- sweetness hybrid           6        unit                5          15        1     0.36        95     33.93 |
+  | 2024-07-27   New Carlisle Farmers Market              eggplant- black beauty           1        unit                4          11        1     0.32        91     29.07 |
+  | 2024-07-27   New Carlisle Farmers Market                pepper- sweet banana           6        unit                2          12        1     0.32        92     29.39 |
+  | 2024-07-27   New Carlisle Farmers Market        sweet corn- sweetness hybrid           2        unit                3          13        1     0.32        93     29.71 |
+  | 2024-07-27   New Carlisle Farmers Market        sweet corn- sweetness hybrid           4        unit                5          14        1     0.32        94     30.03 |
+  | 2024-07-27   New Carlisle Farmers Market        sweet corn- sweetness hybrid           6        unit                5          15        1     0.32        95     30.35 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-27   New Carlisle Farmers Market        sweet corn- sweetness hybrid          24        unit               20          16        1     0.36        96     34.29 |
-  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          17        1     0.36        97     34.64 |
-  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          18        1     0.36        98     35.00 |
-  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          19        1     0.36        99     35.36 |
-  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          20        1     0.36       100     35.71 |
+  | 2024-07-27   New Carlisle Farmers Market        sweet corn- sweetness hybrid          24        unit               20          16        1     0.32        96     30.67 |
+  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          17        1     0.32        97     30.99 |
+  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          18        1     0.32        98     31.31 |
+  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          19        1     0.32        99     31.63 |
+  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          20        1     0.32       100     31.95 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          21        1     0.36       101     36.07 |
-  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          22        1     0.36       102     36.43 |
-  | 2024-07-27   New Carlisle Farmers Market                        tomato- roma           1        pint                2          23        1     0.36       103     36.79 |
-  | 2024-07-31   The Brosey Farm: farm stand                                  .s          .s          .s                5           1        1     0.36       104     37.14 |
-  | 2024-07-31   The Brosey Farm: farm stand                                  .s          .s          .s               16           2        1     0.36       105     37.50 |
+  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          21        1     0.32       101     32.27 |
+  | 2024-07-27   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          22        1     0.32       102     32.59 |
+  | 2024-07-27   New Carlisle Farmers Market                        tomato- roma           1        pint                2          23        1     0.32       103     32.91 |
+  | 2024-07-31   The Brosey Farm: farm stand                                  .s          .s          .s                5           1        1     0.32       104     33.23 |
+  | 2024-07-31   The Brosey Farm: farm stand                                  .s          .s          .s               16           2        1     0.32       105     33.55 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-02   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           1        1     0.36       106     37.86 |
-  | 2024-08-02   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           2        1     0.36       107     38.21 |
-  | 2024-08-02   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                3           3        1     0.36       108     38.57 |
-  | 2024-08-02   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                3           4        1     0.36       109     38.93 |
-  | 2024-08-02   New Carlisle Farmers Market   bean- stringless green pod (bush)           4        pint               12           5        1     0.36       110     39.29 |
+  | 2024-08-02   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           1        1     0.32       106     33.87 |
+  | 2024-08-02   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           2        1     0.32       107     34.19 |
+  | 2024-08-02   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                3           3        1     0.32       108     34.50 |
+  | 2024-08-02   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                3           4        1     0.32       109     34.82 |
+  | 2024-08-02   New Carlisle Farmers Market   bean- stringless green pod (bush)           4        pint               12           5        1     0.32       110     35.14 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-02   New Carlisle Farmers Market         beet- tall top early wonder           6        unit                4           6        1     0.36       111     39.64 |
-  | 2024-08-02   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           7        1     0.36       112     40.00 |
-  | 2024-08-02   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           8        1     0.36       113     40.36 |
-  | 2024-08-02   New Carlisle Farmers Market          carrot- kaleidoscope blend           4        unit                1           9        1     0.36       114     40.71 |
-  | 2024-08-02   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1          10        1     0.36       115     41.07 |
+  | 2024-08-02   New Carlisle Farmers Market         beet- tall top early wonder           6        unit                4           6        1     0.32       111     35.46 |
+  | 2024-08-02   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           7        1     0.32       112     35.78 |
+  | 2024-08-02   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           8        1     0.32       113     36.10 |
+  | 2024-08-02   New Carlisle Farmers Market          carrot- kaleidoscope blend           4        unit                1           9        1     0.32       114     36.42 |
+  | 2024-08-02   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1          10        1     0.32       115     36.74 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-02   New Carlisle Farmers Market               carrot- short n sweet           4        unit                1          11        1     0.36       116     41.43 |
-  | 2024-08-02   New Carlisle Farmers Market                   cilantro- calypse           2       bunch                4          12        1     0.36       117     41.79 |
-  | 2024-08-02   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          13        1     0.36       118     42.14 |
-  | 2024-08-02   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          14        1     0.36       119     42.50 |
-  | 2024-08-02   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          15        1     0.36       120     42.86 |
+  | 2024-08-02   New Carlisle Farmers Market               carrot- short n sweet           4        unit                1          11        1     0.32       116     37.06 |
+  | 2024-08-02   New Carlisle Farmers Market                   cilantro- calypse           2       bunch                4          12        1     0.32       117     37.38 |
+  | 2024-08-02   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          13        1     0.32       118     37.70 |
+  | 2024-08-02   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          14        1     0.32       119     38.02 |
+  | 2024-08-02   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          15        1     0.32       120     38.34 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-02   New Carlisle Farmers Market              eggplant- black beauty           3        unit               10          16        1     0.36       121     43.21 |
-  | 2024-08-02   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1          17        1     0.36       122     43.57 |
-  | 2024-08-02   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1          18        1     0.36       123     43.93 |
-  | 2024-08-02   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1          19        1     0.36       124     44.29 |
-  | 2024-08-02   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1          20        1     0.36       125     44.64 |
+  | 2024-08-02   New Carlisle Farmers Market              eggplant- black beauty           3        unit               10          16        1     0.32       121     38.66 |
+  | 2024-08-02   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1          17        1     0.32       122     38.98 |
+  | 2024-08-02   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1          18        1     0.32       123     39.30 |
+  | 2024-08-02   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1          19        1     0.32       124     39.62 |
+  | 2024-08-02   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1          20        1     0.32       125     39.94 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-02   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1          21        1     0.36       126     45.00 |
-  | 2024-08-02   New Carlisle Farmers Market             pepper- jalapeno, early          12        unit                2          22        1     0.36       127     45.36 |
-  | 2024-08-02   New Carlisle Farmers Market             pepper- jalapeno, early          12        unit                3          23        1     0.36       128     45.71 |
-  | 2024-08-02   New Carlisle Farmers Market               pepper- serrano chili          10        unit                2          24        1     0.36       129     46.07 |
-  | 2024-08-02   New Carlisle Farmers Market        sweet corn- sweetness hybrid          10        unit                5          25        1     0.36       130     46.43 |
+  | 2024-08-02   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1          21        1     0.32       126     40.26 |
+  | 2024-08-02   New Carlisle Farmers Market             pepper- jalapeno, early          12        unit                2          22        1     0.32       127     40.58 |
+  | 2024-08-02   New Carlisle Farmers Market             pepper- jalapeno, early          12        unit                3          23        1     0.32       128     40.89 |
+  | 2024-08-02   New Carlisle Farmers Market               pepper- serrano chili          10        unit                2          24        1     0.32       129     41.21 |
+  | 2024-08-02   New Carlisle Farmers Market        sweet corn- sweetness hybrid          10        unit                5          25        1     0.32       130     41.53 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-02   New Carlisle Farmers Market                        tomato sauce           1        pint               10          26        1     0.36       131     46.79 |
-  | 2024-08-02   New Carlisle Farmers Market                        tomato sauce           1        pint               10          27        1     0.36       132     47.14 |
-  | 2024-08-02   New Carlisle Farmers Market                        tomato sauce           1        pint               10          28        1     0.36       133     47.50 |
-  | 2024-08-02   New Carlisle Farmers Market                       tomato- amish           3        unit                3          29        1     0.36       134     47.86 |
-  | 2024-08-10   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                2           1        1     0.36       135     48.21 |
+  | 2024-08-02   New Carlisle Farmers Market                        tomato sauce           1        pint               10          26        1     0.32       131     41.85 |
+  | 2024-08-02   New Carlisle Farmers Market                        tomato sauce           1        pint               10          27        1     0.32       132     42.17 |
+  | 2024-08-02   New Carlisle Farmers Market                        tomato sauce           1        pint               10          28        1     0.32       133     42.49 |
+  | 2024-08-02   New Carlisle Farmers Market                       tomato- amish           3        unit                3          29        1     0.32       134     42.81 |
+  | 2024-08-10   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                2           1        1     0.32       135     43.13 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-10   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                2           2        1     0.36       136     48.57 |
-  | 2024-08-10   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                2           3        1     0.36       137     48.93 |
-  | 2024-08-10   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                3           4        1     0.36       138     49.29 |
-  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder           3        unit                1           5        1     0.36       139     49.64 |
-  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder           3        unit                1           6        1     0.36       140     50.00 |
+  | 2024-08-10   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                2           2        1     0.32       136     43.45 |
+  | 2024-08-10   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                2           3        1     0.32       137     43.77 |
+  | 2024-08-10   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                3           4        1     0.32       138     44.09 |
+  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder           3        unit                1           5        1     0.32       139     44.41 |
+  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder           3        unit                1           6        1     0.32       140     44.73 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder           3        unit                1           7        1     0.36       141     50.36 |
-  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder           6        unit                2           8        1     0.36       142     50.71 |
-  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder          15        unit                5           9        1     0.36       143     51.07 |
-  | 2024-08-10   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1          10        1     0.36       144     51.43 |
-  | 2024-08-10   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1          11        1     0.36       145     51.79 |
+  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder           3        unit                1           7        1     0.32       141     45.05 |
+  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder           6        unit                2           8        1     0.32       142     45.37 |
+  | 2024-08-10   New Carlisle Farmers Market         beet- tall top early wonder          15        unit                5           9        1     0.32       143     45.69 |
+  | 2024-08-10   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1          10        1     0.32       144     46.01 |
+  | 2024-08-10   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1          11        1     0.32       145     46.33 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-10   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1          12        1     0.36       146     52.14 |
-  | 2024-08-10   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1          13        1     0.36       147     52.50 |
-  | 2024-08-10   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1          14        1     0.36       148     52.86 |
-  | 2024-08-10   New Carlisle Farmers Market                     pepper- anaheim           4        unit                1          15        1     0.36       149     53.21 |
-  | 2024-08-10   New Carlisle Farmers Market         pepper- bull nosed lrg bell           4        unit                2          16        1     0.36       150     53.57 |
+  | 2024-08-10   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1          12        1     0.32       146     46.65 |
+  | 2024-08-10   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1          13        1     0.32       147     46.96 |
+  | 2024-08-10   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1          14        1     0.32       148     47.28 |
+  | 2024-08-10   New Carlisle Farmers Market                     pepper- anaheim           4        unit                1          15        1     0.32       149     47.60 |
+  | 2024-08-10   New Carlisle Farmers Market         pepper- bull nosed lrg bell           4        unit                2          16        1     0.32       150     47.92 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-10   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1          17        1     0.36       151     53.93 |
-  | 2024-08-10   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1          18        1     0.36       152     54.29 |
-  | 2024-08-10   New Carlisle Farmers Market             pepper- jalapeno, early          16        unit                2          19        1     0.36       153     54.64 |
-  | 2024-08-10   New Carlisle Farmers Market             pepper- jalapeno, early          56        unit                7          20        1     0.36       154     55.00 |
-  | 2024-08-10   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          21        1     0.36       155     55.36 |
+  | 2024-08-10   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1          17        1     0.32       151     48.24 |
+  | 2024-08-10   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit                1          18        1     0.32       152     48.56 |
+  | 2024-08-10   New Carlisle Farmers Market             pepper- jalapeno, early          16        unit                2          19        1     0.32       153     48.88 |
+  | 2024-08-10   New Carlisle Farmers Market             pepper- jalapeno, early          56        unit                7          20        1     0.32       154     49.20 |
+  | 2024-08-10   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          21        1     0.32       155     49.52 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-10   New Carlisle Farmers Market               pepper- serrano chili           8        unit                4          22        1     0.36       156     55.71 |
-  | 2024-08-10   New Carlisle Farmers Market                pepper- sweet banana           4        unit                1          23        1     0.36       157     56.07 |
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint                9          24        1     0.36       158     56.43 |
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          25        1     0.36       159     56.79 |
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          26        1     0.36       160     57.14 |
+  | 2024-08-10   New Carlisle Farmers Market               pepper- serrano chili           8        unit                4          22        1     0.32       156     49.84 |
+  | 2024-08-10   New Carlisle Farmers Market                pepper- sweet banana           4        unit                1          23        1     0.32       157     50.16 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint                9          24        1     0.32       158     50.48 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          25        1     0.32       159     50.80 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          26        1     0.32       160     51.12 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          27        1     0.36       161     57.50 |
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          28        1     0.36       162     57.86 |
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          29        1     0.36       163     58.21 |
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               15          30        1     0.36       164     58.57 |
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          31        1     0.36       165     58.93 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          27        1     0.32       161     51.44 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          28        1     0.32       162     51.76 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          29        1     0.32       163     52.08 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               15          30        1     0.32       164     52.40 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          31        1     0.32       165     52.72 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          32        1     0.36       166     59.29 |
-  | 2024-08-10   New Carlisle Farmers Market                        tomato sauce           1        pint                9          33        1     0.36       167     59.64 |
-  | 2024-08-10   New Carlisle Farmers Market                        tomato sauce           2        pint               18          34        1     0.36       168     60.00 |
-  | 2024-08-10   New Carlisle Farmers Market                        tomato- roma           1       pound                2          35        1     0.36       169     60.36 |
-  | 2024-08-10   New Carlisle Farmers Market                        tomato- roma           1       pound                2          36        1     0.36       170     60.71 |
+  | 2024-08-10   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          32        1     0.32       166     53.04 |
+  | 2024-08-10   New Carlisle Farmers Market                        tomato sauce           1        pint                9          33        1     0.32       167     53.35 |
+  | 2024-08-10   New Carlisle Farmers Market                        tomato sauce           2        pint               18          34        1     0.32       168     53.67 |
+  | 2024-08-10   New Carlisle Farmers Market                        tomato- roma           1       pound                2          35        1     0.32       169     53.99 |
+  | 2024-08-10   New Carlisle Farmers Market                        tomato- roma           1       pound                2          36        1     0.32       170     54.31 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-10   New Carlisle Farmers Market                        tomato- roma           3       pound                5          37        1     0.36       171     61.07 |
-  | 2024-08-15   The Brosey Farm: farm stand                                  .s          .s          .s               14           1        1     0.36       172     61.43 |
-  | 2024-08-17   New Carlisle Farmers Market           bean- purple queen (bush)           1       quart                3           1        1     0.36       173     61.79 |
-  | 2024-08-17   New Carlisle Farmers Market         beet- tall top early wonder           4        unit               10           2        1     0.36       174     62.14 |
-  | 2024-08-17   New Carlisle Farmers Market         beet- tall top early wonder          24        unit               12           3        1     0.36       175     62.50 |
+  | 2024-08-10   New Carlisle Farmers Market                        tomato- roma           3       pound                5          37        1     0.32       171     54.63 |
+  | 2024-08-15   The Brosey Farm: farm stand                                  .s          .s          .s               14           1        1     0.32       172     54.95 |
+  | 2024-08-17   New Carlisle Farmers Market           bean- purple queen (bush)           1       quart                3           1        1     0.32       173     55.27 |
+  | 2024-08-17   New Carlisle Farmers Market         beet- tall top early wonder           4        unit               10           2        1     0.32       174     55.59 |
+  | 2024-08-17   New Carlisle Farmers Market         beet- tall top early wonder          24        unit               12           3        1     0.32       175     55.91 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-17   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           4        1     0.36       176     62.86 |
-  | 2024-08-17   New Carlisle Farmers Market               carrot- short n sweet           2        unit                1           5        1     0.36       177     63.21 |
-  | 2024-08-17   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           6        1     0.36       178     63.57 |
-  | 2024-08-17   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           7        1     0.36       179     63.93 |
-  | 2024-08-17   New Carlisle Farmers Market              eggplant- black beauty           1        unit                2           8        1     0.36       180     64.29 |
+  | 2024-08-17   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           4        1     0.32       176     56.23 |
+  | 2024-08-17   New Carlisle Farmers Market               carrot- short n sweet           2        unit                1           5        1     0.32       177     56.55 |
+  | 2024-08-17   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           6        1     0.32       178     56.87 |
+  | 2024-08-17   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           7        1     0.32       179     57.19 |
+  | 2024-08-17   New Carlisle Farmers Market              eggplant- black beauty           1        unit                2           8        1     0.32       180     57.51 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-17   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           9        1     0.36       181     64.64 |
-  | 2024-08-17   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          10        1     0.36       182     65.00 |
-  | 2024-08-17   New Carlisle Farmers Market                       miscellaneous          .m          .m               20          11        1     0.36       183     65.36 |
-  | 2024-08-17   New Carlisle Farmers Market                       miscellaneous          .m          .m               20          12        1     0.36       184     65.71 |
-  | 2024-08-17   New Carlisle Farmers Market                     pepper- anaheim           3        unit                1          13        1     0.36       185     66.07 |
+  | 2024-08-17   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           9        1     0.32       181     57.83 |
+  | 2024-08-17   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          10        1     0.32       182     58.15 |
+  | 2024-08-17   New Carlisle Farmers Market                       miscellaneous          .m          .m               20          11        1     0.32       183     58.47 |
+  | 2024-08-17   New Carlisle Farmers Market                       miscellaneous          .m          .m               20          12        1     0.32       184     58.79 |
+  | 2024-08-17   New Carlisle Farmers Market                     pepper- anaheim           3        unit                1          13        1     0.32       185     59.11 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-17   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1          14        1     0.36       186     66.43 |
-  | 2024-08-17   New Carlisle Farmers Market         pepper- bull nosed lrg bell           4        unit                2          15        1     0.36       187     66.79 |
-  | 2024-08-17   New Carlisle Farmers Market         pepper- bull nosed lrg bell           8        unit                4          16        1     0.36       188     67.14 |
-  | 2024-08-17   New Carlisle Farmers Market             pepper- jalapeno, early          16        unit                2          17        1     0.36       189     67.50 |
-  | 2024-08-17   New Carlisle Farmers Market             pepper- jalapeno, early          20        unit                2          18        1     0.36       190     67.86 |
+  | 2024-08-17   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1          14        1     0.32       186     59.42 |
+  | 2024-08-17   New Carlisle Farmers Market         pepper- bull nosed lrg bell           4        unit                2          15        1     0.32       187     59.74 |
+  | 2024-08-17   New Carlisle Farmers Market         pepper- bull nosed lrg bell           8        unit                4          16        1     0.32       188     60.06 |
+  | 2024-08-17   New Carlisle Farmers Market             pepper- jalapeno, early          16        unit                2          17        1     0.32       189     60.38 |
+  | 2024-08-17   New Carlisle Farmers Market             pepper- jalapeno, early          20        unit                2          18        1     0.32       190     60.70 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-17   New Carlisle Farmers Market               pepper- serrano chili           8        unit                1          19        1     0.36       191     68.21 |
-  | 2024-08-17   New Carlisle Farmers Market                pepper- sweet banana           3        unit                1          20        1     0.36       192     68.57 |
-  | 2024-08-17   New Carlisle Farmers Market                pepper- sweet banana           3        unit                1          21        1     0.36       193     68.93 |
-  | 2024-08-17   New Carlisle Farmers Market     sweet corn- silver queen hybrid           2        unit                1          22        1     0.36       194     69.29 |
-  | 2024-08-17   New Carlisle Farmers Market     sweet corn- silver queen hybrid           6        unit                5          23        1     0.36       195     69.64 |
+  | 2024-08-17   New Carlisle Farmers Market               pepper- serrano chili           8        unit                1          19        1     0.32       191     61.02 |
+  | 2024-08-17   New Carlisle Farmers Market                pepper- sweet banana           3        unit                1          20        1     0.32       192     61.34 |
+  | 2024-08-17   New Carlisle Farmers Market                pepper- sweet banana           3        unit                1          21        1     0.32       193     61.66 |
+  | 2024-08-17   New Carlisle Farmers Market     sweet corn- silver queen hybrid           2        unit                1          22        1     0.32       194     61.98 |
+  | 2024-08-17   New Carlisle Farmers Market     sweet corn- silver queen hybrid           6        unit                5          23        1     0.32       195     62.30 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-17   New Carlisle Farmers Market     sweet corn- silver queen hybrid          12        unit               10          24        1     0.36       196     70.00 |
-  | 2024-08-17   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          25        1     0.36       197     70.36 |
-  | 2024-08-17   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          26        1     0.36       198     70.71 |
-  | 2024-08-17   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          27        1     0.36       199     71.07 |
-  | 2024-08-17   New Carlisle Farmers Market                        tomato- roma           2       pound                4          28        1     0.36       200     71.43 |
+  | 2024-08-17   New Carlisle Farmers Market     sweet corn- silver queen hybrid          12        unit               10          24        1     0.32       196     62.62 |
+  | 2024-08-17   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          25        1     0.32       197     62.94 |
+  | 2024-08-17   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          26        1     0.32       198     63.26 |
+  | 2024-08-17   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          27        1     0.32       199     63.58 |
+  | 2024-08-17   New Carlisle Farmers Market                        tomato- roma           2       pound                4          28        1     0.32       200     63.90 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-17   The Brosey Farm: farm stand                                  .s          .s          .s               14           1        1     0.36       201     71.79 |
-  | 2024-08-24   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                2           1        1     0.36       202     72.14 |
-  | 2024-08-24   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                2           2        1     0.36       203     72.50 |
-  | 2024-08-24   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           3        1     0.36       204     72.86 |
-  | 2024-08-24   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                2           4        1     0.36       205     73.21 |
+  | 2024-08-17   The Brosey Farm: farm stand                                  .s          .s          .s               14           1        1     0.32       201     64.22 |
+  | 2024-08-24   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                2           1        1     0.32       202     64.54 |
+  | 2024-08-24   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                2           2        1     0.32       203     64.86 |
+  | 2024-08-24   New Carlisle Farmers Market           bean- purple queen (bush)           1        pint                3           3        1     0.32       204     65.18 |
+  | 2024-08-24   New Carlisle Farmers Market   bean- stringless green pod (bush)           1        pint                2           4        1     0.32       205     65.50 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-24   New Carlisle Farmers Market         beet- tall top early wonder          21        unit                9           5        1     0.36       206     73.57 |
-  | 2024-08-24   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           6        1     0.36       207     73.93 |
-  | 2024-08-24   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           7        1     0.36       208     74.29 |
-  | 2024-08-24   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           8        1     0.36       209     74.64 |
-  | 2024-08-24   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           9        1     0.36       210     75.00 |
+  | 2024-08-24   New Carlisle Farmers Market         beet- tall top early wonder          21        unit                9           5        1     0.32       206     65.81 |
+  | 2024-08-24   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           6        1     0.32       207     66.13 |
+  | 2024-08-24   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           7        1     0.32       208     66.45 |
+  | 2024-08-24   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           8        1     0.32       209     66.77 |
+  | 2024-08-24   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           9        1     0.32       210     67.09 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          10        1     0.36       211     75.36 |
-  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          11        1     0.36       212     75.71 |
-  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          12        1     0.36       213     76.07 |
-  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           2        unit                6          13        1     0.36       214     76.43 |
-  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           2        unit                6          14        1     0.36       215     76.79 |
+  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          10        1     0.32       211     67.41 |
+  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          11        1     0.32       212     67.73 |
+  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3          12        1     0.32       213     68.05 |
+  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           2        unit                6          13        1     0.32       214     68.37 |
+  | 2024-08-24   New Carlisle Farmers Market              eggplant- black beauty           2        unit                6          14        1     0.32       215     68.69 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-24   New Carlisle Farmers Market                     pepper- anaheim           2        unit               .5          15        1     0.36       216     77.14 |
-  | 2024-08-24   New Carlisle Farmers Market         pepper- bull nosed lrg bell           4        unit                1          16        1     0.36       217     77.50 |
-  | 2024-08-24   New Carlisle Farmers Market             pepper- jalapeno, early           8        unit                1          17        1     0.36       218     77.86 |
-  | 2024-08-24   New Carlisle Farmers Market             pepper- jalapeno, early          40        unit                4          18        1     0.36       219     78.21 |
-  | 2024-08-24   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          19        1     0.36       220     78.57 |
+  | 2024-08-24   New Carlisle Farmers Market                     pepper- anaheim           2        unit               .5          15        1     0.32       216     69.01 |
+  | 2024-08-24   New Carlisle Farmers Market         pepper- bull nosed lrg bell           4        unit                1          16        1     0.32       217     69.33 |
+  | 2024-08-24   New Carlisle Farmers Market             pepper- jalapeno, early           8        unit                1          17        1     0.32       218     69.65 |
+  | 2024-08-24   New Carlisle Farmers Market             pepper- jalapeno, early          40        unit                4          18        1     0.32       219     69.97 |
+  | 2024-08-24   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          19        1     0.32       220     70.29 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-24   New Carlisle Farmers Market               pepper- serrano chili          .m        unit                1          20        1     0.36       221     78.93 |
-  | 2024-08-24   New Carlisle Farmers Market                pepper- sweet banana           2        unit               .5          21        1     0.36       222     79.29 |
-  | 2024-08-24   New Carlisle Farmers Market     sweet corn- silver queen hybrid           3        unit                1          22        1     0.36       223     79.64 |
-  | 2024-08-24   New Carlisle Farmers Market        sweet corn- sweetness hybrid           9        unit                4          23        1     0.36       224     80.00 |
-  | 2024-08-24   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          24        1     0.36       225     80.36 |
+  | 2024-08-24   New Carlisle Farmers Market               pepper- serrano chili          .m        unit                1          20        1     0.32       221     70.61 |
+  | 2024-08-24   New Carlisle Farmers Market                pepper- sweet banana           2        unit               .5          21        1     0.32       222     70.93 |
+  | 2024-08-24   New Carlisle Farmers Market     sweet corn- silver queen hybrid           3        unit                1          22        1     0.32       223     71.25 |
+  | 2024-08-24   New Carlisle Farmers Market        sweet corn- sweetness hybrid           9        unit                4          23        1     0.32       224     71.57 |
+  | 2024-08-24   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          24        1     0.32       225     71.88 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-24   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          25        1     0.36       226     80.71 |
-  | 2024-08-24   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          26        1     0.36       227     81.07 |
-  | 2024-08-24   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          27        1     0.36       228     81.43 |
-  | 2024-08-24   New Carlisle Farmers Market                        tomato sauce           2        pint               18          28        1     0.36       229     81.79 |
-  | 2024-08-24   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          29        1     0.36       230     82.14 |
+  | 2024-08-24   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          25        1     0.32       226     72.20 |
+  | 2024-08-24   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          26        1     0.32       227     72.52 |
+  | 2024-08-24   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          27        1     0.32       228     72.84 |
+  | 2024-08-24   New Carlisle Farmers Market                        tomato sauce           2        pint               18          28        1     0.32       229     73.16 |
+  | 2024-08-24   New Carlisle Farmers Market                 tomato- cherry roma          .5        pint                3          29        1     0.32       230     73.48 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-08-24   New Carlisle Farmers Market                        tomato- roma           5       pound               10          30        1     0.36       231     82.50 |
-  | 2024-08-24   The Brosey Farm: farm stand                                  .s          .s          .s                5           1        1     0.36       232     82.86 |
-  | 2024-08-28   The Brosey Farm: farm stand                                  .s          .s          .s               16           1        1     0.36       233     83.21 |
-  | 2024-09-04   The Brosey Farm: farm stand                                  .s          .s          .s               48           1        1     0.36       234     83.57 |
-  | 2024-09-07   New Carlisle Farmers Market         beet- tall top early wonder           4        unit                2           1        1     0.36       235     83.93 |
+  | 2024-08-24   New Carlisle Farmers Market                        tomato- roma           5       pound               10          30        1     0.32       231     73.80 |
+  | 2024-08-24   The Brosey Farm: farm stand                                  .s          .s          .s                5           1        1     0.32       232     74.12 |
+  | 2024-08-28   The Brosey Farm: farm stand                                  .s          .s          .s               16           1        1     0.32       233     74.44 |
+  | 2024-09-04   The Brosey Farm: farm stand                                  .s          .s          .s               48           1        1     0.32       234     74.76 |
+  | 2024-09-07   New Carlisle Farmers Market         beet- tall top early wonder           4        unit                2           1        1     0.32       235     75.08 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-07   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           2        1     0.36       236     84.29 |
-  | 2024-09-07   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           3        1     0.36       237     84.64 |
-  | 2024-09-07   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           4        1     0.36       238     85.00 |
-  | 2024-09-07   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           5        1     0.36       239     85.36 |
-  | 2024-09-07   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           6        1     0.36       240     85.71 |
+  | 2024-09-07   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           2        1     0.32       236     75.40 |
+  | 2024-09-07   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           3        1     0.32       237     75.72 |
+  | 2024-09-07   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           4        1     0.32       238     76.04 |
+  | 2024-09-07   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           5        1     0.32       239     76.36 |
+  | 2024-09-07   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           6        1     0.32       240     76.68 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-07   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           7        1     0.36       241     86.07 |
-  | 2024-09-07   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1           8        1     0.36       242     86.43 |
-  | 2024-09-07   New Carlisle Farmers Market             pepper- poblano (ancho)           2        unit               .5           9        1     0.36       243     86.79 |
-  | 2024-09-07   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          10        1     0.36       244     87.14 |
-  | 2024-09-07   New Carlisle Farmers Market               pepper- serrano chili          36        unit                9          11        1     0.36       245     87.50 |
+  | 2024-09-07   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           7        1     0.32       241     77.00 |
+  | 2024-09-07   New Carlisle Farmers Market         pepper- bull nosed lrg bell           2        unit                1           8        1     0.32       242     77.32 |
+  | 2024-09-07   New Carlisle Farmers Market             pepper- poblano (ancho)           2        unit               .5           9        1     0.32       243     77.64 |
+  | 2024-09-07   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          10        1     0.32       244     77.96 |
+  | 2024-09-07   New Carlisle Farmers Market               pepper- serrano chili          36        unit                9          11        1     0.32       245     78.27 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-07   New Carlisle Farmers Market                pepper- sweet banana           2        unit               .5          12        1     0.36       246     87.86 |
-  | 2024-09-07   New Carlisle Farmers Market                pepper- sweet banana           8        unit                2          13        1     0.36       247     88.21 |
-  | 2024-09-07   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           1        unit                2          14        1     0.36       248     88.57 |
-  | 2024-09-07   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           1        unit                5          15        1     0.36       249     88.93 |
-  | 2024-09-07   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           1        unit                5          16        1     0.36       250     89.29 |
+  | 2024-09-07   New Carlisle Farmers Market                pepper- sweet banana           2        unit               .5          12        1     0.32       246     78.59 |
+  | 2024-09-07   New Carlisle Farmers Market                pepper- sweet banana           8        unit                2          13        1     0.32       247     78.91 |
+  | 2024-09-07   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           1        unit                2          14        1     0.32       248     79.23 |
+  | 2024-09-07   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           1        unit                5          15        1     0.32       249     79.55 |
+  | 2024-09-07   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           1        unit                5          16        1     0.32       250     79.87 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          17        1     0.36       251     89.64 |
-  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          18        1     0.36       252     90.00 |
-  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          19        1     0.36       253     90.36 |
-  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          20        1     0.36       254     90.71 |
-  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          21        1     0.36       255     91.07 |
+  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          17        1     0.32       251     80.19 |
+  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          18        1     0.32       252     80.51 |
+  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          19        1     0.32       253     80.83 |
+  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          20        1     0.32       254     81.15 |
+  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          21        1     0.32       255     81.47 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          22        1     0.36       256     91.43 |
-  | 2024-09-07   New Carlisle Farmers Market                        tomato sauce           1        pint               10          23        1     0.36       257     91.79 |
-  | 2024-09-07   New Carlisle Farmers Market                        tomato sauce           1        pint               10          24        1     0.36       258     92.14 |
-  | 2024-09-07   New Carlisle Farmers Market                        tomato- roma           1       pound                2          25        1     0.36       259     92.50 |
-  | 2024-09-07   New Carlisle Farmers Market                        tomato- roma           3       pound                6          26        1     0.36       260     92.86 |
+  | 2024-09-07   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          22        1     0.32       256     81.79 |
+  | 2024-09-07   New Carlisle Farmers Market                        tomato sauce           1        pint               10          23        1     0.32       257     82.11 |
+  | 2024-09-07   New Carlisle Farmers Market                        tomato sauce           1        pint               10          24        1     0.32       258     82.43 |
+  | 2024-09-07   New Carlisle Farmers Market                        tomato- roma           1       pound                2          25        1     0.32       259     82.75 |
+  | 2024-09-07   New Carlisle Farmers Market                        tomato- roma           3       pound                6          26        1     0.32       260     83.07 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-07   New Carlisle Farmers Market                        tomato- roma           7       pound               14          27        1     0.36       261     93.21 |
-  | 2024-09-14   New Carlisle Farmers Market                 broccoli- calabrese           1        unit                4           1        1     0.36       262     93.57 |
-  | 2024-09-14   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           2        1     0.36       263     93.93 |
-  | 2024-09-14   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           3        1     0.36       264     94.29 |
-  | 2024-09-14   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           4        1     0.36       265     94.64 |
+  | 2024-09-07   New Carlisle Farmers Market                        tomato- roma           7       pound               14          27        1     0.32       261     83.39 |
+  | 2024-09-14   New Carlisle Farmers Market                 broccoli- calabrese           1        unit                4           1        1     0.32       262     83.71 |
+  | 2024-09-14   New Carlisle Farmers Market          carrot- kaleidoscope blend           3        unit                1           2        1     0.32       263     84.03 |
+  | 2024-09-14   New Carlisle Farmers Market               carrot- short n sweet           3        unit                1           3        1     0.32       264     84.35 |
+  | 2024-09-14   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           4        1     0.32       265     84.66 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-14   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           5        1     0.36       266     95.00 |
-  | 2024-09-14   New Carlisle Farmers Market              eggplant- black beauty           1        unit                2           6        1     0.36       267     95.36 |
-  | 2024-09-14   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           7        1     0.36       268     95.71 |
-  | 2024-09-14   New Carlisle Farmers Market              eggplant- black beauty           2        unit                5           8        1     0.36       269     96.07 |
-  | 2024-09-14   New Carlisle Farmers Market              eggplant- black beauty           2        unit                6           9        1     0.36       270     96.43 |
+  | 2024-09-14   New Carlisle Farmers Market               carrot- short n sweet           6        unit                2           5        1     0.32       266     84.98 |
+  | 2024-09-14   New Carlisle Farmers Market              eggplant- black beauty           1        unit                2           6        1     0.32       267     85.30 |
+  | 2024-09-14   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           7        1     0.32       268     85.62 |
+  | 2024-09-14   New Carlisle Farmers Market              eggplant- black beauty           2        unit                5           8        1     0.32       269     85.94 |
+  | 2024-09-14   New Carlisle Farmers Market              eggplant- black beauty           2        unit                6           9        1     0.32       270     86.26 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-14   New Carlisle Farmers Market                     pepper- anaheim           2        unit               .5          10        1     0.36       271     96.79 |
-  | 2024-09-14   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1        unit               .5          11        1     0.36       272     97.14 |
-  | 2024-09-14   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit               .5          12        1     0.36       273     97.50 |
-  | 2024-09-14   New Carlisle Farmers Market             pepper- jalapeno, early          40        unit                5          13        1     0.36       274     97.86 |
-  | 2024-09-14   New Carlisle Farmers Market             pepper- poblano (ancho)           2        unit               .5          14        1     0.36       275     98.21 |
+  | 2024-09-14   New Carlisle Farmers Market                     pepper- anaheim           2        unit               .5          10        1     0.32       271     86.58 |
+  | 2024-09-14   New Carlisle Farmers Market         pepper- bull nosed lrg bell           1        unit               .5          11        1     0.32       272     86.90 |
+  | 2024-09-14   New Carlisle Farmers Market             pepper- jalapeno, early           4        unit               .5          12        1     0.32       273     87.22 |
+  | 2024-09-14   New Carlisle Farmers Market             pepper- jalapeno, early          40        unit                5          13        1     0.32       274     87.54 |
+  | 2024-09-14   New Carlisle Farmers Market             pepper- poblano (ancho)           2        unit               .5          14        1     0.32       275     87.86 |
   |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 2024-09-14   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          15        1     0.36       276     98.57 |
-  | 2024-09-14   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          16        1     0.36       277     98.93 |
-  | 2024-09-14   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          17        1     0.36       278     99.29 |
-  | 2024-09-14   New Carlisle Farmers Market                        tomato sauce           1        pint               10          18        1     0.36       279     99.64 |
-  | 2024-09-14   New Carlisle Farmers Market                 tomato- cherry roma           1        pint                6          19        1     0.36       280    100.00 |
+  | 2024-09-14   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          15        1     0.32       276     88.18 |
+  | 2024-09-14   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          16        1     0.32       277     88.50 |
+  | 2024-09-14   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          17        1     0.32       278     88.82 |
+  | 2024-09-14   New Carlisle Farmers Market                        tomato sauce           1        pint               10          18        1     0.32       279     89.14 |
+  | 2024-09-14   New Carlisle Farmers Market                 tomato- cherry roma           1        pint                6          19        1     0.32       280     89.46 |
+  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-10-12   New Carlisle Farmers Market                 broccoli- calabrese           1   container                5           1        1     0.32       281     89.78 |
+  | 2024-10-12   New Carlisle Farmers Market         corn- ornamental, glass gem           6        unit                6           2        1     0.32       282     90.10 |
+  | 2024-10-12   New Carlisle Farmers Market              eggplant- black beauty           1        unit                3           3        1     0.32       283     90.42 |
+  | 2024-10-12   New Carlisle Farmers Market         pepper- bull nosed lrg bell           8        unit                4           4        1     0.32       284     90.73 |
+  | 2024-10-12   New Carlisle Farmers Market      pepper- chocolate scotch bonet           3        unit               .5           5        1     0.32       285     91.05 |
+  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-10-12   New Carlisle Farmers Market      pepper- chocolate scotch bonet           3        unit               .5           6        1     0.32       286     91.37 |
+  | 2024-10-12   New Carlisle Farmers Market      pepper- chocolate scotch bonet           4        unit                1           7        1     0.32       287     91.69 |
+  | 2024-10-12   New Carlisle Farmers Market      pepper- chocolate scotch bonet          50        unit               10           8        1     0.32       288     92.01 |
+  | 2024-10-12   New Carlisle Farmers Market             pepper- jalapeno, early          10        unit                1           9        1     0.32       289     92.33 |
+  | 2024-10-12   New Carlisle Farmers Market             pepper- jalapeno, early          10        unit                1          10        1     0.32       290     92.65 |
+  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-10-12   New Carlisle Farmers Market             pepper- jalapeno, early          10        unit                1          11        1     0.32       291     92.97 |
+  | 2024-10-12   New Carlisle Farmers Market             pepper- jalapeno, early          10        unit                1          12        1     0.32       292     93.29 |
+  | 2024-10-12   New Carlisle Farmers Market             pepper- jalapeno, early          10        unit                1          13        1     0.32       293     93.61 |
+  | 2024-10-12   New Carlisle Farmers Market                pepper- pimenta puma           3        unit               .5          14        1     0.32       294     93.93 |
+  | 2024-10-12   New Carlisle Farmers Market                pepper- pimenta puma           3        unit               .5          15        1     0.32       295     94.25 |
+  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-10-12   New Carlisle Farmers Market                pepper- pimenta puma           4        unit                1          16        1     0.32       296     94.57 |
+  | 2024-10-12   New Carlisle Farmers Market                pepper- pimenta puma           5        unit                1          17        1     0.32       297     94.89 |
+  | 2024-10-12   New Carlisle Farmers Market                pepper- pimenta puma          50        unit               10          18        1     0.32       298     95.21 |
+  | 2024-10-12   New Carlisle Farmers Market             pepper- poblano (ancho)           4        unit                1          19        1     0.32       299     95.53 |
+  | 2024-10-12   New Carlisle Farmers Market             pepper- poblano (ancho)          20        unti                5          20        1     0.32       300     95.85 |
+  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-10-12   New Carlisle Farmers Market               pepper- serrano chili          25        unit                5          21        1     0.32       301     96.17 |
+  | 2024-10-12   New Carlisle Farmers Market          pepper- sugar rush stripey           3        unit               .5          22        1     0.32       302     96.49 |
+  | 2024-10-12   New Carlisle Farmers Market          pepper- sugar rush stripey           3        unit               .5          23        1     0.32       303     96.81 |
+  | 2024-10-12   New Carlisle Farmers Market          pepper- sugar rush stripey           4        unit                1          24        1     0.32       304     97.12 |
+  | 2024-10-12   New Carlisle Farmers Market                pepper- sweet banana           4        unit                1          25        1     0.32       305     97.44 |
+  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-10-12   New Carlisle Farmers Market                pepper- sweet banana           4        unit                1          26        1     0.32       306     97.76 |
+  | 2024-10-12   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           1        unit                3          27        1     0.32       307     98.08 |
+  | 2024-10-12   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           1        unit                4          28        1     0.32       308     98.40 |
+  | 2024-10-12   New Carlisle Farmers Market      pumpkin- early sweet sugar pie           2        unit                5          29        1     0.32       309     98.72 |
+  | 2024-10-12   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          30        1     0.32       310     99.04 |
+  |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2024-10-12   New Carlisle Farmers Market               tomato jalapeno salsa           1        pint               10          31        1     0.32       311     99.36 |
+  | 2024-10-12   New Carlisle Farmers Market               tomato jalapeno salsa           2        pint               18          32        1     0.32       312     99.68 |
+  | 2024-10-12   New Carlisle Farmers Market                        tomato sauce           2        pint               18          33        1     0.32       313    100.00 |
   +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .         label variable sale_code "sale number (within each sale date)"
@@ -1037,11 +1124,12 @@ sale amount |
 
 .         quietly compress
 
-.         save "$root\modified_data\tbf_market_garden_sales_2023_clean.dta", replace
-file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2023_clean.dta saved
+.         save "$root\modified_data\tbf_market_garden_sales_2024_clean.dta", replace
+(file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2024_clean.dta not found)
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2024_clean.dta saved
 
-.         export excel "$root\modified_data\tbf_market_garden_sales_2023_clean.xlsx", firstrow(variables) replace
-file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2023_clean.xlsx saved
+.         export excel "$root\modified_data\tbf_market_garden_sales_2024_clean.xlsx", firstrow(variables) replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2024_clean.xlsx saved
 
 .         
 .  
@@ -1053,14 +1141,14 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 sale_date       str10   %10s                  sale date
 sale_date_stata int     %td                   sale date- stata
 sale_location   str27   %27s                  sale location
 sale_location~e byte    %27.0g     sale_location_code
                                               sale location- code
-sale_location~o byte    %10.0g                sale_location_stall_no
-sale_location~c str13   %13s                  sale_location_stall_spec
+sale_location~o byte    %10.0g                sale location- stall number
+sale_location~a str13   %13s                  sale location- area
 sale_item       str33   %33s                  sale item
 sale_item_code  byte    %33.0g     sale_item_code
                                               sale item- code
@@ -1077,5 +1165,5 @@ sale_code       byte    %9.0g                 sale number (within each sale date
       name:  clean_01
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\23_tbf_sales_2024_cleaning.log
   log type:  text
- closed on:   2 Oct 2024, 10:54:07
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  16 Dec 2024, 22:38:03
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
