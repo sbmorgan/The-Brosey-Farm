@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: February 29, 2024 	   					 	     			                  ***
-*** Last date modified: December 15, 2024                                                     ***
+*** Last date modified: December 16, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -264,20 +264,23 @@ pause off
 		*-> Check all missing values have been cleaned
 		foreach var of varlist _all {
 			display as input "Variable: `var'"
-			tabulate `var', missing
 			capture confirm numeric variable `var'
 			if _rc==0 {
 				replace `var'= .m if `var'==.
 				count if `var'==.m
-				if r(N)>0 tablist crop sow_type sow_date sow_med `var' if `var'==.m, sort(v) ab(32)
+				if r(N)>0 {
+					tablist crop sow_type sow_date sow_med `var' if `var'==.m, sort(v) ab(32)
+					pause
+				}
 			}
 			else {
 				replace `var'=".m" if `var'==""
 				count if `var'==".m"
-				if r(N)>0 tablist crop sow_type sow_date sow_med `var' if `var'==".m", sort(v) ab(32)
+				if r(N)>0 {
+					tablist crop sow_type sow_date sow_med `var' if `var'==".m", sort(v) ab(32)
+					pause
+				}
 			}
-			tabulate `var', missing
-			*pause
 		}
 	
 	/* Save clean TBF Market Garden 2024 data */
