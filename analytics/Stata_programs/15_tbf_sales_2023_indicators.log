@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-      name:  clean_01
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  indicators_15
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\15_tbf_sales_2023_indicators.log
   log type:  text
- opened on:   2 Oct 2024, 10:53:56
+ opened on:  17 Dec 2024, 22:43:16
 
 . 
 . 
@@ -18,7 +18,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 26, 2023                                                                                            ***
-. *** Last date modified: October 2, 2024                                                       ***
+. *** Last date modified: December 17, 2024                                                     ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -113,8 +113,8 @@
 .         tempfile pre_crop_codes crop_codes
 
 .         save `pre_crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_1104_000001.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_1104_000001.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000i.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000i.tmp saved as .dta format
 
 .         
 .         import excel "$root\modified_data\tbf_crop_codes_2023.xlsx", firstrow clear
@@ -155,8 +155,8 @@ file C:\Users\sethb\AppData\Local\Temp\ST_1104_000001.tmp saved as .dta format
   +---------------------------------------------------------------------------------------+
 
 .         save `crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_1104_000002.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_1104_000002.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000j.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000j.tmp saved as .dta format
 
 .         
 .         use `pre_crop_codes', replace
@@ -189,8 +189,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 .     
 . 
 . log close _all
-      name:  clean_01
+      name:  indicators_15
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\15_tbf_sales_2023_indicators.log
   log type:  text
- closed on:   2 Oct 2024, 10:53:56
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  17 Dec 2024, 22:43:16
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

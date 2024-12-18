@@ -5,7 +5,7 @@
 *******************************************************************************/
 
 capture log close clean_01
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\23_tbf_sales_2024_cleaning.log", replace name(clean_01)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\23_tbf_sales_2024_cleaning.log", replace name(cleaning_23)
 
 
 *************************************************************************************************
@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: October 2, 2024   	   					 	     			                  ***
-*** Last date modified: December 16, 2024                                                     ***
+*** Last date modified: December 17, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***

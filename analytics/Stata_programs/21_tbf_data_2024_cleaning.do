@@ -5,7 +5,7 @@
 *******************************************************************************/
 
 capture log close _all
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log", replace name(clean_21)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log", replace name(cleaning_21)
 
 
 *************************************************************************************************
@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: February 29, 2024 	   					 	     			                  ***
-*** Last date modified: December 16, 2024                                                     ***
+*** Last date modified: December 17, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -81,7 +81,6 @@ pause off
 		display as input "Variable: `var'"
 		capture confirm string var `var'
 		if _rc!=0 tostring `var', replace
-**# Bookmark #2
 		
 		tabulate `var', missing
 		replace `var'="" if `var'=="."
@@ -107,8 +106,6 @@ pause off
 	local cat_str_list crop sow_med *type*
 	tab1 `cat_str_list', missing
 	foreach var of varlist `cat_str_list' {
-**# Bookmark #1
-		*if `var'=="." continue
 		replace `var'="" if `var'=="."
 		encode (`var'), generate(`var'_code)
 		tablist `var' `var'_code, sort(v) ab(32)
@@ -128,6 +125,7 @@ pause off
 	duplicates drop
 	tablist crop crop_code, sort(v) nolabel
 	sort crop_code
+**# Bookmark #4
 	export excel "$root\modified_data\tbf_crop_codes_2024.xlsx", firstrow(variables) nolabel replace
 	
 	use `pre_code_export', replace

@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-      name:  clean_01
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  analysis_16
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\16_tbf_data_2023_analysis.log
   log type:  text
- opened on:   2 Oct 2024, 10:53:59
+ opened on:  17 Dec 2024, 22:43:18
 
 . 
 . 
@@ -19,7 +19,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 20, 2023                                                                                            ***
-. *** Last date modified: October 2, 2024                                                       ***
+. *** Last date modified: December 17, 2024                                                     ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -134,6 +134,7 @@
 .         save "$root\modified_data\tbf_market_garden_crop_sales_analysis.dta", replace
 file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_crop_sales_analysis.dta saved
 
+.         
 .    
 . *=========================================================================================
 . * II) ANALYSIS (TBD)
@@ -141,8 +142,8 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . 
 . 
 . log close _all
-      name:  clean_01
+      name:  analysis_16
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\16_tbf_data_2023_analysis.log
   log type:  text
- closed on:   2 Oct 2024, 10:53:59
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  17 Dec 2024, 22:43:18
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

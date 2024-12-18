@@ -5,21 +5,21 @@
 *******************************************************************************/
 
 capture log close clean_01
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\14_tbf_data_2023_indicators.log", replace name(indicators_14)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\24_tbf_data_2024_indicators.log", replace name(indicators_24)
 
 
 *************************************************************************************************
 ***                                                                                           ***
-*** Program name: 14_tbf_data_2023_indicators.do                                              ***
-*** Project: TBF Market Garden 2023                                 				          ***
-*** Purpose: Create Analysis Indicators for TBF Market Garden 2023 data                       ***    
+*** Program name: 24_tbf_data_2024_indicators.do                                              ***
+*** Project: TBF Market Garden 2024                                 				          ***
+*** Purpose: Create Analysis Indicators for TBF Market Garden 2024 data                       ***    
 ***																	 				          ***
 *** Contents:                                                       				          ***
 ***    0) SET UP CODE                              				                              ***
 ***    I) CREATE CROP ANALYSIS INDICATORS                                                     ***
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
-*** Start date: September 26, 2023   	   					 	     			              ***
+*** Start date: December 17, 2024   	   					 	     			              ***
 *** Last date modified: December 17, 2024                                                     ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
@@ -40,7 +40,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	pause off
 
 /* Set seed */
-	set seed 7122023
+	set seed 7122024
 	
 /* Define globals */
 
@@ -53,25 +53,28 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 * I) CREATE CROP ANALYSIS INDICATORS
 *=========================================================================================
 	
-	/* Load clean TBF Market Garden 2023 crop data */
-	use "$root\modified_data\tbf_market_garden_data_2023_clean.dta", clear
+	/* Load clean TBF Market Garden 2024 crop data */
+	use "$root\modified_data\tbf_market_garden_data_2024_clean.dta", clear
 	
 	/* Harvest */
 	
 	*-> Number of plants harvested
 	generate c_harvest_no_plant=.c
-	label variable c_harvest_no_plant "number of plants harvested"
+	label variable c_harvest_no_plant "number of plants harvested from"
 	replace c_harvest_no_plant=transp_no_end_1 if sow_type=="indoor seed" & transp_no_end_2==.s
 	replace c_harvest_no_plant=transp_no_end_2 if sow_type=="indoor seed" & transp_no_end_2!=.s // Use final transplant number if multiple transplantings (e.g., from seed tray to small container (1), then to garden plot (2))
-	replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & crop_code!=8 // "& crop_code!=8" to exclude a calculation for the garlic that has not germinated yet. Planted in FA23 for harvest SU24.
+	tablist crop crop_code, sort(v) ab(32) nolabel
+	tablist crop crop_code sow_type sow_date sow_med sow_no_cellrowhill sow_no_seed_per sow_to_germ50_days sow_no_germ_per sow_no_thin_per if crop_code==18, sort(v) ab(32) nolabel
+	replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & !(crop_code==18 & sow_date=="2024-11-16") // "& !(crop_code==18 & sow_date=="2024-11-16")" to exclude a calculation for the 2024 garlic that has not germinated yet. Planted in FA24 for harvest SU25.
 	replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant" // These are starts purchased outside the farm.
-	tablist sow_date sow_type crop transp_no_end_1 transp_no_end_2 sow_no_thin_per sow_no_cellrowhill c_harvest_no_plant, sort(v) ab(32)
+	replace c_harvest_no_plant= .s if sow_no_thin_per==96 // These are herbs that were broadcast seeded in framed raised beds. 
+	tablist sow_type sow_date crop transp_no_srt_1 transp_no_end_1 transp_no_srt_2 transp_no_end_2 sow_no_thin_per sow_no_cellrowhill c_harvest_no_plant, sort(v) ab(32)
 	table crop, statistic(total c_harvest_no_plant)
 	
 	*-> Total harvest- weight
 	tablist crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
-	generate flag_crop_wt= !inlist(crop_code,1,2,5,6,8,9) & !inlist(crop_code,10,17,18,19,20) 
-	tablist crop crop_code flag_crop_wt harvest_unit_1, sort(v) ab(32) nolabel
+	generate flag_crop_wt= inlist(harvest_unit_1,"ounce","pound")
+	tablist flag_crop_wt crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
 	label variable flag_crop_wt "flags crops harvested by weight"
 	
 	generate c_harvest_total_wtoz= 0
@@ -103,16 +106,12 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	label variable c_harvest_total_wtlb "total harvest- weight, pounds"
 	replace c_harvest_total_wtlb= c_harvest_total_wtlb/16 if flag_crop_wt==1
 	tablist flag_crop_wt crop sow_date c_harvest_total_wtlb c_harvest_total_wtoz, sort(v) ab(32)
-	tablist flag_crop_wt crop sow_date sow_date_stata c_harvest_total_wtlb c_harvest_total_wtoz if crop_code==21, sort(v) ab(32) // The ornamental corn was harvested all together and not separated by sow date.
-	replace c_harvest_total_wtoz=.c if crop_code==21 & sow_date=="2023-06-10"
-	replace c_harvest_total_wtlb=.c if crop_code==21 & sow_date=="2023-06-10"
-	tablist flag_crop_wt crop sow_date c_harvest_total_wtlb c_harvest_total_wtoz, sort(v) ab(32)
 	assert c_harvest_total_wtlb==.c if flag_crop_wt==0 
 	table crop if flag_crop_wt==1, statistic(total c_harvest_total_wtlb)	
 
 	*-> Total harvest- unit
 	tablist crop crop_code harvest_unit_1 harvest_amnt_1, sort(v) ab(32) nolabel
-	generate flag_crop_unit= inlist(crop_code,17,20)
+	generate flag_crop_unit= inlist(harvest_unit_1,"unit")
 	tablist flag_crop_unit crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
 	label variable flag_crop_unit "flags crops harvested by unit"
 	
@@ -129,7 +128,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	forval x=1/30 {
 		capture confirm string variable harvest_unit_`x'
 		if _rc==0 {
-			replace c_harvest_total_unit= c_harvest_total_unit + harvest_amnt_`x' if inlist(harvest_unit_`x',"unit","small","medium","large") & flag_crop_unit==1
+			replace c_harvest_total_unit= c_harvest_total_unit + harvest_amnt_`x' if inlist(harvest_unit_`x',"unit") & flag_crop_unit==1
 			tablist flag_crop_unit crop c_harvest_total_unit harvest_amnt_`x' c_harvest_total_unit_prev, sort(v) ab(32)
 			*pause
 			replace c_harvest_total_unit_prev= c_harvest_total_unit if flag_crop_unit==1
@@ -137,55 +136,16 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 		else assert harvest_unit_`x'==.s // No harvest collected.
 	}
 	assert c_harvest_total_unit==.c if flag_crop_unit==0
-	table crop if flag_crop_unit==1, statistic(total c_harvest_total_unit)
+	table crop if flag_crop_unit==1, statistic(total c_harvest_no_plant c_harvest_total_unit)
 	drop c_harvest_total_unit_prev
-
-	*-> Total harvest- unit size: small, medium, larg
-	tablist crop crop_code harvest_unit_1 harvest_amnt_1, sort(v) ab(32) nolabel
-	generate flag_crop_unit_size= inlist(crop_code,17)
-	tablist crop crop_code flag_crop_unit_size harvest_unit_1, sort(v) ab(32) nolabel
-	label variable flag_crop_unit_size "flags crops harvested by unit size"
-	
-	local size_list1 sml med lrg
-	local size_list2 small medium large
-	forval x =1/3 {
-		
-		local sz1 : word `x' of `size_list1'
-		local sz2 : word `x' of `size_list2'
-
-		display as input "size1; `sz1' , size2: `sz2'"
-		
-		generate c_harvest_total_unit_`sz1'= 0
-		replace c_harvest_total_unit_`sz1'= .c if flag_crop_unit_size==0
-		label variable c_harvest_total_unit_`sz1' "total harvest- units `sz2'"
-		
-		generate c_harvest_total_unit_prev_`sz1'= 0
-		replace c_harvest_total_unit_prev_`sz1'= .c if flag_crop_unit_size==0
-		label variable c_harvest_total_unit_prev_`sz1' "total harvest- units `sz2' (previous sum in loop iteration)"
-	
-		forval x=1/30 {
-			capture confirm string variable harvest_unit_`x'
-			if _rc==0 {
-				replace c_harvest_total_unit_`sz1'=  c_harvest_total_unit_`sz1' + harvest_amnt_`x' if harvest_unit_`x' == "`sz2'" & flag_crop_unit_size==1
-				tablist flag_crop_unit_size crop c_harvest_total_unit_`sz1' harvest_unit_`x' harvest_amnt_`x' c_harvest_total_unit_prev_`sz1', sort(v) ab(32)
-				pause
-				replace c_harvest_total_unit_prev_`sz1'= c_harvest_total_unit_`sz1' if flag_crop_unit_size==1
-			} 
-			else assert harvest_unit_`x'==.s // No harvest collected.
-		}
-		assert c_harvest_total_unit_`sz1'==.c if flag_crop_unit_size==0
-		table crop if flag_crop_unit_size==1, statistic(total c_harvest_total_unit_`sz1')
-		drop c_harvest_total_unit_prev_`sz1'
-	}
-	assert c_harvest_total_unit_sml + c_harvest_total_unit_med + c_harvest_total_unit_lrg == c_harvest_total_unit if flag_crop_unit_size==1
 	
 	tablist flag_* crop crop_code sow_type sow_date c_*, sort(v) ab(32) nolabel 
 	
-	/* Save TBF Market Garden 2023 data with analysis indicators */
+	/* Save TBF Market Garden 2024 data with analysis indicators */
 	drop flag_*
 	isid crop sow_date
 	quietly compress
-	save "$root\modified_data\tbf_market_garden_data_2023_clean_indicators.dta", replace
+	save "$root\modified_data\tbf_market_garden_data_2024_clean_indicators.dta", replace
 	
 	/* Descriptive statistics */
 	des c_*
