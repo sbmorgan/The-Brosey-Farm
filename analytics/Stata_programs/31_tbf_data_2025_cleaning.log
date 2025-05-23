@@ -1,0 +1,536 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  cleaning_31
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\31_tbf_data_2025_cleaning.log
+  log type:  text
+ opened on:  23 May 2025, 11:03:00
+
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 31_tbf_data_2025_cleaning.do                                                ***
+. *** Project: TBF Market Garden 2025                                                                       ***
+. *** Purpose: Clean TBF Market Garden 2025 data                                                ***    
+. ***                                                                                                                                                                               ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) LOAD RAW DATA                                                                       ***
+. ***    II) MANAGE VARIABLES                                                                   ***
+. ***    III) CLEAN DATA                                                                        ***
+. ***    IV) DESCRIPTIVE STATISTICS                                                             ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: May 23, 2025                                                                                                      ***
+. *** Last date modified: May 23, 2025                                                          ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***                                                                                           ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. clear all
+
+. version 18.0
+
+. set more off
+
+. set varabbrev off
+
+. pause off
+
+. 
+. 
+. *=========================================================================================
+. * 0) SET UP CODE
+. *=========================================================================================      
+. 
+. /* Set seed */
+.         set seed 7122025
+
+.         
+. /* Define globals */
+. 
+.         *Root
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+
+.     adopath ++ "$root"
+  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+  [2]  (BASE)      "C:\Program Files\StataNow19\ado\base/"
+  [3]  (SITE)      "C:\Program Files\StataNow19\ado\site/"
+  [4]              "."
+  [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
+  [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
+  [7]  (OLDPLACE)  "c:\ado/"
+
+.     
+. 
+. *=========================================================================================
+. * I) LOAD RAW DATA 
+. *=========================================================================================
+. 
+.         /* Load raw data */
+.         import excel "$root\raw_data\Brosey Farming.xlsx", sheet("data_2025") firstrow clear
+(198 vars, 1,008 obs)
+
+.         keep crop-notes
+
+.         drop if missing(crop)
+(947 observations deleted)
+
+.         ds 
+crop          sow_heatma~p  sow_fert~k_3  sow_fert~k_6  transp_n~d_2  fert_date_2   fert_unit_4   path_~te_2_1  path_~te_3_3  harvest_u~_4  harvest_u~_8  harvest_u~12  harvest_u~16  harvest_u~20  harvest_u~24  harvest_u~28
+sow_type      sow_light_~s  sow_fer~me_3  sow_fer~me_6  transp_dat~3  fert_amnt_~2  path_type_1   path_~pe_2_2  harvest_d~_1  harvest_d~_5  harvest_d~_9  harvest_d~13  harvest_d~17  harvest_d~21  harvest_d~25  harvest_d~29
+sow_date      sow_light_~e  sow_fer~se_3  sow_fer~se_6  transp_med_3  fert_unit_2   path_date_1   path_~te_2_2  harvest_a~_1  harvest_a~_5  harvest_a~_9  harvest_a~13  harvest_a~17  harvest_a~21  harvest_a~25  harvest_a~29
+sow_seed_y~r  sow_fer~te_1  sow_fer~te_4  transp_har~t  transp_n~t_3  fert_typ~k_3  path_~pe_1_1  path_~pe_2_3  harvest_u~_1  harvest_u~_5  harvest_u~_9  harvest_u~13  harvest_u~17  harvest_u~21  harvest_u~25  harvest_u~29
+sow_med       sow_fert~k_1  sow_fert~k_4  transp_har~d  transp_n~d_3  fert_typ~e_3  path_~te_1_1  path_~te_2_3  harvest_d~_2  harvest_d~_6  harvest_d~10  harvest_d~14  harvest_d~18  harvest_d~22  harvest_d~26  harvest_d~30
+sow_cell      sow_fer~me_1  sow_fer~me_4  transp_dat~1  fert_typ~k_1  fert_date_3   path_~pe_1_2  path_type_3   harvest_a~_2  harvest_a~_6  harvest_a~10  harvest_a~14  harvest_a~18  harvest_a~22  harvest_a~26  harvest_a~30
+sow_no_cel~l  sow_fer~se_1  sow_fer~se_4  transp_med_1  fert_typ~e_1  fert_amnt_~3  path_~te_1_2  path_date_3   harvest_u~_2  harvest_u~_6  harvest_u~10  harvest_u~14  harvest_u~18  harvest_u~22  harvest_u~26  harvest_u~30
+sow_no_see~r  sow_fer~te_2  sow_fer~te_5  transp_n~t_1  fert_date_1   fert_unit_3   path_~pe_1_3  path_~pe_3_1  harvest_d~_3  harvest_d~_7  harvest_d~11  harvest_d~15  harvest_d~19  harvest_d~23  harvest_d~27  notes
+sow_to_ger~s  sow_fert~k_2  sow_fert~k_5  transp_n~d_1  fert_amnt_~1  fert_typ~k_4  path_~te_1_3  path_~te_3_1  harvest_a~_3  harvest_a~_7  harvest_a~11  harvest_a~15  harvest_a~19  harvest_a~23  harvest_a~27
+sow_no_ger~r  sow_fer~me_2  sow_fer~me_5  transp_dat~2  fert_unit_1   fert_typ~e_4  path_type_2   path_~pe_3_2  harvest_u~_3  harvest_u~_7  harvest_u~11  harvest_u~15  harvest_u~19  harvest_u~23  harvest_u~27
+sow_no_thi~r  sow_fer~se_2  sow_fer~se_5  transp_med_2  fert_typ~k_2  fert_date_4   path_date_2   path_~te_3_2  harvest_d~_4  harvest_d~_8  harvest_d~12  harvest_d~16  harvest_d~20  harvest_d~24  harvest_d~28
+sow_heatmat   sow_fer~te_3  sow_fer~te_6  transp_n~t_2  fert_typ~e_2  fert_amnt_~4  path_~pe_2_1  path_~pe_3_3  harvest_a~_4  harvest_a~_8  harvest_a~12  harvest_a~16  harvest_a~20  harvest_a~24  harvest_a~28
+
+.         
+.         /* Save raw TBF Market Garden 2025 data */
+.         save "$root\raw_data\tbf_market_garden_data_2025_raw.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_data_2025_raw.dta saved
+
+.         export excel "$root\raw_data\tbf_market_garden_data_2025_raw.xlsx", firstrow(variables) replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_data_2025_raw.xlsx saved
+
+. /*      
+>   
+> *=========================================================================================
+> * II) MANAGE VARIABLES
+> *=========================================================================================  
+> 
+>         /* Add variable labels */
+>         include "$root\Stata_programs\22_tbf_data_2025_labels.do" // This program creates the variable labels.
+>         
+>         /* Manage variable type */
+>         tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
+> 
+>         /* Manage date variables */
+>         foreach var of varlist *date* {
+>                 display as input "Variable: `var'"
+>                 capture confirm string var `var'
+>                 if _rc!=0 tostring `var', replace
+>                 
+>                 tabulate `var', missing
+>                 replace `var'="" if `var'=="."
+>                 tabulate `var', missing
+>                 *pause
+>                 
+>                 generate `var'_year= substr(`var',1,4)
+>                 generate `var'_month= substr(`var',6,2)
+>                 generate `var'_day= substr(`var',9,2)
+>                 foreach var2 of varlist `var'_year `var'_month `var'_day {
+>                         confirm string var `var2'
+>                         destring `var2', replace
+>                 }
+>                 generate `var'_stata= mdy(`var'_month, `var'_day, `var'_year)
+>                 drop `var'_year `var'_month `var'_day
+>                 local varlab : variable label `var'
+>                 label variable `var'_stata "`varlab'- stata"            
+>                 format `var'_stata %td
+>                 order `var'_stata, after(`var')
+>         }
+>                 
+>         /* Convert categorical strings into categorical numerics */
+>         local cat_str_list crop sow_med *type*
+>         tab1 `cat_str_list', missing
+>         foreach var of varlist `cat_str_list' {
+>                 replace `var'="" if `var'=="."
+>                 encode (`var'), generate(`var'_code)
+>                 tablist `var' `var'_code, sort(v) ab(32)
+>                 tablist `var' `var'_code, sort(v) nolabel ab(32)
+>                 local varlab : variable label `var'
+>                 label variable `var'_code "`varlab'- code"
+>                 order `var'_code, after(`var')
+>                 *pause
+>         }
+>         
+>         /* Export codes for reference in other programs/scripts */
+>         tempfile pre_code_export
+>         save `pre_code_export'
+>         
+>         tablist crop crop_code, sort(v) nolabel
+>         keep crop crop_code
+>         duplicates drop
+>         tablist crop crop_code, sort(v) nolabel
+>         sort crop_code
+>         export excel "$root\modified_data\tbf_crop_codes_2025.xlsx", firstrow(variables) nolabel replace
+>         
+>         use `pre_code_export', replace
+>         
+>         /* Convert yes/no variables from character strings to numerics with "yes" (1) /"no" (0) value lables */
+>         local cat_yn_list sow_heatmat
+>         foreach var of varlist `cat_yn_list' {
+>                 tabulate `var', generate(`var'_code)
+>                 drop `var'_code1
+>                 rename `var'_code2 `var'_code
+>                 tablist `var' `var'_code, sort(v) ab(32)
+>                 tablist `var' `var'_code, sort(v) nolabel ab(32)
+>                 local varlab : variable label `var'
+>                 label variable `var'_code "`varlab'- code"
+>                 order `var'_code, after(`var')
+>                 *pause
+>         }
+>         
+>     
+> *=========================================================================================
+> * III) CLEAN DATA
+> *=========================================================================================     
+> 
+>         /* Clean missing values */
+>                 
+>                 *-> Crop
+>                 foreach var of varlist crop-sow_type_code {
+>                         assert !missing(`var')
+>                 }
+>                 
+>                 *-> Non-seeded transplants (externally sourced transplants)
+>                 count if sow_type=="external transplant"
+>                 if `r(N)' != 0 {
+>                         foreach var of varlist sow_date-transp_harden_date_end_stata { // These variables are for crops sown on the farm and thus should be missing if the crop was sourced externally (purchase, gift, etc.).
+>                                 tablist sow_type `var', sort(v) ab(32) nolabel
+>                                 assert missing(`var') if sow_type=="external transplant"
+>                                 capture confirm numeric variable `var'
+>                                 if _rc==0 replace `var'= .s if sow_type=="external transplant"
+>                                 else replace `var'= ".s" if sow_type=="external transplant"
+>                                 tablist sow_type `var', sort(v) ab(32) nolabel
+>                         }                       
+>                 }
+> 
+>                 *-> Seedlings variables: *sow* transp*
+>                 foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables are for crops sown indoors and thus should be missing if the crop was directly seeded in the garden.
+>                         display as input _n "Variable: `var'"
+>                         tablist sow_med sow_med_code `var', sort(v) ab(32) nolabel
+>                         assert missing(`var') if inlist(sow_med, "raised bed- ground", "rasied bed- frame")
+>                         capture confirm numeric variable `var'
+>                         if _rc==0 replace `var'= .s if inlist(sow_med, "raised bed- ground", "rasied bed- frame")
+>                         else replace `var'= ".s" if inlist(sow_med, "raised bed- ground", "rasied bed- frame")
+>                         tablist sow_med sow_med_code `var', sort(v) ab(32) nolabel
+>                 }
+> 
+>                 tablist crop crop_code, sort(v) nolabel
+>                 tablist crop crop_code sow_date if crop_code==18, sort(v) ab(32) nolabel
+>                 assert sow_to_germ50_days==. if crop_code==18 // Garlic doesn't bulb/produce leaves above ground until the following season.
+>                 replace sow_to_germ50_days=.s if crop_code==18
+>                 foreach var of varlist sow_no_germ_per sow_no_thin_per {        
+>                         assert `var'==. if crop_code==18 & sow_date=="2025-11-16"
+>                         replace `var'=.s if crop_code==18 & sow_date=="2025-11-16" // For the 2025-planted garlic that has not germinated yet. Planted in FA24 for harvest SU25.
+>                 }
+>                 tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32) // Heat temperature of heat mat should be missing if heat mat not used. 
+>                 assert sow_heatmat_temp==. if sow_heatmat=="no"
+>                 replace sow_heatmat_temp=.s if sow_heatmat=="no"
+>                 tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
+>                 
+>                 forval x= 2/6 {
+>                         egen misscount_`x'= rowmiss(sow_fert_date_`x'-sow_fert_dose_`x')
+>                         foreach var of varlist sow_fert_date_`x'-sow_fert_dose_`x' {
+>                                 capture confirm numeric variable `var'
+>                                 if _rc==0 replace `var'=.s if misscount_`x'==7
+>                                 else replace `var'=".s" if misscount_`x'==7
+>                         }
+>                         drop misscount_`x'
+>                 }
+>                 
+>                 egen misscount= rowmiss(transp_date_2-transp_no_end_2)
+>                 foreach var of varlist transp_date_2-transp_no_end_2 {
+>                         capture confirm numeric variable `var'
+>                         if _rc==0 replace `var'=.s if misscount==5
+>                         else replace `var'=".s" if misscount==5
+>                 }
+>                 drop misscount
+>                 
+>                 forval x= 1/4 {
+>                         egen misscount_`x'= rowmiss(fert_type_npk_`x'-fert_unit_`x')
+>                         foreach var of varlist fert_type_npk_`x'-fert_unit_`x' {
+>                                 capture confirm numeric variable `var'
+>                                 if _rc==0 replace `var'=.s if misscount_`x'==8
+>                                 else replace `var'=".s" if misscount_`x'==8
+>                         }
+>                         drop misscount_`x'
+>                 }
+>                 
+>                 forval x= 1/3 {
+>                         egen misscount_`x'= rowmiss(path_type_`x'-path_ipm_date_`x'_3_stata)
+>                         foreach var of varlist path_type_`x'-path_ipm_date_`x'_3_stata {
+>                                 capture confirm numeric variable `var'
+>                                 if _rc==0 replace `var'=.s if misscount_`x'==16
+>                                 else replace `var'=".s" if misscount_`x'==16
+>                         }
+>                         order misscount_`x', after(path_ipm_date_`x'_3_stata)
+>                         drop misscount_`x'
+>                 }
+>         
+>                 forval x= 1/3 {
+>                         forval y= 1/3 {
+>                                 egen misscount_`x'_`y'= rowmiss(path_ipm_type_`x'_`y'-path_ipm_date_`x'_`y'_stata)
+>                                 foreach var of varlist path_ipm_type_`x'_`y'-path_ipm_date_`x'_`y'_stata {
+>                                         capture confirm numeric variable `var'
+>                                         if _rc==0 replace `var'=.s if misscount_`x'_`y'==4
+>                                         else replace `var'=".s" if misscount_`x'_`y'==4
+>                                 }
+>                                 order misscount_`x'_`y', after(path_ipm_date_`x'_`y'_stata)
+>                                 drop misscount_`x'_`y'
+>                         }
+>                 }
+>         
+>                 forval x= 1/30 {
+>                         egen misscount_`x'= rowmiss(harvest_date_`x'-harvest_unit_`x')
+>                         foreach var of varlist harvest_date_`x'-harvest_unit_`x' {
+>                                 capture confirm numeric variable `var'
+>                                 if _rc==0 replace `var'=.s if misscount_`x'==4
+>                                 else replace `var'=".s" if misscount_`x'==4
+>                         }
+>                         order misscount_`x', after(harvest_unit_`x')
+>                         drop misscount_`x'
+>                 }
+>                                 
+>                 *-> Notes
+>                 replace notes=".s" if missing(notes)
+> 
+>                 *-> Check all missing values have been cleaned
+>                 foreach var of varlist _all {
+>                         display as input "Variable: `var'"
+>                         capture confirm numeric variable `var'
+>                         if _rc==0 {
+>                                 replace `var'= .m if `var'==.
+>                                 count if `var'==.m
+>                                 if r(N)>0 {
+>                                         tablist crop sow_type sow_date sow_med `var' if `var'==.m, sort(v) ab(32)
+>                                         pause
+>                                 }
+>                         }
+>                         else {
+>                                 replace `var'=".m" if `var'==""
+>                                 count if `var'==".m"
+>                                 if r(N)>0 {
+>                                         tablist crop sow_type sow_date sow_med `var' if `var'==".m", sort(v) ab(32)
+>                                         pause
+>                                 }
+>                         }
+>                 }
+> */      
+.         /* Save clean TBF Market Garden 2025 data */
+.         ***isid crop sow_date
+.         quietly compress
+
+.         save "$root\modified_data\tbf_market_garden_data_2025_clean.dta", replace
+(file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2025_clean.dta not found)
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2025_clean.dta saved
+
+.         export excel "$root\modified_data\tbf_market_garden_data_2025_clean.xlsx", firstrow(variables) replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2025_clean.xlsx saved
+
+.         
+.  
+. *=========================================================================================
+. * IV) DESCRIPTIVE STATISTICS
+. *=========================================================================================     
+.         
+.         describe _all
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+crop            str35   %35s                  crop
+sow_type        str12   %12s                  sow_type
+sow_date        str10   %10s                  sow_date
+sow_seed_year   byte    %10.0g                sow_seed_year
+sow_med         str18   %18s                  sow_med
+sow_cell        byte    %10.0g                sow_cell
+sow_no_cellro~l double  %10.0g                sow_no_cellrowhill
+sow_no_seed_per int     %10.0g                sow_no_seed_per
+sow_to_germ50~s byte    %10.0g                sow_to_germ50_days
+sow_no_germ_per int     %10.0g                sow_no_germ_per
+sow_no_thin_per byte    %10.0g                sow_no_thin_per
+sow_heatmat     str3    %9s                   sow_heatmat
+sow_heatmat_t~p byte    %10.0g                sow_heatmat_temp
+sow_light_hrs   byte    %10.0g                sow_light_hrs
+sow_light_type  str7    %9s                   sow_light_type
+sow_fert_date_1 str10   %10s                  sow_fert_date_1
+sow_fert_ty~k_1 str5    %9s                   sow_fert_type_npk_1
+sow_fert_ty~e_1 str21   %21s                  sow_fert_type_name_1
+sow_fert_dose_1 str4    %9s                   sow_fert_dose_1
+sow_fert_date_2 str10   %10s                  sow_fert_date_2
+sow_fert_ty~k_2 str5    %9s                   sow_fert_type_npk_2
+sow_fert_ty~e_2 str21   %21s                  sow_fert_type_name_2
+sow_fert_dose_2 str4    %9s                   sow_fert_dose_2
+sow_fert_date_3 str10   %10s                  sow_fert_date_3
+sow_fert_ty~k_3 str5    %9s                   sow_fert_type_npk_3
+sow_fert_ty~e_3 str21   %21s                  sow_fert_type_name_3
+sow_fert_dose_3 str4    %9s                   sow_fert_dose_3
+sow_fert_date_4 str10   %10s                  sow_fert_date_4
+sow_fert_ty~k_4 str5    %9s                   sow_fert_type_npk_4
+sow_fert_ty~e_4 str35   %35s                  sow_fert_type_name_4
+sow_fert_dose_4 str4    %9s                   sow_fert_dose_4
+sow_fert_date_5 str10   %10s                  sow_fert_date_5
+sow_fert_ty~k_5 str5    %9s                   sow_fert_type_npk_5
+sow_fert_ty~e_5 str35   %35s                  sow_fert_type_name_5
+sow_fert_dose_5 str4    %9s                   sow_fert_dose_5
+sow_fert_date_6 byte    %10.0g                sow_fert_date_6
+sow_fert_ty~k_6 byte    %10.0g                sow_fert_type_npk_6
+sow_fert_ty~e_6 byte    %10.0g                sow_fert_type_name_6
+sow_fert_dose_6 byte    %10.0g                sow_fert_dose_6
+transp_harden~t str10   %10s                  transp_harden_date_srt
+transp_harden~d str10   %10s                  transp_harden_date_end
+transp_date_1   str10   %10s                  transp_date_1
+transp_med_1    str17   %17s                  transp_med_1
+transp_no_srt_1 byte    %10.0g                transp_no_srt_1
+transp_no_end_1 str2    %9s                   transp_no_end_1
+transp_date_2   str10   %10s                  transp_date_2
+transp_med_2    str18   %18s                  transp_med_2
+transp_no_srt_2 byte    %10.0g                transp_no_srt_2
+transp_no_end_2 byte    %10.0g                transp_no_end_2
+transp_date_3   str10   %10s                  transp_date_3
+transp_med_3    str17   %17s                  transp_med_3
+transp_no_srt_3 byte    %10.0g                transp_no_srt_3
+transp_no_end_3 byte    %10.0g                transp_no_end_3
+fert_type_npk_1 str5    %9s                   fert_type_npk_1
+fert_type_nam~1 str19   %19s                  fert_type_name_1
+fert_date_1     str10   %10s                  fert_date_1
+fert_amnt_per_1 str2    %9s                   fert_amnt_per_1
+fert_unit_1     byte    %10.0g                fert_unit_1
+fert_type_npk_2 byte    %10.0g                fert_type_npk_2
+fert_type_nam~2 byte    %10.0g                fert_type_name_2
+fert_date_2     byte    %10.0g                fert_date_2
+fert_amnt_per_2 byte    %10.0g                fert_amnt_per_2
+fert_unit_2     byte    %10.0g                fert_unit_2
+fert_type_npk_3 byte    %10.0g                fert_type_npk_3
+fert_type_nam~3 byte    %10.0g                fert_type_name_3
+fert_date_3     byte    %10.0g                fert_date_3
+fert_amnt_per_3 byte    %10.0g                fert_amnt_per_3
+fert_unit_3     byte    %10.0g                fert_unit_3
+fert_type_npk_4 byte    %10.0g                fert_type_npk_4
+fert_type_nam~4 byte    %10.0g                fert_type_name_4
+fert_date_4     byte    %10.0g                fert_date_4
+fert_amnt_per_4 byte    %10.0g                fert_amnt_per_4
+fert_unit_4     byte    %10.0g                fert_unit_4
+path_type_1     byte    %10.0g                path_type_1
+path_date_1     byte    %10.0g                path_date_1
+path_ipm_ty~1_1 byte    %10.0g                path_ipm_type_1_1
+path_ipm_da~1_1 byte    %10.0g                path_ipm_date_1_1
+path_ipm_ty~1_2 byte    %10.0g                path_ipm_type_1_2
+path_ipm_da~1_2 byte    %10.0g                path_ipm_date_1_2
+path_ipm_ty~1_3 byte    %10.0g                path_ipm_type_1_3
+path_ipm_da~1_3 byte    %10.0g                path_ipm_date_1_3
+path_type_2     byte    %10.0g                path_type_2
+path_date_2     byte    %10.0g                path_date_2
+path_ipm_ty~2_1 byte    %10.0g                path_ipm_type_2_1
+path_ipm_da~2_1 byte    %10.0g                path_ipm_date_2_1
+path_ipm_ty~2_2 byte    %10.0g                path_ipm_type_2_2
+path_ipm_da~2_2 byte    %10.0g                path_ipm_date_2_2
+path_ipm_ty~2_3 byte    %10.0g                path_ipm_type_2_3
+path_ipm_da~2_3 byte    %10.0g                path_ipm_date_2_3
+path_type_3     byte    %10.0g                path_type_3
+path_date_3     byte    %10.0g                path_date_3
+path_ipm_ty~3_1 byte    %10.0g                path_ipm_type_3_1
+path_ipm_da~3_1 byte    %10.0g                path_ipm_date_3_1
+path_ipm_ty~3_2 byte    %10.0g                path_ipm_type_3_2
+path_ipm_da~3_2 byte    %10.0g                path_ipm_date_3_2
+path_ipm_ty~3_3 byte    %10.0g                path_ipm_type_3_3
+path_ipm_da~3_3 byte    %10.0g                path_ipm_date_3_3
+harvest_date_1  str10   %10s                  harvest_date_1
+harvest_amnt_1  byte    %10.0g                harvest_amnt_1
+harvest_unit_1  str4    %9s                   harvest_unit_1
+harvest_date_2  str10   %10s                  harvest_date_2
+harvest_amnt_2  byte    %10.0g                harvest_amnt_2
+harvest_unit_2  str4    %9s                   harvest_unit_2
+harvest_date_3  byte    %10.0g                harvest_date_3
+harvest_amnt_3  byte    %10.0g                harvest_amnt_3
+harvest_unit_3  byte    %10.0g                harvest_unit_3
+harvest_date_4  byte    %10.0g                harvest_date_4
+harvest_amnt_4  byte    %10.0g                harvest_amnt_4
+harvest_unit_4  byte    %10.0g                harvest_unit_4
+harvest_date_5  byte    %10.0g                harvest_date_5
+harvest_amnt_5  byte    %10.0g                harvest_amnt_5
+harvest_unit_5  byte    %10.0g                harvest_unit_5
+harvest_date_6  byte    %10.0g                harvest_date_6
+harvest_amnt_6  byte    %10.0g                harvest_amnt_6
+harvest_unit_6  byte    %10.0g                harvest_unit_6
+harvest_date_7  byte    %10.0g                harvest_date_7
+harvest_amnt_7  byte    %10.0g                harvest_amnt_7
+harvest_unit_7  byte    %10.0g                harvest_unit_7
+harvest_date_8  byte    %10.0g                harvest_date_8
+harvest_amnt_8  byte    %10.0g                harvest_amnt_8
+harvest_unit_8  byte    %10.0g                harvest_unit_8
+harvest_date_9  byte    %10.0g                harvest_date_9
+harvest_amnt_9  byte    %10.0g                harvest_amnt_9
+harvest_unit_9  byte    %10.0g                harvest_unit_9
+harvest_date_10 byte    %10.0g                harvest_date_10
+harvest_amnt_10 byte    %10.0g                harvest_amnt_10
+harvest_unit_10 byte    %10.0g                harvest_unit_10
+harvest_date_11 byte    %10.0g                harvest_date_11
+harvest_amnt_11 byte    %10.0g                harvest_amnt_11
+harvest_unit_11 byte    %10.0g                harvest_unit_11
+harvest_date_12 byte    %10.0g                harvest_date_12
+harvest_amnt_12 byte    %10.0g                harvest_amnt_12
+harvest_unit_12 byte    %10.0g                harvest_unit_12
+harvest_date_13 byte    %10.0g                harvest_date_13
+harvest_amnt_13 byte    %10.0g                harvest_amnt_13
+harvest_unit_13 byte    %10.0g                harvest_unit_13
+harvest_date_14 byte    %10.0g                harvest_date_14
+harvest_amnt_14 byte    %10.0g                harvest_amnt_14
+harvest_unit_14 byte    %10.0g                harvest_unit_14
+harvest_date_15 byte    %10.0g                harvest_date_15
+harvest_amnt_15 byte    %10.0g                harvest_amnt_15
+harvest_unit_15 byte    %10.0g                harvest_unit_15
+harvest_date_16 byte    %10.0g                harvest_date_16
+harvest_amnt_16 byte    %10.0g                harvest_amnt_16
+harvest_unit_16 byte    %10.0g                harvest_unit_16
+harvest_date_17 byte    %10.0g                harvest_date_17
+harvest_amnt_17 byte    %10.0g                harvest_amnt_17
+harvest_unit_17 byte    %10.0g                harvest_unit_17
+harvest_date_18 byte    %10.0g                harvest_date_18
+harvest_amnt_18 byte    %10.0g                harvest_amnt_18
+harvest_unit_18 byte    %10.0g                harvest_unit_18
+harvest_date_19 byte    %10.0g                harvest_date_19
+harvest_amnt_19 byte    %10.0g                harvest_amnt_19
+harvest_unit_19 byte    %10.0g                harvest_unit_19
+harvest_date_20 byte    %10.0g                harvest_date_20
+harvest_amnt_20 byte    %10.0g                harvest_amnt_20
+harvest_unit_20 byte    %10.0g                harvest_unit_20
+harvest_date_21 byte    %10.0g                harvest_date_21
+harvest_amnt_21 byte    %10.0g                harvest_amnt_21
+harvest_unit_21 byte    %10.0g                harvest_unit_21
+harvest_date_22 byte    %10.0g                harvest_date_22
+harvest_amnt_22 byte    %10.0g                harvest_amnt_22
+harvest_unit_22 byte    %10.0g                harvest_unit_22
+harvest_date_23 byte    %10.0g                harvest_date_23
+harvest_amnt_23 byte    %10.0g                harvest_amnt_23
+harvest_unit_23 byte    %10.0g                harvest_unit_23
+harvest_date_24 byte    %10.0g                harvest_date_24
+harvest_amnt_24 byte    %10.0g                harvest_amnt_24
+harvest_unit_24 byte    %10.0g                harvest_unit_24
+harvest_date_25 byte    %10.0g                harvest_date_25
+harvest_amnt_25 byte    %10.0g                harvest_amnt_25
+harvest_unit_25 byte    %10.0g                harvest_unit_25
+harvest_date_26 byte    %10.0g                harvest_date_26
+harvest_amnt_26 byte    %10.0g                harvest_amnt_26
+harvest_unit_26 byte    %10.0g                harvest_unit_26
+harvest_date_27 byte    %10.0g                harvest_date_27
+harvest_amnt_27 byte    %10.0g                harvest_amnt_27
+harvest_unit_27 byte    %10.0g                harvest_unit_27
+harvest_date_28 byte    %10.0g                harvest_date_28
+harvest_amnt_28 byte    %10.0g                harvest_amnt_28
+harvest_unit_28 byte    %10.0g                harvest_unit_28
+harvest_date_29 byte    %10.0g                harvest_date_29
+harvest_amnt_29 byte    %10.0g                harvest_amnt_29
+harvest_unit_29 byte    %10.0g                harvest_unit_29
+harvest_date_30 byte    %10.0g                harvest_date_30
+harvest_amnt_30 byte    %10.0g                harvest_amnt_30
+harvest_unit_30 byte    %10.0g                harvest_unit_30
+notes           str41   %41s                  notes
+
+. 
+. 
+. log close _all
+      name:  cleaning_31
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\31_tbf_data_2025_cleaning.log
+  log type:  text
+ closed on:  23 May 2025, 11:03:02
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

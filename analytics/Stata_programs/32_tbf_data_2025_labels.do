@@ -7,8 +7,8 @@
 
 *************************************************************************************************
 ***                                                                                           ***
-*** Program name: 22_tbf_data_2024_labels.do                                                  ***
-*** Project: TBF Market Garden 2024                                 				          ***
+*** Program name: 32_tbf_data_2025_labels.do                                                  ***
+*** Project: TBF Market Garden 2025                                 				          ***
 *** Purpose: Create variable labels for TBF Market Garden 2024 data                           ***    
 ***																	 				          ***
 *** Contents:                                                       				          ***
@@ -16,11 +16,11 @@
 ***    I) CREATE VARIABLE LABELS                                                              ***
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
-*** Start date: May 11, 2024  	   					 	     			                      ***
+*** Start date: May 23, 2025  	   					 	     			                      ***
 *** Last date modified: May 23, 2025                                                          ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
-***   This program will be used as an include file in 21_tbf_data_2024_cleaning.do            ***
+***   This program will be used as an include file in 31_tbf_data_2025_cleaning.do            ***
 ***                                                                                           ***
 *************************************************************************************************
 
@@ -60,7 +60,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	label variable transp_harden_date_srt "transplant harden off start date"
 	label variable transp_harden_date_end "transplant harden off end date"
 	
-	forval x=1/2 {
+	forval x=1/3 {
 		label variable transp_date_`x' "transplant date: round `x'"
 		label variable transp_med_`x' "transplant medium: round `x'"
 		label variable transp_no_srt_`x' "starting number of transplants: round `x'"

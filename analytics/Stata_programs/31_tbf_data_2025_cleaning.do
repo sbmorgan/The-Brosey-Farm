@@ -5,14 +5,14 @@
 *******************************************************************************/
 
 capture log close _all
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log", replace name(cleaning_21)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\31_tbf_data_2025_cleaning.log", replace name(cleaning_31)
 
 
 *************************************************************************************************
 ***                                                                                           ***
-*** Program name: 21_tbf_data_2024_cleaning.do                                                ***
-*** Project: TBF Market Garden 2024                                 				          ***
-*** Purpose: Clean TBF Market Garden 2024 data                                                ***    
+*** Program name: 31_tbf_data_2025_cleaning.do                                                ***
+*** Project: TBF Market Garden 2025                                 				          ***
+*** Purpose: Clean TBF Market Garden 2025 data                                                ***    
 ***																	 				          ***
 *** Contents:                                                       				          ***
 ***    0) SET UP CODE                              				                              ***
@@ -22,7 +22,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***    IV) DESCRIPTIVE STATISTICS                                                             ***
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
-*** Start date: February 29, 2024 	   					 	     			                  ***
+*** Start date: May 23, 2025     	   					 	     			                  ***
 *** Last date modified: May 23, 2025                                                          ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
@@ -42,7 +42,7 @@ pause off
 *=========================================================================================	
 
 /* Set seed */
-	set seed 7122024
+	set seed 7122025
 	
 /* Define globals */
 
@@ -56,22 +56,22 @@ pause off
 *=========================================================================================
 
 	/* Load raw data */
-	import excel "$root\raw_data\Brosey Farming.xlsx", sheet("data_2024") firstrow clear
+	import excel "$root\raw_data\Brosey Farming.xlsx", sheet("data_2025") firstrow clear
 	keep crop-notes
 	drop if missing(crop)
 	ds 
 	
-	/* Save raw TBF Market Garden 2024 data */
-	save "$root\raw_data\tbf_market_garden_data_2024_raw.dta", replace
-	export excel "$root\raw_data\tbf_market_garden_data_2024_raw.xlsx", firstrow(variables) replace
-	
+	/* Save raw TBF Market Garden 2025 data */
+	save "$root\raw_data\tbf_market_garden_data_2025_raw.dta", replace
+	export excel "$root\raw_data\tbf_market_garden_data_2025_raw.xlsx", firstrow(variables) replace
+/*	
   
 *=========================================================================================
 * II) MANAGE VARIABLES
 *=========================================================================================  
 
 	/* Add variable labels */
-	include "$root\Stata_programs\22_tbf_data_2024_labels.do" // This program creates the variable labels.
+	include "$root\Stata_programs\22_tbf_data_2025_labels.do" // This program creates the variable labels.
 	
 	/* Manage variable type */
 	tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
@@ -125,8 +125,7 @@ pause off
 	duplicates drop
 	tablist crop crop_code, sort(v) nolabel
 	sort crop_code
-**# Bookmark #4
-	export excel "$root\modified_data\tbf_crop_codes_2024.xlsx", firstrow(variables) nolabel replace
+	export excel "$root\modified_data\tbf_crop_codes_2025.xlsx", firstrow(variables) nolabel replace
 	
 	use `pre_code_export', replace
 	
@@ -185,8 +184,8 @@ pause off
 		assert sow_to_germ50_days==. if crop_code==18 // Garlic doesn't bulb/produce leaves above ground until the following season.
 		replace sow_to_germ50_days=.s if crop_code==18
 		foreach var of varlist sow_no_germ_per sow_no_thin_per {	
-			assert `var'==. if crop_code==18 & sow_date=="2024-11-16"
-			replace `var'=.s if crop_code==18 & sow_date=="2024-11-16" // For the 2024-planted garlic that has not germinated yet. Planted in FA24 for harvest SU25.
+			assert `var'==. if crop_code==18 & sow_date=="2025-11-16"
+			replace `var'=.s if crop_code==18 & sow_date=="2025-11-16" // For the 2025-planted garlic that has not germinated yet. Planted in FA24 for harvest SU25.
 		}
 		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32) // Heat temperature of heat mat should be missing if heat mat not used. 
 		assert sow_heatmat_temp==. if sow_heatmat=="no"
@@ -280,12 +279,12 @@ pause off
 				}
 			}
 		}
-	
-	/* Save clean TBF Market Garden 2024 data */
-	isid crop sow_date
+*/	
+	/* Save clean TBF Market Garden 2025 data */
+	***isid crop sow_date
 	quietly compress
-	save "$root\modified_data\tbf_market_garden_data_2024_clean.dta", replace
-	export excel "$root\modified_data\tbf_market_garden_data_2024_clean.xlsx", firstrow(variables) replace
+	save "$root\modified_data\tbf_market_garden_data_2025_clean.dta", replace
+	export excel "$root\modified_data\tbf_market_garden_data_2025_clean.xlsx", firstrow(variables) replace
 	
  
 *=========================================================================================
