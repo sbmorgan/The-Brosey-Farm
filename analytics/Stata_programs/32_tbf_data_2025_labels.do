@@ -17,7 +17,7 @@
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: May 23, 2025  	   					 	     			                      ***
-*** Last date modified: May 23, 2025                                                          ***
+*** Last date modified: June 12, 2025                                                         ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***   This program will be used as an include file in 31_tbf_data_2025_cleaning.do            ***
@@ -49,7 +49,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 	label variable sow_light_type "lighting type"
 	
 	/* Indoor fertilizing */
-	forval x=1/6 {
+	forval x=1/7 {
 		label variable sow_fert_date_`x' "date of fertilizer applied to indoor seedlings: round `x'"
 		label variable sow_fert_type_npk_`x' "npk of fertilizer applied to indoor seedlings: round `x'"
 		label variable sow_fert_type_name_`x' "name of fertilizer applied to indoor seedlings: round `x'"
