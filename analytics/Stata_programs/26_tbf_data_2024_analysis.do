@@ -5,12 +5,12 @@
 *******************************************************************************/
 
 capture log close _all
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\16_tbf_data_2023_analysis.log", replace name(analysis_16)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2024_analysis.log", replace name(analysis_26)
 
 
 *************************************************************************************************
 ***                                                                                           ***
-*** Program name: 16_tbf_data_2023_analysis.do                                                ***
+*** Program name: 26_tbf_data_2024_analyis.do                                                 ***
 *** Project: TBF Market Garden 2023                                 				          ***
 *** Purpose: Analyze TBF Market Garden 2023 crop and sales data                               ***    
 ***																	 				          ***
@@ -20,7 +20,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***    II) ANALYSIS (TBD)                                                                     ***
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
-*** Start date: September 20, 2023   	   					 	     			              ***
+*** Start date: August 14, 2025      	   					 	     			              ***
 *** Last date modified: August 14, 2025                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
@@ -54,8 +54,17 @@ pause off
 *=========================================================================================
 	
 	/* Load and merge cleaned crop and sales data with indicators */
-	use "$root\modified_data\tbf_market_garden_data_2023_clean_indicators.dta", clear
-	merge m:1 crop_code using "$root\modified_data\tbf_market_garden_sales_2023_clean_indicators.dta", assert(1 3)
+
+	use "$root\modified_data\tbf_market_garden_sales_2024_clean_indicators.dta", clear
+	tablist crop_code crop, sort(v)
+	drop if crop_code==.m
+	isid crop
+	isid crop_code
+	tempfile sales_2024_clean_indicators
+	save `sales_2024_clean_indicators'
+	
+	use "$root\modified_data\tbf_market_garden_data_2024_clean_indicators.dta", clear
+	merge m:1 crop_code using "`sales_2024_clean_indicators'", assert(1 3)
 	tablist _merge crop crop_code, sort(v) ab(32) nolabel
 	foreach var of varlist *sale_* {
 		capture confirm string variable `var'
@@ -64,7 +73,7 @@ pause off
 	}
 	drop _merge
 	
-	/* Save TBF 2023 Crop and Sales Analysis File */
+	/* Save TBF 2024 Crop and Sales Analysis File */
 	isid crop sow_date
 	quietly compress
 	save "$root\modified_data\tbf_market_garden_crop_sales_analysis.dta", replace
@@ -75,17 +84,17 @@ pause off
 *=========================================================================================  
 
 	/* Harvest */
-	foreach var of varlist c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit c_harvest_total_unit_* {
+	foreach var of varlist c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit {
 		display as input _n(2) "Harvest: `var'"
 		table crop , stat(sum `var')
 	}
-	
+		
 	/* Sales */
 	foreach var of varlist c_sale_value_crop_usd {
 		display as input _n(2) "Harvest: `var'"
 		table sale_location , stat(sum `var')
 	}
-	summarize c_sale_value_tot_usd, detail	
-	
+	summarize c_sale_value_tot_usd, detail
+		
 
 log close _all

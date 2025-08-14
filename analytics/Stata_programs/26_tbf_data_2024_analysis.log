@@ -1,0 +1,515 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  analysis_26
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2024_analysis.log
+  log type:  text
+ opened on:  14 Aug 2025, 12:40:03
+
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 26_tbf_data_2024_analyis.do                                                 ***
+. *** Project: TBF Market Garden 2023                                                                       ***
+. *** Purpose: Analyze TBF Market Garden 2023 crop and sales data                               ***    
+. ***                                                                                                                                                                               ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) MERGE SALES DATA TO CROP DATA                                                       ***
+. ***    II) ANALYSIS (TBD)                                                                     ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: August 14, 2025                                                                                               ***
+. *** Last date modified: August 14, 2025                                                       ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***                                                                                           ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. clear all
+
+. version 18.0
+
+. set more off
+
+. set varabbrev off
+
+. pause off
+
+. 
+. 
+. *=========================================================================================
+. * 0) SET UP CODE
+. *=========================================================================================      
+. 
+. /* Set seed */
+.         set seed 7122023
+
+.         
+. /* Define globals */
+. 
+.         *Root
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+
+.     adopath ++ "$root"
+  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+  [2]  (BASE)      "C:\Program Files\StataNow19\ado\base/"
+  [3]  (SITE)      "C:\Program Files\StataNow19\ado\site/"
+  [4]              "."
+  [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
+  [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
+  [7]  (OLDPLACE)  "c:\ado/"
+
+.     
+. 
+. *=========================================================================================
+. * I) MERGE SALES DATA TO CROP DATA
+. *=========================================================================================
+.         
+.         /* Load and merge cleaned crop and sales data with indicators */
+. 
+.         use "$root\modified_data\tbf_market_garden_sales_2024_clean_indicators.dta", clear
+
+.         tablist crop_code crop, sort(v)
+
+  +------------------------------------------------------------------------------------+
+  | crop_c~e                                crop   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------------|
+  |        3           bean- purple queen (bush)        1     3.12         1      3.12 |
+  |        4   bean- stringless green pod (bush)        1     3.12         2      6.25 |
+  |        5                   beet- detroit red        1     3.12         3      9.38 |
+  |        6         beet- tall top early wonder        1     3.12         4     12.50 |
+  |        7                 broccoli- calabrese        1     3.12         5     15.62 |
+  |------------------------------------------------------------------------------------|
+  |        8          carrot- kaleidoscope blend        1     3.12         6     18.75 |
+  |        9               carrot- short n sweet        1     3.12         7     21.88 |
+  |       12                   cilantro- calypse        1     3.12         8     25.00 |
+  |       13    coleus- chocolate covered cherry        1     3.12         9     28.12 |
+  |       15         corn- ornamental, glass gem        1     3.12        10     31.25 |
+  |------------------------------------------------------------------------------------|
+  |       17              eggplant- black beauty        1     3.12        11     34.38 |
+  |       19                      kale- lacinato        1     3.12        12     37.50 |
+  |       23             lettuce- red salad bowl        1     3.12        13     40.62 |
+  |       24              marigold- queen sophia        1     3.12        14     43.75 |
+  |       25                     pepper- anaheim        1     3.12        15     46.88 |
+  |------------------------------------------------------------------------------------|
+  |       26         pepper- bull nosed lrg bell        1     3.12        16     50.00 |
+  |       28      pepper- chocolate scotch bonet        1     3.12        17     53.12 |
+  |       29             pepper- jalapeno, early        1     3.12        18     56.25 |
+  |       30                pepper- pimenta puma        1     3.12        19     59.38 |
+  |       31             pepper- poblano (ancho)        1     3.12        20     62.50 |
+  |------------------------------------------------------------------------------------|
+  |       32               pepper- serrano chili        1     3.12        21     65.62 |
+  |       33          pepper- sugar rush stripey        1     3.12        22     68.75 |
+  |       34                pepper- sweet banana        1     3.12        23     71.88 |
+  |       37      pumpkin- early sweet sugar pie        1     3.12        24     75.00 |
+  |       41     sweet corn- silver queen hybrid        1     3.12        25     78.12 |
+  |------------------------------------------------------------------------------------|
+  |       42        sweet corn- sweetness hybrid        1     3.12        26     81.25 |
+  |       43                       tomato- amish        1     3.12        27     84.38 |
+  |       44                 tomato- cherry roma        1     3.12        28     87.50 |
+  |       46                        tomato- roma        1     3.12        29     90.62 |
+  |       47            zinnia- california giant        1     3.12        30     93.75 |
+  |------------------------------------------------------------------------------------|
+  |       .m                             celosia        1     3.12        31     96.88 |
+  |       .m                       miscellaneous        1     3.12        32    100.00 |
+  +------------------------------------------------------------------------------------+
+
+.         drop if crop_code==.m
+(2 observations deleted)
+
+.         isid crop
+
+.         isid crop_code
+
+.         tempfile sales_2024_clean_indicators
+
+.         save `sales_2024_clean_indicators'
+file C:\Users\sethb\AppData\Local\Temp\ST_c288_000001.tmp saved as .dta format
+
+.         
+.         use "$root\modified_data\tbf_market_garden_data_2024_clean_indicators.dta", clear
+
+.         merge m:1 crop_code using "`sales_2024_clean_indicators'", assert(1 3)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                            30
+        from master                        30  (_merge==1)
+        from using                          0  (_merge==2)
+
+    Matched                                45  (_merge==3)
+    -----------------------------------------
+
+.         tablist _merge crop crop_code, sort(v) ab(32) nolabel
+
+  +------------------------------------------------------------------------------------------------+
+  | _merge                                  crop   crop_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------------------------------------|
+  |      1                      arrugula- rocket           1        2     2.67         2      2.67 |
+  |      1                          basil- sweet           2        1     1.33         3      4.00 |
+  |      1                                catnip          10        1     1.33         4      5.33 |
+  |      1                              cilantro          11        4     5.33         8     10.67 |
+  |      1                  coreopsis- ruby kiss          14        2     2.67        10     13.33 |
+  |------------------------------------------------------------------------------------------------|
+  |      1                        dill- elephant          16        3     4.00        13     17.33 |
+  |      1   garlic- german extra hardy hardneck          18        2     2.67        15     20.00 |
+  |      1                 lettuce- buttercrunch          20        1     1.33        16     21.33 |
+  |      1                 lettuce- four seasons          21        1     1.33        17     22.67 |
+  |      1                lettuce- gourmet blend          22        2     2.67        19     25.33 |
+  |------------------------------------------------------------------------------------------------|
+  |      1              pepper- califonia wonder          27        1     1.33        20     26.67 |
+  |      1                pepper- tiger jalapeno          35        1     1.33        21     28.00 |
+  |      1            pumpkin- connecticut field          36        1     1.33        22     29.33 |
+  |      1                      salvia- victoria          38        2     2.67        24     32.00 |
+  |      1     spinach- bloomsdale long standing          39        3     4.00        27     36.00 |
+  |------------------------------------------------------------------------------------------------|
+  |      1                    sunflower- mammoth          40        1     1.33        28     37.33 |
+  |      1            tomato- fresh salsa hybrid          45        1     1.33        29     38.67 |
+  |      1                       zinnia- classic          48        1     1.33        30     40.00 |
+  |      3             bean- purple queen (bush)           3        2     2.67        32     42.67 |
+  |      3     bean- stringless green pod (bush)           4        2     2.67        34     45.33 |
+  |------------------------------------------------------------------------------------------------|
+  |      3                     beet- detroit red           5        1     1.33        35     46.67 |
+  |      3           beet- tall top early wonder           6        1     1.33        36     48.00 |
+  |      3                   broccoli- calabrese           7        2     2.67        38     50.67 |
+  |      3            carrot- kaleidoscope blend           8        3     4.00        41     54.67 |
+  |      3                 carrot- short n sweet           9        3     4.00        44     58.67 |
+  |------------------------------------------------------------------------------------------------|
+  |      3                     cilantro- calypse          12        4     5.33        48     64.00 |
+  |      3      coleus- chocolate covered cherry          13        1     1.33        49     65.33 |
+  |      3           corn- ornamental, glass gem          15        1     1.33        50     66.67 |
+  |      3                eggplant- black beauty          17        1     1.33        51     68.00 |
+  |      3                        kale- lacinato          19        2     2.67        53     70.67 |
+  |------------------------------------------------------------------------------------------------|
+  |      3               lettuce- red salad bowl          23        2     2.67        55     73.33 |
+  |      3                marigold- queen sophia          24        2     2.67        57     76.00 |
+  |      3                       pepper- anaheim          25        1     1.33        58     77.33 |
+  |      3           pepper- bull nosed lrg bell          26        1     1.33        59     78.67 |
+  |      3        pepper- chocolate scotch bonet          28        1     1.33        60     80.00 |
+  |------------------------------------------------------------------------------------------------|
+  |      3               pepper- jalapeno, early          29        1     1.33        61     81.33 |
+  |      3                  pepper- pimenta puma          30        1     1.33        62     82.67 |
+  |      3               pepper- poblano (ancho)          31        1     1.33        63     84.00 |
+  |      3                 pepper- serrano chili          32        1     1.33        64     85.33 |
+  |      3            pepper- sugar rush stripey          33        1     1.33        65     86.67 |
+  |------------------------------------------------------------------------------------------------|
+  |      3                  pepper- sweet banana          34        1     1.33        66     88.00 |
+  |      3        pumpkin- early sweet sugar pie          37        1     1.33        67     89.33 |
+  |      3       sweet corn- silver queen hybrid          41        2     2.67        69     92.00 |
+  |      3          sweet corn- sweetness hybrid          42        2     2.67        71     94.67 |
+  |      3                         tomato- amish          43        1     1.33        72     96.00 |
+  |------------------------------------------------------------------------------------------------|
+  |      3                   tomato- cherry roma          44        1     1.33        73     97.33 |
+  |      3                          tomato- roma          46        1     1.33        74     98.67 |
+  |      3              zinnia- california giant          47        1     1.33        75    100.00 |
+  +------------------------------------------------------------------------------------------------+
+
+.         foreach var of varlist *sale_* {
+  2.                 capture confirm string variable `var'
+  3.                 if _rc==0 replace `var'= ".s" if _merge==1
+  4.                 else replace `var'= .s if _merge==1
+  5.         }
+(30 real changes made)
+(30 real changes made, 30 to missing)
+(30 real changes made, 30 to missing)
+
+.         drop _merge
+
+.         
+.         /* Save TBF 2024 Crop and Sales Analysis File */
+.         isid crop sow_date
+
+.         quietly compress
+
+.         save "$root\modified_data\tbf_market_garden_crop_sales_analysis.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_crop_sales_analysis.dta saved
+
+.         
+.    
+. *=========================================================================================
+. * II) ANALYSIS (TBD)
+. *=========================================================================================  
+. 
+.         /* Harvest */
+.         foreach var of varlist c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit {
+  2.                 display as input _n(2) "Harvest: `var'"
+  3.                 table crop , stat(sum `var')
+  4.         }
+
+
+Harvest: c_harvest_no_plant
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- rocket                    |      0
+  basil- sweet                        |     19
+  bean- purple queen (bush)           |     44
+  bean- stringless green pod (bush)   |     41
+  beet- detroit red                   |     40
+  beet- tall top early wonder         |    100
+  broccoli- calabrese                 |      8
+  carrot- kaleidoscope blend          |    309
+  carrot- short n sweet               |    285
+  catnip                              |      3
+  cilantro                            |      3
+  cilantro- calypse                   |      6
+  coleus- chocolate covered cherry    |     10
+  coreopsis- ruby kiss                |      8
+  corn- ornamental, glass gem         |     25
+  dill- elephant                      |      0
+  eggplant- black beauty              |     12
+  garlic- german extra hardy hardneck |     36
+  kale- lacinato                      |      8
+  lettuce- buttercrunch               |     19
+  lettuce- four seasons               |     17
+  lettuce- gourmet blend              |     33
+  lettuce- red salad bowl             |     32
+  marigold- queen sophia              |      9
+  pepper- anaheim                     |      4
+  pepper- bull nosed lrg bell         |     12
+  pepper- califonia wonder            |      2
+  pepper- chocolate scotch bonet      |      2
+  pepper- jalapeno, early             |     20
+  pepper- pimenta puma                |      3
+  pepper- poblano (ancho)             |      6
+  pepper- serrano chili               |      3
+  pepper- sugar rush stripey          |      1
+  pepper- sweet banana                |      4
+  pepper- tiger jalapeno              |      2
+  pumpkin- connecticut field          |      6
+  pumpkin- early sweet sugar pie      |      4
+  salvia- victoria                    |     11
+  spinach- bloomsdale long standing   |      0
+  sunflower- mammoth                  |     15
+  sweet corn- silver queen hybrid     |     47
+  sweet corn- sweetness hybrid        |     39
+  tomato- amish                       |      9
+  tomato- cherry roma                 |      9
+  tomato- fresh salsa hybrid          |      8
+  tomato- roma                        |      8
+  zinnia- california giant            |      0
+  zinnia- classic                     |      0
+  Total                               |  1,282
+----------------------------------------------
+
+
+Harvest: c_harvest_total_wtoz
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- rocket                    |      0
+  basil- sweet                        |      0
+  bean- purple queen (bush)           |    139
+  bean- stringless green pod (bush)   |    328
+  beet- detroit red                   |      0
+  beet- tall top early wonder         |      0
+  broccoli- calabrese                 |      0
+  carrot- kaleidoscope blend          |      0
+  carrot- short n sweet               |      0
+  catnip                              |      0
+  cilantro                            |      0
+  cilantro- calypse                   |      0
+  coleus- chocolate covered cherry    |      0
+  coreopsis- ruby kiss                |      0
+  corn- ornamental, glass gem         |      0
+  dill- elephant                      |      0
+  eggplant- black beauty              |      0
+  garlic- german extra hardy hardneck |      0
+  kale- lacinato                      |      0
+  lettuce- buttercrunch               |      0
+  lettuce- four seasons               |      0
+  lettuce- gourmet blend              |      0
+  lettuce- red salad bowl             |      0
+  marigold- queen sophia              |      0
+  pepper- anaheim                     |    167
+  pepper- bull nosed lrg bell         |      0
+  pepper- califonia wonder            |      0
+  pepper- chocolate scotch bonet      |     18
+  pepper- jalapeno, early             |    798
+  pepper- pimenta puma                |     30
+  pepper- poblano (ancho)             |    109
+  pepper- serrano chili               |      0
+  pepper- sugar rush stripey          |     50
+  pepper- sweet banana                |    230
+  pepper- tiger jalapeno              |      2
+  pumpkin- connecticut field          |      0
+  pumpkin- early sweet sugar pie      |      0
+  salvia- victoria                    |      0
+  spinach- bloomsdale long standing   |      0
+  sunflower- mammoth                  |      0
+  sweet corn- silver queen hybrid     |      0
+  sweet corn- sweetness hybrid        |      0
+  tomato- amish                       |    494
+  tomato- cherry roma                 |    470
+  tomato- fresh salsa hybrid          |  2,196
+  tomato- roma                        |  2,292
+  zinnia- california giant            |      0
+  zinnia- classic                     |      0
+  Total                               |  7,323
+----------------------------------------------
+
+
+Harvest: c_harvest_total_wtlb
+
+------------------------------------------------
+                                      |    Total
+--------------------------------------+---------
+crop type                             |         
+  arrugula- rocket                    |        0
+  basil- sweet                        |        0
+  bean- purple queen (bush)           |   8.6875
+  bean- stringless green pod (bush)   |     20.5
+  beet- detroit red                   |        0
+  beet- tall top early wonder         |        0
+  broccoli- calabrese                 |        0
+  carrot- kaleidoscope blend          |        0
+  carrot- short n sweet               |        0
+  catnip                              |        0
+  cilantro                            |        0
+  cilantro- calypse                   |        0
+  coleus- chocolate covered cherry    |        0
+  coreopsis- ruby kiss                |        0
+  corn- ornamental, glass gem         |        0
+  dill- elephant                      |        0
+  eggplant- black beauty              |        0
+  garlic- german extra hardy hardneck |        0
+  kale- lacinato                      |        0
+  lettuce- buttercrunch               |        0
+  lettuce- four seasons               |        0
+  lettuce- gourmet blend              |        0
+  lettuce- red salad bowl             |        0
+  marigold- queen sophia              |        0
+  pepper- anaheim                     |  10.4375
+  pepper- bull nosed lrg bell         |        0
+  pepper- califonia wonder            |        0
+  pepper- chocolate scotch bonet      |    1.125
+  pepper- jalapeno, early             |   49.875
+  pepper- pimenta puma                |    1.875
+  pepper- poblano (ancho)             |   6.8125
+  pepper- serrano chili               |        0
+  pepper- sugar rush stripey          |    3.125
+  pepper- sweet banana                |   14.375
+  pepper- tiger jalapeno              |     .125
+  pumpkin- connecticut field          |        0
+  pumpkin- early sweet sugar pie      |        0
+  salvia- victoria                    |        0
+  spinach- bloomsdale long standing   |        0
+  sunflower- mammoth                  |        0
+  sweet corn- silver queen hybrid     |        0
+  sweet corn- sweetness hybrid        |        0
+  tomato- amish                       |   30.875
+  tomato- cherry roma                 |   29.375
+  tomato- fresh salsa hybrid          |   137.25
+  tomato- roma                        |   143.25
+  zinnia- california giant            |        0
+  zinnia- classic                     |        0
+  Total                               |  457.688
+------------------------------------------------
+
+
+Harvest: c_harvest_total_unit
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- rocket                    |      0
+  basil- sweet                        |      0
+  bean- purple queen (bush)           |      0
+  bean- stringless green pod (bush)   |      0
+  beet- detroit red                   |     35
+  beet- tall top early wonder         |    102
+  broccoli- calabrese                 |      0
+  carrot- kaleidoscope blend          |    167
+  carrot- short n sweet               |    138
+  catnip                              |      0
+  cilantro                            |      0
+  cilantro- calypse                   |      0
+  coleus- chocolate covered cherry    |      0
+  coreopsis- ruby kiss                |      0
+  corn- ornamental, glass gem         |      0
+  dill- elephant                      |      0
+  eggplant- black beauty              |    112
+  garlic- german extra hardy hardneck |     31
+  kale- lacinato                      |      0
+  lettuce- buttercrunch               |      0
+  lettuce- four seasons               |      0
+  lettuce- gourmet blend              |      0
+  lettuce- red salad bowl             |      0
+  marigold- queen sophia              |      0
+  pepper- anaheim                     |      0
+  pepper- bull nosed lrg bell         |    124
+  pepper- califonia wonder            |      0
+  pepper- chocolate scotch bonet      |      0
+  pepper- jalapeno, early             |      0
+  pepper- pimenta puma                |      0
+  pepper- poblano (ancho)             |      0
+  pepper- serrano chili               |      0
+  pepper- sugar rush stripey          |      0
+  pepper- sweet banana                |      0
+  pepper- tiger jalapeno              |      0
+  pumpkin- connecticut field          |      6
+  pumpkin- early sweet sugar pie      |     12
+  salvia- victoria                    |      0
+  spinach- bloomsdale long standing   |      0
+  sunflower- mammoth                  |      0
+  sweet corn- silver queen hybrid     |     58
+  sweet corn- sweetness hybrid        |     90
+  tomato- amish                       |      0
+  tomato- cherry roma                 |      0
+  tomato- fresh salsa hybrid          |      0
+  tomato- roma                        |      0
+  zinnia- california giant            |      0
+  zinnia- classic                     |      0
+  Total                               |    875
+----------------------------------------------
+
+.                 
+.         /* Sales */
+.         foreach var of varlist c_sale_value_crop_usd {
+  2.                 display as input _n(2) "Harvest: `var'"
+  3.                 table sale_location , stat(sum `var')
+  4.         }
+
+
+Harvest: c_sale_value_crop_usd
+
+--------------------------------------
+                              |  Total
+------------------------------+-------
+sale location                 |       
+  New Carlisle Farmers Market |  1,015
+  .s                          |      0
+  Total                       |  1,015
+--------------------------------------
+
+.         summarize c_sale_value_tot_usd, detail
+
+                 sale value (dollars)- total
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         1684           1684
+ 5%         1684           1684
+10%         1684           1684       Obs                  45
+25%         1684           1684       Sum of wgt.          45
+
+50%         1684                      Mean               1684
+                        Largest       Std. dev.             0
+75%         1684           1684
+90%         1684           1684       Variance              0
+95%         1684           1684       Skewness              .
+99%         1684           1684       Kurtosis              .
+
+.                 
+. 
+. log close _all
+      name:  analysis_26
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2024_analysis.log
+  log type:  text
+ closed on:  14 Aug 2025, 12:40:04
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

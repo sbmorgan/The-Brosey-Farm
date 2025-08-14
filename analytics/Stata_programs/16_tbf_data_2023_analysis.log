@@ -1,16 +1,16 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  analysis_16
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\16_tbf_data_2023_analysis.log
   log type:  text
- opened on:  17 Dec 2024, 22:43:18
+ opened on:  14 Aug 2025, 12:39:57
 
 . 
 . 
 . *************************************************************************************************
 . ***                                                                                           ***
-. *** Program name: 04_tbf_data_2023_merge.do                                                   ***
+. *** Program name: 16_tbf_data_2023_analysis.do                                                ***
 . *** Project: TBF Market Garden 2023                                                                       ***
-. *** Purpose: Merge TBF Market Garden 2023 crop and sales data                                 ***    
+. *** Purpose: Analyze TBF Market Garden 2023 crop and sales data                               ***    
 . ***                                                                                                                                                                               ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
@@ -19,7 +19,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: September 20, 2023                                                                                            ***
-. *** Last date modified: December 17, 2024                                                     ***
+. *** Last date modified: August 14, 2025                                                       ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -53,8 +53,8 @@
 
 .     adopath ++ "$root"
   [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
-  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
-  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [2]  (BASE)      "C:\Program Files\StataNow19\ado\base/"
+  [3]  (SITE)      "C:\Program Files\StataNow19\ado\site/"
   [4]              "."
   [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
   [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
@@ -66,7 +66,7 @@
 . * I) MERGE SALES DATA TO CROP DATA
 . *=========================================================================================
 .         
-.         /* Load cleaned sales data */
+.         /* Load and merge cleaned crop and sales data with indicators */
 .         use "$root\modified_data\tbf_market_garden_data_2023_clean_indicators.dta", clear
 
 .         merge m:1 crop_code using "$root\modified_data\tbf_market_garden_sales_2023_clean_indicators.dta", assert(1 3)
@@ -140,10 +140,284 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . * II) ANALYSIS (TBD)
 . *=========================================================================================  
 . 
+.         /* Harvest */
+.         foreach var of varlist c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit c_harvest_total_unit_* {
+  2.                 display as input _n(2) "Harvest: `var'"
+  3.                 table crop , stat(sum `var')
+  4.         }
+
+
+Harvest: c_harvest_no_plant
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- garden tangy              |     55
+  basil- sweet                        |      6
+  bean- fin de bagnol                 |     27
+  carrot- touchon                     |    114
+  cilantro                            |     27
+  corn- ornamental, glass gem         |    140
+  dill- hera                          |     20
+  eggplant- black beauty              |      9
+  garlic- german extra hardy hardneck |      0
+  kale- lacinato                      |     12
+  lettuce- gourmet blend              |     56
+  pepper- anaheim                     |      8
+  pepper- califonia wonder            |     18
+  pepper- ghost                       |      1
+  pepper- habanero                    |      1
+  pepper- jalapeno, early             |     10
+  pepper- sweet banana                |      6
+  pumpkin- connecticut field          |     26
+  sage- broad leaf                    |      3
+  sunflower- mammoth                  |     70
+  sweet corn- country gentleman       |    140
+  tomato- amish                       |     12
+  tomato- roma                        |     18
+  Total                               |    779
+----------------------------------------------
+
+
+Harvest: c_harvest_total_wtoz
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- garden tangy              |      0
+  basil- sweet                        |      0
+  bean- fin de bagnol                 |  157.5
+  carrot- touchon                     |    160
+  cilantro                            |      0
+  corn- ornamental, glass gem         |      0
+  dill- hera                          |      0
+  eggplant- black beauty              |      0
+  garlic- german extra hardy hardneck |      0
+  kale- lacinato                      |      0
+  lettuce- gourmet blend              |      0
+  pepper- anaheim                     |  471.5
+  pepper- califonia wonder            |    731
+  pepper- ghost                       |     24
+  pepper- habanero                    |     29
+  pepper- jalapeno, early             |    413
+  pepper- sweet banana                |      0
+  pumpkin- connecticut field          |      0
+  sage- broad leaf                    |      0
+  sunflower- mammoth                  |      0
+  sweet corn- country gentleman       |      0
+  tomato- amish                       |  3,620
+  tomato- roma                        |  3,744
+  Total                               |  9,350
+----------------------------------------------
+
+
+Harvest: c_harvest_total_wtlb
+
+------------------------------------------------
+                                      |    Total
+--------------------------------------+---------
+crop type                             |         
+  arrugula- garden tangy              |        0
+  basil- sweet                        |        0
+  bean- fin de bagnol                 |  9.84375
+  carrot- touchon                     |       10
+  cilantro                            |        0
+  corn- ornamental, glass gem         |        0
+  dill- hera                          |        0
+  eggplant- black beauty              |        0
+  garlic- german extra hardy hardneck |        0
+  kale- lacinato                      |        0
+  lettuce- gourmet blend              |        0
+  pepper- anaheim                     |  29.4688
+  pepper- califonia wonder            |  45.6875
+  pepper- ghost                       |      1.5
+  pepper- habanero                    |   1.8125
+  pepper- jalapeno, early             |  25.8125
+  pepper- sweet banana                |        0
+  pumpkin- connecticut field          |        0
+  sage- broad leaf                    |        0
+  sunflower- mammoth                  |        0
+  sweet corn- country gentleman       |        0
+  tomato- amish                       |   226.25
+  tomato- roma                        |      234
+  Total                               |  584.375
+------------------------------------------------
+
+
+Harvest: c_harvest_total_unit
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- garden tangy              |      0
+  basil- sweet                        |      0
+  bean- fin de bagnol                 |      0
+  carrot- touchon                     |      0
+  cilantro                            |      0
+  corn- ornamental, glass gem         |      0
+  dill- hera                          |      0
+  eggplant- black beauty              |      0
+  garlic- german extra hardy hardneck |      0
+  kale- lacinato                      |      0
+  lettuce- gourmet blend              |      0
+  pepper- anaheim                     |      0
+  pepper- califonia wonder            |      0
+  pepper- ghost                       |      0
+  pepper- habanero                    |      0
+  pepper- jalapeno, early             |      0
+  pepper- sweet banana                |      0
+  pumpkin- connecticut field          |      0
+  sage- broad leaf                    |      0
+  sunflower- mammoth                  |      0
+  sweet corn- country gentleman       |      0
+  tomato- amish                       |      0
+  tomato- roma                        |      0
+  Total                               |      0
+----------------------------------------------
+
+
+Harvest: c_harvest_total_unit_sml
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- garden tangy              |      0
+  basil- sweet                        |      0
+  bean- fin de bagnol                 |      0
+  carrot- touchon                     |      0
+  cilantro                            |      0
+  corn- ornamental, glass gem         |      0
+  dill- hera                          |      0
+  eggplant- black beauty              |      0
+  garlic- german extra hardy hardneck |      0
+  kale- lacinato                      |      0
+  lettuce- gourmet blend              |      0
+  pepper- anaheim                     |      0
+  pepper- califonia wonder            |      0
+  pepper- ghost                       |      0
+  pepper- habanero                    |      0
+  pepper- jalapeno, early             |      0
+  pepper- sweet banana                |      0
+  pumpkin- connecticut field          |      0
+  sage- broad leaf                    |      0
+  sunflower- mammoth                  |      0
+  sweet corn- country gentleman       |      0
+  tomato- amish                       |      0
+  tomato- roma                        |      0
+  Total                               |      0
+----------------------------------------------
+
+
+Harvest: c_harvest_total_unit_med
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- garden tangy              |      0
+  basil- sweet                        |      0
+  bean- fin de bagnol                 |      0
+  carrot- touchon                     |      0
+  cilantro                            |      0
+  corn- ornamental, glass gem         |      0
+  dill- hera                          |      0
+  eggplant- black beauty              |      0
+  garlic- german extra hardy hardneck |      0
+  kale- lacinato                      |      0
+  lettuce- gourmet blend              |      0
+  pepper- anaheim                     |      0
+  pepper- califonia wonder            |      0
+  pepper- ghost                       |      0
+  pepper- habanero                    |      0
+  pepper- jalapeno, early             |      0
+  pepper- sweet banana                |      0
+  pumpkin- connecticut field          |      0
+  sage- broad leaf                    |      0
+  sunflower- mammoth                  |      0
+  sweet corn- country gentleman       |      0
+  tomato- amish                       |      0
+  tomato- roma                        |      0
+  Total                               |      0
+----------------------------------------------
+
+
+Harvest: c_harvest_total_unit_lrg
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- garden tangy              |      0
+  basil- sweet                        |      0
+  bean- fin de bagnol                 |      0
+  carrot- touchon                     |      0
+  cilantro                            |      0
+  corn- ornamental, glass gem         |      0
+  dill- hera                          |      0
+  eggplant- black beauty              |      0
+  garlic- german extra hardy hardneck |      0
+  kale- lacinato                      |      0
+  lettuce- gourmet blend              |      0
+  pepper- anaheim                     |      0
+  pepper- califonia wonder            |      0
+  pepper- ghost                       |      0
+  pepper- habanero                    |      0
+  pepper- jalapeno, early             |      0
+  pepper- sweet banana                |      0
+  pumpkin- connecticut field          |      0
+  sage- broad leaf                    |      0
+  sunflower- mammoth                  |      0
+  sweet corn- country gentleman       |      0
+  tomato- amish                       |      0
+  tomato- roma                        |      0
+  Total                               |      0
+----------------------------------------------
+
+.         
+.         /* Sales */
+.         foreach var of varlist c_sale_value_crop_usd {
+  2.                 display as input _n(2) "Harvest: `var'"
+  3.                 table sale_location , stat(sum `var')
+  4.         }
+
+
+Harvest: c_sale_value_crop_usd
+
+--------------------------------------
+                              |  Total
+------------------------------+-------
+sale location                 |       
+  New Carlisle Farmers Market |    395
+  .s                          |      0
+  Total                       |    395
+--------------------------------------
+
+.         summarize c_sale_value_tot_usd, detail  
+
+                 sale value (dollars)- total
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          585            585
+ 5%          585            585
+10%          585            585       Obs                  20
+25%          585            585       Sum of wgt.          20
+
+50%          585                      Mean                585
+                        Largest       Std. dev.             0
+75%          585            585
+90%          585            585       Variance              0
+95%          585            585       Skewness              .
+99%          585            585       Kurtosis              .
+
+.         
 . 
 . log close _all
       name:  analysis_16
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\16_tbf_data_2023_analysis.log
   log type:  text
- closed on:  17 Dec 2024, 22:43:18
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  14 Aug 2025, 12:39:58
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
