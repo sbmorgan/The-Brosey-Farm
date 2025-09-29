@@ -2,7 +2,7 @@
       name:  analysis_26
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2024_analysis.log
   log type:  text
- opened on:  14 Aug 2025, 12:40:03
+ opened on:  24 Sep 2025, 14:48:25
 
 . 
 . 
@@ -125,7 +125,7 @@
 .         tempfile sales_2024_clean_indicators
 
 .         save `sales_2024_clean_indicators'
-file C:\Users\sethb\AppData\Local\Temp\ST_c288_000001.tmp saved as .dta format
+file C:\Users\sethb\AppData\Local\Temp\ST_6ab8_000001.tmp saved as .dta format
 
 .         
 .         use "$root\modified_data\tbf_market_garden_data_2024_clean_indicators.dta", clear
@@ -511,5 +511,5 @@ sale location                 |
       name:  analysis_26
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2024_analysis.log
   log type:  text
- closed on:  14 Aug 2025, 12:40:04
+ closed on:  24 Sep 2025, 14:48:26
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
