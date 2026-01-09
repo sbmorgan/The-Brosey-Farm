@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: February 29, 2024 	   					 	     			                  ***
-*** Last date modified: May 23, 2025                                                          ***
+*** Last date modified: January 9, 2026                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -103,7 +103,8 @@ pause off
 	}
 		
 	/* Convert categorical strings into categorical numerics */
-	local cat_str_list crop sow_med *type*
+**# Bookmark #1
+	local cat_str_list crop sow_med sow_type
 	tab1 `cat_str_list', missing
 	foreach var of varlist `cat_str_list' {
 		replace `var'="" if `var'=="."
@@ -125,7 +126,6 @@ pause off
 	duplicates drop
 	tablist crop crop_code, sort(v) nolabel
 	sort crop_code
-**# Bookmark #4
 	export excel "$root\modified_data\tbf_crop_codes_2024.xlsx", firstrow(variables) nolabel replace
 	
 	use `pre_code_export', replace
@@ -268,7 +268,7 @@ pause off
 				count if `var'==.m
 				if r(N)>0 {
 					tablist crop sow_type sow_date sow_med `var' if `var'==.m, sort(v) ab(32)
-					pause
+					*pause
 				}
 			}
 			else {
@@ -276,7 +276,7 @@ pause off
 				count if `var'==".m"
 				if r(N)>0 {
 					tablist crop sow_type sow_date sow_med `var' if `var'==".m", sort(v) ab(32)
-					pause
+					*pause
 				}
 			}
 		}

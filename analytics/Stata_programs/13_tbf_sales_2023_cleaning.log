@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  cleaning_13
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\13_tbf_sales_2023_cleaning.log
   log type:  text
- opened on:  17 Dec 2024, 22:43:10
+ opened on:   9 Jan 2026, 16:55:08
 
 . 
 . 
@@ -55,8 +55,8 @@
 
 .     adopath ++ "$root"
   [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
-  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
-  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [2]  (BASE)      "C:\Program Files\StataNow19\ado\base/"
+  [3]  (SITE)      "C:\Program Files\StataNow19\ado\site/"
   [4]              "."
   [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
   [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
@@ -110,7 +110,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 sale_date       str10   %10s                  sale date
 sale_location   str27   %27s                  sale location
 sale_location~o byte    %10.0g                sale_location_stall_no
@@ -265,11 +265,11 @@ sale amount |
   | sweet corn- country gentleman   sweet corn- country gentleman        3     1.67       173     96.11 |
   |    pumpkin- connecticut field      pumpkin- connecticut field        2     1.11       175     97.22 |
   |   corn- ornamental, glass gem     corn- ornamental, glass gem        1     0.56       176     97.78 |
-  |              pepper- habanero                pepper- habanero        1     0.56       177     98.33 |
+  |                  tomato sauce                    tomato sauce        1     0.56       177     98.33 |
   |-----------------------------------------------------------------------------------------------------|
-  |                  tomato sauce                    tomato sauce        1     0.56       178     98.89 |
-  |                pepper- ghost                    pepper- ghost        1     0.56       179     99.44 |
-  |         tomato-jalapeno salsa           tomato-jalapeno salsa        1     0.56       180    100.00 |
+  |         tomato-jalapeno salsa           tomato-jalapeno salsa        1     0.56       178     98.89 |
+  |              pepper- habanero                pepper- habanero        1     0.56       179     99.44 |
+  |                pepper- ghost                    pepper- ghost        1     0.56       180    100.00 |
   +-----------------------------------------------------------------------------------------------------+
 
   +--------------------------------------------------------------------------------------+
@@ -281,8 +281,8 @@ sale amount |
   |                  tomato- roma               16       16     8.89        98     54.44 |
   |        eggplant- black beauty                5       15     8.33       113     62.78 |
   |--------------------------------------------------------------------------------------|
-  |          pepper- sweet banana               11       14     7.78       127     70.56 |
-  |               carrot- touchon                2       14     7.78       141     78.33 |
+  |               carrot- touchon                2       14     7.78       127     70.56 |
+  |          pepper- sweet banana               11       14     7.78       141     78.33 |
   |                                              .       12     6.67       153     85.00 |
   |               pepper- anaheim                6       10     5.56       163     90.56 |
   |                      cilantro                3        4     2.22       167     92.78 |
@@ -290,12 +290,12 @@ sale amount |
   | sweet corn- country gentleman               13        3     1.67       170     94.44 |
   |           bean- fin de bagnol                1        3     1.67       173     96.11 |
   |    pumpkin- connecticut field               12        2     1.11       175     97.22 |
-  |              pepper- habanero                9        1     0.56       176     97.78 |
-  |                  tomato sauce               14        1     0.56       177     98.33 |
+  |                  tomato sauce               14        1     0.56       176     97.78 |
+  |   corn- ornamental, glass gem                4        1     0.56       177     98.33 |
   |--------------------------------------------------------------------------------------|
-  |                pepper- ghost                 8        1     0.56       178     98.89 |
-  |   corn- ornamental, glass gem                4        1     0.56       179     99.44 |
-  |         tomato-jalapeno salsa               17        1     0.56       180    100.00 |
+  |         tomato-jalapeno salsa               17        1     0.56       178     98.89 |
+  |              pepper- habanero                9        1     0.56       179     99.44 |
+  |                pepper- ghost                 8        1     0.56       180    100.00 |
   +--------------------------------------------------------------------------------------+
 
   +------------------------------------------------------------------+
@@ -355,12 +355,12 @@ Variable: sale_unit_code
   |               sale_location   sale_location_stall_no   sale_location_stall_spec   _Freq_   _Perc_   _CFreq_   _CPerc_ |
   |-----------------------------------------------------------------------------------------------------------------------|
   | New Carlisle Farmers Market                        5             outside, north       83    46.11        83     46.11 |
-  | New Carlisle Farmers Market                        .              outside, east       26    14.44       109     60.56 |
-  | New Carlisle Farmers Market                        4             outside, north       26    14.44       135     75.00 |
+  | New Carlisle Farmers Market                        4             outside, north       26    14.44       109     60.56 |
+  | New Carlisle Farmers Market                        .              outside, east       26    14.44       135     75.00 |
   | New Carlisle Farmers Market                        8             outside, north       18    10.00       153     85.00 |
-  | The Brosey Farm: farm stand                       .s                   roadside       12     6.67       165     91.67 |
+  | New Carlisle Farmers Market                        6             outside, north       12     6.67       165     91.67 |
   |-----------------------------------------------------------------------------------------------------------------------|
-  | New Carlisle Farmers Market                        6             outside, north       12     6.67       177     98.33 |
+  | The Brosey Farm: farm stand                       .s                   roadside       12     6.67       177     98.33 |
   | New Carlisle Farmers Market                        .            NC night market        3     1.67       180    100.00 |
   +-----------------------------------------------------------------------------------------------------------------------+
 
@@ -827,7 +827,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 sale_date       str10   %10s                  sale date
 sale_date_stata int     %td                   sale date- stata
 sale_location   str27   %27s                  sale location
@@ -851,5 +851,5 @@ sale_code       byte    %9.0g
       name:  cleaning_13
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\13_tbf_sales_2023_cleaning.log
   log type:  text
- closed on:  17 Dec 2024, 22:43:11
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   9 Jan 2026, 16:55:09
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

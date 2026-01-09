@@ -1,8 +1,8 @@
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  indicators_24
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\24_tbf_data_2024_indicators.log
   log type:  text
- opened on:  24 Sep 2025, 14:48:04
+ opened on:   9 Jan 2026, 16:55:48
 
 . 
 . 
@@ -157,8 +157,8 @@
   | garlic- german extra hardy hardneck          18   outdoor seed   2024-11-16    rasied bed- frame                    9                 9                   .s                .s                .s        1    50.00         2    100.00 |
   +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-.         replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & !(crop_code==18 & sow_date=="2024-11-16") // "& !(crop_code==18 & sow_date=="2024-11-16")" to exclude a calculation for the 2024 garlic that
->  has not germinated yet. Planted in FA24 for harvest SU25.
+.         replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & !(crop_code==18 & sow_date=="2024-11-16") // "& !(crop_code==18 & sow_date=="2024-11-16")" to exclude a calculation for the 2024 garlic that ha
+> s not germinated yet. Planted in FA24 for harvest SU25.
 (34 real changes made)
 
 .         replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant" // These are starts purchased outside the farm.
@@ -3784,7 +3784,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 c_harvest_no_~t int     %9.0g                 number of plants harvested from
 c_harvest_tot~z int     %9.0g                 total harvest- weight, ounces
 c_harvest_tot~b float   %9.0g                 total harvest- weight, pounds
@@ -3858,5 +3858,5 @@ c_harvest_tot~t int     %9.0g                 total harvest- units
       name:  indicators_24
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\24_tbf_data_2024_indicators.log
   log type:  text
- closed on:  24 Sep 2025, 14:48:05
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   9 Jan 2026, 16:55:49
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

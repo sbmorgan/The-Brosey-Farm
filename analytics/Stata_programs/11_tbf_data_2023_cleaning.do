@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: July 12, 2023   	   					 	     			                  ***
-*** Last date modified: December 17, 2024                                                     ***
+*** Last date modified: January 9, 2026                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -98,7 +98,7 @@ pause off
 	}
 	
 	/* Convert categorical strings into categorical numerics */
-	local cat_str_list crop sow_med *type*
+	local cat_str_list crop sow_med sow_type
 	tab1 `cat_str_list', missing
 	foreach var of varlist `cat_str_list' {
 		if `var'=="." continue

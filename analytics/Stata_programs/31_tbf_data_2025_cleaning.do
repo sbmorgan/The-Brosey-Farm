@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: May 23, 2025     	   					 	     			                  ***
-*** Last date modified: June 12, 2025                                                         ***
+*** Last date modified: January 9, 2026                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -31,7 +31,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 *************************************************************************************************
 
 clear all
-version 18.0
+version 19.5
 set more off
 set varabbrev off
 pause off
@@ -64,14 +64,14 @@ pause off
 	/* Save raw TBF Market Garden 2025 data */
 	save "$root\raw_data\tbf_market_garden_data_2025_raw.dta", replace
 	export excel "$root\raw_data\tbf_market_garden_data_2025_raw.xlsx", firstrow(variables) replace
-/*	
+
   
 *=========================================================================================
 * II) MANAGE VARIABLES
 *=========================================================================================  
 
 	/* Add variable labels */
-	include "$root\Stata_programs\22_tbf_data_2025_labels.do" // This program creates the variable labels.
+	include "$root\Stata_programs\32_tbf_data_2025_labels.do" // This program creates the variable labels.
 	
 	/* Manage variable type */
 	tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
@@ -151,7 +151,7 @@ pause off
 	/* Clean missing values */
 		
 		*-> Crop
-		foreach var of varlist crop-sow_type_code {
+		foreach var of varlist crop sow_type sow_med {
 			assert !missing(`var')
 		}
  		
@@ -169,7 +169,7 @@ pause off
 		}
 
 		*-> Seedlings variables: *sow* transp*
-		foreach var of varlist sow_cell sow_heatmat-transp_no_end_2 { // These variables are for crops sown indoors and thus should be missing if the crop was directly seeded in the garden.
+		foreach var of varlist sow_cell sow_heatmat-transp_no_end_3 { // These variables are for crops sown indoors and thus should be missing if the crop was directly seeded in the garden.
 			display as input _n "Variable: `var'"
 			tablist sow_med sow_med_code `var', sort(v) ab(32) nolabel
 			assert missing(`var') if inlist(sow_med, "raised bed- ground", "rasied bed- frame")
@@ -181,18 +181,18 @@ pause off
 
 		tablist crop crop_code, sort(v) nolabel
 		tablist crop crop_code sow_date if crop_code==18, sort(v) ab(32) nolabel
-		assert sow_to_germ50_days==. if crop_code==18 // Garlic doesn't bulb/produce leaves above ground until the following season.
-		replace sow_to_germ50_days=.s if crop_code==18
+		assert sow_to_germ50_days==. if crop=="garlic- german white hardneck" & sow_date=="2025-11-19" // Garlic doesn't bulb/produce leaves above ground until the following season.
+		replace sow_to_germ50_days=.s if crop=="garlic- german white hardneck" & sow_date=="2025-11-19"
 		foreach var of varlist sow_no_germ_per sow_no_thin_per {	
-			assert `var'==. if crop_code==18 & sow_date=="2025-11-16"
-			replace `var'=.s if crop_code==18 & sow_date=="2025-11-16" // For the 2025-planted garlic that has not germinated yet. Planted in FA24 for harvest SU25.
+			assert `var'==. if crop=="garlic- german white hardneck" & sow_date=="2025-11-19"
+			replace `var'=.s if crop=="garlic- german white hardneck" & sow_date=="2025-11-19" // For the 2025-planted garlic that has not germinated yet. Planted in FA25 for harvest SU26.
 		}
 		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32) // Heat temperature of heat mat should be missing if heat mat not used. 
 		assert sow_heatmat_temp==. if sow_heatmat=="no"
 		replace sow_heatmat_temp=.s if sow_heatmat=="no"
 		tablist sow_heatmat sow_heatmat_temp, sort(v) ab(32)
 		
-		forval x= 2/6 {
+		forval x= 2/7 {
 			egen misscount_`x'= rowmiss(sow_fert_date_`x'-sow_fert_dose_`x')
 			foreach var of varlist sow_fert_date_`x'-sow_fert_dose_`x' {
 				capture confirm numeric variable `var'
@@ -267,7 +267,7 @@ pause off
 				count if `var'==.m
 				if r(N)>0 {
 					tablist crop sow_type sow_date sow_med `var' if `var'==.m, sort(v) ab(32)
-					pause
+					*pause
 				}
 			}
 			else {
@@ -275,11 +275,11 @@ pause off
 				count if `var'==".m"
 				if r(N)>0 {
 					tablist crop sow_type sow_date sow_med `var' if `var'==".m", sort(v) ab(32)
-					pause
+					*pause
 				}
 			}
 		}
-*/	
+
 	/* Save clean TBF Market Garden 2025 data */
 	***isid crop sow_date
 	quietly compress

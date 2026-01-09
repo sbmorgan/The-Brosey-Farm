@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  indicators_15
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\15_tbf_sales_2023_indicators.log
   log type:  text
- opened on:  17 Dec 2024, 22:43:16
+ opened on:   9 Jan 2026, 16:55:15
 
 . 
 . 
@@ -52,8 +52,8 @@
 
 .     adopath ++ "$root"
   [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
-  [2]  (BASE)      "C:\Program Files\Stata18\ado\base/"
-  [3]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [2]  (BASE)      "C:\Program Files\StataNow19\ado\base/"
+  [3]  (SITE)      "C:\Program Files\StataNow19\ado\site/"
   [4]              "."
   [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
   [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
@@ -113,8 +113,8 @@
 .         tempfile pre_crop_codes crop_codes
 
 .         save `pre_crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000i.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000i.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000001.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000001.tmp saved as .dta format
 
 .         
 .         import excel "$root\modified_data\tbf_crop_codes_2023.xlsx", firstrow clear
@@ -155,8 +155,8 @@ file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000i.tmp saved as .dta format
   +---------------------------------------------------------------------------------------+
 
 .         save `crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000j.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_29f0_00000j.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000002.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000002.tmp saved as .dta format
 
 .         
 .         use `pre_crop_codes', replace
@@ -192,5 +192,5 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  indicators_15
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\15_tbf_sales_2023_indicators.log
   log type:  text
- closed on:  17 Dec 2024, 22:43:16
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   9 Jan 2026, 16:55:15
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
