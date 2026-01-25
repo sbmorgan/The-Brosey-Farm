@@ -1,0 +1,406 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  indicators_34
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\34_tbf_data_2025_indicators.log
+  log type:  text
+ opened on:  25 Jan 2026, 14:42:38
+
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 25_tbf_data_2025_indicators.do                                              ***
+. *** Project: TBF Market Garden 2025                                                                       ***
+. *** Purpose: Create Analysis Indicators for TBF Market Garden 2025 data                       ***    
+. ***                                                                                                                                                                               ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) CREATE CROP ANALYSIS INDICATORS                                                     ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: January 25, 2026                                                                                                  ***
+. *** Last date modified: January 25, 2026                                                      ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***                                                                                           ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. 
+. *=========================================================================================
+. * 0) SET UP CODE
+. *=========================================================================================      
+. 
+. /* Set do-file preferences */
+.         clear all
+
+.         version 19.5
+
+.         set more off
+
+.         set varabbrev off
+
+.         pause off
+
+. 
+. /* Set seed */
+.         set seed 7122024
+
+.         
+. /* Define globals */
+. 
+.         *Root
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+
+.     adopath ++ "$root"
+  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+  [2]  (BASE)      "C:\Program Files\StataNow19\ado\base/"
+  [3]  (SITE)      "C:\Program Files\StataNow19\ado\site/"
+  [4]              "."
+  [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
+  [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
+  [7]  (OLDPLACE)  "c:\ado/"
+
+.         
+.         
+. *=========================================================================================
+. * I) CREATE CROP ANALYSIS INDICATORS
+. *=========================================================================================
+.         
+.         /* Load clean TBF Market Garden 2025 crop data */
+.         use "$root\modified_data\tbf_market_garden_data_2025_clean.dta", clear
+
+.          
+.         /* Planting */ // (!) This section is only in this 2025 crop inidicator code. Needs to be added to 2023 & 2024.
+.         
+.         *-> Number of seeds planted
+.         generate c_plant_num_seed=.c
+(83 missing values generated)
+
+.         label variable c_plant_num_seed "number of seeds planted"       
+
+.         replace c_plant_num_seed= sow_no_cellrowhill * sow_no_seed_per if sow_no_seed_per!=96 // sow_no_seed_per==96 indicates broadcast seeding of unknown number of units
+(64 real changes made)
+
+.         replace c_plant_num_seed= .b if sow_no_seed_per==96
+(19 real changes made, 19 to missing)
+
+.         tablist crop sow_med sow_cell sow_no_cellrowhill sow_no_seed_per c_plant_num_seed, sort(v) ab(32)
+
+  +---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  |                                crop              sow_med   sow_cell   sow_no_cellrowhill   sow_no_seed_per   c_plant_num_seed   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |                    arrugula- rocket    rasied bed- frame         .s            .16666667                96                 .b        2     2.41         2      2.41 |
+  |                       baby bok choi    rasied bed- frame         .s                    8                 6                 48        1     1.20         3      3.61 |
+  |                        basil- sweet             soilless         50                   10                 5                 50        1     1.20         4      4.82 |
+  |               bean- beananza (bush)   raised bed- ground         .s                   12                 3                 36        2     2.41         6      7.23 |
+  |           bean- purple queen (bush)   raised bed- ground         .s                   12                 3                 36        1     1.20         7      8.43 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |           bean- purple queen (bush)   raised bed- ground         .s                   12                 4                 48        1     1.20         8      9.64 |
+  |                 beet- burpee golden   raised bed- ground         .s                    2                25                 50        1     1.20         9     10.84 |
+  |                 beet- burpee golden   raised bed- ground         .s                    2                96                 .b        2     2.41        11     13.25 |
+  |                   beet- detroit red   raised bed- ground         .s                    2                96                 .b        2     2.41        13     15.66 |
+  |                   beet- detroit red   raised bed- ground         .s                    2               250                500        1     1.20        14     16.87 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |                 broccoli- calabrese             soilless         50                    5                 4                 20        1     1.20        15     18.07 |
+  |          carrot- kaleidoscope blend   raised bed- ground         .s                    2                96                 .b        2     2.41        17     20.48 |
+  |          carrot- kaleidoscope blend   raised bed- ground         .s                    2               250                500        1     1.20        18     21.69 |
+  |               carrot- short n sweet   raised bed- ground         .s                    2                96                 .b        2     2.41        20     24.10 |
+  |               carrot- short n sweet   raised bed- ground         .s                    2               350                700        1     1.20        21     25.30 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |                     carrot- touchon   raised bed- ground         .s                    2                96                 .b        2     2.41        23     27.71 |
+  |                     carrot- touchon   raised bed- ground         .s                    2               500               1000        1     1.20        24     28.92 |
+  |                              catnip             soilless         50                   10                 3                 30        1     1.20        25     30.12 |
+  |                celosia- forest fire             soilless         50                    5                10                 50        1     1.20        26     31.33 |
+  |                            cilantro    rasied bed- frame         .s            .16666667                96                 .b        2     2.41        28     33.73 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |                   cilantro- calypse    rasied bed- frame         .s            .16666667                96                 .b        2     2.41        30     36.14 |
+  |              coleus- chocolate mint             soilless         72                   12                 1                 12        1     1.20        31     37.35 |
+  |                coreopsis- ruby kiss             soilless         50                    5                10                 50        1     1.20        32     38.55 |
+  |         corn- ornamental, glass gem   raised bed- ground         .s                   23                 4                 92        1     1.20        33     39.76 |
+  |                      dill- elephant            container         .m                    2                96                 .b        1     1.20        34     40.96 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |              eggplant- black beauty             soilless         50                    3                 5                 15        1     1.20        35     42.17 |
+  |      eggplant- midnight moon hybrid             soilless         50                    3                 5                 15        1     1.20        36     43.37 |
+  | garlic- german extra hardy hardneck    rasied bed- frame         .s                    6                 7                 42        1     1.20        37     44.58 |
+  | garlic- german extra hardy hardneck    rasied bed- frame         .s                    9                 9                 81        1     1.20        38     45.78 |
+  |         garlic- german red hardneck    rasied bed- frame         .s                    3                 7                 21        1     1.20        39     46.99 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |       garlic- german white hardneck    rasied bed- frame         .s                    5                 7                 35        1     1.20        40     48.19 |
+  |                      kale- lacinato             soilless         50                    5                 4                 20        1     1.20        41     49.40 |
+  |               lettuce- buttercrunch             soilless         50                   10                 8                 80        1     1.20        42     50.60 |
+  |               lettuce- four seasons             soilless         50                   10                 8                 80        1     1.20        43     51.81 |
+  |              lettuce- gourmet blend    rasied bed- frame         .s                    1               250                250        1     1.20        44     53.01 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |              lettuce- gourmet blend    rasied bed- frame         .s                    7                20                140        1     1.20        45     54.22 |
+  |              lettuce- gourmet blend             soilless         50                   10                 8                 80        1     1.20        46     55.42 |
+  |             lettuce- red salad bowl    rasied bed- frame         .s                    1               250                250        1     1.20        47     56.63 |
+  |             lettuce- red salad bowl    rasied bed- frame         .s                    7                20                140        1     1.20        48     57.83 |
+  |             lettuce- red salad bowl             soilless         50                   10                 8                 80        1     1.20        49     59.04 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |              marigold- queen sophia             soilless         50                   10                 3                 30        1     1.20        50     60.24 |
+  |                marigold- red knight             soilless         72                   15                 3                 45        1     1.20        51     61.45 |
+  |         mustard- florida broad leaf    rasied bed- frame         .s                    4                 6                 24        1     1.20        52     62.65 |
+  |                mustard- tendergreen    rasied bed- frame         .s                    4                 6                 24        1     1.20        53     63.86 |
+  |                    pea- green arrow            container         .m                    2                 4                  8        1     1.20        54     65.06 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |      pea- mammoth melting sugar pod            container         .m                    2                 4                  8        1     1.20        55     66.27 |
+  |                     pepper- anaheim             soilless         50                    5                 5                 25        1     1.20        56     67.47 |
+  |            pepper- califonia wonder             soilless         50                   10                 5                 50        1     1.20        57     68.67 |
+  |      pepper- chocolate scotch bonet             soilless         50                    1                 8                  8        1     1.20        58     69.88 |
+  |             pepper- jalapeno, early             soilless         50                   10                 5                 50        1     1.20        59     71.08 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |             pepper- poblano (ancho)             soilless         50                    5                 5                 25        1     1.20        60     72.29 |
+  |               pepper- serrano chili             soilless         50                    2                 5                 10        1     1.20        61     73.49 |
+  |          pepper- sugar rush stripey             soilless         50                    1                 8                  8        1     1.20        62     74.70 |
+  |                pepper- sweet banana             soilless         50                    5                 5                 25        1     1.20        63     75.90 |
+  |              pepper- tiger jalapeno             soilless         50                    1                 8                  8        1     1.20        64     77.11 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |          pumpkin- connecticut field   raised bed- ground         .s                    1                 6                  6        1     1.20        65     78.31 |
+  |      pumpkin- early sweet sugar pie   raised bed- ground         .s                    2                 6                 12        1     1.20        66     79.52 |
+  |              pumpkin- jack-o-latern   raised bed- ground         .s                    1                 6                  6        1     1.20        67     80.72 |
+  |                    salvia- victoria             soilless         50                    5                10                 50        1     1.20        68     81.93 |
+  |                snapgragon- opus red             soilless         72                   15                 3                 45        1     1.20        69     83.13 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |   spinach- bloomsdale long standing    rasied bed- frame         .s            .16666667                96                 .b        2     2.41        71     85.54 |
+  |                  sunflower- mammoth   raised bed- ground         .s                   23                 4                 92        1     1.20        72     86.75 |
+  |        sweet corn- sweetness hybrid   raised bed- ground         .s                   12                 3                 36        1     1.20        73     87.95 |
+  |        sweet corn- sweetness hybrid   raised bed- ground         .s                   12                 4                 48        1     1.20        74     89.16 |
+  |        sweet corn- sweetness hybrid   raised bed- ground         .s                   33                 4                132        1     1.20        75     90.36 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |                       tomato- amish             soilless         50                   10                 4                 40        1     1.20        76     91.57 |
+  |                 tomato- cherry roma             soilless         50                    4                 4                 16        1     1.20        77     92.77 |
+  |          tomato- fresh salsa hybrid             soilless         50                   15                 3                 45        1     1.20        78     93.98 |
+  |                        tomato- roma             soilless         50                   15                 4                 60        1     1.20        79     95.18 |
+  |     zinna- amethyst treasure hybrid             soilless         72                   15                 3                 45        1     1.20        80     96.39 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |            zinnia- california giant             soilless         50                   10                 5                 50        1     1.20        81     97.59 |
+  |                     zinnia- classic             soilless         50                    5                 4                 20        1     1.20        82     98.80 |
+  |     zinnia- oklahoma (mixed colors)             soilless         72                   15                 3                 45        1     1.20        83    100.00 |
+  +---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.         tablist sow_med crop sow_cell sow_no_cellrowhill sow_no_seed_per c_plant_num_seed, sort(v) ab(32)       
+
+  +---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  |            sow_med                                  crop   sow_cell   sow_no_cellrowhill   sow_no_seed_per   c_plant_num_seed   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |          container                        dill- elephant         .m                    2                96                 .b        1     1.20         1      1.20 |
+  |          container                      pea- green arrow         .m                    2                 4                  8        1     1.20         2      2.41 |
+  |          container        pea- mammoth melting sugar pod         .m                    2                 4                  8        1     1.20         3      3.61 |
+  | raised bed- ground                 bean- beananza (bush)         .s                   12                 3                 36        2     2.41         5      6.02 |
+  | raised bed- ground             bean- purple queen (bush)         .s                   12                 3                 36        1     1.20         6      7.23 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | raised bed- ground             bean- purple queen (bush)         .s                   12                 4                 48        1     1.20         7      8.43 |
+  | raised bed- ground                   beet- burpee golden         .s                    2                25                 50        1     1.20         8      9.64 |
+  | raised bed- ground                   beet- burpee golden         .s                    2                96                 .b        2     2.41        10     12.05 |
+  | raised bed- ground                     beet- detroit red         .s                    2                96                 .b        2     2.41        12     14.46 |
+  | raised bed- ground                     beet- detroit red         .s                    2               250                500        1     1.20        13     15.66 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | raised bed- ground            carrot- kaleidoscope blend         .s                    2                96                 .b        2     2.41        15     18.07 |
+  | raised bed- ground            carrot- kaleidoscope blend         .s                    2               250                500        1     1.20        16     19.28 |
+  | raised bed- ground                 carrot- short n sweet         .s                    2                96                 .b        2     2.41        18     21.69 |
+  | raised bed- ground                 carrot- short n sweet         .s                    2               350                700        1     1.20        19     22.89 |
+  | raised bed- ground                       carrot- touchon         .s                    2                96                 .b        2     2.41        21     25.30 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | raised bed- ground                       carrot- touchon         .s                    2               500               1000        1     1.20        22     26.51 |
+  | raised bed- ground           corn- ornamental, glass gem         .s                   23                 4                 92        1     1.20        23     27.71 |
+  | raised bed- ground            pumpkin- connecticut field         .s                    1                 6                  6        1     1.20        24     28.92 |
+  | raised bed- ground        pumpkin- early sweet sugar pie         .s                    2                 6                 12        1     1.20        25     30.12 |
+  | raised bed- ground                pumpkin- jack-o-latern         .s                    1                 6                  6        1     1.20        26     31.33 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | raised bed- ground                    sunflower- mammoth         .s                   23                 4                 92        1     1.20        27     32.53 |
+  | raised bed- ground          sweet corn- sweetness hybrid         .s                   12                 3                 36        1     1.20        28     33.73 |
+  | raised bed- ground          sweet corn- sweetness hybrid         .s                   12                 4                 48        1     1.20        29     34.94 |
+  | raised bed- ground          sweet corn- sweetness hybrid         .s                   33                 4                132        1     1.20        30     36.14 |
+  |  rasied bed- frame                      arrugula- rocket         .s            .16666667                96                 .b        2     2.41        32     38.55 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |  rasied bed- frame                         baby bok choi         .s                    8                 6                 48        1     1.20        33     39.76 |
+  |  rasied bed- frame                              cilantro         .s            .16666667                96                 .b        2     2.41        35     42.17 |
+  |  rasied bed- frame                     cilantro- calypse         .s            .16666667                96                 .b        2     2.41        37     44.58 |
+  |  rasied bed- frame   garlic- german extra hardy hardneck         .s                    6                 7                 42        1     1.20        38     45.78 |
+  |  rasied bed- frame   garlic- german extra hardy hardneck         .s                    9                 9                 81        1     1.20        39     46.99 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |  rasied bed- frame           garlic- german red hardneck         .s                    3                 7                 21        1     1.20        40     48.19 |
+  |  rasied bed- frame         garlic- german white hardneck         .s                    5                 7                 35        1     1.20        41     49.40 |
+  |  rasied bed- frame                lettuce- gourmet blend         .s                    1               250                250        1     1.20        42     50.60 |
+  |  rasied bed- frame                lettuce- gourmet blend         .s                    7                20                140        1     1.20        43     51.81 |
+  |  rasied bed- frame               lettuce- red salad bowl         .s                    1               250                250        1     1.20        44     53.01 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |  rasied bed- frame               lettuce- red salad bowl         .s                    7                20                140        1     1.20        45     54.22 |
+  |  rasied bed- frame           mustard- florida broad leaf         .s                    4                 6                 24        1     1.20        46     55.42 |
+  |  rasied bed- frame                  mustard- tendergreen         .s                    4                 6                 24        1     1.20        47     56.63 |
+  |  rasied bed- frame     spinach- bloomsdale long standing         .s            .16666667                96                 .b        2     2.41        49     59.04 |
+  |           soilless                          basil- sweet         50                   10                 5                 50        1     1.20        50     60.24 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |           soilless                   broccoli- calabrese         50                    5                 4                 20        1     1.20        51     61.45 |
+  |           soilless                                catnip         50                   10                 3                 30        1     1.20        52     62.65 |
+  |           soilless                  celosia- forest fire         50                    5                10                 50        1     1.20        53     63.86 |
+  |           soilless                coleus- chocolate mint         72                   12                 1                 12        1     1.20        54     65.06 |
+  |           soilless                  coreopsis- ruby kiss         50                    5                10                 50        1     1.20        55     66.27 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |           soilless                eggplant- black beauty         50                    3                 5                 15        1     1.20        56     67.47 |
+  |           soilless        eggplant- midnight moon hybrid         50                    3                 5                 15        1     1.20        57     68.67 |
+  |           soilless                        kale- lacinato         50                    5                 4                 20        1     1.20        58     69.88 |
+  |           soilless                 lettuce- buttercrunch         50                   10                 8                 80        1     1.20        59     71.08 |
+  |           soilless                 lettuce- four seasons         50                   10                 8                 80        1     1.20        60     72.29 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |           soilless                lettuce- gourmet blend         50                   10                 8                 80        1     1.20        61     73.49 |
+  |           soilless               lettuce- red salad bowl         50                   10                 8                 80        1     1.20        62     74.70 |
+  |           soilless                marigold- queen sophia         50                   10                 3                 30        1     1.20        63     75.90 |
+  |           soilless                  marigold- red knight         72                   15                 3                 45        1     1.20        64     77.11 |
+  |           soilless                       pepper- anaheim         50                    5                 5                 25        1     1.20        65     78.31 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |           soilless              pepper- califonia wonder         50                   10                 5                 50        1     1.20        66     79.52 |
+  |           soilless        pepper- chocolate scotch bonet         50                    1                 8                  8        1     1.20        67     80.72 |
+  |           soilless               pepper- jalapeno, early         50                   10                 5                 50        1     1.20        68     81.93 |
+  |           soilless               pepper- poblano (ancho)         50                    5                 5                 25        1     1.20        69     83.13 |
+  |           soilless                 pepper- serrano chili         50                    2                 5                 10        1     1.20        70     84.34 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |           soilless            pepper- sugar rush stripey         50                    1                 8                  8        1     1.20        71     85.54 |
+  |           soilless                  pepper- sweet banana         50                    5                 5                 25        1     1.20        72     86.75 |
+  |           soilless                pepper- tiger jalapeno         50                    1                 8                  8        1     1.20        73     87.95 |
+  |           soilless                      salvia- victoria         50                    5                10                 50        1     1.20        74     89.16 |
+  |           soilless                  snapgragon- opus red         72                   15                 3                 45        1     1.20        75     90.36 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |           soilless                         tomato- amish         50                   10                 4                 40        1     1.20        76     91.57 |
+  |           soilless                   tomato- cherry roma         50                    4                 4                 16        1     1.20        77     92.77 |
+  |           soilless            tomato- fresh salsa hybrid         50                   15                 3                 45        1     1.20        78     93.98 |
+  |           soilless                          tomato- roma         50                   15                 4                 60        1     1.20        79     95.18 |
+  |           soilless       zinna- amethyst treasure hybrid         72                   15                 3                 45        1     1.20        80     96.39 |
+  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  |           soilless              zinnia- california giant         50                   10                 5                 50        1     1.20        81     97.59 |
+  |           soilless                       zinnia- classic         50                    5                 4                 20        1     1.20        82     98.80 |
+  |           soilless       zinnia- oklahoma (mixed colors)         72                   15                 3                 45        1     1.20        83    100.00 |
+  +---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+. /*      
+>         /* Harvest */
+>         
+>         *-> Number of plants harvested
+>         generate c_harvest_no_plant=.c
+>         label variable c_harvest_no_plant "number of plants harvested from"
+>         replace c_harvest_no_plant=transp_no_end_1 if sow_type=="indoor seed" & transp_no_end_2==.s
+>         replace c_harvest_no_plant=transp_no_end_2 if sow_type=="indoor seed" & transp_no_end_2!=.s // Use final transplant number if multiple transplantings (e.g., from seed tray to small container (1), then to garden plot (2))
+>         tablist crop crop_code, sort(v) ab(32) nolabel
+>         tablist crop crop_code sow_type sow_date sow_med sow_no_cellrowhill sow_no_seed_per sow_to_germ50_days sow_no_germ_per sow_no_thin_per if crop_code==18, sort(v) ab(32) nolabel
+>         replace c_harvest_no_plant= (sow_no_thin_per * sow_no_cellrowhill) if sow_type=="outdoor seed" & !(crop_code==18 & sow_date=="2024-11-16") // "& !(crop_code==18 & sow_date=="2024-11-16")" to exclude a calculation for the 2024 garlic that has 
+> not germinated yet. Planted in FA24 for harvest SU25.
+>         replace c_harvest_no_plant=transp_no_end_1 if sow_type=="external transplant" // These are starts purchased outside the farm.
+>         replace c_harvest_no_plant= .s if sow_no_thin_per==96 // These are herbs that were broadcast seeded in framed raised beds. 
+>         tablist sow_type sow_date crop transp_no_srt_1 transp_no_end_1 transp_no_srt_2 transp_no_end_2 sow_no_thin_per sow_no_cellrowhill c_harvest_no_plant, sort(v) ab(32)
+>         table crop, statistic(total c_harvest_no_plant)
+>         
+>         *-> Total harvest- weight
+>         tablist crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
+>         generate flag_crop_wt= inlist(harvest_unit_1,"ounce","pound")
+>         tablist flag_crop_wt crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
+>         label variable flag_crop_wt "flags crops harvested by weight"
+>         
+>         generate c_harvest_total_wtoz= 0
+>         replace c_harvest_total_wtoz= .c if flag_crop_wt==0 
+>         label variable c_harvest_total_wtoz "total harvest- weight, ounces"
+>         
+>         generate c_harvest_total_wtoz_prev=0
+>         replace c_harvest_total_wtoz_prev= .c if flag_crop_wt==0 
+>         label variable c_harvest_total_wtoz_prev "total harvest- weight, ounces (previous sum in loop iteration)"
+>         
+>         tablist flag_crop_wt crop crop_code harvest_unit_1 c_harvest_total_wtoz, sort(v) ab(32) nolabel
+>         
+>         forval x=1/30 {
+>                 capture confirm string variable harvest_unit_`x'
+>                 if _rc==0 {
+>                         replace c_harvest_total_wtoz= c_harvest_total_wtoz + harvest_amnt_`x' if harvest_unit_`x'=="ounce" & flag_crop_wt==1
+>                         replace c_harvest_total_wtoz= c_harvest_total_wtoz + (harvest_amnt_`x' * 16) if harvest_unit_`x'=="pound" & flag_crop_wt==1
+>                         tablist flag_crop_wt crop c_harvest_total_wtoz harvest_amnt_`x' harvest_unit_`x' c_harvest_total_wtoz_prev, sort(v) ab(32)
+>                         *pause
+>                         replace c_harvest_total_wtoz_prev= c_harvest_total_wtoz if flag_crop_wt==1
+>                 }
+>                 else assert harvest_unit_`x'==.s // No harvest collected.
+>         } 
+>         assert c_harvest_total_wtoz==.c if flag_crop_wt==0 
+>         table crop if flag_crop_wt==1, statistic(total c_harvest_total_wtoz)
+>         drop c_harvest_total_wtoz_prev
+>         
+>         clonevar c_harvest_total_wtlb= c_harvest_total_wtoz
+>         label variable c_harvest_total_wtlb "total harvest- weight, pounds"
+>         replace c_harvest_total_wtlb= c_harvest_total_wtlb/16 if flag_crop_wt==1
+>         tablist flag_crop_wt crop sow_date c_harvest_total_wtlb c_harvest_total_wtoz, sort(v) ab(32)
+>         assert c_harvest_total_wtlb==.c if flag_crop_wt==0 
+>         table crop if flag_crop_wt==1, statistic(total c_harvest_total_wtlb)    
+> 
+>         *-> Total harvest- unit
+>         tablist crop crop_code harvest_unit_1 harvest_amnt_1, sort(v) ab(32) nolabel
+>         generate flag_crop_unit= inlist(harvest_unit_1,"unit")
+>         tablist flag_crop_unit crop crop_code harvest_unit_1, sort(v) ab(32) nolabel
+>         label variable flag_crop_unit "flags crops harvested by unit"
+>         
+>         generate c_harvest_total_unit= 0
+>         replace c_harvest_total_unit= .c if flag_crop_unit==0
+>         label variable c_harvest_total_unit "total harvest- units"
+>         
+>         generate c_harvest_total_unit_prev=0
+>         replace c_harvest_total_unit_prev= .c if flag_crop_unit==0
+>         label variable c_harvest_total_unit_prev "total harvest- units (previous sum in loop iteration)"
+>         
+>         tablist flag_crop_unit crop crop_code harvest_unit_1 c_harvest_total_unit, sort(v) ab(32) nolabel
+>         
+>         forval x=1/30 {
+>                 capture confirm string variable harvest_unit_`x'
+>                 if _rc==0 {
+>                         replace c_harvest_total_unit= c_harvest_total_unit + harvest_amnt_`x' if inlist(harvest_unit_`x',"unit") & flag_crop_unit==1
+>                         tablist flag_crop_unit crop c_harvest_total_unit harvest_amnt_`x' c_harvest_total_unit_prev, sort(v) ab(32)
+>                         *pause
+>                         replace c_harvest_total_unit_prev= c_harvest_total_unit if flag_crop_unit==1
+>                 } 
+>                 else assert harvest_unit_`x'==.s // No harvest collected.
+>         }
+>         assert c_harvest_total_unit==.c if flag_crop_unit==0
+>         table crop if flag_crop_unit==1, statistic(total c_harvest_no_plant c_harvest_total_unit)
+>         drop c_harvest_total_unit_prev
+>         
+>         tablist flag_* crop crop_code sow_type sow_date c_*, sort(v) ab(32) nolabel 
+>         
+>         /* Save TBF Market Garden 2025 data with analysis indicators */
+>         drop flag_*
+> */
+.         isid crop sow_date
+
+.         quietly compress
+
+.         save "$root\modified_data\tbf_market_garden_data_2025_clean_indicators.dta", replace
+(file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2025_clean_indicators.dta not found)
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_data_2025_clean_indicators.dta saved
+
+.         
+.         /* Descriptive statistics */
+.         des c_*
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+c_plant_num_s~d int     %9.0g                 number of seeds planted
+
+.         summarize c_*, detail
+
+                   number of seeds planted
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            6              6
+ 5%            8              6
+10%            8              8       Obs                  64
+25%         20.5              8       Sum of wgt.          64
+
+50%           45                      Mean           88.79688
+                        Largest       Std. dev.      167.8266
+75%           70            500
+90%          140            500       Variance       28165.78
+95%          500            700       Skewness       3.794788
+99%         1000           1000       Kurtosis       18.05536
+
+.         
+.    
+. log close _all
+      name:  indicators_34
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\34_tbf_data_2025_indicators.log
+  log type:  text
+ closed on:  25 Jan 2026, 14:42:38
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

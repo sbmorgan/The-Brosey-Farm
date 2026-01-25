@@ -1,0 +1,199 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  analysis_36
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2025_analysis.log
+  log type:  text
+ opened on:  25 Jan 2026, 15:14:17
+
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 36_tbf_data_2025_analyis.do                                                 ***
+. *** Project: TBF Market Garden 2025                                                                       ***
+. *** Purpose: Analyze TBF Market Garden 2025 crop and sales data                               ***    
+. ***                                                                                                                                                                               ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) MERGE SALES DATA TO CROP DATA                                                       ***
+. ***    II) ANALYSIS (TBD)                                                                     ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: January 25, 2026                                                                                              ***
+. *** Last date modified: January 25, 2026                                                      ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***                                                                                           ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. clear all
+
+. version 18.0
+
+. set more off
+
+. set varabbrev off
+
+. pause off
+
+. 
+. 
+. *=========================================================================================
+. * 0) SET UP CODE
+. *=========================================================================================      
+. 
+. /* Set seed */
+.         set seed 7142025
+
+.         
+. /* Define globals */
+. 
+.         *Root
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+
+.     adopath ++ "$root"
+  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+  [2]  (BASE)      "C:\Program Files\StataNow19\ado\base/"
+  [3]  (SITE)      "C:\Program Files\StataNow19\ado\site/"
+  [4]              "."
+  [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
+  [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
+  [7]  (OLDPLACE)  "c:\ado/"
+
+.     
+. 
+. *=========================================================================================
+. * I) MERGE SALES DATA TO CROP DATA
+. *=========================================================================================
+.         
+.         /* Load and merge cleaned crop and sales data with indicators */
+. 
+. /*      use "$root\modified_data\tbf_market_garden_sales_2025_clean_indicators.dta", clear
+>         tablist crop_code crop, sort(v)
+>         drop if crop_code==.m
+>         isid crop
+>         isid crop_code
+>         tempfile sales_2024_clean_indicators
+>         save `sales_2024_clean_indicators'
+> */      
+.         use "$root\modified_data\tbf_market_garden_data_2025_clean_indicators.dta", clear
+
+. /*
+>         merge m:1 crop_code using "`sales_2025_clean_indicators'", assert(1 3)
+>         tablist _merge crop crop_code, sort(v) ab(32) nolabel
+>         foreach var of varlist *sale_* {
+>                 capture confirm string variable `var'
+>                 if _rc==0 replace `var'= ".s" if _merge==1
+>                 else replace `var'= .s if _merge==1
+>         }
+>         drop _merge
+>         
+>         /* Save TBF 2025 Crop and Sales Analysis File */
+>         isid crop sow_date
+>         quietly compress
+>         save "$root\modified_data\tbf_market_garden_crop_sales_analysis.dta", replace
+>         
+>    
+> *=========================================================================================
+> * II) ANALYSIS (TBD)
+> *=========================================================================================  
+> 
+>         /* Harvest */
+>         foreach var of varlist c_harvest_no_plant c_harvest_total_wtoz c_harvest_total_wtlb c_harvest_total_unit {
+>                 display as input _n(2) "Harvest: `var'"
+>                 table crop , stat(sum `var')
+>         }
+>                 
+>         /* Sales */
+>         foreach var of varlist c_sale_value_crop_usd {
+>                 display as input _n(2) "Harvest: `var'"
+>                 table sale_location , stat(sum `var')
+>         }
+>         summarize c_sale_value_tot_usd, detail
+> */
+. 
+.         /* Planting */
+.         foreach var of varlist c_plant_num_seed {
+  2.                 display as input _n(2) "Planting: `var'"
+  3.                 table crop , stat(sum `var')
+  4.         }
+
+
+Planting: c_plant_num_seed
+
+----------------------------------------------
+                                      |  Total
+--------------------------------------+-------
+crop type                             |       
+  arrugula- rocket                    |      0
+  baby bok choi                       |     48
+  basil- sweet                        |     50
+  bean- beananza (bush)               |     72
+  bean- purple queen (bush)           |     84
+  beet- burpee golden                 |     50
+  beet- detroit red                   |    500
+  broccoli- calabrese                 |     20
+  carrot- kaleidoscope blend          |    500
+  carrot- short n sweet               |    700
+  carrot- touchon                     |  1,000
+  catnip                              |     30
+  celosia- forest fire                |     50
+  cilantro                            |      0
+  cilantro- calypse                   |      0
+  coleus- chocolate mint              |     12
+  coreopsis- ruby kiss                |     50
+  corn- ornamental, glass gem         |     92
+  dill- elephant                      |      0
+  eggplant- black beauty              |     15
+  eggplant- midnight moon hybrid      |     15
+  garlic- german extra hardy hardneck |    123
+  garlic- german red hardneck         |     21
+  garlic- german white hardneck       |     35
+  kale- lacinato                      |     20
+  lettuce- buttercrunch               |     80
+  lettuce- four seasons               |     80
+  lettuce- gourmet blend              |    470
+  lettuce- red salad bowl             |    470
+  marigold- queen sophia              |     30
+  marigold- red knight                |     45
+  mustard- florida broad leaf         |     24
+  mustard- tendergreen                |     24
+  pea- green arrow                    |      8
+  pea- mammoth melting sugar pod      |      8
+  pepper- anaheim                     |     25
+  pepper- califonia wonder            |     50
+  pepper- chocolate scotch bonet      |      8
+  pepper- jalapeno, early             |     50
+  pepper- poblano (ancho)             |     25
+  pepper- serrano chili               |     10
+  pepper- sugar rush stripey          |      8
+  pepper- sweet banana                |     25
+  pepper- tiger jalapeno              |      8
+  pumpkin- connecticut field          |      6
+  pumpkin- early sweet sugar pie      |     12
+  pumpkin- jack-o-latern              |      6
+  salvia- victoria                    |     50
+  snapgragon- opus red                |     45
+  spinach- bloomsdale long standing   |      0
+  sunflower- mammoth                  |     92
+  sweet corn- sweetness hybrid        |    216
+  tomato- amish                       |     40
+  tomato- cherry roma                 |     16
+  tomato- fresh salsa hybrid          |     45
+  tomato- roma                        |     60
+  zinna- amethyst treasure hybrid     |     45
+  zinnia- california giant            |     50
+  zinnia- classic                     |     20
+  zinnia- oklahoma (mixed colors)     |     45
+  Total                               |  5,683
+----------------------------------------------
+
+.                 
+.                 
+. 
+. log close _all
+      name:  analysis_36
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2025_analysis.log
+  log type:  text
+ closed on:  25 Jan 2026, 15:14:18
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

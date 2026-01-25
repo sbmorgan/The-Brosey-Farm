@@ -17,7 +17,7 @@
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: May 23, 2025  	   					 	     			                      ***
-*** Last date modified: June 12, 2025                                                         ***
+*** Last date modified: January 25, 2025                                                      ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***   This program will be used as an include file in 31_tbf_data_2025_cleaning.do            ***
@@ -26,7 +26,7 @@
 
 
 capture log close labels_22
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log", replace name(labels_22)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\32_tbf_data_2025_labels.log", replace name(labels_32)
 
 
 *=========================================================================================
@@ -93,4 +93,4 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 		label variable harvest_unit_`x' "unit of harvest: round `x'"
 	}
 	
-log close labels_22
+log close labels_32

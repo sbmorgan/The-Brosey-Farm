@@ -5,13 +5,13 @@
 *******************************************************************************/
 
 capture log close clean_01
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\23_tbf_sales_2024_cleaning.log", replace name(cleaning_23)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\33_tbf_sales_2025_cleaning.log", replace name(cleaning_33)
 
 
 *************************************************************************************************
 ***                                                                                           ***
 *** Program name: 33_tbf_sales_2025_cleaning.do                                               ***
-*** Project: TBF Market Garden 2024                                 				          ***
+*** Project: TBF Market Garden 2025                                 				          ***
 *** Purpose: Clean TBF Market Garden 2025 sales data                                          ***    
 ***																	 				          ***
 *** Contents:                                                       				          ***
@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: January 9, 2026  	   					 	     			                  ***
-*** Last date modified: January 9, 2026                                                       ***
+*** Last date modified: January 25, 2026                                                       ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -42,7 +42,7 @@ pause off
 *=========================================================================================	
 
 /* Set seed */
-	set seed 7122023
+	set seed 7142025
 	
 /* Define globals */
 

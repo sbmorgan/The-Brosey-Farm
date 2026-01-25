@@ -1,0 +1,934 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  cleaning_33
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\33_tbf_sales_2025_cleaning.log
+  log type:  text
+ opened on:  25 Jan 2026, 15:14:09
+
+. 
+. 
+. *************************************************************************************************
+. ***                                                                                           ***
+. *** Program name: 33_tbf_sales_2025_cleaning.do                                               ***
+. *** Project: TBF Market Garden 2025                                                                       ***
+. *** Purpose: Clean TBF Market Garden 2025 sales data                                          ***    
+. ***                                                                                                                                                                               ***
+. *** Contents:                                                                                             ***
+. ***    0) SET UP CODE                                                                                         ***
+. ***    I) LOAD RAW DATA                                                                       ***
+. ***    II) MANAGE VARIABLES                                                                   ***
+. ***    III) CLEAN DATA                                                                        ***
+. ***    IV) DESCRIPTIVE STATISTICS                                                             ***
+. ***                                                                                           ***
+. *** Authors: Seth B. Morgan                                                                               ***
+. *** Start date: January 9, 2026                                                                                                   ***
+. *** Last date modified: January 25, 2026                                                       ***
+. ***                                                                                           ***
+. *** Notes:                                                                                    ***
+. ***                                                                                           ***
+. ***                                                                                           ***
+. *************************************************************************************************
+. 
+. clear all
+
+. version 19.5
+
+. set more off
+
+. set varabbrev off
+
+. pause off
+
+. 
+. 
+. *=========================================================================================
+. * 0) SET UP CODE
+. *=========================================================================================      
+. 
+. /* Set seed */
+.         set seed 7142025
+
+.         
+. /* Define globals */
+. 
+.         *Root
+.         global root "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+
+.     adopath ++ "$root"
+  [1]              "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics"
+  [2]  (BASE)      "C:\Program Files\StataNow19\ado\base/"
+  [3]  (SITE)      "C:\Program Files\StataNow19\ado\site/"
+  [4]              "."
+  [5]  (PERSONAL)  "C:\Users\sethb\ado\personal/"
+  [6]  (PLUS)      "C:\Users\sethb\ado\plus/"
+  [7]  (OLDPLACE)  "c:\ado/"
+
+.     
+. 
+. *=========================================================================================
+. * I) LOAD RAW DATA 
+. *=========================================================================================
+. 
+.         /* Load raw data */
+.         import excel "$root\raw_data\Brosey Farming.xlsx", sheet("sales_2025") firstrow clear
+(13 vars, 330 obs)
+
+.         keep sale_date-sale_value_usd
+
+.         drop if missing(sale_date)
+(176 observations deleted)
+
+.         ds 
+sale_date     sale_locat~n  sale_locat~o  sale_locat~c  sale_item     sale_amnt     sale_unit     sale_value~d
+
+.         
+.         /* Save raw TBF Market Garden 2023 data */
+.         save "$root\raw_data\tbf_market_garden_sales_2025_raw.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_sales_2025_raw.dta saved
+
+.         export excel "$root\raw_data\tbf_market_garden_sales_2025_raw.xlsx", firstrow(variables) replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\raw_data\tbf_market_garden_sales_2025_raw.xlsx saved
+
+.         
+.    
+. *=========================================================================================
+. * II) MANAGE VARIABLES
+. *=========================================================================================  
+. 
+.         /* Add variable labels */
+.         label variable sale_date "sale date"
+
+.         label variable sale_location "sale location" 
+
+.         label variable sale_location_stall_no "sale location- stall number" 
+
+.         rename sale_location_stall_spec sale_location_stall_area
+
+.         label variable sale_location_stall_area "sale location- area" 
+
+.         label variable sale_item "sale item" 
+
+.         label variable sale_amnt "sale amount" 
+
+.         label variable sale_unit "sale amount unit" 
+
+.         label variable sale_value_usd "sale value (dollars)"
+
+.         
+.         /* Manage variable type */
+.         describe _all
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sale_date       str10   %10s                  sale date
+sale_location   str27   %27s                  sale location
+sale_location~o byte    %10.0g                sale location- stall number
+sale_location~a str18   %18s                  sale location- area
+sale_item       str31   %31s                  sale item
+sale_amnt       double  %10.0g                sale amount
+sale_unit       str5    %9s                   sale amount unit
+sale_value_usd  double  %10.0g                sale value (dollars)
+
+.         
+.         /* Manage sales date variable */
+.         foreach var of varlist *date* {
+  2.                 display as input "Variable: `var'"
+  3.                 tabulate `var', missing
+  4.                 capture confirm string var `var'
+  5.                 if _rc!=0 tostring `var', replace
+  6.                 generate `var'_year= substr(`var',1,4)
+  7.                 generate `var'_month= substr(`var',6,2)
+  8.                 generate `var'_day= substr(`var',9,2)
+  9.                 foreach var2 of varlist `var'_year `var'_month `var'_day {
+ 10.                         confirm string var `var2'
+ 11.                         destring `var2', replace
+ 12.                 }
+ 13.                 generate `var'_stata= mdy(`var'_month, `var'_day, `var'_year)
+ 14.                 drop `var'_year `var'_month `var'_day
+ 15.                 local varlab : variable label `var'
+ 16.                 label variable `var'_stata "`varlab'- stata"            
+ 17.                 format `var'_stata %td
+ 18.                 order `var'_stata, after(`var')
+ 19.         }
+Variable: sale_date
+
+  sale date |      Freq.     Percent        Cum.
+------------+-----------------------------------
+ 2025-06-21 |         17       11.04       11.04
+ 2025-06-28 |         12        7.79       18.83
+ 2025-07-12 |          2        1.30       20.13
+ 2025-07-26 |         23       14.94       35.06
+ 2025-07-30 |          1        0.65       35.71
+ 2025-08-02 |         25       16.23       51.95
+ 2025-08-06 |          1        0.65       52.60
+ 2025-08-09 |         26       16.88       69.48
+ 2025-08-13 |          1        0.65       70.13
+ 2025-08-16 |         18       11.69       81.82
+ 2025-08-23 |         28       18.18      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+sale_date_year: all characters numeric; replaced as int
+sale_date_month: all characters numeric; replaced as byte
+sale_date_day: all characters numeric; replaced as byte
+
+.         
+.         /* Convert categorical strings into categorical numerics */
+.         local cat_str_list sale_location sale_item sale_unit
+
+.         tab1 `cat_str_list', missing
+
+-> tabulation of sale_location  
+
+              sale location |      Freq.     Percent        Cum.
+----------------------------+-----------------------------------
+New Carlisle Farmers Market |        151       98.05       98.05
+The Brosey Farm: farm stand |          3        1.95      100.00
+----------------------------+-----------------------------------
+                      Total |        154      100.00
+
+-> tabulation of sale_item  
+
+                      sale item |      Freq.     Percent        Cum.
+--------------------------------+-----------------------------------
+                                |          3        1.95        1.95
+               Pelatonia basket |          1        0.65        2.60
+          bean- beananza (bush) |          9        5.84        8.44
+      bean- purple queen (bush) |          4        2.60       11.04
+            beet- burpee golden |         17       11.04       22.08
+              beet- detroit red |         30       19.48       41.56
+    black raspberry- jewel; jam |          1        0.65       42.21
+            broccoli- calabrese |          1        0.65       42.86
+          carrot- short n sweet |          7        4.55       47.40
+                         catnip |          1        0.65       48.05
+         coleus- chocolate mint |          2        1.30       49.35
+           coreopsis- ruby kiss |          1        0.65       50.00
+         eggplant- black beauty |          4        2.60       52.60
+ eggplant- midnight moon hybrid |         10        6.49       59.09
+                  garlic scapes |          2        1.30       60.39
+   hanging basket- spider plant |          1        0.65       61.04
+                 kale- lacinato |          1        0.65       61.69
+       pepper- califonia wonder |          5        3.25       64.94
+        pepper- jalapeno, early |         11        7.14       72.08
+        pepper- poblano (ancho) |          5        3.25       75.32
+          pepper- serrano chili |          4        2.60       77.92
+           pepper- sweet banana |         10        6.49       84.42
+   sweet corn- sweetness hybrid |          3        1.95       86.36
+          tomato jalapeno salsa |          4        2.60       88.96
+                   tomato sauce |          1        0.65       89.61
+                  tomato- amish |          2        1.30       90.91
+            tomato- cherry roma |          3        1.95       92.86
+     tomato- fresh salsa hybrid |          8        5.19       98.05
+                   tomato- roma |          1        0.65       98.70
+zinna- amethyst treasure hybrid |          1        0.65       99.35
+zinnia- oklahoma (mixed colors) |          1        0.65      100.00
+--------------------------------+-----------------------------------
+                          Total |        154      100.00
+
+-> tabulation of sale_unit  
+
+sale amount |
+       unit |      Freq.     Percent        Cum.
+------------+-----------------------------------
+            |          3        1.95        1.95
+      bunch |          2        1.30        3.25
+      large |          1        0.65        3.90
+      ounce |          4        2.60        6.49
+       pint |          7        4.55       11.04
+      pound |         23       14.94       25.97
+      quart |          1        0.65       26.62
+      small |          3        1.95       28.57
+       unit |        110       71.43      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+
+.         foreach var of varlist `cat_str_list' {
+  2.                 encode (`var'), generate(`var'_code)
+  3.                 tablist `var' `var'_code, sort(variable) ab(32)
+  4.                 tablist `var' `var'_code, sort(variable) nolabel ab(32)
+  5.                 local varlab : variable label `var'
+  6.                 label variable `var'_code "`varlab'- code"
+  7.                 order `var'_code, after(`var')
+  8.                 *pause
+.         }
+
+  +-------------------------------------------------------------------------------------------------+
+  |               sale_location            sale_location_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market   New Carlisle Farmers Market      151    98.05       151     98.05 |
+  | The Brosey Farm: farm stand   The Brosey Farm: farm stand        3     1.95       154    100.00 |
+  +-------------------------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------------------+
+  |               sale_location   sale_location_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market                    1      151    98.05       151     98.05 |
+  | The Brosey Farm: farm stand                    2        3     1.95       154    100.00 |
+  +----------------------------------------------------------------------------------------+
+
+  +---------------------------------------------------------------------------------------------------------+
+  |                       sale_item                    sale_item_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |---------------------------------------------------------------------------------------------------------|
+  |               beet- detroit red                 beet- detroit red       30    19.48        30     19.48 |
+  |             beet- burpee golden               beet- burpee golden       17    11.04        47     30.52 |
+  |         pepper- jalapeno, early           pepper- jalapeno, early       11     7.14        58     37.66 |
+  |            pepper- sweet banana              pepper- sweet banana       10     6.49        68     44.16 |
+  |  eggplant- midnight moon hybrid    eggplant- midnight moon hybrid       10     6.49        78     50.65 |
+  |---------------------------------------------------------------------------------------------------------|
+  |           bean- beananza (bush)             bean- beananza (bush)        9     5.84        87     56.49 |
+  |      tomato- fresh salsa hybrid        tomato- fresh salsa hybrid        8     5.19        95     61.69 |
+  |           carrot- short n sweet             carrot- short n sweet        7     4.55       102     66.23 |
+  |         pepper- poblano (ancho)           pepper- poblano (ancho)        5     3.25       107     69.48 |
+  |        pepper- califonia wonder          pepper- califonia wonder        5     3.25       112     72.73 |
+  |---------------------------------------------------------------------------------------------------------|
+  |       bean- purple queen (bush)         bean- purple queen (bush)        4     2.60       116     75.32 |
+  |          eggplant- black beauty            eggplant- black beauty        4     2.60       120     77.92 |
+  |           pepper- serrano chili             pepper- serrano chili        4     2.60       124     80.52 |
+  |           tomato jalapeno salsa             tomato jalapeno salsa        4     2.60       128     83.12 |
+  |    sweet corn- sweetness hybrid      sweet corn- sweetness hybrid        3     1.95       131     85.06 |
+  |---------------------------------------------------------------------------------------------------------|
+  |                                                                 .        3     1.95       134     87.01 |
+  |             tomato- cherry roma               tomato- cherry roma        3     1.95       137     88.96 |
+  |          coleus- chocolate mint            coleus- chocolate mint        2     1.30       139     90.26 |
+  |                   tomato- amish                     tomato- amish        2     1.30       141     91.56 |
+  |                   garlic scapes                     garlic scapes        2     1.30       143     92.86 |
+  |---------------------------------------------------------------------------------------------------------|
+  |     black raspberry- jewel; jam       black raspberry- jewel; jam        1     0.65       144     93.51 |
+  | zinna- amethyst treasure hybrid   zinna- amethyst treasure hybrid        1     0.65       145     94.16 |
+  |                          catnip                            catnip        1     0.65       146     94.81 |
+  |                    tomato- roma                      tomato- roma        1     0.65       147     95.45 |
+  |                  kale- lacinato                    kale- lacinato        1     0.65       148     96.10 |
+  |---------------------------------------------------------------------------------------------------------|
+  |             broccoli- calabrese               broccoli- calabrese        1     0.65       149     96.75 |
+  |                    tomato sauce                      tomato sauce        1     0.65       150     97.40 |
+  |    hanging basket- spider plant      hanging basket- spider plant        1     0.65       151     98.05 |
+  |            coreopsis- ruby kiss              coreopsis- ruby kiss        1     0.65       152     98.70 |
+  | zinnia- oklahoma (mixed colors)   zinnia- oklahoma (mixed colors)        1     0.65       153     99.35 |
+  |---------------------------------------------------------------------------------------------------------|
+  |                Pelatonia basket                  Pelatonia basket        1     0.65       154    100.00 |
+  +---------------------------------------------------------------------------------------------------------+
+
+  +----------------------------------------------------------------------------------------+
+  |                       sale_item   sale_item_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |----------------------------------------------------------------------------------------|
+  |               beet- detroit red                5       30    19.48        30     19.48 |
+  |             beet- burpee golden                4       17    11.04        47     30.52 |
+  |         pepper- jalapeno, early               18       11     7.14        58     37.66 |
+  |  eggplant- midnight moon hybrid               13       10     6.49        68     44.16 |
+  |            pepper- sweet banana               21       10     6.49        78     50.65 |
+  |----------------------------------------------------------------------------------------|
+  |           bean- beananza (bush)                2        9     5.84        87     56.49 |
+  |      tomato- fresh salsa hybrid               27        8     5.19        95     61.69 |
+  |           carrot- short n sweet                8        7     4.55       102     66.23 |
+  |         pepper- poblano (ancho)               19        5     3.25       107     69.48 |
+  |        pepper- califonia wonder               17        5     3.25       112     72.73 |
+  |----------------------------------------------------------------------------------------|
+  |          eggplant- black beauty               12        4     2.60       116     75.32 |
+  |           tomato jalapeno salsa               23        4     2.60       120     77.92 |
+  |       bean- purple queen (bush)                3        4     2.60       124     80.52 |
+  |           pepper- serrano chili               20        4     2.60       128     83.12 |
+  |                                                .        3     1.95       131     85.06 |
+  |----------------------------------------------------------------------------------------|
+  |    sweet corn- sweetness hybrid               22        3     1.95       134     87.01 |
+  |             tomato- cherry roma               26        3     1.95       137     88.96 |
+  |                   garlic scapes               14        2     1.30       139     90.26 |
+  |                   tomato- amish               25        2     1.30       141     91.56 |
+  |          coleus- chocolate mint               10        2     1.30       143     92.86 |
+  |----------------------------------------------------------------------------------------|
+  |             broccoli- calabrese                7        1     0.65       144     93.51 |
+  |                  kale- lacinato               16        1     0.65       145     94.16 |
+  |    hanging basket- spider plant               15        1     0.65       146     94.81 |
+  |                    tomato sauce               24        1     0.65       147     95.45 |
+  |     black raspberry- jewel; jam                6        1     0.65       148     96.10 |
+  |----------------------------------------------------------------------------------------|
+  |                    tomato- roma               28        1     0.65       149     96.75 |
+  | zinnia- oklahoma (mixed colors)               30        1     0.65       150     97.40 |
+  |                Pelatonia basket                1        1     0.65       151     98.05 |
+  |                          catnip                9        1     0.65       152     98.70 |
+  |            coreopsis- ruby kiss               11        1     0.65       153     99.35 |
+  |----------------------------------------------------------------------------------------|
+  | zinna- amethyst treasure hybrid               29        1     0.65       154    100.00 |
+  +----------------------------------------------------------------------------------------+
+
+  +------------------------------------------------------------------+
+  | sale_unit   sale_unit_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------|
+  |      unit             unit      110    71.43       110     71.43 |
+  |     pound            pound       23    14.94       133     86.36 |
+  |      pint             pint        7     4.55       140     90.91 |
+  |     ounce            ounce        4     2.60       144     93.51 |
+  |                          .        3     1.95       147     95.45 |
+  |------------------------------------------------------------------|
+  |     small            small        3     1.95       150     97.40 |
+  |     bunch            bunch        2     1.30       152     98.70 |
+  |     large            large        1     0.65       153     99.35 |
+  |     quart            quart        1     0.65       154    100.00 |
+  +------------------------------------------------------------------+
+
+  +------------------------------------------------------------------+
+  | sale_unit   sale_unit_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |------------------------------------------------------------------|
+  |      unit                8      110    71.43       110     71.43 |
+  |     pound                5       23    14.94       133     86.36 |
+  |      pint                4        7     4.55       140     90.91 |
+  |     ounce                3        4     2.60       144     93.51 |
+  |     small                7        3     1.95       147     95.45 |
+  |------------------------------------------------------------------|
+  |                          .        3     1.95       150     97.40 |
+  |     bunch                1        2     1.30       152     98.70 |
+  |     quart                6        1     0.65       153     99.35 |
+  |     large                2        1     0.65       154    100.00 |
+  +------------------------------------------------------------------+
+
+. 
+.     
+. *=========================================================================================
+. * III) CLEAN DATA
+. *=========================================================================================     
+. 
+.         /* Clean missing values */
+.         foreach var of varlist sale_location_stall_no sale_item sale_item_code sale_amnt sale_unit sale_unit_code {
+  2.                 display as input "Variable: `var'"
+  3.                 capture confirm numeric variable `var'
+  4.                 if _rc==0 {
+  5.                         assert `var'==. if sale_location== "The Brosey Farm: farm stand"
+  6.                         replace `var'=.s if sale_location== "The Brosey Farm: farm stand"
+  7.                 }               
+  8.                 else {
+  9.                         assert `var'=="" if sale_location== "The Brosey Farm: farm stand"
+ 10.                         replace `var'=".s" if sale_location== "The Brosey Farm: farm stand"                     
+ 11.                 }
+ 12.         }
+Variable: sale_location_stall_no
+(3 real changes made, 3 to missing)
+Variable: sale_item
+(3 real changes made)
+Variable: sale_item_code
+(3 real changes made, 3 to missing)
+Variable: sale_amnt
+(3 real changes made, 3 to missing)
+Variable: sale_unit
+(3 real changes made)
+Variable: sale_unit_code
+(3 real changes made, 3 to missing)
+
+.         
+.         tablist sale_location sale_location_stall_no sale_location_stall_area, sort(variable) ab(32)
+
+  +-----------------------------------------------------------------------------------------------------------------------+
+  |               sale_location   sale_location_stall_no   sale_location_stall_area   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------------------------------------------|
+  | New Carlisle Farmers Market                        .         north, middle/left      119    77.27       119     77.27 |
+  | New Carlisle Farmers Market                        .              north, middle       32    20.78       151     98.05 |
+  | The Brosey Farm: farm stand                       .s                   roadside        2     1.30       153     99.35 |
+  | The Brosey Farm: farm stand                       .s             roadside/order        1     0.65       154    100.00 |
+  +-----------------------------------------------------------------------------------------------------------------------+
+
+.         replace sale_location_stall_no= .m if sale_location_stall_no==.
+(151 real changes made, 151 to missing)
+
+.         replace sale_location_stall_area= ".m" if sale_location_stall_area==""
+(0 real changes made)
+
+.         
+.         foreach var of varlist sale_amnt sale_unit sale_unit_code {
+  2.                 capture confirm numeric variable `var'
+  3.                 if _rc==0 {
+  4.                         assert `var'== . if sale_item=="miscellaneous"
+  5.                         replace `var' = .m if sale_item=="miscellaneous"
+  6.                 }
+  7.                 else {
+  8.                         assert `var'== "" if sale_item=="miscellaneous"
+  9.                         replace `var' = ".m" if sale_item=="miscellaneous"
+ 10.                 }
+ 11.         }
+(null assertion)
+(0 real changes made)
+(null assertion)
+(0 real changes made)
+(null assertion)
+(0 real changes made)
+
+.         replace sale_amnt=.m if sale_amnt==.
+(0 real changes made)
+
+.         
+.         foreach var of varlist _all {
+  2.                 display as input "variable: `var'"
+  3.                 tabulate `var', missing
+  4.                 capture confirm numeric variable `var'
+  5.                 if _rc==0 assert `var' !=.
+  6.                 else assert `var' !=""
+  7.         }       
+variable: sale_date
+
+  sale date |      Freq.     Percent        Cum.
+------------+-----------------------------------
+ 2025-06-21 |         17       11.04       11.04
+ 2025-06-28 |         12        7.79       18.83
+ 2025-07-12 |          2        1.30       20.13
+ 2025-07-26 |         23       14.94       35.06
+ 2025-07-30 |          1        0.65       35.71
+ 2025-08-02 |         25       16.23       51.95
+ 2025-08-06 |          1        0.65       52.60
+ 2025-08-09 |         26       16.88       69.48
+ 2025-08-13 |          1        0.65       70.13
+ 2025-08-16 |         18       11.69       81.82
+ 2025-08-23 |         28       18.18      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+variable: sale_date_stata
+
+ sale date- |
+      stata |      Freq.     Percent        Cum.
+------------+-----------------------------------
+  21jun2025 |         17       11.04       11.04
+  28jun2025 |         12        7.79       18.83
+  12jul2025 |          2        1.30       20.13
+  26jul2025 |         23       14.94       35.06
+  30jul2025 |          1        0.65       35.71
+  02aug2025 |         25       16.23       51.95
+  06aug2025 |          1        0.65       52.60
+  09aug2025 |         26       16.88       69.48
+  13aug2025 |          1        0.65       70.13
+  16aug2025 |         18       11.69       81.82
+  23aug2025 |         28       18.18      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+variable: sale_location
+
+              sale location |      Freq.     Percent        Cum.
+----------------------------+-----------------------------------
+New Carlisle Farmers Market |        151       98.05       98.05
+The Brosey Farm: farm stand |          3        1.95      100.00
+----------------------------+-----------------------------------
+                      Total |        154      100.00
+variable: sale_location_code
+
+        sale location- code |      Freq.     Percent        Cum.
+----------------------------+-----------------------------------
+New Carlisle Farmers Market |        151       98.05       98.05
+The Brosey Farm: farm stand |          3        1.95      100.00
+----------------------------+-----------------------------------
+                      Total |        154      100.00
+variable: sale_location_stall_no
+
+       sale |
+  location- |
+      stall |
+     number |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .m |        151       98.05       98.05
+         .s |          3        1.95      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+variable: sale_location_stall_area
+
+    sale location- |
+              area |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+     north, middle |         32       20.78       20.78
+north, middle/left |        119       77.27       98.05
+          roadside |          2        1.30       99.35
+    roadside/order |          1        0.65      100.00
+-------------------+-----------------------------------
+             Total |        154      100.00
+variable: sale_item
+
+                      sale item |      Freq.     Percent        Cum.
+--------------------------------+-----------------------------------
+                             .s |          3        1.95        1.95
+               Pelatonia basket |          1        0.65        2.60
+          bean- beananza (bush) |          9        5.84        8.44
+      bean- purple queen (bush) |          4        2.60       11.04
+            beet- burpee golden |         17       11.04       22.08
+              beet- detroit red |         30       19.48       41.56
+    black raspberry- jewel; jam |          1        0.65       42.21
+            broccoli- calabrese |          1        0.65       42.86
+          carrot- short n sweet |          7        4.55       47.40
+                         catnip |          1        0.65       48.05
+         coleus- chocolate mint |          2        1.30       49.35
+           coreopsis- ruby kiss |          1        0.65       50.00
+         eggplant- black beauty |          4        2.60       52.60
+ eggplant- midnight moon hybrid |         10        6.49       59.09
+                  garlic scapes |          2        1.30       60.39
+   hanging basket- spider plant |          1        0.65       61.04
+                 kale- lacinato |          1        0.65       61.69
+       pepper- califonia wonder |          5        3.25       64.94
+        pepper- jalapeno, early |         11        7.14       72.08
+        pepper- poblano (ancho) |          5        3.25       75.32
+          pepper- serrano chili |          4        2.60       77.92
+           pepper- sweet banana |         10        6.49       84.42
+   sweet corn- sweetness hybrid |          3        1.95       86.36
+          tomato jalapeno salsa |          4        2.60       88.96
+                   tomato sauce |          1        0.65       89.61
+                  tomato- amish |          2        1.30       90.91
+            tomato- cherry roma |          3        1.95       92.86
+     tomato- fresh salsa hybrid |          8        5.19       98.05
+                   tomato- roma |          1        0.65       98.70
+zinna- amethyst treasure hybrid |          1        0.65       99.35
+zinnia- oklahoma (mixed colors) |          1        0.65      100.00
+--------------------------------+-----------------------------------
+                          Total |        154      100.00
+variable: sale_item_code
+
+                sale item- code |      Freq.     Percent        Cum.
+--------------------------------+-----------------------------------
+               Pelatonia basket |          1        0.65        0.65
+          bean- beananza (bush) |          9        5.84        6.49
+      bean- purple queen (bush) |          4        2.60        9.09
+            beet- burpee golden |         17       11.04       20.13
+              beet- detroit red |         30       19.48       39.61
+    black raspberry- jewel; jam |          1        0.65       40.26
+            broccoli- calabrese |          1        0.65       40.91
+          carrot- short n sweet |          7        4.55       45.45
+                         catnip |          1        0.65       46.10
+         coleus- chocolate mint |          2        1.30       47.40
+           coreopsis- ruby kiss |          1        0.65       48.05
+         eggplant- black beauty |          4        2.60       50.65
+ eggplant- midnight moon hybrid |         10        6.49       57.14
+                  garlic scapes |          2        1.30       58.44
+   hanging basket- spider plant |          1        0.65       59.09
+                 kale- lacinato |          1        0.65       59.74
+       pepper- califonia wonder |          5        3.25       62.99
+        pepper- jalapeno, early |         11        7.14       70.13
+        pepper- poblano (ancho) |          5        3.25       73.38
+          pepper- serrano chili |          4        2.60       75.97
+           pepper- sweet banana |         10        6.49       82.47
+   sweet corn- sweetness hybrid |          3        1.95       84.42
+          tomato jalapeno salsa |          4        2.60       87.01
+                   tomato sauce |          1        0.65       87.66
+                  tomato- amish |          2        1.30       88.96
+            tomato- cherry roma |          3        1.95       90.91
+     tomato- fresh salsa hybrid |          8        5.19       96.10
+                   tomato- roma |          1        0.65       96.75
+zinna- amethyst treasure hybrid |          1        0.65       97.40
+zinnia- oklahoma (mixed colors) |          1        0.65       98.05
+                             .s |          3        1.95      100.00
+--------------------------------+-----------------------------------
+                          Total |        154      100.00
+variable: sale_amnt
+
+sale amount |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .5 |         10        6.49        6.49
+          1 |         52       33.77       40.26
+        1.5 |          1        0.65       40.91
+          2 |         24       15.58       56.49
+          3 |         14        9.09       65.58
+          4 |         15        9.74       75.32
+          5 |         13        8.44       83.77
+          6 |          2        1.30       85.06
+          7 |          4        2.60       87.66
+          8 |          6        3.90       91.56
+         10 |          9        5.84       97.40
+         12 |          1        0.65       98.05
+         .s |          3        1.95      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+variable: sale_unit
+
+sale amount |
+       unit |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .s |          3        1.95        1.95
+      bunch |          2        1.30        3.25
+      large |          1        0.65        3.90
+      ounce |          4        2.60        6.49
+       pint |          7        4.55       11.04
+      pound |         23       14.94       25.97
+      quart |          1        0.65       26.62
+      small |          3        1.95       28.57
+       unit |        110       71.43      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+variable: sale_unit_code
+
+sale amount |
+ unit- code |      Freq.     Percent        Cum.
+------------+-----------------------------------
+      bunch |          2        1.30        1.30
+      large |          1        0.65        1.95
+      ounce |          4        2.60        4.55
+       pint |          7        4.55        9.09
+      pound |         23       14.94       24.03
+      quart |          1        0.65       24.68
+      small |          3        1.95       26.62
+       unit |        110       71.43       98.05
+         .s |          3        1.95      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+variable: sale_value_usd
+
+ sale value |
+  (dollars) |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         .2 |          9        5.84        5.84
+         .4 |          3        1.95        7.79
+         .5 |          4        2.60       10.39
+          1 |         21       13.64       24.03
+          2 |         28       18.18       42.21
+        2.5 |          8        5.19       47.40
+          3 |         23       14.94       62.34
+          4 |          5        3.25       65.58
+          5 |         29       18.83       84.42
+          6 |          2        1.30       85.71
+          7 |          1        0.65       86.36
+          8 |          1        0.65       87.01
+         10 |         10        6.49       93.51
+         12 |          1        0.65       94.16
+         15 |          1        0.65       94.81
+         18 |          1        0.65       95.45
+         25 |          1        0.65       96.10
+         29 |          1        0.65       96.75
+         30 |          3        1.95       98.70
+         32 |          1        0.65       99.35
+         33 |          1        0.65      100.00
+------------+-----------------------------------
+      Total |        154      100.00
+
+.                 
+.         sort sale_date sale_location sale_item sale_amnt sale_unit sale_value_usd       
+
+.         bysort sale_date sale_location (sale_item sale_amnt sale_unit sale_value_usd): generate sale_code= _n
+
+.         tablist sale_date sale_location sale_item sale_amnt sale_unit sale_value_usd sale_code, sort(v) ab(32)
+
+  +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  |  sale_date                 sale_location                         sale_item   sale_amnt   sale_unit   sale_value_usd   sale_code   _Freq_   _Perc_   _CFreq_   _CPerc_ |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-06-21   New Carlisle Farmers Market               beet- burpee golden           7        unit               10           1        1     0.65         1      0.65 |
+  | 2025-06-21   New Carlisle Farmers Market               beet- burpee golden           8        unit               10           2        1     0.65         2      1.30 |
+  | 2025-06-21   New Carlisle Farmers Market                 beet- detroit red           3        unit                5           3        1     0.65         3      1.95 |
+  | 2025-06-21   New Carlisle Farmers Market                 beet- detroit red           3        unit                5           4        1     0.65         4      2.60 |
+  | 2025-06-21   New Carlisle Farmers Market                 beet- detroit red           3        unit                5           5        1     0.65         5      3.25 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-06-21   New Carlisle Farmers Market                 beet- detroit red           5        unit                5           6        1     0.65         6      3.90 |
+  | 2025-06-21   New Carlisle Farmers Market                 beet- detroit red           8        unit               10           7        1     0.65         7      4.55 |
+  | 2025-06-21   New Carlisle Farmers Market                 beet- detroit red           8        unit               10           8        1     0.65         8      5.19 |
+  | 2025-06-21   New Carlisle Farmers Market                            catnip           2       small                5           9        1     0.65         9      5.84 |
+  | 2025-06-21   New Carlisle Farmers Market            coleus- chocolate mint           1       large               10          10        1     0.65        10      6.49 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-06-21   New Carlisle Farmers Market            coleus- chocolate mint           1        unit                3          11        1     0.65        11      7.14 |
+  | 2025-06-21   New Carlisle Farmers Market              coreopsis- ruby kiss           1       small                3          12        1     0.65        12      7.79 |
+  | 2025-06-21   New Carlisle Farmers Market                     garlic scapes           1       bunch                5          13        1     0.65        13      8.44 |
+  | 2025-06-21   New Carlisle Farmers Market                    kale- lacinato           1        unit                5          14        1     0.65        14      9.09 |
+  | 2025-06-21   New Carlisle Farmers Market             tomato jalapeno salsa           1        pint               10          15        1     0.65        15      9.74 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-06-21   New Carlisle Farmers Market   zinna- amethyst treasure hybrid           1        unit                4          16        1     0.65        16     10.39 |
+  | 2025-06-21   New Carlisle Farmers Market   zinnia- oklahoma (mixed colors)           2        unit                8          17        1     0.65        17     11.04 |
+  | 2025-06-28   New Carlisle Farmers Market               beet- burpee golden           2        unit                5           1        1     0.65        18     11.69 |
+  | 2025-06-28   New Carlisle Farmers Market               beet- burpee golden           3        unit                5           2        1     0.65        19     12.34 |
+  | 2025-06-28   New Carlisle Farmers Market               beet- burpee golden           4        unit                5           3        1     0.65        20     12.99 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-06-28   New Carlisle Farmers Market                 beet- detroit red           3        unit                5           4        1     0.65        21     13.64 |
+  | 2025-06-28   New Carlisle Farmers Market                 beet- detroit red           4        unit                5           5        1     0.65        22     14.29 |
+  | 2025-06-28   New Carlisle Farmers Market                 beet- detroit red           4        unit                5           6        1     0.65        23     14.94 |
+  | 2025-06-28   New Carlisle Farmers Market                 beet- detroit red           4        unit                5           7        1     0.65        24     15.58 |
+  | 2025-06-28   New Carlisle Farmers Market                 beet- detroit red           5        unit                5           8        1     0.65        25     16.23 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-06-28   New Carlisle Farmers Market               broccoli- calabrese           2       small                5           9        1     0.65        26     16.88 |
+  | 2025-06-28   New Carlisle Farmers Market                     garlic scapes           1       bunch                5          10        1     0.65        27     17.53 |
+  | 2025-06-28   New Carlisle Farmers Market      hanging basket- spider plant           2        unit               25          11        1     0.65        28     18.18 |
+  | 2025-06-28   New Carlisle Farmers Market             tomato jalapeno salsa           1        pint               10          12        1     0.65        29     18.83 |
+  | 2025-07-12   New Carlisle Farmers Market                 beet- detroit red           4        unit                5           1        1     0.65        30     19.48 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-07-12   New Carlisle Farmers Market                 beet- detroit red          10        unit               10           2        1     0.65        31     20.13 |
+  | 2025-07-26   New Carlisle Farmers Market               beet- burpee golden           2        unit                2           1        1     0.65        32     20.78 |
+  | 2025-07-26   New Carlisle Farmers Market               beet- burpee golden           3        unit              2.5           2        1     0.65        33     21.43 |
+  | 2025-07-26   New Carlisle Farmers Market               beet- burpee golden           4        unit              2.5           3        1     0.65        34     22.08 |
+  | 2025-07-26   New Carlisle Farmers Market               beet- burpee golden           4        unit              2.5           4        1     0.65        35     22.73 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-07-26   New Carlisle Farmers Market               beet- burpee golden           8        unit                5           5        1     0.65        36     23.38 |
+  | 2025-07-26   New Carlisle Farmers Market                 beet- detroit red           1        unit                1           6        1     0.65        37     24.03 |
+  | 2025-07-26   New Carlisle Farmers Market                 beet- detroit red           2        unit                2           7        1     0.65        38     24.68 |
+  | 2025-07-26   New Carlisle Farmers Market                 beet- detroit red           3        unit              2.5           8        1     0.65        39     25.32 |
+  | 2025-07-26   New Carlisle Farmers Market                 beet- detroit red           4        unit              2.5           9        1     0.65        40     25.97 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-07-26   New Carlisle Farmers Market                 beet- detroit red           4        unit              2.5          10        1     0.65        41     26.62 |
+  | 2025-07-26   New Carlisle Farmers Market                 beet- detroit red           8        unit                5          11        1     0.65        42     27.27 |
+  | 2025-07-26   New Carlisle Farmers Market                 beet- detroit red          12        unit               10          12        1     0.65        43     27.92 |
+  | 2025-07-26   New Carlisle Farmers Market             carrot- short n sweet           2        unit                1          13        1     0.65        44     28.57 |
+  | 2025-07-26   New Carlisle Farmers Market    eggplant- midnight moon hybrid           1        unit                3          14        1     0.65        45     29.22 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-07-26   New Carlisle Farmers Market    eggplant- midnight moon hybrid           1        unit                3          15        1     0.65        46     29.87 |
+  | 2025-07-26   New Carlisle Farmers Market          pepper- califonia wonder           4        unit                2          16        1     0.65        47     30.52 |
+  | 2025-07-26   New Carlisle Farmers Market           pepper- jalapeno, early           5       ounce                2          17        1     0.65        48     31.17 |
+  | 2025-07-26   New Carlisle Farmers Market           pepper- jalapeno, early           5       ounce                2          18        1     0.65        49     31.82 |
+  | 2025-07-26   New Carlisle Farmers Market              pepper- sweet banana           5       ounce                2          19        1     0.65        50     32.47 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-07-26   New Carlisle Farmers Market      sweet corn- sweetness hybrid           3        unit                3          20        1     0.65        51     33.12 |
+  | 2025-07-26   New Carlisle Farmers Market      sweet corn- sweetness hybrid           6        unit                5          21        1     0.65        52     33.77 |
+  | 2025-07-26   New Carlisle Farmers Market               tomato- cherry roma           1        pint                4          22        1     0.65        53     34.42 |
+  | 2025-07-26   New Carlisle Farmers Market        tomato- fresh salsa hybrid           8       ounce                1          23        1     0.65        54     35.06 |
+  | 2025-07-30   The Brosey Farm: farm stand                                .s          .s          .s               33           1        1     0.65        55     35.71 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-02   New Carlisle Farmers Market             bean- beananza (bush)          .5       pound                2           1        1     0.65        56     36.36 |
+  | 2025-08-02   New Carlisle Farmers Market             bean- beananza (bush)          .5       pound                2           2        1     0.65        57     37.01 |
+  | 2025-08-02   New Carlisle Farmers Market             bean- beananza (bush)           1       pound                4           3        1     0.65        58     37.66 |
+  | 2025-08-02   New Carlisle Farmers Market             bean- beananza (bush)           1       pound                5           4        1     0.65        59     38.31 |
+  | 2025-08-02   New Carlisle Farmers Market         bean- purple queen (bush)          .5       pound                2           5        1     0.65        60     38.96 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-02   New Carlisle Farmers Market         bean- purple queen (bush)          .5       pound                2           6        1     0.65        61     39.61 |
+  | 2025-08-02   New Carlisle Farmers Market               beet- burpee golden           1        unit                1           7        1     0.65        62     40.26 |
+  | 2025-08-02   New Carlisle Farmers Market               beet- burpee golden           3        unit                3           8        1     0.65        63     40.91 |
+  | 2025-08-02   New Carlisle Farmers Market               beet- burpee golden           4        unit              2.5           9        1     0.65        64     41.56 |
+  | 2025-08-02   New Carlisle Farmers Market                 beet- detroit red           1        unit                1          10        1     0.65        65     42.21 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-02   New Carlisle Farmers Market                 beet- detroit red           3        unit                3          11        1     0.65        66     42.86 |
+  | 2025-08-02   New Carlisle Farmers Market                 beet- detroit red           4        unit              2.5          12        1     0.65        67     43.51 |
+  | 2025-08-02   New Carlisle Farmers Market                 beet- detroit red           7        unit                6          13        1     0.65        68     44.16 |
+  | 2025-08-02   New Carlisle Farmers Market    eggplant- midnight moon hybrid           1        unit                3          14        1     0.65        69     44.81 |
+  | 2025-08-02   New Carlisle Farmers Market    eggplant- midnight moon hybrid           1        unit                3          15        1     0.65        70     45.45 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-02   New Carlisle Farmers Market          pepper- califonia wonder           2        unit                1          16        1     0.65        71     46.10 |
+  | 2025-08-02   New Carlisle Farmers Market           pepper- jalapeno, early           5        unit                1          17        1     0.65        72     46.75 |
+  | 2025-08-02   New Carlisle Farmers Market           pepper- jalapeno, early           5        unit                1          18        1     0.65        73     47.40 |
+  | 2025-08-02   New Carlisle Farmers Market      sweet corn- sweetness hybrid           5        unit                5          19        1     0.65        74     48.05 |
+  | 2025-08-02   New Carlisle Farmers Market             tomato jalapeno salsa           2        pint               18          20        1     0.65        75     48.70 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-02   New Carlisle Farmers Market                     tomato- amish           1       pound                3          21        1     0.65        76     49.35 |
+  | 2025-08-02   New Carlisle Farmers Market               tomato- cherry roma          .5        pint                2          22        1     0.65        77     50.00 |
+  | 2025-08-02   New Carlisle Farmers Market        tomato- fresh salsa hybrid           1       pound                3          23        1     0.65        78     50.65 |
+  | 2025-08-02   New Carlisle Farmers Market        tomato- fresh salsa hybrid           1       pound                3          24        1     0.65        79     51.30 |
+  | 2025-08-02   New Carlisle Farmers Market        tomato- fresh salsa hybrid           1       pound                3          25        1     0.65        80     51.95 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-06   The Brosey Farm: farm stand                                .s          .s          .s               32           1        1     0.65        81     52.60 |
+  | 2025-08-09   New Carlisle Farmers Market             bean- beananza (bush)          .5       pound                2           1        1     0.65        82     53.25 |
+  | 2025-08-09   New Carlisle Farmers Market             bean- beananza (bush)           1       pound                4           2        1     0.65        83     53.90 |
+  | 2025-08-09   New Carlisle Farmers Market             bean- beananza (bush)         1.5       pound                6           3        1     0.65        84     54.55 |
+  | 2025-08-09   New Carlisle Farmers Market               beet- burpee golden           1        unit                1           4        1     0.65        85     55.19 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-09   New Carlisle Farmers Market                 beet- detroit red           2        unit                2           5        1     0.65        86     55.84 |
+  | 2025-08-09   New Carlisle Farmers Market                 beet- detroit red           2        unit                2           6        1     0.65        87     56.49 |
+  | 2025-08-09   New Carlisle Farmers Market                 beet- detroit red          10        unit               10           7        1     0.65        88     57.14 |
+  | 2025-08-09   New Carlisle Farmers Market             carrot- short n sweet           3        unit                2           8        1     0.65        89     57.79 |
+  | 2025-08-09   New Carlisle Farmers Market             carrot- short n sweet           6        unit                4           9        1     0.65        90     58.44 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-09   New Carlisle Farmers Market             carrot- short n sweet           7        unit                3          10        1     0.65        91     59.09 |
+  | 2025-08-09   New Carlisle Farmers Market            eggplant- black beauty           1        unit                3          11        1     0.65        92     59.74 |
+  | 2025-08-09   New Carlisle Farmers Market    eggplant- midnight moon hybrid           1        unit                3          12        1     0.65        93     60.39 |
+  | 2025-08-09   New Carlisle Farmers Market    eggplant- midnight moon hybrid           2        unit                5          13        1     0.65        94     61.04 |
+  | 2025-08-09   New Carlisle Farmers Market          pepper- califonia wonder           4        unit                2          14        1     0.65        95     61.69 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-09   New Carlisle Farmers Market           pepper- jalapeno, early          10        unit                1          15        1     0.65        96     62.34 |
+  | 2025-08-09   New Carlisle Farmers Market           pepper- jalapeno, early          10        unit                1          16        1     0.65        97     62.99 |
+  | 2025-08-09   New Carlisle Farmers Market           pepper- jalapeno, early          10        unit                1          17        1     0.65        98     63.64 |
+  | 2025-08-09   New Carlisle Farmers Market           pepper- jalapeno, early          10        unit                1          18        1     0.65        99     64.29 |
+  | 2025-08-09   New Carlisle Farmers Market           pepper- poblano (ancho)           1        unit               .5          19        1     0.65       100     64.94 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-09   New Carlisle Farmers Market             pepper- serrano chili           7        unit                1          20        1     0.65       101     65.58 |
+  | 2025-08-09   New Carlisle Farmers Market              pepper- sweet banana           2        unit               .5          21        1     0.65       102     66.23 |
+  | 2025-08-09   New Carlisle Farmers Market              pepper- sweet banana           5        unit                1          22        1     0.65       103     66.88 |
+  | 2025-08-09   New Carlisle Farmers Market              pepper- sweet banana           5        unit                1          23        1     0.65       104     67.53 |
+  | 2025-08-09   New Carlisle Farmers Market        tomato- fresh salsa hybrid           1       pound                3          24        1     0.65       105     68.18 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-09   New Carlisle Farmers Market        tomato- fresh salsa hybrid           1       pound                7          25        1     0.65       106     68.83 |
+  | 2025-08-09   New Carlisle Farmers Market        tomato- fresh salsa hybrid           4       pound               12          26        1     0.65       107     69.48 |
+  | 2025-08-13   The Brosey Farm: farm stand                                .s          .s          .s               29           1        1     0.65       108     70.13 |
+  | 2025-08-16   New Carlisle Farmers Market                  Pelatonia basket           1        unit               30           1        1     0.65       109     70.78 |
+  | 2025-08-16   New Carlisle Farmers Market             bean- beananza (bush)          .5       pound                2           2        1     0.65       110     71.43 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-16   New Carlisle Farmers Market             bean- beananza (bush)          .5       pound                2           3        1     0.65       111     72.08 |
+  | 2025-08-16   New Carlisle Farmers Market         bean- purple queen (bush)          .5       pound                2           4        1     0.65       112     72.73 |
+  | 2025-08-16   New Carlisle Farmers Market               beet- burpee golden           3        unit                2           5        1     0.65       113     73.38 |
+  | 2025-08-16   New Carlisle Farmers Market                 beet- detroit red          10        unit                3           6        1     0.65       114     74.03 |
+  | 2025-08-16   New Carlisle Farmers Market       black raspberry- jewel; jam           2        unit               30           7        1     0.65       115     74.68 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-16   New Carlisle Farmers Market             carrot- short n sweet           3        unit                2           8        1     0.65       116     75.32 |
+  | 2025-08-16   New Carlisle Farmers Market             carrot- short n sweet          10        unit                5           9        1     0.65       117     75.97 |
+  | 2025-08-16   New Carlisle Farmers Market            eggplant- black beauty           1        unit                2          10        1     0.65       118     76.62 |
+  | 2025-08-16   New Carlisle Farmers Market            eggplant- black beauty           1        unit                3          11        1     0.65       119     77.27 |
+  | 2025-08-16   New Carlisle Farmers Market           pepper- jalapeno, early           1        unit               .4          12        1     0.65       120     77.92 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-16   New Carlisle Farmers Market           pepper- poblano (ancho)           1        unit               .2          13        1     0.65       121     78.57 |
+  | 2025-08-16   New Carlisle Farmers Market             pepper- serrano chili           1        unit               .2          14        1     0.65       122     79.22 |
+  | 2025-08-16   New Carlisle Farmers Market              pepper- sweet banana           1        unit               .2          15        1     0.65       123     79.87 |
+  | 2025-08-16   New Carlisle Farmers Market              pepper- sweet banana           5        unit                1          16        1     0.65       124     80.52 |
+  | 2025-08-16   New Carlisle Farmers Market              pepper- sweet banana           5        unit                1          17        1     0.65       125     81.17 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-16   New Carlisle Farmers Market                     tomato- amish           1       pound                2          18        1     0.65       126     81.82 |
+  | 2025-08-23   New Carlisle Farmers Market         bean- purple queen (bush)          .5       pound                2           1        1     0.65       127     82.47 |
+  | 2025-08-23   New Carlisle Farmers Market               beet- burpee golden           2        unit               .5           2        1     0.65       128     83.12 |
+  | 2025-08-23   New Carlisle Farmers Market               beet- burpee golden           2        unit                1           3        1     0.65       129     83.77 |
+  | 2025-08-23   New Carlisle Farmers Market                 beet- detroit red           2        unit               .5           4        1     0.65       130     84.42 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-23   New Carlisle Farmers Market                 beet- detroit red           2        unit                1           5        1     0.65       131     85.06 |
+  | 2025-08-23   New Carlisle Farmers Market             carrot- short n sweet           3        unit                2           6        1     0.65       132     85.71 |
+  | 2025-08-23   New Carlisle Farmers Market            eggplant- black beauty           1        unit                5           7        1     0.65       133     86.36 |
+  | 2025-08-23   New Carlisle Farmers Market    eggplant- midnight moon hybrid           1        unit                3           8        1     0.65       134     87.01 |
+  | 2025-08-23   New Carlisle Farmers Market    eggplant- midnight moon hybrid           2        unit                5           9        1     0.65       135     87.66 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-23   New Carlisle Farmers Market    eggplant- midnight moon hybrid           2        unit                5          10        1     0.65       136     88.31 |
+  | 2025-08-23   New Carlisle Farmers Market    eggplant- midnight moon hybrid           2        unit                5          11        1     0.65       137     88.96 |
+  | 2025-08-23   New Carlisle Farmers Market          pepper- califonia wonder           2        unit                2          12        1     0.65       138     89.61 |
+  | 2025-08-23   New Carlisle Farmers Market          pepper- califonia wonder           4        unit                2          13        1     0.65       139     90.26 |
+  | 2025-08-23   New Carlisle Farmers Market           pepper- jalapeno, early           1        unit               .4          14        1     0.65       140     90.91 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-23   New Carlisle Farmers Market           pepper- jalapeno, early           1        unit               .4          15        1     0.65       141     91.56 |
+  | 2025-08-23   New Carlisle Farmers Market           pepper- poblano (ancho)           1        unit               .2          16        1     0.65       142     92.21 |
+  | 2025-08-23   New Carlisle Farmers Market           pepper- poblano (ancho)           1        unit               .2          17        1     0.65       143     92.86 |
+  | 2025-08-23   New Carlisle Farmers Market           pepper- poblano (ancho)           5        unit                1          18        1     0.65       144     93.51 |
+  | 2025-08-23   New Carlisle Farmers Market             pepper- serrano chili           1        unit               .2          19        1     0.65       145     94.16 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-23   New Carlisle Farmers Market             pepper- serrano chili           1        unit               .2          20        1     0.65       146     94.81 |
+  | 2025-08-23   New Carlisle Farmers Market              pepper- sweet banana           1        unit               .2          21        1     0.65       147     95.45 |
+  | 2025-08-23   New Carlisle Farmers Market              pepper- sweet banana           1        unit               .2          22        1     0.65       148     96.10 |
+  | 2025-08-23   New Carlisle Farmers Market              pepper- sweet banana          10        unit                2          23        1     0.65       149     96.75 |
+  | 2025-08-23   New Carlisle Farmers Market             tomato jalapeno salsa           2        pint               30          24        1     0.65       150     97.40 |
+  |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 2025-08-23   New Carlisle Farmers Market                      tomato sauce           1       quart               15          25        1     0.65       151     98.05 |
+  | 2025-08-23   New Carlisle Farmers Market               tomato- cherry roma           1        pint                3          26        1     0.65       152     98.70 |
+  | 2025-08-23   New Carlisle Farmers Market        tomato- fresh salsa hybrid           1       pound                3          27        1     0.65       153     99.35 |
+  | 2025-08-23   New Carlisle Farmers Market                      tomato- roma           1       pound                3          28        1     0.65       154    100.00 |
+  +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.         label variable sale_code "sale number (within each sale date)"
+
+.         
+.         /* Save clean TBF Market Garden 2023 data */
+.         isid sale_date sale_location sale_code
+
+.         quietly compress
+
+.         save "$root\modified_data\tbf_market_garden_sales_2025_clean.dta", replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2025_clean.dta saved
+
+.         export excel "$root\modified_data\tbf_market_garden_sales_2025_clean.xlsx", firstrow(variables) replace
+file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\modified_data\tbf_market_garden_sales_2025_clean.xlsx saved
+
+.         
+.  
+. *=========================================================================================
+. * IV) DESCRIPTIVE STATISTICS
+. *=========================================================================================     
+.         
+.         describe _all
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sale_date       str10   %10s                  sale date
+sale_date_stata int     %td                   sale date- stata
+sale_location   str27   %27s                  sale location
+sale_location~e byte    %27.0g     sale_location_code
+                                              sale location- code
+sale_location~o byte    %10.0g                sale location- stall number
+sale_location~a str18   %18s                  sale location- area
+sale_item       str31   %31s                  sale item
+sale_item_code  byte    %31.0g     sale_item_code
+                                              sale item- code
+sale_amnt       double  %10.0g                sale amount
+sale_unit       str5    %9s                   sale amount unit
+sale_unit_code  byte    %8.0g      sale_unit_code
+                                              sale amount unit- code
+sale_value_usd  double  %10.0g                sale value (dollars)
+sale_code       byte    %9.0g                 sale number (within each sale date)
+
+. 
+. 
+. log close _all
+      name:  cleaning_33
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\33_tbf_sales_2025_cleaning.log
+  log type:  text
+ closed on:  25 Jan 2026, 15:14:10
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

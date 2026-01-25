@@ -1,16 +1,16 @@
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  analysis_26
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2024_analysis.log
   log type:  text
- opened on:   9 Jan 2026, 16:56:03
+ opened on:  25 Jan 2026, 15:06:40
 
 . 
 . 
 . *************************************************************************************************
 . ***                                                                                           ***
 . *** Program name: 26_tbf_data_2024_analyis.do                                                 ***
-. *** Project: TBF Market Garden 2023                                                                       ***
-. *** Purpose: Analyze TBF Market Garden 2023 crop and sales data                               ***    
+. *** Project: TBF Market Garden 2024                                                                       ***
+. *** Purpose: Analyze TBF Market Garden 2024 crop and sales data                               ***    
 . ***                                                                                                                                                                               ***
 . *** Contents:                                                                                             ***
 . ***    0) SET UP CODE                                                                                         ***
@@ -19,7 +19,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: August 14, 2025                                                                                               ***
-. *** Last date modified: August 14, 2025                                                       ***
+. *** Last date modified: January 25, 2026                                                      ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -43,7 +43,7 @@
 . *=========================================================================================      
 . 
 . /* Set seed */
-.         set seed 7122023
+.         set seed 7142024
 
 .         
 . /* Define globals */
@@ -125,7 +125,7 @@
 .         tempfile sales_2024_clean_indicators
 
 .         save `sales_2024_clean_indicators'
-file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000001.tmp saved as .dta format
+file C:\Users\sethb\AppData\Local\Temp\ST_c80_000001.tmp saved as .dta format
 
 .         
 .         use "$root\modified_data\tbf_market_garden_data_2024_clean_indicators.dta", clear
@@ -511,5 +511,5 @@ sale location                 |
       name:  analysis_26
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2024_analysis.log
   log type:  text
- closed on:   9 Jan 2026, 16:56:03
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  25 Jan 2026, 15:06:41
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

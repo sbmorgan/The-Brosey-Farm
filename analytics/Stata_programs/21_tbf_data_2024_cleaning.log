@@ -2,7 +2,7 @@
       name:  cleaning_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- opened on:   9 Jan 2026, 16:55:21
+ opened on:  25 Jan 2026, 14:23:00
 
 . 
 . 
@@ -141,7 +141,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- opened on:   9 Jan 2026, 16:55:22
+ opened on:  25 Jan 2026, 14:23:01
 
 . 
 . 
@@ -234,7 +234,7 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  labels_22
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\22_tbf_data_2024_labels.log
   log type:  text
- closed on:   9 Jan 2026, 16:55:22
+ closed on:  25 Jan 2026, 14:23:01
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -2618,7 +2618,7 @@ outdoor seed |         35       46.67      100.00
 .         tempfile pre_code_export
 
 .         save `pre_code_export'
-file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000001.tmp saved as .dta format
+file C:\Users\sethb\AppData\Local\Temp\ST_c80_000001.tmp saved as .dta format
 
 .         
 .         tablist crop crop_code, sort(v) nolabel
@@ -11132,5 +11132,5 @@ notes           str196  %196s                 notes
       name:  cleaning_21
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\21_tbf_data_2024_cleaning.log
   log type:  text
- closed on:   9 Jan 2026, 16:55:23
+ closed on:  25 Jan 2026, 14:23:02
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,14 +1,14 @@
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  indicators_25
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\25_tbf_sales_2024_indicators.log
   log type:  text
- opened on:   9 Jan 2026, 16:56:00
+ opened on:  25 Jan 2026, 14:55:10
 
 . 
 . 
 . *************************************************************************************************
 . ***                                                                                           ***
-. *** Program name: 15_tbf_sales_2024_indicators.do                                             ***
+. *** Program name: 25_tbf_sales_2024_indicators.do                                             ***
 . *** Project: TBF Market Garden 2024                                                                       ***
 . *** Purpose: Create Analysis Indicators for TBF Market Garden 2024 sales data                 ***    
 . ***                                                                                                                                                                               ***
@@ -18,7 +18,7 @@
 . ***                                                                                           ***
 . *** Authors: Seth B. Morgan                                                                               ***
 . *** Start date: December 17, 2024                                                                                             ***
-. *** Last date modified: December 17, 2024                                                     ***
+. *** Last date modified: January 25, 2026                                                      ***
 . ***                                                                                           ***
 . *** Notes:                                                                                    ***
 . ***                                                                                           ***
@@ -135,8 +135,8 @@
 .         tempfile pre_crop_codes crop_codes
 
 .         save `pre_crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000001.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000001.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_c80_000001.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_c80_000001.tmp saved as .dta format
 
 .         
 .         import excel "$root\modified_data\tbf_crop_codes_2024.xlsx", firstrow clear
@@ -207,8 +207,8 @@ file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000001.tmp saved as .dta format
   +---------------------------------------------------------------------------------------+
 
 .         save `crop_codes', replace
-(file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000002.tmp not found)
-file C:\Users\sethb\AppData\Local\Temp\ST_75a0_000002.tmp saved as .dta format
+(file C:\Users\sethb\AppData\Local\Temp\ST_c80_000002.tmp not found)
+file C:\Users\sethb\AppData\Local\Temp\ST_c80_000002.tmp saved as .dta format
 
 .         
 .         use `pre_crop_codes', replace
@@ -297,5 +297,5 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
       name:  indicators_25
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\25_tbf_sales_2024_indicators.log
   log type:  text
- closed on:   9 Jan 2026, 16:56:00
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  25 Jan 2026, 14:55:10
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
