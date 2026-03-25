@@ -5,7 +5,7 @@
 *******************************************************************************/
 
 capture log close _all
-log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2025_analysis.log", replace name(analysis_36)
+log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\36_tbf_data_2025_analysis.log", replace name(analysis_36)
 
 
 *************************************************************************************************

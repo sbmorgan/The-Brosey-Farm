@@ -1,8 +1,8 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  analysis_36
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2025_analysis.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\36_tbf_data_2025_analysis.log
   log type:  text
- opened on:  26 Jan 2026, 15:41:32
+ opened on:  24 Mar 2026, 21:28:25
 
 . 
 . 
@@ -193,7 +193,7 @@ crop type                             |
 . 
 . log close _all
       name:  analysis_36
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\26_tbf_data_2025_analysis.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\36_tbf_data_2025_analysis.log
   log type:  text
- closed on:  26 Jan 2026, 15:41:32
+ closed on:  24 Mar 2026, 21:28:25
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

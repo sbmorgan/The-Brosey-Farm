@@ -2,7 +2,7 @@
       name:  cleaning_31
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\41_tbf_data_2026_cleaning.log
   log type:  text
- opened on:  24 Mar 2026, 21:09:52
+ opened on:  24 Mar 2026, 21:28:43
 
 . 
 . 
@@ -136,12 +136,12 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 . 
 . capture log close labels_22
 
-. log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\32_tbf_data_2026_labels.log", replace name(labels_32)
+. log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\42_tbf_data_2026_labels.log", replace name(labels_32)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  labels_32
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\32_tbf_data_2026_labels.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\42_tbf_data_2026_labels.log
   log type:  text
- opened on:  24 Mar 2026, 21:09:54
+ opened on:  24 Mar 2026, 21:28:45
 
 . 
 . 
@@ -232,9 +232,9 @@ file C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Far
 .         
 . log close labels_32
       name:  labels_32
-       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\32_tbf_data_2026_labels.log
+       log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\42_tbf_data_2026_labels.log
   log type:  text
- closed on:  24 Mar 2026, 21:09:54
+ closed on:  24 Mar 2026, 21:28:45
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 . 
@@ -661,5 +661,5 @@ notes           str30   %30s                  notes
       name:  cleaning_31
        log:  C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Brosey-Farm\analytics\Stata_programs\41_tbf_data_2026_cleaning.log
   log type:  text
- closed on:  24 Mar 2026, 21:09:54
+ closed on:  24 Mar 2026, 21:28:45
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
