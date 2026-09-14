@@ -23,7 +23,7 @@ log using "C:\Users\sethb\Documents\The Brosey Farm\GitHub repositories\The-Bros
 ***                                                                                           ***
 *** Authors: Seth B. Morgan                                 				                  ***
 *** Start date: March 24, 2026     	   					 	     			                  ***
-*** Last date modified: March 24, 2026                                                        ***
+*** Last date modified: September 14, 2026                                                    ***
 ***                                                                                           ***
 *** Notes:                                                                                    ***
 ***                                                                                           ***
@@ -72,7 +72,7 @@ pause off
 
 	/* Add variable labels */
 	include "$root\Stata_programs\42_tbf_data_2026_labels.do" // This program creates the variable labels.
-/*	
+
 	/* Manage variable type */
 	tostring *type*, replace // All "type" variables are intended to be character strings. Empty "type" variables are read in as byte numeric. Convert those to character strings.
 
@@ -101,7 +101,7 @@ pause off
 		format `var'_stata %td
 		order `var'_stata, after(`var')
 	}
-		
+/*		
 	/* Convert categorical strings into categorical numerics */
 	local cat_str_list crop sow_med *type*
 	tab1 `cat_str_list', missing
